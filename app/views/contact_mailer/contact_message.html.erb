@@ -1,0 +1,5 @@
+<p>New message received at <%= ENV["DOMAIN"] %>:</p>
+<p>--------------</p>
+<p>From: <%= @name %> - <%= @email %></p>
+<p>--------------</p>
+<%= sanitize(line_break(@message), tags: %w(br)) %>

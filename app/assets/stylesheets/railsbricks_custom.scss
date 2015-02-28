@@ -1,0 +1,561 @@
+//***********************************************************
+// BOOTSTRAP VARIABLES OVERRIDES
+
+// Color system
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+$brand-info: #5bc0de;
+
+// Body scaffolding
+$body-bg: #ffffff;
+$text-color: #373737;
+$link-color: $brand-primary;
+$link-hover-color: darken($link-color, 15%);
+
+// Typography
+// Import fonts with: @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
+$font-family-sans-serif: Arial, Helvetica, sans-serif;
+$font-family-serif: Georgia, 'Times New Roman', Times, serif;
+$font-family-monospace: 'Menlo','Monaco','Consolas','Courier New', monospace;
+$font-family-base: $font-family-sans-serif;
+$font-size-base: 14px;
+
+// Headings
+$headings-font-family: $font-family-base;
+$headings-font-weight: 700;
+$headings-color: inherit;
+
+// Code blocks
+$code-color: #c7254e;
+$code-bg: #f9f2f4;
+$pre-color: #373737;
+$pre-bg: #f5f5f5;
+$pre-border-color: #cccccc;
+
+// Components: Padding
+$padding-base-vertical: 6px;
+$padding-large-vertical: 10px;
+$padding-small-vertical: 5px;
+$padding-base-horizontal: 12px;
+$padding-large-horizontal: 16px;
+$padding-small-horizontal: 10px;
+
+// Components: Rounded corners
+$border-radius-base: 4px;
+$border-radius-large: 6px;
+$border-radius-small: 3px;
+
+// Components: Active state
+$component-active-color: #ffffff;
+$component-active-bg: $brand-primary;
+
+// Components: Carets
+$caret-width-base: 4px;
+$caret-width-large: 5px;
+
+// Buttons: Global
+$btn-font-weight: normal;
+$btn-link-disabled-color: #cccccc;
+
+// Buttons: Default
+$btn-default-color: #ffffff;
+$btn-default-bg: #bbbbbb;
+$btn-default-border: #cccccc;
+
+// Buttons: Primary
+$btn-primary-color: $btn-default-color;
+$btn-primary-bg: $brand-primary;
+$btn-primary-border: darken($btn-primary-bg, 5%);
+
+// Buttons: Info
+$btn-info-color: $btn-default-color;
+$btn-info-bg: $brand-info;
+$btn-info-border: darken($btn-info-bg, 5%);
+
+// Buttons: Warning
+$btn-warning-color: $btn-default-color;
+$btn-warning-bg: $brand-warning;
+$btn-warning-border: darken($btn-warning-bg, 5%);
+
+// Buttons: Danger
+$btn-danger-color: $btn-default-color;
+$btn-danger-bg: $brand-danger;
+$btn-danger-border: darken($btn-danger-bg, 5%);
+
+// Form states and alerts
+$state-success-text: #468847;
+$state-success-bg: #dff0d8;
+$state-success-border: darken($state-success-bg, 5%);
+
+$state-warning-text: #c09853;
+$state-warning-bg: #fcf8e3;
+$state-warning-border: darken($state-warning-bg, 3%);
+
+$state-danger-text: #b94a48;
+$state-danger-bg: #f2dede;
+$state-danger-border: darken($state-danger-bg, 3%);
+
+$state-info-text: #3a87ad;
+$state-info-bg: #d9edf7;
+$state-info-border: darken($state-info-bg, 7%);
+
+// Alerts: Base styles
+$alert-padding: 15px;
+$alert-border-radius: $border-radius-base;
+$alert-link-font-weight: bold;
+
+// Alerts: Warning
+$alert-warning-text: $state-warning-text;
+$alert-warning-bg: $state-warning-bg;
+$alert-warning-border: $state-warning-border;
+
+// Alerts: Success
+$alert-success-text: $state-success-text;
+$alert-success-bg: $state-success-bg;
+$alert-success-border: $state-success-border;
+
+// Alerts: Danger
+$alert-danger-text: $state-danger-text;
+$alert-danger-bg: $state-danger-bg;
+$alert-danger-border: $state-danger-border;
+
+//Alerts: Info
+$alert-info-text: $state-info-text;
+$alert-info-bg: $state-info-bg;
+$alert-info-border: $state-info-border;
+
+// Navbar: Base styles
+$navbar-height: 50px;
+$navbar-margin-bottom: 4px;
+$navbar-padding-horizontal: 15px;
+$navbar-padding-vertical: 13px;
+$navbar-border-radius: 0px;
+
+// Navbar: Default navbar
+// -> Basics
+$navbar-default-color: #777777;
+$navbar-default-bg: #f8f8f8;
+$navbar-default-border: darken($navbar-default-bg, 7%);
+// -> Links
+$navbar-default-link-color: #777777;
+$navbar-default-link-hover-color: #333333;
+$navbar-default-link-hover-bg: $navbar-default-bg;
+$navbar-default-link-active-color: #555555;
+$navbar-default-link-active-bg: darken($navbar-default-bg, 7%);
+$navbar-default-link-disabled-color: #cccccc;
+$navbar-default-link-disabled-bg:$navbar-default-bg;
+// -> Brand
+$navbar-default-brand-color: $navbar-default-link-color;
+$navbar-default-brand-hover-color: darken($navbar-default-brand-color, 10%);
+$navbar-default-brand-hover-bg: $navbar-default-bg;
+// -> Toggle
+$navbar-default-toggle-hover-bg: #dddddd;
+$navbar-default-toggle-icon-bar-bg: #cccccc;
+$navbar-default-toggle-border-color: #dddddd;
+
+// Navbar: Inverted navbar
+// -> Basics
+$navbar-inverse-color: #eeeeee;
+$navbar-inverse-bg: #222222;
+$navbar-inverse-border: darken($navbar-inverse-bg, 7%);
+// -> Links
+$navbar-inverse-link-color: #eeeeee;
+$navbar-inverse-link-hover-color: #ffffff;
+$navbar-inverse-link-hover-bg: $navbar-inverse-bg;
+$navbar-inverse-link-active-color: #ffffff;
+$navbar-inverse-link-active-bg: darken($navbar-inverse-bg, 7%);
+$navbar-inverse-link-disabled-color: #444444;
+$navbar-inverse-link-disabled-bg:$navbar-inverse-bg;
+// -> Brand
+$navbar-inverse-brand-color: $navbar-inverse-link-color;
+$navbar-inverse-brand-hover-color: #ffffff;
+$navbar-inverse-brand-hover-bg: $navbar-inverse-bg;
+// -> Toggle
+$navbar-inverse-toggle-hover-bg: #333333;
+$navbar-inverse-toggle-icon-bar-bg: #ffffff;
+$navbar-inverse-toggle-border-color: #333333;
+
+// Nav: Default nav
+// -> Common values
+$nav-link-padding: 10px 15px;
+$nav-link-hover-bg: #eeeeee;
+$nav-disabled-link-color: #cccccc;
+$nav-disabled-link-hover-color: #cccccc;
+$nav-open-link-hover-color: #ffffff;
+$nav-open-caret-border-color: #ffffff;
+// -> Pills
+$nav-pills-active-link-hover-color: #ffffff;
+$nav-pills-active-link-hover-bg: $component-active-bg;
+// -> Tabs
+$nav-tabs-border-color: #dddddd;
+$nav-tabs-link-hover-border-color: #eeeeee;
+$nav-tabs-active-link-hover-color: #bbbbbb;
+$nav-tabs-active-link-hover-bg: $body-bg;
+$nav-tabs-active-link-hover-border-color: #dddddd;
+$nav-tabs-justified-link-border-color: #dddddd;
+$nav-tabs-justified-active-link-border-color: $body-bg;
+
+// Tables
+// -> Default padding for <th>s and <td>s
+$table-cell-padding: 8px;
+// -> Default padding cells in .table-condensed
+$table-condensed-cell-padding: 5px;
+// -> Default background color used for all tables.
+$table-bg: $body-bg;
+// -> Background color used for .table-striped.
+$table-bg-accent: #f9f9f9;
+// -> Background color used for .table-hover.
+$table-bg-hover: #f5f5f5;
+// -> Border color for table and cell borders.
+$table-border-color: #dddddd;
+
+// Forms
+// -> Inputs
+$input-color: $text-color; // Text color for <input>s
+$input-bg: #ffffff; // <input> background color
+$input-border: #cccccc; // <input> border color
+$input-border-radius: $border-radius-base; // <input> border radius
+$input-color-placeholder: #bbbbbb; // Placeholder text color
+// -> Input states
+$input-border-focus: #66afe9; // Border color for inputs on focus
+$input-bg-disabled: #dddddd; // <input disabled> background color
+// -> Input sizes
+$input-height-base: 38px; // Default .form-control height
+$input-height-large: 46px; // Large .form-control height
+$input-height-small: 28px; // Small .form-control height
+// -> Legend
+$legend-color: #aaaaaa;
+$legend-border-color: #e5e5e5;
+// -> Input groups
+$input-group-addon-bg: #cccccc; // Background color for textual input addons
+$input-group-addon-border-color: $input-border; // Border color for textual input addons
+
+// Dropdowns
+// -> Dropdown menu
+$dropdown-bg: #ffffff; // Dropdown menu background color
+$dropdown-border: #373737; // Dropdown menu border color
+$dropdown-fallback-border: #cccccc; // Dropdown menu border color for IE8
+$dropdown-caret-color: #dddddd; // Indicator arrow for showing an element has a dropdown
+$dropdown-divider-bg: #e5e5e5; // Dropdown divider top border color
+$dropdown-header-color: #dddddd; // Text color for headers within dropdown menus
+// -> Dropdown items
+$dropdown-link-color: $text-color; // Dropdown text color
+$dropdown-link-hover-color: darken($dropdown-link-color,5%); // Hovered dropdown menu entry text color
+$dropdown-link-hover-bg: #f5f5f5; // Hovered dropdown menu entry text color
+$dropdown-link-active-color: $component-active-color; // Active dropdown menu entry text color
+$dropdown-link-active-bg: $component-active-bg; // Active dropdown menu entry background color
+$dropdown-link-disabled-color: #dddddd; // Disabled dropdown menu entry background color
+
+// Panels and wells
+// -> Common panel styles
+$panel-bg: #ffffff;
+$panel-inner-border: #dddddd; // Border color for elements within panels
+$panel-border-radius: $border-radius-base;
+$panel-footer-bg: #f5f5f5;
+// -> Contextual panel colors
+// --> Default
+$panel-default-text: #373737;
+$panel-default-border: #dddddd;
+$panel-default-heading-bg: #f5f5f5;
+// --> Primary
+$panel-primary-text: #ffffff;
+$panel-primary-border: $brand-primary;
+$panel-primary-heading-bg: $brand-primary;
+// --> Success
+$panel-success-text: $state-success-text;
+$panel-success-border: $state-success-border;
+$panel-success-heading-bg: $state-success-bg;
+// --> Info
+$panel-info-text: $state-info-text;
+$panel-info-border: $state-info-border;
+$panel-info-heading-bg: $state-info-bg;
+// --> Warning
+$panel-warning-text: $state-warning-text;
+$panel-warning-border: $state-warning-border;
+$panel-warning-heading-bg: $state-warning-bg;
+// --> Danger
+$panel-danger-text: $state-danger-text;
+$panel-danger-border: $state-danger-border;
+$panel-danger-heading-bg: $state-danger-bg;
+// -> Wells
+$well-bg: #f5f5f5;
+
+// Jumbotron
+$jumbotron-padding: 30px;
+$jumbotron-bg: #cccccc;
+$jumbotron-font-size: ceil($font-size-base * 1.5);
+$jumbotron-color: $text-color;
+$jumbotron-heading-color: $headings-color;
+
+// Carousel
+$carousel-text-shadow: 0px 1px 2px #373737;
+$carousel-control-color: #ffffff;
+$carousel-caption-color: #ffffff;
+$carousel-indicator-border-color: #ffffff;
+$carousel-indicator-active-bg: #ffffff;
+
+// Labels
+$label-color: #ffffff; // Default label text color
+$label-link-hover-color: #ffffff; // Default text color of a linked label
+$label-default-bg: #cccccc; // Default label background color
+$label-primary-bg: $brand-primary; // Primary label background color
+$label-success-bg: $brand-success; // Success label background color
+$label-info-bg: $brand-info; // Info label background color
+$label-warning-bg: $brand-warning; // Warning label background color
+$label-danger-bg: $brand-danger; // Danger label background color
+
+// Close button
+$close-font-weight: bold;
+$close-color: #000000;
+$close-text-shadow: 0px 1px 0px #ffffff;
+
+// Type
+$text-muted: #bbbbbb; // Text muted color
+$abbr-border-color: #cccccc; // Abbreviations and acronyms border color
+$headings-small-color: #bbbbbb; // Headings small color
+$blockquote-small-color: #cccccc; // Blockquote small color
+$blockquote-border-color: #eeeeee; // Blockquote border color
+$page-header-border-color: #eeeeee; // Page header border color
+
+// Other
+$hr-border: #cccccc; // Horizontal line color
+$component-offset-horizontal: 180px; // Horizontal offset for forms and lists
+
+//***********************************************************
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+//***********************************************************
+// CLASSES FOR VISUAL TESTING
+.test1 {
+  background-color: yellow;
+}
+.test2 {
+  background-color: red;
+}
+.test3 {
+  background-color: blue;
+}
+//***********************************************************
+
+//***********************************************************
+// APPLICATION-WIDE
+html,body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  padding-bottom: 120px;
+}
+
+blockquote{
+  font-size: $font-size-base;
+  font-style: italic;
+}
+
+.monospaced-control{
+  font-family: $font-family-monospace;
+  font-size: 12px;
+}
+
+.center-block{
+  margin-left: auto;
+  margin-right: auto;
+}
+//***********************************************************
+
+//***********************************************************
+// SPACING
+$space-lg: 60px;
+$space-md: 40px;
+$space-sm: 20px;
+$space-xs: 10px;
+
+.space-top-lg{
+  margin-top: $space-lg;
+}
+.space-top-md{
+  margin-top: $space-md;
+}
+.space-top-sm{
+  margin-top: $space-sm;
+}
+.space-top-xs{
+  margin-top: $space-xs;
+}
+
+.space-bottom-lg{
+  margin-bottom: $space-lg;
+}
+.space-bottom-md{
+  margin-bottom: $space-md;
+}
+.space-bottom-sm{
+  margin-bottom: $space-sm;
+}
+.space-bottom-xs{
+  margin-bottom: $space-xs;
+}
+
+.space-left-lg{
+  margin-left: $space-lg;
+}
+.space-left-md{
+  margin-left: $space-md;
+}
+.space-left-sm{
+  margin-left: $space-sm;
+}
+.space-left-xs{
+  margin-left: $space-xs;
+}
+
+.space-right-lg{
+  margin-right: $space-lg;
+}
+.space-right-md{
+  margin-right: $space-md;
+}
+.space-right-sm{
+  margin-right: $space-sm;
+}
+.space-right-xs{
+  margin-right: $space-xs;
+}
+
+.space-all-lg{
+  margin: $space-lg;
+}
+.space-all-md{
+  margin: $space-md;
+}
+.space-all-sm{
+  margin: $space-sm;
+}
+.space-all-xs{
+  margin: $space-xs;
+}
+
+//***********************************************************
+
+//***********************************************************
+// FLASH MESSAGES
+.alert {
+  margin-top: -4px;
+}
+//***********************************************************
+
+//***********************************************************
+// NAVBAR
+.navbar-brand {
+  font-size: inherit;
+}
+//***********************************************************
+
+//***********************************************************
+// ERRORS
+#error_explanation {
+  color: $brand-danger;
+  ul {
+    margin-left: 8px;
+    padding-left: 8px;
+  }
+
+  h2 {
+    display:none;
+  }
+}
+
+.error-text {
+  color: $brand-danger;
+}
+
+.field_with_errors {
+  .form-control {
+    border: 1px solid $brand-danger;
+  }
+  label {
+    color: $brand-danger;
+  }
+}
+//***********************************************************
+
+//***********************************************************
+// IMAGES
+img {
+  @extend .img-responsive;
+}
+
+.img-inline{
+  display: inline;
+}
+
+.img-block{
+  display: block;
+}
+
+.img-framed{
+  border: 1px solid #cccccc;
+  box-shadow: 2px 2px 6px #dddddd;
+  border-radius: 4px;
+}
+
+.img-title{
+  color: #bbbbbb;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+//***********************************************************
+
+//***********************************************************
+// VIDEO
+.js-video {
+  height: 0;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 3px 3px 5px #cccccc;
+  border: 3px solid #373737;
+
+}
+
+.js-video.widescreen {
+  padding-bottom: 57.25%;
+}
+
+.js-video.vimeo {
+  padding-top: 0;
+}
+
+.js-video embed, .js-video iframe, .js-video object, .js-video video {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+//***********************************************************
+
+
+//***********************************************************
+// FOOTER
+#footer {
+  background-color: #222222;
+  color: #eeeeee;
+  height: 100px;
+  margin-top: -100px;
+  letter-spacing: 1px;
+
+  .footer-first-row {
+    padding-top: 20px;
+  }
+}
+//***********************************************************

@@ -1,0 +1,74 @@
+<% title("Edit User Id: #{@user.id}") %>
+<div class="row">
+  <div class="col-sm-6">
+    <h1>
+      Edit User <small><%= "#{@user.username.capitalize} - id: #{@user.id}" %></small>
+    </h1>
+    <p><%= link_to "Back to Users", admin_users_path %></p>
+
+    <%= form_for [:admin, @user], :html => { :role => "form" } do |f| %>
+
+    <div class="form-group">
+      <%= f.label :username %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.text_field :username, :autofocus => true, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <% unless current_user.id == @user.id %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.check_box :locked %> <%= f.label :locked, "Is Locked?" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.check_box :admin %> <%= f.label :admin, "Is Admin?" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.submit "Update User", class: "btn btn-danger" %>
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>

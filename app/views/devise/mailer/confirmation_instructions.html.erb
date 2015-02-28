@@ -1,0 +1,12 @@
+<p>Welcome <%= @user.username.capitalize %>!</p>
+
+<p>You need to confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+<br/>
+
+<p>
+  Thank you,<br/><br/>
+  Yourself<br/>
+  <%= link_to "Your URL", "#" %>
+</p>

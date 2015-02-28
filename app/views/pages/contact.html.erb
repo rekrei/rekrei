@@ -1,0 +1,46 @@
+<% title("Contact") %>
+<h1 class="page-title">Contact</h1>
+
+<div class="row">
+  <div class="col-sm-6">
+
+    <%= form_tag email_confirmation_path, method: 'post', html: {role: "form"} do %>
+
+    <div class="form-group">
+      <%= label_tag :name, "Your name" %>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= text_field_tag :name, @name, placeholder: "Enter your name...", :autofocus => true, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :email, "Your email" %>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= text_field_tag :email, @email, placeholder: "Enter your email...", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :message, "Your message" %>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= text_area_tag :message, @message, placeholder: "Enter your message...", rows: 10, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 padded">
+        <button class='btn btn-primary'>
+          <i class='fa fa-envelope'></i> Send
+        </button>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>
