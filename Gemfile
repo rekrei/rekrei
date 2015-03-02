@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
-
+ruby '2.1.5'
+#ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.0'
 gem 'sass-rails', '5.0.1'
@@ -26,6 +26,10 @@ gem 'font-awesome-sass', '4.2.2'
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '3.3.3'
 
+gem "paperclip", "~> 4.2"
+gem 'paper_trail', '~> 4.0.0.beta'
+
+
 group :development, :test do
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
@@ -35,6 +39,14 @@ group :development, :test do
 
   # Spring: https://github.com/rails/spring
   gem 'spring', '1.2.0'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda-matchers'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'guard-bundler', require: false
+  gem 'guard-migrate', require: false
+  gem 'capybara'
+  gem 'fuubar'
 end
 
 
@@ -45,3 +57,7 @@ end
 
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '3.4.1'
+
+group :test do
+  gem 'rspec-given'
+end
