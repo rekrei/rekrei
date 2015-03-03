@@ -28,4 +28,8 @@
 
 <br>
 
-<%= link_to 'New Artefact', new_artefact_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Artefact', new_artefact_path %>
+<% else %>
+  You must be signed in to create an artefact
+<% end %>

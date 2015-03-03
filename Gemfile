@@ -31,6 +31,7 @@ gem 'paper_trail', '~> 4.0.0.beta'
 
 
 group :development, :test do
+  gem 'capistrano', '~> 3.3.0'
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
 

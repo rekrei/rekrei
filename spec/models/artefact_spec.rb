@@ -7,4 +7,11 @@ describe Artefact do
   it { should respond_to(:museum_identifier) }
   it { should have_many(:attachments).dependent(:destroy) }
 
+  describe ".new" do
+    let(:artefact){Artefact.new}
+
+    it "sets an UUID" do
+      expect(artefact.uuid).to_not be_nil
+    end
+  end
 end

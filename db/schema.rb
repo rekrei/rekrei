@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301211324) do
+ActiveRecord::Schema.define(version: 20150302194520) do
 
   create_table "artefacts", force: :cascade do |t|
     t.string   "name"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20150301211324) do
     t.string   "museum_identifier"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "uuid"
   end
+
+  add_index "artefacts", ["uuid"], name: "index_artefacts_on_uuid"
 
   create_table "attachments", force: :cascade do |t|
     t.string   "attachment_type"
