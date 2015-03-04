@@ -1,5 +1,7 @@
 Projectmosul::Application.routes.draw do
-  resources :artefacts
+  resources :artefacts do
+    resources :assets
+  end
 
   root "pages#home"
   get "home", to: "pages#home", as: "home"

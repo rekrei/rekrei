@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+
+<%= link_to 'Edit', edit_artefact_path(@artefact) %> |
+<%= link_to 'Back', artefacts_path %>
+
 <p>
   <strong>Name:</strong>
   <%= @artefact.name %>
@@ -10,10 +14,6 @@
   <%= @artefact.description %>
 </p>
 
-<p>
-  <strong>Photos:</strong>
-  <%= @artefact.photos %>
-</p>
-
-<%= link_to 'Edit', edit_artefact_path(@artefact) %> |
-<%= link_to 'Back', artefacts_path %>
+<% @artefact.assets.each do |asset| %>
+  <%= link_to image_tag(asset.image.url(:thumb)), asset.image.url(:original) %>
+<% end %>

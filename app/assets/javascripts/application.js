@@ -16,3 +16,4 @@
 //= require bootstrap 
 //= require analytics
 //= require common
+//= require dropzone

@@ -5,7 +5,7 @@ describe Artefact do
   it { should respond_to(:name) }
   it { should respond_to(:description) }
   it { should respond_to(:museum_identifier) }
-  it { should have_many(:attachments).dependent(:destroy) }
+  it { should have_many(:assets).dependent(:destroy) }
 
   describe ".new" do
     let(:artefact){Artefact.new}

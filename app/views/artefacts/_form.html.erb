@@ -1,4 +1,5 @@
-<%= form_for(@artefact) do |f| %>
+<%= form_for @artefact, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+
   <% if @artefact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@artefact.errors.count, "error") %> prohibited this artefact from being saved:</h2>
@@ -11,19 +12,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :museum_identifier %><br>
-    <%= f.text_field :museum_identifier %>
+  <div class="control-group">
+    <%= f.label :museum_identifier, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :museum_identifier, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="control-group">
+    <%= f.label :assets, :class => 'control-label' %>
+    <div class="controls">
+      <!-- The magic is coming ...look at my eyes....shazammmm -->
+      <%= file_field_tag "assets[]", type: :file, multiple: true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                artefacts_path, :class => 'btn btn-mini' %>
   </div>
 <% end %>

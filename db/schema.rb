@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20150302194520) do
 
   add_index "artefacts", ["uuid"], name: "index_artefacts_on_uuid"
 
-  create_table "attachments", force: :cascade do |t|
-    t.string   "attachment_type"
+  create_table "assets", force: :cascade do |t|
+    t.string   "asset_type"
     t.integer  "artefact_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150302194520) do
     t.datetime "image_updated_at"
   end
 
-  add_index "attachments", ["artefact_id"], name: "index_attachments_on_artefact_id"
+  add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

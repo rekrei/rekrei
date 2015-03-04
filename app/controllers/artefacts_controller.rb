@@ -25,13 +25,20 @@ class ArtefactsController < ApplicationController
   # POST /artefacts.json
   def create
     @artefact = Artefact.new(artefact_params)
-
     respond_to do |format|
       if @artefact.save
+
+        if params[:assets]
+          # The magic is here ;)
+          params[:assets].each { |image|
+            @artefact.assets.create(image: image)
+          }
+        end
+
         format.html { redirect_to @artefact, notice: 'Artefact was successfully created.' }
-        format.json { render :show, status: :created, location: @artefact }
+        format.json { render json: @artefact, status: :created, location: @artefact }
       else
-        format.html { render :new }
+        format.html { render action: "new" }
         format.json { render json: @artefact.errors, status: :unprocessable_entity }
       end
     end
@@ -40,13 +47,21 @@ class ArtefactsController < ApplicationController
   # PATCH/PUT /artefacts/1
   # PATCH/PUT /artefacts/1.json
   def update
+    @artefact = Artefact.find(params[:id])
+
     respond_to do |format|
-      if @artefact.update(artefact_params)
-        format.html { redirect_to @artefact, notice: 'Artefact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @artefact }
+      if @artefact.update_attributes(artefact_params)
+        if params[:assets]
+          # The magic is here ;)
+          params[:assets].each { |image|
+            @artefact.assets.create(image: image)
+          }
+        end
+        format.html { redirect_to @asset, notice: 'Asset was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
-        format.json { render json: @artefact.errors, status: :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.json { render json: @asset.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +84,6 @@ class ArtefactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artefact_params
-      params.require(:artefact).permit(:name, :description)
+      params.require(:artefact).permit(:name, :description, :museum_identifier, :assets)
     end
 end
