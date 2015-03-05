@@ -30,9 +30,14 @@ gem "paperclip", "~> 4.2"
 gem 'paper_trail', '~> 4.0.0.beta'
 gem 'dropzonejs-rails'
 
+#for now, until we decide if we want to use this in production or not
+gem 'sqlite3', '1.3.10'
 
 group :development, :test do
   gem 'capistrano', '~> 3.3.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
 
@@ -54,7 +59,6 @@ end
 
 # SQLite 3
 group :development, :test do
-  gem 'sqlite3', '1.3.10'
 end
 
 # Devise: https://github.com/plataformatec/devise
