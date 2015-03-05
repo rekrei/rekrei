@@ -2,6 +2,7 @@ class AssetsController < ApplicationController
   # GET /assets
   # GET /assets.json
   def index
+
     @artefact = Artefact.find(params[:artefact_id])
 
     @assets = @artefact.assets
@@ -37,7 +38,7 @@ class AssetsController < ApplicationController
 
   # GET /assets/1/edit
   def edit
-    #@gallery = Gallery.find(params[:gallery_id])
+    #@artefact = Artefact.find(params[:artefact_id])
 
     @asset = Asset.find(params[:id])
     # @asset = Asset.find(params[:id])
@@ -46,40 +47,35 @@ class AssetsController < ApplicationController
   # POST /assets
   # POST /assets.json
   def create
-    @artefact = Artefact.new(artefact_params)
-    respond_to do |format|
-      if @artefact.save
+    @asset = Asset.new(params[:asset])
 
-        if params[:assets]
-          # The magic is here ;)
-          params[:assets].each { |image|
-            @artefact.assets.create(image: image)
-          }
-        end
-
-        format.html { redirect_to @artefact, notice: 'Artefact was successfully created.' }
-        format.json { render json: @artefact, status: :created, location: @artefact }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @artefact.errors, status: :unprocessable_entity }
+    if @asset.save
+      respond_to do |format|
+        format.html {
+          render :json => [@asset.to_jq_upload].to_json,
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {
+          render :json => [@asset.to_jq_upload].to_json
+        }
       end
+    else
+      render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
 
   # PUT /assets/1
   # PUT /assets/1.json
   def update
-    @artefact = Artefact.find(params[:id])
+
+    @artefact = Artefact.find(params[:artefact_id])
+
+    @asset = @artefact.assets.find(params[:id])
 
     respond_to do |format|
-      if @artefact.update_attributes(artefact_params)
-        if params[:assets]
-          # The magic is here ;)
-          params[:assets].each { |image|
-            @artefact.assets.create(image: image)
-          }
-        end
-        format.html { redirect_to @asset, notice: 'Asset was successfully updated.' }
+      if @asset.update_attributes(asset_params)
+        format.html { redirect_to artefact_path(@artefact), notice: 'Asset was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -91,6 +87,8 @@ class AssetsController < ApplicationController
   # DELETE /assets/1
   # DELETE /assets/1.json
   def destroy
+    #@artefact = Artefact.find(params[:artefact_id])
+    #@asset = @artefact.assets.find(params[:id])
     @asset = Asset.find(params[:id])
     @asset.destroy
 
@@ -101,8 +99,8 @@ class AssetsController < ApplicationController
   end
 
   def make_default
-    @artefact = Artefact.find(params[:id])
-    @asset = Asset.find(params[:asset_id])
+    @asset = Asset.find(params[:id])
+    @artefact = Artefact.find(params[:artefact_id])
 
     @artefact.cover = @asset.id
     @artefact.save
@@ -115,6 +113,6 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.require(:asset).permit(:asset_id, :image)
+    params.require(:asset).permit(:artefact_id, :image)
   end
 end

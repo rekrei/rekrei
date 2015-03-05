@@ -228,6 +228,7 @@ GEM
       ffi (>= 0.5.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rmagick (2.13.4)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -332,6 +333,7 @@ DEPENDENCIES
   paper_trail (~> 4.0.0.beta)
   paperclip (~> 4.2)
   rails (= 4.2.0)
+  rmagick
   rspec-given
   rspec-rails (~> 3.0)
   sass-rails (= 5.0.1)

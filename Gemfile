@@ -25,7 +25,7 @@ gem 'font-awesome-sass', '4.2.2'
 
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '3.3.3'
-
+gem 'rmagick'
 gem "paperclip", "~> 4.2"
 gem 'paper_trail', '~> 4.0.0.beta'
 gem 'dropzonejs-rails'
