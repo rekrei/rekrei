@@ -57,11 +57,11 @@ class ArtefactsController < ApplicationController
             @artefact.assets.create(image: image)
           }
         end
-        format.html { redirect_to @asset, notice: 'Asset was successfully updated.' }
+        format.html { redirect_to @artefact, notice: 'Asset was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @asset.errors, status: :unprocessable_entity }
+        format.json { render json: @artefact.errors, status: :unprocessable_entity }
       end
     end
   end

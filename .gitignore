@@ -16,7 +16,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+/public/system
 # Ignore other unneeded files.
 doc/
 *.swp
