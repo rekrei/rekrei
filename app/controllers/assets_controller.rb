@@ -1,4 +1,6 @@
 class AssetsController < ApplicationController
+  before_filter :require_admin!, only: [:destroy]
+  before_filter :authenticate_user!, :except => [:show, :index]
   # GET /assets
   # GET /assets.json
   def index

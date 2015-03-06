@@ -1,5 +1,7 @@
 class ArtefactsController < ApplicationController
   before_action :set_artefact, only: [:show, :edit, :update, :destroy]
+  before_filter :require_admin!, only: [:destroy]
+  before_filter :authenticate_user!, :except => [:show, :index]
 
   # GET /artefacts
   # GET /artefacts.json

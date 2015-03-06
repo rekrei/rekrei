@@ -33,6 +33,10 @@ gem 'dropzonejs-rails'
 #for now, until we decide if we want to use this in production or not
 gem 'sqlite3', '1.3.10'
 
+group :production do
+  gem 'passenger'
+end
+
 group :development, :test do
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-bundler'

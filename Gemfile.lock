@@ -191,6 +191,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    passenger (5.0.1)
+      rack
+      rake (>= 0.8.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -332,6 +335,7 @@ DEPENDENCIES
   kaminari (= 0.16.2)
   paper_trail (~> 4.0.0.beta)
   paperclip (~> 4.2)
+  passenger
   rails (= 4.2.0)
   rmagick
   rspec-given
