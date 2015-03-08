@@ -8,6 +8,6 @@ class ContactMailer < ActionMailer::Base
     @email = email
     @message = message
 
-    mail to: ENV["SENDER_EMAIL"], subject: "New message received at #{ENV["DOMAIN"]}"
+    mail to: ENV["CONTACT_EMAIL"], subject: "New message received at #{ENV["DOMAIN"]}"
   end
 end
