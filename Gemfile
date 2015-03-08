@@ -32,6 +32,7 @@ gem 'dropzonejs-rails'
 
 #for now, until we decide if we want to use this in production or not
 gem 'sqlite3', '1.3.10'
+gem 'dotenv-rails'
 
 group :production do
   gem 'passenger'
