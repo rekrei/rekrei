@@ -19,7 +19,9 @@
         <% end %>
         <div class="caption">
           <p style="text-align: center;">
-            <%= artefact.name.truncate(14) %>
+            <%= artefact.name %>
+          </p>
+          <p style="text-align: center;">
             <%= link_to "Show", artefact_path(artefact) %>
             <%= link_to "Edit or Add Photos", edit_artefact_path(artefact) %>
             <%= link_to "Delete", artefact,
