@@ -3,6 +3,7 @@ lock '3.3.5'
 
 set :application, 'projectmosul'
 set :repo_url, 'git@github.com:neshmi/projectmosul.git'
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 

@@ -349,7 +349,7 @@ html,body {
 
 #wrap {
   min-height: 100%;
-  padding-bottom: 120px;
+  // padding-bottom: 120px;
 }
 
 blockquote{
@@ -552,10 +552,15 @@ img {
 
 //***********************************************************
 // FOOTER
+#footer_fix {
+  margin-bottom: 100px;
+}
+
 #footer {
+  position: relative;
   background-color: #222222;
   color: #eeeeee;
-  min-height: 140px;
+  min-height: 240px;
   margin-top: -100px;
   letter-spacing: 1px;
 
