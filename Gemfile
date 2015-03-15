@@ -28,11 +28,15 @@ gem 'bootstrap-sass', '3.3.3'
 gem 'rmagick'
 gem "paperclip", "~> 4.2"
 gem 'paper_trail', '~> 4.0.0.beta'
+
 gem 'dropzonejs-rails'
+gem "therubyracer"
 
 #for now, until we decide if we want to use this in production or not
 gem 'sqlite3', '1.3.10'
 gem 'dotenv-rails'
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 
 group :production do
   gem 'passenger'
@@ -61,6 +65,7 @@ group :development, :test do
   gem 'guard-migrate', require: false
   gem 'capybara'
   gem 'fuubar'
+  gem 'factory_girl_rails'
 end
 
 

@@ -1,0 +1,3 @@
+<% @images.each do |image| %>
+  <div class="img-thumbnail"><%= image_tag image.image.url(:thumb), alt: image.image.url(:thumb) %></div>
+<% end %>

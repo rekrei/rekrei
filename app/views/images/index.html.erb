@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <h1>Upload Images</h1>
+  <br/>
+  <%= form_for(Image.new, html: { multipart: true, class: "dropzone"}) do |f|  %>
+  <div class="fallback">
+    <%= f.file_field :image, multiple: true %><br>
+    <%= f.submit "Upload" %>
+  </div>
+<% end %>
+<% else %>
+  You must be signed in to upload images
+<% end %>
+
+
+
+<h1>Unsorted Images</h1>
+
+<div class="index">
+  <%= render "index" %>
+</div>

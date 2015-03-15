@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302194520) do
+ActiveRecord::Schema.define(version: 20150313082040) do
 
   create_table "artefacts", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20150302194520) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "type"
+    t.boolean  "masked"
   end
 
   add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id"
