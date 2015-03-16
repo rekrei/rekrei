@@ -53,10 +53,10 @@ class ArtefactsController < ApplicationController
 
     respond_to do |format|
       if @artefact.update_attributes(artefact_params)
-        if params[:assets]
+        if params[:images]
           # The magic is here ;)
-          params[:assets].each { |image|
-            @artefact.assets.create(image: image)
+          params[:images].each { |image|
+            @artefact.images.create(image: image)
           }
         end
         format.html { redirect_to @artefact, notice: 'Asset was successfully updated.' }
