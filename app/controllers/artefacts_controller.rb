@@ -30,10 +30,10 @@ class ArtefactsController < ApplicationController
     respond_to do |format|
       if @artefact.save
 
-        if params[:assets]
+        if params[:images]
           # The magic is here ;)
-          params[:assets].each { |image|
-            @artefact.assets.create(image: image)
+          params[:images].each { |image|
+            @artefact.images.create(image: image)
           }
         end
 
@@ -86,6 +86,6 @@ class ArtefactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artefact_params
-      params.require(:artefact).permit(:name, :description, :museum_identifier, :assets)
+      params.require(:artefact).permit(:name, :description, :museum_identifier, :images)
     end
 end

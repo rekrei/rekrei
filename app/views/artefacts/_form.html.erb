@@ -33,10 +33,9 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :assets, :class => 'control-label' %>
+    <%= f.label :images, :class => 'control-label' %>
     <div class="controls">
-      <!-- The magic is coming ...look at my eyes....shazammmm -->
-      <%= file_field_tag "assets[]", type: :file, multiple: true %>
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
     </div>
   </div>
 
