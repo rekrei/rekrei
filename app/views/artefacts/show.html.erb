@@ -19,8 +19,8 @@
     <h1 class="page-header">Artefact Images</h1>
   </div>
 
-<% @artefact.assets.each do |asset| %>
+<% @artefact.images.each do |image| %>
   <div class="col-lg-3 col-md-4 col-xs-6 thumb artefact-image">
-    <%= link_to image_tag(asset.image.url(:medium), class: "img-responsive", height: "50px"), asset.image.url(:original), class: "thumbnail" %>
+    <%= link_to image_tag(image.image.url(:medium), class: "img-responsive", height: "50px"), image.image.url(:original), class: "thumbnail" %>
   </div>
 <% end %>
