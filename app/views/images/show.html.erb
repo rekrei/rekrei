@@ -1,8 +1,62 @@
+<div class="row">
+  <div class="col-md-4">
+    <h2><%= link_to "Previous", image_path(@previous) if @previous %></h2>
+  </div>
+  <div class="col-md-4">
+    <h2><%= link_to 'Back', images_path %></h2>
+  </div>
+  <div class="col-md-4">
+    <h2><%= link_to "Next", image_path(@next) if @next %></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Image</h2>
+    <%= image_tag @image.image.url(:medium) %>
+  </div>
+  <div class="col-md-8">
+    <h2>Artefacts</h2>
+
+    <% if @image.artefact %>
+      <h3>Artefact: <%= link_to @image.artefact.name, artefact_path(@image.artefact) %></h3>
+    <% end %>
+    <% if user_signed_in? %>
+      <h3>Add or Update the artefact here</h3>
+
+      <% modal ||= false %>
+      <% remote = modal ? true : false %>
+      <%= form_for(@image, remote: remote, html: {role: :form, 'data-model' => 'image'}) do |f| %>
+        <% if @image.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@image.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+            <ul>
+            <% @image.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%# Added Bootstrap classes, and help-block container for error messages %>
+        <div class="form-group">
+          <%= f.label :artefact_id, class: 'control-label' %><br>
+          <%= f.select :artefact_id, Artefact.all.map{|artefact| [artefact.name, artefact.id]}, include_blank: true, class: 'form-control' %>
+          <span class="help-block"></span>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit 'Submit', class: 'btn btn-default' %>
+        </div>
+      <% end %>
+
+
+      <p>If there isn't an obvious artefact to assign it to, try creating one first <%= link_to "here", new_artefact_path %>.</p>
+      <% else %>
+        <h2>You need to be signed in to make any changes</h2>
+      <% end %>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
-
-<br />
-<%= render 'image' %>
-<br />
-
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>

@@ -37,6 +37,7 @@ gem 'sqlite3', '1.3.10'
 gem 'dotenv-rails'
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem 'will_paginate'
 
 group :production do
   gem 'passenger'

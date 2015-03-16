@@ -1,13 +1,13 @@
 class ImagesController < ApplicationController
   before_filter :require_admin!, only: [:destroy]
-  # before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   # GET /images
   # GET /images.json
     # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.unassigned_to_artefact
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +18,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @previous = @image.previous
+    @next = @image.next
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @image }
@@ -57,7 +59,7 @@ class ImagesController < ApplicationController
   # PUT /images/1.json
   def update
     respond_to do |format|
-      if @image.update_attributes(params[:image])
+      if @image.update_attributes(image_params)
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
         # format.json { head :no_content }
         format.json { render json: {files: [@image.to_jq_upload]}, status: :created, location: @image }
