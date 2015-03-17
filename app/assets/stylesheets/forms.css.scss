@@ -1,0 +1,54 @@
+form#new_user {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 16px;
+  box-sizing: border-box;
+
+  h2.form-signin-heading {
+    margin-bottom: 10px;
+  }
+
+  .form-control {
+    position: relative;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    width: 330px;
+    line-height: 1.42857143em;
+    color: #555;
+    background-color: #fffs;
+  }
+
+  input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  input[type="submit"] {
+    width: 330px;
+  }
+
+  .checkbox{
+    input[type="checkbox"] {
+      position: absolute;
+      margin-left: 0px;
+    }
+
+    label {
+      min-height: 20px;
+      padding-left: 20px;
+      margin-bottom: 0;
+      font-weight: 400;
+      cursor: pointer;
+    }
+  }
+
+  p.links {
+    line-height: 1.8em;
+    margin-top: 2em;
+  }
+
+}
+
