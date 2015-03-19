@@ -18,7 +18,10 @@
         .col-md-3.col-sm-6
           .shop-item
             .shop-item-image
-              = link_to image_tag(artefact.images.first.image.url(:square)),artefact_path(artefact)
+              - if artefact.images.count > 0
+                = link_to image_tag(artefact.images.first.image.url(:square)),artefact_path(artefact)
+              - else
+                = link_to image_tag("square/missing.png"), artefact_path(artefact)
             .title
               %h3
                 =link_to artefact.name, artefact_path(artefact)

@@ -17,7 +17,10 @@
       .col-sm-6
         .portfolio-item
           .portfolio-image
-            = image_tag @artefact.images.first.image.url(:square)
+            - if @artefact.images.count > 0
+              = image_tag(@artefact.images.first.image.url(:square))
+            - else
+              = image_tag("square/missing.png")
         / End Image Column
         / Project Info Column
       .portfolio-item-description.col-sm-6
