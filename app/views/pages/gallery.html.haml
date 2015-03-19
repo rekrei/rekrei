@@ -1,0 +1,22 @@
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-sm-12
+        %h1 
+          Sketchfab Gallery
+.section
+  .container
+    .row
+      .col-md-12
+        %h4
+          Have a model you have made? Upload it to Sketchfab and tag it with 
+          %b
+            \#projectmosul!
+    %br
+    %br
+
+    .row
+      - @models.each do |model|
+        .col-md-4
+          = model.html(width: 320, height: 240).html_safe
+

@@ -1,24 +1,41 @@
-<%= form_for(resource, :as => resource_name,
-    :url => session_path(resource_name),
-    role: "form", class: "form-signin") do |f| %>
-
-    <h2 class="form-signin-heading">Please Sign In</h2>
-
-    <%= f.label :username, class: "sr-only" %>
-    <%= f.text_field :username, :autofocus => true, placeholder: "Username",class: "form-control" %>
-
-    <%= f.label :password, class: "sr-only" %>
-    <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
-
-    <div class="checkbox">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<!-- Page Title -->
+<div class="section section-breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Login</h1>
+      </div>
     </div>
-
-      <%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
-
-      <p class="links">
-       <%= render "devise/shared/links" %>
-      </p>
-<% end %>
-
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="basic-login">
+          <%= form_for(resource, :as => resource_name,
+          :url => session_path(resource_name),
+          role: "form", class: "form-signin") do |f| %>
+          <div class="form-group">
+            <%= f.label :username, class: "sr-only" %>
+            <%= f.text_field :username, :autofocus => true, placeholder: "Username",class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, class: "sr-only" %><i class="icon-lock"></i>
+            <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+            <%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
+            <p class="links">
+              <%= render "devise/shared/links" %>
+            </p>
+          </div>
+          <div class="clearfix"></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

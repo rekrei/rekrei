@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313082040) do
+ActiveRecord::Schema.define(version: 20150319134418) do
 
   create_table "artefacts", force: :cascade do |t|
     t.string   "name"
@@ -27,14 +27,18 @@ ActiveRecord::Schema.define(version: 20150313082040) do
   create_table "assets", force: :cascade do |t|
     t.string   "asset_type"
     t.integer  "artefact_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "type"
     t.boolean  "masked"
+    t.string   "masked_image_file_name"
+    t.string   "masked_image_content_type"
+    t.integer  "masked_image_file_size"
+    t.datetime "masked_image_updated_at"
   end
 
   add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id"
@@ -51,6 +55,15 @@ ActiveRecord::Schema.define(version: 20150313082040) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "sketch_fab_models", force: :cascade do |t|
+    t.integer  "artefact_id"
+    t.string   "bbcode"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "sketch_fab_models", ["artefact_id"], name: "index_sketch_fab_models_on_artefact_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",    null: false

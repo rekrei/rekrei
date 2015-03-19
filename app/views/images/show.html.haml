@@ -1,0 +1,52 @@
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-md-3
+        %h1 Image Details
+      .col-md-3
+        %h1
+          = link_to "Previous", image_path(@previous), class: "btn" if @previous
+      .col-md-3
+        %h1
+          = link_to "Images", images_path, class: "btn"
+      .col-md-3
+        %h1
+          = link_to "Next", image_path(@next), class: "btn" if @next
+.section
+  .container
+    .row
+      .col-sm-6
+        .product-image-large
+          = image_tag @image.image.url(:square)
+      .col-sm-6.product-details
+        - if @image.artefact
+          %h4
+            Artefact:
+            = @image.artefact.name
+        - else
+          %h4
+            No Artefact Assinged
+        - modal ||= false
+        - remote = modal ? true : false
+        = form_for(@image, remote: remote, html: {role: :form, 'data-model' => 'image'}) do |f|
+          - if @image.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@image.errors.count, "error")
+                prohibited this person from being saved:
+              %ul
+                - @image.errors.full_messages.each do |msg|
+                  %li= msg
+          %table.shop-item-selections
+            / Color Selector
+            %tr
+              %td
+                %b
+                  = f.label :artefact_id, class: 'control-label'
+              %td
+                .dropdown
+                  = f.select :artefact_id, Artefact.all.map{|artefact| [artefact.name, artefact.id]}, include_blank: true, class: 'form-control'
+            %tr
+              %td &#160;
+              %td
+                = f.submit 'Submit', class: 'btn btn'

@@ -1,0 +1,6 @@
+.col-md-3.col-sm-6
+  .shop-item
+    .shop-item-image
+      = link_to image_tag(image.image.url(:square)),image_path(image)
+    .actions
+      =link_to "Sort", image_path(image), class: "btn btn-small"

@@ -1,18 +1,16 @@
-<nav class="navbar navbar-inverse">
+<div class="mainmenu-wrapper">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+    <div class="menuextras">
+      <div class="extras">
+        <ul>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+    <nav id="mainmenu" class="mainmenu">
+      <ul>
         <%= render 'layouts/navigation_links' %>
       </ul>
-    </div>
+    </nav>
   </div>
-</nav>
+</div>

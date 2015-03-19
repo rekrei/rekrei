@@ -1,0 +1,53 @@
+/ Page Title
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-md-6
+        %h1 Artefacts
+      .col-md-2
+      .col-md-4
+        %h1
+          - if user_signed_in?
+            = link_to "New Artefact", new_artefact_path
+          - else
+            = link_to "Login to create an artrefact", new_user_session_path
+.eshop-section.section
+  .container
+    .row
+      - @artefacts.each do |artefact|
+        .col-md-3.col-sm-6
+          .shop-item
+            .shop-item-image
+              = link_to image_tag(artefact.images.first.image.url(:square)),artefact_path(artefact)
+            .title
+              %h3
+                =link_to artefact.name, artefact_path(artefact)
+            .price
+            .actions
+              =link_to "Edit", artefact_path(artefact), class: "btn btn-small"
+    -# .pagination-wrapper
+    -#   %ul.pagination.pagination-lg
+    -#     %li.disabled
+    -#       %a{:href => "#"} Previous
+    -#     %li.active
+    -#       %a{:href => "#"} 1
+    -#     %li
+    -#       %a{:href => "#"} 2
+    -#     %li
+    -#       %a{:href => "#"} 3
+    -#     %li
+    -#       %a{:href => "#"} 4
+    -#     %li
+    -#       %a{:href => "#"} 5
+    -#     %li
+    -#       %a{:href => "#"} 6
+    -#     %li
+    -#       %a{:href => "#"} 7
+    -#     %li
+    -#       %a{:href => "#"} 8
+    -#     %li
+    -#       %a{:href => "#"} 9
+    -#     %li
+    -#       %a{:href => "#"} 10
+    -#     %li
+    -#       %a{:href => "#"} Next

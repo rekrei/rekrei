@@ -1,0 +1,28 @@
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-md-6
+        %h1 Artefacts
+.section        
+  .container
+    .row
+      .col-md-2
+      .col-md-8  
+        - if user_signed_in?
+          %h1 Upload Images
+          %br/
+          = form_for(Image.new, html: { multipart: true, class: "dropzone"}) do |f|
+            .fallback
+              = f.file_field :image, multiple: true
+              %br/
+              = f.submit "Upload"
+        - else
+          You must be signed in to upload images
+      .col-md-2
+.eshop-section.section
+  .container
+    .row
+      .col-md-12
+        %h1 Unsorted Images
+    .row
+      = render "index"

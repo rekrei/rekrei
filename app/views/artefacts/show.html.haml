@@ -1,0 +1,42 @@
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-sm-6
+        %h1 
+          = @artefact.name.upcase
+      .col-sm-3
+        %h1
+          = link_to "EDIT", edit_artefact_path(@artefact), class: "btn"
+      .col-sm-3
+        %h1
+          = link_to "BACK", artefacts_path, class: "btn"
+.section
+  .container
+    .row
+      / Image Column
+      .col-sm-6
+        .portfolio-item
+          .portfolio-image
+            = image_tag @artefact.images.first.image.url(:square)
+        / End Image Column
+        / Project Info Column
+      .portfolio-item-description.col-sm-6
+        %h3 Artefact Description
+        %p
+          = @artefact.description
+        %ul.no-list-style
+          %li
+            %b Museum ID:
+            = @artefact.museum_identifier
+    %h3 Artefact Photos
+    .row
+      - @artefact.images.each do |image|
+        .col-md-4.col-sm-6
+          .portfolio-item
+            .portfolio-image
+              = link_to image_tag(image.image.url(:square)), image_path(image)
+              .portfolio-info-fade
+                %ul
+                  %li.portfolio-project-name Download
+                  %li.read-more
+                    = link_to "Original", download_image_path(image)

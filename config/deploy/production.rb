@@ -16,6 +16,7 @@ role :db,  %w{mosul@projectmosul.itn-dch.net}
 # used to set extended properties on the server.
 
 server 'projectmosul.itn-dch.net', user: 'mosul', roles: %w{web app}, my_property: :my_value
+set :deploy_to, '/home/mosul/apps/projectmosul'
 
 
 # Custom SSH Options

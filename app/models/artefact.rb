@@ -1,5 +1,6 @@
 class Artefact < ActiveRecord::Base
   has_many :images, dependent: :destroy
+  has_many :sketchfab_models, dependent: :destroy
   after_initialize :set_uuid_value
   # has_paper_trail
 

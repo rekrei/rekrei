@@ -17,3 +17,9 @@
 //= require turbolinks
 //= require analytics
 //= require common
+//= require jquery.bxslider
+//= require jquery.fitvids.js
+//= require jquery.sequence-min
+//= require main-menu
+//= require modernizr-2.6.2-respond-1.1.0.min
+//= require template.js

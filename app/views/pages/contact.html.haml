@@ -1,0 +1,30 @@
+/ Page Title
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-md-6
+        %h1 Contact Us
+.section
+  .container
+    .row
+      .col-sm-1
+      .col-sm-10
+        / Contact Form
+        %h3 Send Us a Message
+        .contact-form-wrapper
+          = form_tag email_confirmation_path, method: 'post', html: {role: "form"} do
+            .form-group
+              = label_tag :name, "Your name", class: "col-sm-3 control-label"
+              .col-sm-9
+                = text_field_tag :name, @name, placeholder: "Enter your name...", :autofocus => true, class: "form-control"
+            .form-group
+              = label_tag :email, "Your email", class: "col-sm-3 control-label"
+              .col-sm-9
+                = text_field_tag :email, @email, placeholder: "Enter your email...", :autofocus => true, class: "form-control"
+            .form-group
+              = label_tag :message, "Your email", class: "col-sm-3 control-label"
+              .col-sm-9
+                = text_area_tag :message, @message, placeholder: "Enter your message...", :autofocus => true, rows: 5, class: "form-control"
+            .form-group
+              .col-sm-12
+                %button.btn.pull-right{:type => "submit"} Send

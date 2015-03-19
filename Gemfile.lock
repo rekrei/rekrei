@@ -5,6 +5,12 @@ GIT
     capistrano-maintenance (0.0.1)
       capistrano (>= 3.0)
 
+GIT
+  remote: git://github.com/neshmi/sketchfably.git
+  revision: 71b234404d8d37f98fa2c9d69f80430879a01a69
+  specs:
+    sketchfably (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -156,8 +162,21 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (4.0.6)
+      tilt
+    haml-rails (0.9.0)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 4.0.6, < 5.0)
+      html2haml (>= 1.0.1)
+      railties (>= 4.0.1)
     hike (1.2.3)
     hitimes (1.2.2)
+    html2haml (2.0.0)
+      erubis (~> 2.7.0)
+      haml (~> 4.0.0)
+      nokogiri (~> 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (0.7.0)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
@@ -194,6 +213,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
+    newrelic_rpm (3.11.0.283)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     notiffany (0.0.6)
@@ -275,6 +295,8 @@ GEM
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
     ruby-progressbar (1.7.1)
+    ruby_parser (3.6.5)
+      sexp_processor (~> 4.1)
     sass (3.4.13)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -282,6 +304,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    sexp_processor (4.5.0)
     shellany (0.0.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -360,10 +383,12 @@ DEPENDENCIES
   guard-bundler
   guard-migrate
   guard-rspec
+  haml-rails
   jbuilder (= 2.2.6)
   jquery-rails (= 4.0.3)
   kaminari (= 0.16.2)
   less-rails
+  newrelic_rpm
   paper_trail (~> 4.0.0.beta)
   paperclip (~> 4.2)
   passenger
@@ -373,6 +398,7 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   sass-rails (= 5.0.1)
   shoulda-matchers
+  sketchfably!
   spring (= 1.2.0)
   sqlite3 (= 1.3.10)
   therubyracer

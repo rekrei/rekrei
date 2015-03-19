@@ -9,7 +9,8 @@ class PagesController < ApplicationController
   def acknowledgements
   end
 
-  def inside
+  def gallery
+    @models = Sketchfably.get_models_by_tag("projectmosul")
   end
 
 

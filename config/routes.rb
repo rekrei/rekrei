@@ -3,11 +3,15 @@ Projectmosul::Application.routes.draw do
     resources :assets
   end
 
-  resources :images
+  resources :images do
+    member do
+      get 'download'
+    end
+  end
 
   root "pages#home"
   get "home", to: "pages#home", as: "home"
-  get "inside", to: "pages#inside", as: "inside"
+  get "gallery", to: "pages#gallery", as: "gallery"
   get "/contact", to: "pages#contact", as: "contact"
   post "/emailconfirmation", to: "pages#email", as: "email_confirmation"
   

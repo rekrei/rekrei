@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   before_filter :require_admin!, only: [:destroy]
-  before_filter :authenticate_user!, :except => [:show, :index]
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:show, :index, :download]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :download]
   # GET /images
   # GET /images.json
     # GET /images
@@ -79,6 +79,10 @@ class ImagesController < ApplicationController
       format.html { redirect_to images_url }
       format.json { head :no_content }
     end
+  end
+
+  def download
+    send_data File.read(@image.image.path), filename: @image.image_file_name, type: @image.image_content_type, disposition: 'attachment' if @image.image?
   end
 
   private
