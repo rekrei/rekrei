@@ -7,6 +7,12 @@ production:
   pool: 5
   timeout: 5000
 
+staging:
+  adapter: sqlite3
+  database: /home/mosul/apps/projectmosul-staging/db/staging.sqlite3
+  pool: 5
+  timeout: 5000
+
 development:
   adapter: sqlite3
   database: db/development.sqlite3
