@@ -1,8 +1,12 @@
 class Artefact < ActiveRecord::Base
   has_many :images, dependent: :destroy
-  has_many :sketchfab_models, dependent: :destroy
+  has_many :sketchfabs, dependent: :destroy
+
   after_initialize :set_uuid_value
   # has_paper_trail
+
+  scope :sketchfabless, -> { where('id NOT IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
+  scope :with_sketchfabs, -> { where('id IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
 
   def attachments_array=(array)
     array.each do |file|

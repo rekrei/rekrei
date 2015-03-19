@@ -56,14 +56,14 @@ ActiveRecord::Schema.define(version: 20150319134418) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
-  create_table "sketch_fab_models", force: :cascade do |t|
+  create_table "sketchfabs", force: :cascade do |t|
     t.integer  "artefact_id"
     t.string   "bbcode"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "sketch_fab_models", ["artefact_id"], name: "index_sketch_fab_models_on_artefact_id"
+  add_index "sketchfabs", ["artefact_id"], name: "index_sketchfabs_on_artefact_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",    null: false
