@@ -25,7 +25,7 @@
             = @image.artefact.name
         - else
           %h4
-            No Artefact Assinged
+            No Artefact Assigned
         - modal ||= false
         - remote = modal ? true : false
         = form_for(@image, remote: remote, html: {role: :form, 'data-model' => 'image'}) do |f|
