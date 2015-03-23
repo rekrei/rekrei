@@ -1,0 +1,29 @@
+.section
+  .container
+    %h2
+      Tasks
+    .row
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-camera-retro.fa-5x
+          %h2
+            Images to Sort
+          %h1
+            = Image.unassigned_to_artefact.count
+          = link_to "Sort Photos", images_path, class: "btn"
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-magic.fa-5x
+          %h2
+            Images to Mask
+          %h1
+            = Image.unmasked.count
+          = link_to "Mask Photos", images_path, class: "btn"
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-cubes.fa-5x
+          %h2
+            Artefacts to Process
+          %h1
+            = Artefact.sketchfabless.count
+          = link_to "Process Artefacts", artefacts_path, class: "btn"
