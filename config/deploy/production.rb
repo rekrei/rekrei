@@ -15,7 +15,7 @@ role :db,  %w{mosul@projectmosul.itn-dch.net}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'projectmosul.itn-dch.net', user: 'mosul', roles: %w{web app}, my_property: :my_value
+server 'projectmosul.org', user: 'mosul', roles: %w{web app}, my_property: :my_value
 set :deploy_to, '/home/mosul/apps/projectmosul'
 
 
