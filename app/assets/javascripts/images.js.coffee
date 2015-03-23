@@ -1,6 +1,6 @@
-$(document).ready ->
+$(document).on "page:change", ->
   # disable auto discover
-  Dropzone.autoDiscover = false
+  # Dropzone.autoDiscover = false
   # grap our upload form by its id
   $('#new_image').dropzone
     maxFilesize: 500
