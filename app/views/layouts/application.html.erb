@@ -14,8 +14,8 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag params[:controller] if Projectmosul::Application.assets.find_asset("#{params[:controller]}.js") %>
     <%= csrf_meta_tags %>
+    <%= yield(:head) %>
   </head>
 
 

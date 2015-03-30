@@ -41,6 +41,7 @@ gem "twitter-bootstrap-rails"
 gem 'will_paginate'
 gem 'sketchfably', :git => "git://github.com/neshmi/sketchfably.git"
 gem 'newrelic_rpm'
+gem 'activeadmin', github: 'activeadmin'
 
 group :production do
   gem 'passenger'
