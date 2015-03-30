@@ -15,8 +15,3 @@ $(document).on "page:change", ->
         </div>
         """
         $('#gallery').append html
-    # $('#gallery')
-    #   .on "ajax:success", (event, data, status, xhr) ->
-    #     $(@).append xhr.responseText
-    #   .on "ajax:error", (event, xhr, status, error) ->
-    #     $(@).append "Oops! Something went wrong!"
