@@ -8,7 +8,7 @@ $(document).on "page:change", ->
         <div class="col-md-4 sketchfab-gallery-item">
         <iframe width="#{width}" height="#{height}" src="https://sketchfab.com/models/#{model['uid']}/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-          <a href="https://sketchfab.com/models/#{model['uid']}?utm_source=oembed&utm_medium=embed&utm_campaign=#{model['uid']}0" target="_blank" style="font-weight: bold; color: #1CAAD9;">#{model['name']}</a>
+          <a href="https://sketchfab.com/models/#{model['uid']}?utm_source=oembed&utm_medium=embed&utm_campaign=#{model['uid']}" target="_blank" style="font-weight: bold; color: #1CAAD9;">#{model['name']}</a>
           by <a href="https://sketchfab.com/#{model['user']['username']}?utm_source=oembed&utm_medium=embed&utm_campaign=#{model['uid']}0" target="_blank" style="font-weight: bold; color: #1CAAD9;">#{model['user']['username']}</a>
           on <a href="https://sketchfab.com?utm_source=oembed&utm_medium=embed&utm_campaign=#{model['uid']}0" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
         </p>
