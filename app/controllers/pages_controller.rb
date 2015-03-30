@@ -10,7 +10,10 @@ class PagesController < ApplicationController
   end
 
   def gallery
-    @models = Sketchfably.get_models_by_tag("projectmosul")
+    #@models = Sketchfably.get_models_by_tag("projectmosul")
+  end
+
+  def press
   end
 
 
