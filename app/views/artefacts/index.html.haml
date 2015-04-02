@@ -30,29 +30,7 @@
               %br
             .actions
               =link_to "Edit", artefact_path(artefact), class: "btn btn-small"
-    -# .pagination-wrapper
-    -#   %ul.pagination.pagination-lg
-    -#     %li.disabled
-    -#       %a{:href => "#"} Previous
-    -#     %li.active
-    -#       %a{:href => "#"} 1
-    -#     %li
-    -#       %a{:href => "#"} 2
-    -#     %li
-    -#       %a{:href => "#"} 3
-    -#     %li
-    -#       %a{:href => "#"} 4
-    -#     %li
-    -#       %a{:href => "#"} 5
-    -#     %li
-    -#       %a{:href => "#"} 6
-    -#     %li
-    -#       %a{:href => "#"} 7
-    -#     %li
-    -#       %a{:href => "#"} 8
-    -#     %li
-    -#       %a{:href => "#"} 9
-    -#     %li
-    -#       %a{:href => "#"} 10
-    -#     %li
-    -#       %a{:href => "#"} Next
+    .digg_pagination
+      .page_info
+        =# page_entries_info @artefacts
+      = will_paginate @artefacts, :container => false

@@ -26,3 +26,8 @@
         %h1 Unsorted Images
     .row
       = render "index"
+    .row  
+      .digg_pagination
+        .page_info
+          =# page_entries_info @images
+        = will_paginate @images, :container => false

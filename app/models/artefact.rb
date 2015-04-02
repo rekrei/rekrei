@@ -8,6 +8,8 @@ class Artefact < ActiveRecord::Base
   scope :sketchfabless, -> { where('id NOT IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
   scope :with_sketchfabs, -> { where('id IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
 
+  self.per_page = 10
+
   def attachments_array=(array)
     array.each do |file|
       attachments.build(:image => file)

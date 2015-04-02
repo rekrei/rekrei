@@ -11,7 +11,6 @@ gem 'jquery-rails', '4.0.3'
 gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
-
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
@@ -38,9 +37,12 @@ gem 'sqlite3', '1.3.10'
 gem 'dotenv-rails'
 gem "less-rails"
 gem "twitter-bootstrap-rails"
-# gem 'will_paginate'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
 gem 'sketchfably', :git => "git://github.com/neshmi/sketchfably.git"
 gem 'newrelic_rpm'
+gem 'rails_admin'
 
 group :production do
   gem 'passenger'

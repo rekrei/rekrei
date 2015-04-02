@@ -7,8 +7,8 @@ class ImagesController < ApplicationController
     # GET /images
   # GET /images.json
   def index
-    @images = Image.unassigned_to_artefact
-
+    @images = Image.unassigned_to_artefact.paginate(:page => params[:page])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @images.map{|image| image.to_jq_image } }

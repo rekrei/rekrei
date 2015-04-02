@@ -6,7 +6,7 @@ class ArtefactsController < ApplicationController
   # GET /artefacts
   # GET /artefacts.json
   def index
-    @artefacts = Artefact.all
+    @artefacts = Artefact.paginate(:page => params[:page])
   end
 
   # GET /artefacts/1
