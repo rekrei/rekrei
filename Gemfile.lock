@@ -415,7 +415,7 @@ DEPENDENCIES
   kaminari (= 0.16.2)
   less-rails
   newrelic_rpm
-  paper_trail (~> 4.0.0.beta)
+  paper_trail (~> 4.0.0.beta2)
   paperclip (~> 4.2)
   passenger
   rails (= 4.2.0)
