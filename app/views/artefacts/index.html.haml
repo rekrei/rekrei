@@ -30,7 +30,9 @@
               %br
             .actions
               =link_to "Edit", artefact_path(artefact), class: "btn btn-small"
-    .digg_pagination
-      .page_info
-        =# page_entries_info @artefacts
-      = will_paginate @artefacts, :container => false
+    .row  
+      .col-md-12
+        .digg_pagination
+          .page_info
+            = page_entries_info @images
+          = will_paginate @images
