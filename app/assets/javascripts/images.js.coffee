@@ -5,8 +5,7 @@ ready = ->
       maxFilesize: 500
       paramName: 'image[image]'
       addRemoveLinks: true
-      uploadMultiple: true
-      enqueueForUpload: true
+      uploadMultiple: false
       clickable: true)
 
 $(document).ready(ready)
