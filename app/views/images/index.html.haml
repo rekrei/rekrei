@@ -26,10 +26,8 @@
       = render "index"
     .row  
       .col-md-12
-        = will_paginate @images
         .digg_pagination
           .page_info
-            =# page_entries_info @images
-
-
+            = page_entries_info @images
+          = will_paginate @images
   
