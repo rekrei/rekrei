@@ -74,11 +74,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'spring-commands-rspec'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
-
-end
-
-# SQLite 3
-group :development, :test do
 end
 
 # Devise: https://github.com/plataformatec/devise
