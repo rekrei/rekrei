@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.2.1'
 #ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.0'
@@ -38,7 +38,7 @@ gem 'dotenv-rails'
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+# gem 'will_paginate-bootstrap'
 
 gem 'sketchfably', :git => "git://github.com/neshmi/sketchfably.git"
 gem 'newrelic_rpm'
@@ -64,7 +64,7 @@ group :development, :test do
   # Spring: https://github.com/rails/spring
   gem 'spring', '1.2.0'
   gem 'rspec-rails', '~> 3.0'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
@@ -72,8 +72,10 @@ group :development, :test do
   gem 'capybara'
   gem 'fuubar'
   gem 'factory_girl_rails'
-end
+  gem 'spring-commands-rspec'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 
+end
 
 # SQLite 3
 group :development, :test do
