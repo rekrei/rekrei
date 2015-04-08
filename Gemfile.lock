@@ -417,7 +417,6 @@ DEPENDENCIES
   passenger
   rails (= 4.2.0)
   rails_admin
-  rb-fsevent
   rmagick
   rspec-given
   rspec-rails (~> 3.0)

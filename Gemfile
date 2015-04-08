@@ -44,7 +44,7 @@ gem 'sketchfably', :git => "git://github.com/neshmi/sketchfably.git"
 gem 'newrelic_rpm'
 gem 'rails_admin'
 
-group :production do
+group :production, :staging do
   gem 'passenger'
 end
 
@@ -73,12 +73,8 @@ group :development, :test do
   gem 'fuubar'
   gem 'factory_girl_rails'
   # gem 'spring-commands-rspec'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'rspec-given'
 end
 
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '3.4.1'
-
-group :test do
-  gem 'rspec-given'
-end
