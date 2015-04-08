@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+ruby '2.1.5'
 #ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.0'
@@ -62,7 +62,7 @@ group :development, :test do
   gem 'figaro', '1.0.0'
 
   # Spring: https://github.com/rails/spring
-  gem 'spring', '1.2.0'
+  # gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', require: false
   gem 'guard'
@@ -72,7 +72,7 @@ group :development, :test do
   gem 'capybara'
   gem 'fuubar'
   gem 'factory_girl_rails'
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
 
 end
