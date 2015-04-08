@@ -17,6 +17,9 @@ role :db,  %w{mosul@projectmosul.itn-dch.net}
 
 server 'projectmosul.org', user: 'mosul', roles: %w{web app}, my_property: :my_value
 set :deploy_to, '/home/mosul/apps/projectmosul'
+set :user, 'mosul'
+set :passenger_restart_options, -> { "#{deploy_to} --ignore-app-not-running" }
+
 
 
 # Custom SSH Options
