@@ -3,7 +3,7 @@ class Artefact < ActiveRecord::Base
   has_many :sketchfabs, dependent: :destroy
 
   after_initialize :set_uuid_value
-  # has_paper_trail
+  has_paper_trail
 
   scope :sketchfabless, -> { where('id NOT IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
   scope :with_sketchfabs, -> { where('id IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
