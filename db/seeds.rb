@@ -11,3 +11,13 @@ u = User.new(
 )
 u.skip_confirmation!
 u.save!
+
+u = User.new(
+    username: "user",
+    email: "user@example.com",
+    password: "1234",
+    password_confirmation: "1234",
+    admin: false
+)
+u.skip_confirmation!
+u.save!
