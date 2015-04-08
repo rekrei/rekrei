@@ -4,11 +4,9 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :download]
   # GET /images
   # GET /images.json
-    # GET /images
-  # GET /images.json
   def index
     @images = Image.unassigned_to_artefact.paginate(:page => params[:page])
-    
+    @image = Image.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @images.map{|image| image.to_jq_image } }
