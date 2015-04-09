@@ -1,0 +1,11 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'bundler_stubs/**/*'
+    - 'config/environments/**/*'
+    - 'config/deploy/**/*'
+    - 'config/deploy.rb'
+    - 'config/application.rb'
