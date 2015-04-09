@@ -4,7 +4,7 @@ Project Mosul is a volunteer action by the fellows of the Initial Trianing Netwo
 
 ##  Project Mosul: Call For Action
 
-<p>We are looking for volunteers to help virtually restore the Mosul Museum. This includes finding photos, processing data, contributing to the website and generally helping out with organising the effort to identify the museum artefacts. If you can help, drop us a line ([here](http://projectmosul.itn-dch.net/contact)), or e-mail us directly at projectmosul@itn-dch.net.
+We are looking for volunteers to help virtually restore the Mosul Museum. This includes finding photos, processing data, contributing to the website and generally helping out with organising the effort to identify the museum artefacts. If you can help, drop us a line ([here](http://projectmosul.org/contact)), or e-mail us directly at info@projectmosul.org.
 
 Thanks!
 
@@ -31,23 +31,3 @@ Thanks!
 4.  **Process an artefact!**
 
     Do you know how to use Structure from Motion to create three-dimensional models? Help us by downloading some of the photosets and processing the images.
-
-#  Project Mosul: A Manifesto
-
-The video circulated around the 26th of February, 2015 shows the horrific destruction of the Mosul Museum by ISIS Fighters. This is not the first time this museum has suffered during times of conflict, but the destruction is nearly absolute, and this time we can respond through the application of digital technologies to cultural heritage.
-
-We assume that much of the museum’s contents were looted, and anything small enough to be easily removed will be appearing soon on the antiquities market. Anything too large to remove for sale, appears to have met a violent end at the hand of ISIS extremists. In both cases, it is possible to virtually recreate the lost items through the application of photogrammetry and crowdsourcing. Given enough photographs, digital or scans of analogues, it is possible to reconstruct the artefacts and create digital surrogates of those artefacts. This provides two immediate benefits: helping to identify looted items and recreating destroyed items.
-
-We propose to coordinate a volunteer effort of experts and amateurs in the crowdsourcing of the necessary digital imagery and the creation of digital surrogates for the artefacts in the museum. We would like to work with the local management of the Mosul Museum as much as possible, as well as with experts familiar with the collection and material. All data generated from this project will be freely available to the public.
-
-This project is a direct response to the senseless destruction of cultural heritage by extremists, not only ISIS, but to any group who uses heritage as leverage or political power. Instead, we want to bring heritage back to life through digital tools, giving the public access to any destroyed heritage, starting with the Mosul Museum.
-
-We ask for your support in this endeavour, a project we are voluntarily doing and hope that it will make heritage accessible to all the public.
-
-Sincerely the undersigned:  
-
-Marinos Ioannides, project coordinator
-
-Matthew L. Vincent, Early Stage Researcher
-
-Chance M. Coughenour, Early Stage Researcher
