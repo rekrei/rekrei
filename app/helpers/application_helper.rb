@@ -1,7 +1,6 @@
+# General application helpers here
 module ApplicationHelper
   def title(value)
-    unless value.nil?
-      @title = "#{value} | Projectmosul"
-    end
+    @title = "#{value} | Projectmosul" unless value.nil?
   end
 end

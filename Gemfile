@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
-#ruby-gemset=projectmosul
+# ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.0'
 gem 'sass-rails', '5.0.1'
@@ -26,21 +26,21 @@ gem 'font-awesome-sass', '4.2.2'
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '3.3.3'
 gem 'rmagick'
-gem "paperclip", "~> 4.2"
+gem 'paperclip', '~> 4.2'
 gem 'paper_trail', '~> 4.0.0.beta2'
 
 gem 'dropzonejs-rails'
-gem "therubyracer"
+gem 'therubyracer'
 
-#for now, until we decide if we want to use this in production or not
+# for now, until we decide if we want to use this in production or not
 gem 'sqlite3', '1.3.10'
 gem 'dotenv-rails'
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 # gem 'will_paginate-bootstrap'
 
-gem 'sketchfably', :git => "git://github.com/neshmi/sketchfably.git"
+gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
 gem 'newrelic_rpm'
 gem 'rails_admin'
 
@@ -53,7 +53,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
-  gem 'capistrano-maintenance', github: "capistrano/maintenance", require: false 
+  gem 'capistrano-maintenance', github: 'capistrano/maintenance', require: false
   gem 'capistrano-rails-console'
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
@@ -74,7 +74,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'spring-commands-rspec'
   gem 'rspec-given'
-  gem "codeclimate-test-reporter", require: nil
+  gem 'codeclimate-test-reporter', require: nil
+  gem 'rubocop', require: false
 end
 
 # Devise: https://github.com/plataformatec/devise

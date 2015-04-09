@@ -4,10 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{mosul@projectmosul.org}
-role :web, %w{mosul@projectmosul.org}
-role :db,  %w{mosul@projectmosul.org}
-
+role :app, %w(mosul@projectmosul.org)
+role :web, %w(mosul@projectmosul.org)
+role :db,  %w(mosul@projectmosul.org)
 
 # Extended Server Syntax
 # ======================
@@ -19,8 +18,6 @@ role :db,  %w{mosul@projectmosul.org}
 set :deploy_to, '/home/mosul/apps/projectmosul'
 set :user, 'mosul'
 set :passenger_restart_options, -> { "#{deploy_to} --ignore-app-not-running" }
-
-
 
 # Custom SSH Options
 # ==================

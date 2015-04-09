@@ -1,12 +1,12 @@
 class ArtefactsController < ApplicationController
   before_action :set_artefact, only: [:show, :edit, :update, :destroy]
   before_filter :require_admin!, only: [:destroy]
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, except: [:show, :index]
 
   # GET /artefacts
   # GET /artefacts.json
   def index
-    @artefacts = Artefact.paginate(:page => params[:page])
+    @artefacts = Artefact.paginate(page: params[:page])
   end
 
   # GET /artefacts/1
@@ -32,15 +32,15 @@ class ArtefactsController < ApplicationController
 
         if params[:images]
           # The magic is here ;)
-          params[:images].each { |image|
+          params[:images].each do |image|
             @artefact.images.create(image: image)
-          }
+          end
         end
 
         format.html { redirect_to @artefact, notice: 'Artefact was successfully created.' }
         format.json { render json: @artefact, status: :created, location: @artefact }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @artefact.errors, status: :unprocessable_entity }
       end
     end
@@ -55,14 +55,14 @@ class ArtefactsController < ApplicationController
       if @artefact.update_attributes(artefact_params)
         if params[:images]
           # The magic is here ;)
-          params[:images].each { |image|
+          params[:images].each do |image|
             @artefact.images.create(image: image)
-          }
+          end
         end
         format.html { redirect_to @artefact, notice: 'Asset was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @artefact.errors, status: :unprocessable_entity }
       end
     end
@@ -79,13 +79,14 @@ class ArtefactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artefact
-      @artefact = Artefact.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def artefact_params
-      params.require(:artefact).permit(:name, :description, :museum_identifier, :images)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artefact
+    @artefact = Artefact.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def artefact_params
+    params.require(:artefact).permit(:name, :description, :museum_identifier, :images)
+  end
 end

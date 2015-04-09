@@ -1,3 +1,4 @@
+# Artefact, base level model for movable heritage
 class Artefact < ActiveRecord::Base
   has_many :images, dependent: :destroy
   has_many :sketchfabs, dependent: :destroy
@@ -5,14 +6,18 @@ class Artefact < ActiveRecord::Base
   after_initialize :set_uuid_value
   has_paper_trail
 
-  scope :sketchfabless, -> { where('id NOT IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
-  scope :with_sketchfabs, -> { where('id IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)') }
+  scope :sketchfabless, lambda {
+    where('id NOT IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)')
+  }
+  scope :with_sketchfabs, lambda {
+    where('id IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)')
+  }
 
   self.per_page = 16
 
   def attachments_array=(array)
     array.each do |file|
-      attachments.build(:image => file)
+      attachments.build(image: file)
     end
   end
 

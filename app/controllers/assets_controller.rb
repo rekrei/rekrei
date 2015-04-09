@@ -1,10 +1,9 @@
 class AssetsController < ApplicationController
   before_filter :require_admin!, only: [:destroy]
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, except: [:show, :index]
   # GET /assets
   # GET /assets.json
   def index
-
     @artefact = Artefact.find(params[:artefact_id])
 
     @assets = @artefact.assets
@@ -40,7 +39,7 @@ class AssetsController < ApplicationController
 
   # GET /assets/1/edit
   def edit
-    #@artefact = Artefact.find(params[:artefact_id])
+    # @artefact = Artefact.find(params[:artefact_id])
 
     @asset = Asset.find(params[:id])
     # @asset = Asset.find(params[:id])
@@ -53,24 +52,23 @@ class AssetsController < ApplicationController
 
     if @asset.save
       respond_to do |format|
-        format.html {
-          render :json => [@asset.to_jq_upload].to_json,
-          :content_type => 'text/html',
-          :layout => false
-        }
-        format.json {
-          render :json => [@asset.to_jq_upload].to_json
-        }
+        format.html do
+          render json: [@asset.to_jq_upload].to_json,
+                 content_type: 'text/html',
+                 layout: false
+        end
+        format.json do
+          render json: [@asset.to_jq_upload].to_json
+        end
       end
     else
-      render :json => [{:error => "custom_failure"}], :status => 304
+      render json: [{ error: 'custom_failure' }], status: 304
     end
   end
 
   # PUT /assets/1
   # PUT /assets/1.json
   def update
-
     @artefact = Artefact.find(params[:artefact_id])
 
     @asset = @artefact.assets.find(params[:id])
@@ -80,7 +78,7 @@ class AssetsController < ApplicationController
         format.html { redirect_to artefact_path(@artefact), notice: 'Asset was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @asset.errors, status: :unprocessable_entity }
       end
     end
@@ -89,8 +87,8 @@ class AssetsController < ApplicationController
   # DELETE /assets/1
   # DELETE /assets/1.json
   def destroy
-    #@artefact = Artefact.find(params[:artefact_id])
-    #@asset = @artefact.assets.find(params[:id])
+    # @artefact = Artefact.find(params[:artefact_id])
+    # @asset = @artefact.assets.find(params[:id])
     @asset = Asset.find(params[:id])
     @asset.destroy
 

@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-
   ### Popular gems integration
 
   ## == Devise ==
@@ -9,7 +8,8 @@ RailsAdmin.config do |config|
 
   config.authorize_with do
     unless current_user.admin?
-      redirect_to(main_app.root_path,alert: "You are not permitted to view this page")
+      redirect_to(main_app.root_path,
+                  alert: 'You are not permitted to view this page')
     end
   end
 
@@ -19,13 +19,10 @@ RailsAdmin.config do |config|
   # config.authorize_with :cancan
 
   ## == PaperTrail ==
-  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-
-  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-
+  config.audit_with :paper_trail, 'User', 'PaperTrail::Version'
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
+    dashboard
+    index
     new
     export
     bulk_delete
