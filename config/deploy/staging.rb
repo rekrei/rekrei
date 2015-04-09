@@ -15,7 +15,6 @@ role :db,  %w{mosul@staging.projectmosul.org}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'staging.projectmosul.org', user: 'mosul', roles: %w{web app}
 set :user, 'mosul'
 set :deploy_to, '/home/mosul/apps/projectmosul-staging'
 set :passenger_restart_options, -> { "#{deploy_to} --ignore-app-not-running" }

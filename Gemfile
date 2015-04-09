@@ -74,6 +74,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'spring-commands-rspec'
   gem 'rspec-given'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 # Devise: https://github.com/plataformatec/devise

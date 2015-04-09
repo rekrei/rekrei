@@ -32,7 +32,7 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd:"bin/spring rspec" do
+guard :rspec, cmd: "CODECLIMATE_REPO_TOKEN=aeb04acac09c4d54f78fcf18eb574f1805129a5b5c81735f6dd85f4c7800a35e bundle exec rspec" do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
