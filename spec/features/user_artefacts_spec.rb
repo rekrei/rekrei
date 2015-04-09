@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe "artefacts", :type=>:feature do
-  scenario "guest attempts to create an artefact" do
+describe 'artefacts', type: :feature do
+  scenario 'guest attempts to create an artefact' do
     visit artefacts_path
-    expect(page).to have_content "Login to create an artrefact"
+    expect(page).to have_content 'Login to create an artrefact'
   end
 
-  scenario "logged in user visits artefact page" do
+  scenario 'logged in user visits artefact page' do
     user = create(:user)
     login_as user
     visit artefacts_path
-    expect(page).to have_content "New Artefact"
+    expect(page).to have_content 'New Artefact'
   end
 end
