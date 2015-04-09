@@ -30,3 +30,4 @@ doc/
 /config/application.yml
 .secret
 public/assets
+coverage/*
