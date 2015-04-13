@@ -1,5 +1,13 @@
 Projectmosul::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  #API
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :images, only: [:index, :show]
+    end
+  end
+
   resources :artefacts do
     resources :assets
   end
