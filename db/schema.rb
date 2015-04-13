@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150404102450) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "artefacts", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150404102450) do
     t.string   "uuid"
   end
 
-  add_index "artefacts", ["uuid"], name: "index_artefacts_on_uuid"
+  add_index "artefacts", ["uuid"], name: "index_artefacts_on_uuid", using: :btree
 
   create_table "assets", force: :cascade do |t|
     t.string   "asset_type"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150404102450) do
     t.datetime "masked_image_updated_at"
   end
 
-  add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id"
+  add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -51,10 +54,10 @@ ActiveRecord::Schema.define(version: 20150404102450) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "sketchfabs", force: :cascade do |t|
     t.integer  "artefact_id"
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 20150404102450) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "sketchfabs", ["artefact_id"], name: "index_sketchfab_models_on_artefact_id"
+  add_index "sketchfabs", ["artefact_id"], name: "index_sketchfabs_on_artefact_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",    null: false
@@ -88,11 +91,11 @@ ActiveRecord::Schema.define(version: 20150404102450) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["slug"], name: "index_users_on_slug", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "version_associations", force: :cascade do |t|
     t.integer "version_id"
@@ -100,18 +103,22 @@ ActiveRecord::Schema.define(version: 20150404102450) do
     t.integer "foreign_key_id"
   end
 
-  add_index "version_associations", ["foreign_key_name", "foreign_key_id"], name: "index_version_associations_on_foreign_key"
-  add_index "version_associations", ["version_id"], name: "index_version_associations_on_version_id"
+  add_index "version_associations", ["foreign_key_name", "foreign_key_id"], name: "index_version_associations_on_foreign_key", using: :btree
+  add_index "version_associations", ["version_id"], name: "index_version_associations_on_version_id", using: :btree
 
   create_table "versions", force: :cascade do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"
+    t.text     "object_changes"
+    t.integer  "transaction_id"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
+  add_foreign_key "sketchfabs", "artefacts"
 end
