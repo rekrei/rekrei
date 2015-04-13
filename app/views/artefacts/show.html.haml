@@ -42,4 +42,6 @@
                 %ul
                   %li.portfolio-project-name Download
                   %li.read-more
-                    = link_to "Original", download_image_path(image)
+                    = link_to download_image_path(image) do
+                      <i class="fa fa-download"> Original</i>                    
+                      
