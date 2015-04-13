@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
-  before_filter :require_admin!, only: [:destroy]
-  before_filter :authenticate_user!, except: [:show, :index, :download]
+  before_action :require_admin!, only: [:destroy]
+  before_action :authenticate_user!, except: [:show, :index, :download]
   before_action :set_image, only: [:show, :edit, :update, :destroy, :download]
   # GET /images
   # GET /images.json
@@ -58,12 +58,20 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update_attributes(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.html do
+          redirect_to @image, notice: 'Image was successfully updated.'
+        end
         # format.json { head :no_content }
-        format.json { render json: { files: [@image.to_jq_upload] }, status: :created, location: @image }
+        format.json do
+          render json: { files: [@image.to_jq_upload] },
+                 status: :created, location: @image
+        end
       else
         format.html { render action: 'edit' }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @image.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -80,7 +88,10 @@ class ImagesController < ApplicationController
   end
 
   def download
-    send_data File.read(@image.image.path), filename: @image.image_file_name, type: @image.image_content_type, disposition: 'attachment' if @image.image?
+    send_data File.read(@image.image.path),
+              filename: @image.image_file_name,
+              type: @image.image_content_type,
+              disposition: 'attachment' if @image.image
   end
 
   private
