@@ -9,3 +9,5 @@ AllCops:
     - 'config/deploy/**/*'
     - 'config/deploy.rb'
     - 'config/application.rb'
+    - 'app/controllers/pages_controller.rb' #auto-generated, will fix
+  
