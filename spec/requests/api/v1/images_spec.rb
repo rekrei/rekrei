@@ -22,6 +22,7 @@ describe "Images API" do  describe '#index' do
       expect(response).to be_success
       json = JSON.parse(response.body)
       expect(json["id"]).to eq image.id
+      expect(json.length).to eq 3
     end
   end
 end

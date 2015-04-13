@@ -8,7 +8,7 @@ module Api
       end
 
       def show
-        respond_with Image.find(params[:id])
+        @image = Image.find(params[:id])
       end
     end
   end
