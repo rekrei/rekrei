@@ -33,7 +33,7 @@ gem 'dropzonejs-rails'
 gem 'therubyracer'
 
 # for now, until we decide if we want to use this in production or not
-gem 'sqlite3', '1.3.10'
+gem 'pg'
 gem 'dotenv-rails'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
@@ -43,6 +43,7 @@ gem 'will_paginate'
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
 gem 'newrelic_rpm'
 gem 'rails_admin'
+gem 'rubyzip', '>= 1.0.0'
 
 group :production, :staging do
   gem 'passenger'
@@ -76,6 +77,7 @@ group :development, :test do
   gem 'rspec-given'
   gem 'codeclimate-test-reporter', require: nil
   gem 'rubocop', require: false
+  gem 'sqlite3', '1.3.10'
 end
 
 # Devise: https://github.com/plataformatec/devise

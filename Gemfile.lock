@@ -244,6 +244,7 @@ GEM
     passenger (5.0.6)
       rack
       rake (>= 0.8.1)
+    pg (0.18.1)
     powerpack (0.1.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -336,6 +337,7 @@ GEM
     ruby-progressbar (1.7.5)
     ruby_parser (3.6.5)
       sexp_processor (~> 4.1)
+    rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.4.13)
     sass-rails (5.0.1)
@@ -437,12 +439,14 @@ DEPENDENCIES
   paper_trail (~> 4.0.0.beta2)
   paperclip (~> 4.2)
   passenger
+  pg
   rails (= 4.2.0)
   rails_admin
   rmagick
   rspec-given
   rspec-rails (~> 3.0)
   rubocop
+  rubyzip (>= 1.0.0)
   sass-rails (= 5.0.1)
   shoulda-matchers
   sketchfably!
