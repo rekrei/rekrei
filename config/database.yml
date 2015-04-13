@@ -1,26 +1,23 @@
-# SQLite version 3.x
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-production:
-  adapter: sqlite3
-  database: /home/mosul/apps/projectmosul/db/production.sqlite3
-  pool: 5
-  timeout: 5000
+staging:
+  adapter: postgresql
+  database: proejct_mosul_production
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 staging:
-  adapter: sqlite3
-  database: /home/mosul/apps/projectmosul-staging/db/staging.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  database: proejct_mosul_staging
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  database: project_mosul_development
+  username: rails_dev
+  password: rails_dev
 
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
+development:
+  adapter: postgresql
+  database: project_mosul_test
+  username: rails_dev
+  password: rails_dev
