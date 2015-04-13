@@ -16,7 +16,7 @@ development:
   username: rails_dev
   password: rails_dev
 
-development:
+test:
   adapter: postgresql
   database: project_mosul_test
   username: rails_dev
