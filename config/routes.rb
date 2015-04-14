@@ -2,8 +2,11 @@ Projectmosul::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   #API
-  namespace :api, defaults: {format: 'json'} do
-    namespace :v1 do
+  namespace :api, defaults: {format: 'json'},
+                            constraints: { subdomain: 'api' },
+                            path: '/' do
+    scope module: :v1,
+                  constraints: ApiConstraints.new(version: 1, default: true) do
       resources :images, only: [:index, :show]
     end
   end
