@@ -6,5 +6,5 @@ json.artefact do
   json.id @image.try(:artefact).try(:id)
   json.uuid @image.try(:artefact).try(:uuid)
   json.name @image.try(:artefact).try(:name)
-  json.uri artefact_url(@image.try(:artefact).try(:id))
+  json.uri @image.artefact.present? ? api_artefact_url(@image.artefact.uuid) : nil
 end

@@ -8,11 +8,13 @@ Projectmosul::Application.routes.draw do
     scope module: :v1,
                   constraints: ApiConstraints.new(version: 1, default: true) do
       resources :images, only: [:index, :show]
+      resources :artefacts, only: [:index, :show]
     end
   end
 
   resources :artefacts do
     resources :assets
+    resources :sketchfabs
   end
 
   resources :images do
