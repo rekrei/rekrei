@@ -31,6 +31,14 @@
           %li
             %b Museum ID:
             = @artefact.museum_identifier
+    %h3 
+      3D Models
+      = link_to 'Add 3D Model', new_artefact_sketchfab_path(artefact_id: @artefact.id)
+    .row
+      - @artefact.sketchfabs.each do |sketchfab|
+        .col-md-4
+          = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
+        
     %h3 Artefact Photos
     .row
       - @artefact.images.each do |image|

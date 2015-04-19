@@ -1,0 +1,11 @@
+production:
+  host: http://projectmosul.org
+  
+development: 
+  host: http://projectmosul.dev
+
+test: 
+  host: http://test.host
+
+staging: 
+  host: http://staging.projectmosul.org
