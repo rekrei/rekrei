@@ -3,7 +3,7 @@ Projectmosul::Application.routes.draw do
 
   #API
   namespace :api, defaults: {format: 'json'},
-                            constraints: { subdomain: 'api' },
+                            constraints: { subdomain: ['api', 'api.staging'] },
                             path: '/' do
     scope module: :v1,
                   constraints: ApiConstraints.new(version: 1, default: true) do
