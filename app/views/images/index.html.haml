@@ -1,8 +1,13 @@
 .section.section-breadcrumbs
   .container
     .row
-      .col-md-12
+      .col-md-6
         %h1 Images
+      .col-md-2
+      .col-md-4
+        %h1
+          - if !user_signed_in?
+            = link_to "Login to upload images", new_user_session_path
 .section        
   .container
     .row
