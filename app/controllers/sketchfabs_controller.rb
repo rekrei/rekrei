@@ -12,7 +12,7 @@ class SketchfabsController < ApplicationController
     if @artefact.sketchfabs.create(sketchfab_params)
       redirect_to artefact_path(@artefact)
     else
-      
+
     end
   end
 
@@ -29,6 +29,6 @@ class SketchfabsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def sketchfab_params
-    params.require(:sketchfab).permit(:bbcode)
+    params.require(:sketchfab).permit(:bbcode).merge(user_id: current_user.id)
   end
 end

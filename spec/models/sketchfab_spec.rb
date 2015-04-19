@@ -14,4 +14,6 @@ describe Sketchfab do
     subject{ sketchfab }
     it { should be_valid }
   end
+
+  
 end

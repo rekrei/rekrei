@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/neshmi/sketchfably.git
-  revision: a99efd4f13668e41efe135ea5c1f37498dd78007
+  revision: bd66068c3b681ea38d7cff64d0d6a00eb897397b
   specs:
-    sketchfably (0.0.1)
+    sketchfably (0.0.2)
 
 GEM
   remote: https://rubygems.org/

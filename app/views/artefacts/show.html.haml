@@ -37,7 +37,7 @@
     .row
       - @artefact.sketchfabs.each do |sketchfab|
         .col-md-4
-          = sketchfab.bbcode
+          = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
         
     %h3 Artefact Photos
     .row
