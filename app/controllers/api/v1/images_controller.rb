@@ -4,11 +4,11 @@ module Api
       respond_to :json
 
       def index
-        respond_with Image.all
+        @images = Image.all
       end
 
       def show
-        @image = Image.find(params[:id])
+        @image = Image.find_by_uuid(params[:id])
       end
     end
   end
