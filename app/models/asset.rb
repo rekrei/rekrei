@@ -1,6 +1,7 @@
 # Asset class for handling all uploads, attached files
 class Asset < ActiveRecord::Base
   belongs_to :artefact
+  after_initialize :set_uuid_value
 
   has_attached_file :image, styles: {
     square: '600x360#',
@@ -34,5 +35,13 @@ class Asset < ActiveRecord::Base
 
   def previous
     Image.previous(self)
+  end
+
+  def set_uuid_value
+    self.uuid ||= SecureRandom.uuid
+  end
+
+  def add_uuid
+    self.uuid ||= SecureRandom.uuid
   end
 end
