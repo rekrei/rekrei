@@ -7,6 +7,7 @@ Projectmosul::Application.routes.draw do
                             path: '/' do
     scope module: :v1,
                   constraints: ApiConstraints.new(version: 1, default: true) do
+      root 'base#index'                  
       resources :images, only: [:index, :show]
       resources :artefacts, only: [:index, :show]
     end
