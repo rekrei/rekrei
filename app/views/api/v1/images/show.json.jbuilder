@@ -1,5 +1,5 @@
 json.(@image, :created_at, :updated_at)
-json.id @image.id
+json.uuid @image.uuid
 json.url Rails.application.config_for(:project_mosul)['host'] + @image.image.url(:original)
 
 json.artefact do
