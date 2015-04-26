@@ -28,6 +28,7 @@ Projectmosul::Application.routes.draw do
   get 'home', to: 'pages#home', as: 'home'
   get 'gallery', to: 'pages#gallery', as: 'gallery'
   get 'press', to: 'pages#press', as: 'press'
+  get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/contact', to: 'pages#contact', as: 'contact'
   post '/emailconfirmation', to: 'pages#email', as: 'email_confirmation'
 
