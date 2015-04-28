@@ -28,6 +28,16 @@
             No Artefact Assigned
         - modal ||= false
         - remote = modal ? true : false
+        .voting
+          %p Is this a good image?
+          = "#{@image.votes} #{@image.votes == 1 ? 'Vote' : 'Votes'}"
+          - if @current_user.present?
+            = form_for(@image, remote: remote, url: vote_image_path(@image), method: :get) do
+              = hidden_field_tag(:vote, 'up')
+              = submit_tag('&uarr;'.html_safe, class: 'btn')
+            = form_for(@image, remote: remote, url: vote_image_path(@image), method: :get) do
+              = hidden_field_tag(:vote, 'down')
+              = submit_tag('&darr;'.html_safe, class: 'btn')
         = form_for(@image, remote: remote, html: {role: :form, 'data-model' => 'image'}) do |f|
           - if @image.errors.any?
             #error_explanation
@@ -49,4 +59,4 @@
             %tr
               %td &#160;
               %td
-                = f.submit 'Submit', class: 'btn btn'
+                = f.submit 'Submit', class: 'btn'
