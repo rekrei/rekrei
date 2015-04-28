@@ -99,9 +99,9 @@ class ImagesController < ApplicationController
     previous_vote = UserVote.where(user_id: current_user.id, asset_id: @image.id).first
     if previous_vote.present?
       if params[:vote] == 'up' && previous_vote.direction == 'down'
-        vote_increment = 1
+        vote_increment = 2
       elsif params[:vote] == 'down' && previous_vote.direction == 'up'
-        vote_increment = -1
+        vote_increment = -2
       else
         vote_increment = 0
       end
@@ -110,7 +110,7 @@ class ImagesController < ApplicationController
       vote_increment = (params[:vote] == 'up' ? 1 : -1)
       UserVote.create!(user_id: current_user.id, asset_id: @image.id, direction: params[:vote])
     end
-    new_count = [@image.votes + vote_increment, 0].max
+    new_count = @image.votes + vote_increment
     @image.update_attributes!(votes: new_count)
     redirect_to image_path(@image)
   end
