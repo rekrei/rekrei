@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   before_action :require_admin!, only: [:destroy]
   before_action :authenticate_user!, except: [:show, :index, :download]
-  before_action :set_image, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :download, :vote]
   # GET /images
   # GET /images.json
   def index
@@ -16,6 +16,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @current_user = current_user
     @previous = @image.previous
     @next = @image.next
     respond_to do |format|
@@ -92,6 +93,26 @@ class ImagesController < ApplicationController
               filename: @image.image_file_name,
               type: @image.image_content_type,
               disposition: 'attachment' if @image.image
+  end
+
+  def vote
+    previous_vote = UserVote.where(user_id: current_user.id, asset_id: @image.id).first
+    if previous_vote.present?
+      if params[:vote] == 'up' && previous_vote.direction == 'down'
+        vote_increment = 1
+      elsif params[:vote] == 'down' && previous_vote.direction == 'up'
+        vote_increment = -1
+      else
+        vote_increment = 0
+      end
+      previous_vote.update_attributes!(direction: params[:vote])
+    else
+      vote_increment = (params[:vote] == 'up' ? 1 : -1)
+      UserVote.create!(user_id: current_user.id, asset_id: @image.id, direction: params[:vote])
+    end
+    new_count = [@image.votes + vote_increment, 0].max
+    @image.update_attributes!(votes: new_count)
+    redirect_to image_path(@image)
   end
 
   private

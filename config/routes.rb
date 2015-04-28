@@ -21,6 +21,7 @@ Projectmosul::Application.routes.draw do
   resources :images do
     member do
       get 'download'
+      get 'vote'
     end
   end
 

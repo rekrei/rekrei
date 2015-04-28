@@ -1,6 +1,7 @@
 # Asset class for handling all uploads, attached files
 class Asset < ActiveRecord::Base
   belongs_to :artefact
+  has_many :user_votes
   after_initialize :set_uuid_value
 
   has_attached_file :image, styles: {
