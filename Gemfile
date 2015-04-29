@@ -48,6 +48,12 @@ gem 'rubyzip', '>= 1.0.0'
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
+## Google Maps Integration
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
+
+
 group :production, :staging do
   gem 'passenger'
 end

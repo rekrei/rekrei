@@ -20,3 +20,20 @@
 .sketchfab-gallery-item p {
   height: 50px;
 }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 
