@@ -87,6 +87,7 @@ group :development, :test do
   gem 'codeclimate-test-reporter', require: nil
   gem 'rubocop', require: false
   gem 'sqlite3', '1.3.10'
+  gem 'faker'
 end
 
 # Devise: https://github.com/plataformatec/devise

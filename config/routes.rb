@@ -12,6 +12,8 @@ Projectmosul::Application.routes.draw do
     end
   end
 
+  resources :locations
+
   resources :artefacts do
     resources :assets
     resources :sketchfabs

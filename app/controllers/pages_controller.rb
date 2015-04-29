@@ -4,6 +4,12 @@ class PagesController < ApplicationController
   ]
 
   def home
+    @locations = Location.all
+    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+      marker.lat location.lat
+      marker.lng location.long
+      marker.infowindow view_context.link_to location.name, location_path(location)
+    end
   end
 
   def acknowledgements

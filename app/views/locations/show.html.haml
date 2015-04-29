@@ -1,0 +1,12 @@
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-sm-6
+        %h1 
+          = @location.name
+      .col-sm-3
+        %h1
+          = link_to "EDIT", edit_location_path(@location), class: "btn"
+      .col-sm-3
+        %h1
+          = link_to "BACK", locations_path, class: "btn"
