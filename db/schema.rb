@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429151920) do
+ActiveRecord::Schema.define(version: 20150430155331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,11 @@ ActiveRecord::Schema.define(version: 20150429151920) do
     t.integer  "masked_image_file_size"
     t.datetime "masked_image_updated_at"
     t.string   "uuid"
+    t.integer  "reconstruction_id"
   end
 
   add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id", using: :btree
+  add_index "assets", ["reconstruction_id"], name: "index_assets_on_reconstruction_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -67,17 +69,37 @@ ActiveRecord::Schema.define(version: 20150429151920) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+    t.string   "uuid"
   end
+
+  add_index "locations", ["uuid"], name: "index_locations_on_uuid", using: :btree
+
+  create_table "reconstructions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "uuid"
+    t.string   "slug"
+    t.text     "description"
+    t.integer  "cover_image_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "location_id"
+  end
+
+  add_index "reconstructions", ["cover_image_id"], name: "index_reconstructions_on_cover_image_id", using: :btree
+  add_index "reconstructions", ["location_id"], name: "index_reconstructions_on_location_id", using: :btree
+  add_index "reconstructions", ["uuid"], name: "index_reconstructions_on_uuid", using: :btree
 
   create_table "sketchfabs", force: :cascade do |t|
     t.integer  "artefact_id"
     t.string   "bbcode"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_id"
+    t.integer  "reconstruction_id"
   end
 
   add_index "sketchfabs", ["artefact_id"], name: "index_sketchfabs_on_artefact_id", using: :btree
+  add_index "sketchfabs", ["reconstruction_id"], name: "index_sketchfabs_on_reconstruction_id", using: :btree
   add_index "sketchfabs", ["user_id"], name: "index_sketchfabs_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|

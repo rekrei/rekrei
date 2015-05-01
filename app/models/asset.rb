@@ -1,7 +1,8 @@
 # Asset class for handling all uploads, attached files
 class Asset < ActiveRecord::Base
   belongs_to :artefact
-
+  belongs_to :reconstruction
+  
   has_attached_file :image, styles: {
     square: '600x360#',
     medium: '300x300>',

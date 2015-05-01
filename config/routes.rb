@@ -12,7 +12,17 @@ Projectmosul::Application.routes.draw do
     end
   end
 
-  resources :locations
+  resources :locations do
+    resources :reconstructions, except: [:index, :destroy] do
+      resources :assets
+      resources :sketchfabs
+    end
+  end
+
+  resources :reconstructions do
+    resources :assets, shallow: true
+    resources :sketchfabs, shallow: true
+  end
 
   resources :artefacts do
     resources :assets

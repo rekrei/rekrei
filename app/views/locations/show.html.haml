@@ -1,3 +1,4 @@
+- title "#{@location.name}"
 .section.section-breadcrumbs
   .container
     .row
@@ -10,3 +11,34 @@
       .col-sm-3
         %h1
           = link_to "BACK", locations_path, class: "btn"
+.eshop-section.section
+  .container
+    .row
+      .col-md-12
+        %h1
+          Reconstructions
+    .row
+      - @reconstructions.each do |reconstruction|
+        .col-md-3.col-sm-6
+          .shop-item
+            .shop-item-image
+              - if reconstruction.cover_image.present?
+                = link_to image_tag(reconstruction.cover_image.image.url(:square)),location_reconstruction_path(@location,reconstruction)
+              - else
+                = link_to image_tag("square/missing.png"), location_reconstruction_path(@location,reconstruction)
+            .title
+              %h3
+                =link_to reconstruction.name, location_reconstruction_path(@location,reconstruction)
+            .price
+              %br
+              %br
+            .actions
+              =link_to "Edit", location_reconstruction_path(@location,reconstruction), class: "btn btn-small"
+    .row  
+      .col-md-12
+        .digg_pagination
+          .page_info
+            = page_entries_info @reconstructions
+          = will_paginate @reconstructions
+
+= render partial: 'shared/disqus', locals: {disqus_url: location_url(@location), disqus_uuid: @location.uuid, disqus_title: @location.name}

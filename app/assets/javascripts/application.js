@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require dropzone
+//= require jquery.turbolinks
 //= require turbolinks
 //= require analytics
 //= require common

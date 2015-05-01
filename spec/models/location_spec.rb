@@ -4,6 +4,8 @@ describe Location do
   it { should respond_to(:name) }
   it { should respond_to(:lat) }
   it { should respond_to(:long) }
+  it { should respond_to(:uuid) }
+  it { should have_many(:reconstructions) }
 
   describe ".find" do
     let!(:location){ FactoryGirl.create(:location, name: 'test location') }

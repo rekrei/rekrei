@@ -1,0 +1,20 @@
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-sm-6
+        %h1 
+          Editing
+          = @reconstruction.name.titlecase
+      .col-sm-3
+      .col-sm-3
+        %h1
+          = link_to "CANCEL", location_reconstruction_path(@location, @reconstruction), class: "btn"
+
+.section.section-white
+  .container
+    .row
+      .col-md-12
+        = render 'form'
+    .row
+      .col-md-12
+        = link_to "Back to #{@location.name} Recostructions", location_path(@location)

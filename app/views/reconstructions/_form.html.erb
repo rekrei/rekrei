@@ -1,0 +1,40 @@
+<%= form_for [@location, @reconstruction], :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+
+  <% if @reconstruction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reconstruction.errors.count, "error") %> prohibited this reconstruction from being saved:</h2>
+
+      <ul>
+      <% @reconstruction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :images, :class => 'control-label' %>
+    <div class="controls">
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), location_reconstruction_path(@location, @reconstruction), :class => 'btn btn-mini' %>
+  </div>
+<% end %>

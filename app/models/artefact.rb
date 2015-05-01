@@ -24,4 +24,16 @@ class Artefact < ActiveRecord::Base
   def set_uuid_value
     self.uuid ||= SecureRandom.uuid
   end
+
+  def migrate_to_reconstruction
+    reconstruction = Reconstruction.create(name: self.name, description: self.description, uuid: self.uuid, location_id: 1)
+
+    self.images.each do |image|
+      image.update(reconstruction: reconstruction)
+    end
+
+    self.sketchfabs.each do |sketchfab|
+      sketchfab.update(reconstruction: reconstruction)
+    end
+  end
 end
