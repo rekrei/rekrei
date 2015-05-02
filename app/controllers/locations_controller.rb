@@ -11,7 +11,8 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.friendly.find(params[:id])
-    @reconstructions = @location.reconstructions.paginate per_page: 16, page: params[:page]
+    @reconstructions = @location.reconstructions.paginate per_page: 16, page: params[:reconstructions_page]
+    @images = @location.images.paginate per_page: 16, page: params[:images_page]
   end
 
 end

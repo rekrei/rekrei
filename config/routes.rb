@@ -13,6 +13,7 @@ Projectmosul::Application.routes.draw do
   end
 
   resources :locations do
+    resources :images
     resources :reconstructions, except: [:index, :destroy] do
       resources :assets
       resources :sketchfabs
