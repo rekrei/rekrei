@@ -8,6 +8,10 @@ var mainMenu = (function() {
 	function init() {
 		$menuItems.on( 'click', open );
 		$listItems.on( 'click', function( event ) { event.stopPropagation(); } );
+		var webSection = window.location.pathname.split('/')[1];
+		if (webSection) {
+			$('#mainmenu .' + webSection).addClass('active');
+		}
 	}
 
 	function open( event ) {

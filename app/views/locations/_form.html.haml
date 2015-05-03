@@ -1,0 +1,144 @@
+%input#pac-input.controls{:placeholder => "Search Box", :type => "text"}
+= form_for @location, html: { class: 'form-horizontal', multipart: true } do |f|
+  .control-group
+    = f.label :name, class: 'control-label'
+    = f.text_field :name, class: 'text_field'
+    = f.hidden_field :lat, class: 'lat'
+    = f.hidden_field :long, class: 'long'
+  %br
+  %br
+  #map-canvas
+  %br
+  %br
+  .form-actions
+    %button.btn.btn-primary Save Location
+    = link_to t('.cancel', default: t("helpers.links.cancel")),
+                locations_path, class: 'btn btn-mini'
+  %br
+  %br
+
+:javascript
+  var map, infoWindow;
+  var markers = [];
+
+  function initialize() {
+
+    map = new google.maps.Map(document.getElementById('map-canvas'), {
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      maxZoom: 16
+    });
+    infoWindow = new google.maps.InfoWindow();
+
+    var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(-25, -70),
+        new google.maps.LatLng(45, 70));
+    map.fitBounds(defaultBounds);
+
+    // Create the search box and link it to the UI element.
+    var input = /** @type {HTMLInputElement} */(
+        document.getElementById('pac-input'));
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    var searchBox = new google.maps.places.SearchBox(
+        /** @type {HTMLInputElement} */(input));
+
+    // Listen for the event fired when the user selects an item from the
+    // pick list. Retrieve the matching places for that item.
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+        return;
+      }
+      for (var i = 0, marker; marker = markers[i]; i++) {
+        marker.setMap(null);
+      }
+
+      // For each place, get the icon, place name, and location.
+      markers = [];
+      var bounds = new google.maps.LatLngBounds();
+        for (var i = 0, place; place = places[i]; i++) {
+          var image = {
+            url: place.icon,
+            size: new google.maps.Size(30, 30),
+            scaledSize: new google.maps.Size(30, 30)
+          };
+
+          // Create a marker for each place.
+          var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name,
+            position: place.geometry.location,
+            draggable: true
+          });
+
+          if (i === 0) {
+            $('.lat').val(place.geometry.location.lat());
+            $('.long').val(place.geometry.location.lng());
+          }
+
+          prepareMarker(marker, place, i);
+
+          markers.push(marker);
+
+          bounds.extend(place.geometry.location);
+        }
+
+        map.fitBounds(bounds);
+      });
+
+      // Bias the SearchBox results towards places that are within the bounds of the
+      // current map's viewport.
+      google.maps.event.addListener(map, 'bounds_changed', function() {
+      var bounds = map.getBounds();
+      searchBox.setBounds(bounds);
+    });
+
+    if (typeof loadCurrentMarker !== 'undefined') {
+      loadCurrentMarker();
+    }
+  }
+
+  function prepareMarker(marker, place, i) {
+    var showPopup = function() {
+      var setMarker = 'Drag a marker to the correct location, then press Save.';
+      setMarker += '<br/><button class="btn" onclick="mapSave(event, ' + i + ')">Save</button>'
+      setMarker += '&nbsp;&nbsp;&nbsp;<button class="btn" onclick="infoWindow.close()">Cancel</button>';
+      infoWindow.setContent(setMarker);
+      infoWindow.open(map, marker);
+    };
+    google.maps.event.addListener(marker, 'click', showPopup);
+    google.maps.event.addListener(marker, 'dragstart', showPopup);
+    if (i === 0) {
+      showPopup();
+    }
+  }
+
+  function mapSave(e, i) {
+    var approved = markers[i];
+    $('.lat').val(approved.getPosition().lat());
+    $('.long').val(approved.getPosition().lng());
+    e.preventDefault();
+    infoWindow.close();
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+  $("form").on('keypress keyup keydown', function(e) {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+    }
+  });
+
+- if @location.id.present?
+  :javascript
+    function loadCurrentMarker() {
+      var marker = new google.maps.Marker({
+        map: map,
+        title: "#{@location.name}",
+        position: new google.maps.LatLng(#{@location.lat}, #{@location.long}),
+        draggable: true
+      });
+      markers = [marker];
+      prepareMarker(marker, null, 0);
+    }
