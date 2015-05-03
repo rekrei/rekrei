@@ -1,12 +1,13 @@
 class ImagesController < ApplicationController
+  before_action :set_location, except: [:download]
   before_action :require_admin!, only: [:destroy]
   before_action :authenticate_user!, except: [:show, :index, :download]
-  before_action :set_image, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_image, only: [:show, :edit, :update, :destroy]
   # GET /images
   # GET /images.json
   def index
-    @images = Image.unassigned_to_artefact.paginate(page: params[:page])
-    @image = Image.new
+    @images = @location.images.unassigned_to_reconstruction.paginate(page: params[:page])
+    @image = @location.images.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @images.map(&:to_jq_image) }
@@ -16,8 +17,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
-    @previous = @image.previous
-    @next = @image.next
+    @previous = @image.previous(@location)
+    @next = @image.next(@location)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @image }
@@ -27,7 +28,7 @@ class ImagesController < ApplicationController
   # GET /images/new
   # GET /images/new.json
   def new
-    @image = Image.new
+    @image = @location.image.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,14 +36,10 @@ class ImagesController < ApplicationController
     end
   end
 
-  # GET /images/1/edit
-  def edit
-  end
-
   # POST /images
   # POST /images.json
   def create
-    @image = Image.create(image_params)
+    @image = @location.images.create(image_params)
     if @image.save
       # send success header
       render json: { message: 'success', fileID: @image.id }, status: 200
@@ -59,7 +56,7 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.update_attributes(image_params)
         format.html do
-          redirect_to @image, notice: 'Image was successfully updated.'
+          redirect_to [@location,@image], notice: 'Image was successfully updated.'
         end
         # format.json { head :no_content }
         format.json do
@@ -88,6 +85,7 @@ class ImagesController < ApplicationController
   end
 
   def download
+    @image = Image.find(params[:id])
     send_data File.read(@image.image.path),
               filename: @image.image_file_name,
               type: @image.image_content_type,
@@ -96,11 +94,15 @@ class ImagesController < ApplicationController
 
   private
 
+  def set_location
+    @location = Location.friendly.find(params[:location_id])
+  end
+
   def set_image
-    @image = Image.find(params[:id])
+    @image = @location.images.find(params[:id])
   end
 
   def image_params
-    params.require(:image).permit(:artefact_id, :image)
+    params.require(:image).permit(:reconstruction_id, :image)
   end
 end

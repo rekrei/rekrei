@@ -1,8 +1,6 @@
-= form_for [@artefact, @sketchfab] do |f|
-  .control_group
+= form_for [@reconstruction, @sketchfab] do |f|
+  .form-group
     = f.label :bbcode, 'BBCode'
-    .controls
-      = f.text_area :bbcode, cols: 40, rows: 5
-  .control_group
-    .controls
-      = f.submit
+    = f.text_area :bbcode, cols: 40, rows: 5, class: 'form-control'
+  .form-group
+    = f.submit nil, class: 'btn btn-default'

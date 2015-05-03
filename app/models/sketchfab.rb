@@ -2,7 +2,8 @@
 class Sketchfab < ActiveRecord::Base
   belongs_to :artefact
   belongs_to :user
-
+  belongs_to :reconstruction
+  
   validates :bbcode, presence: {
     on: :create, message: "can't be blank"
   }

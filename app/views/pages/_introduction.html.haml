@@ -1,0 +1,41 @@
+.section.section-white
+  .container
+    .row
+      .col-md-6
+        %h3 Project Mosul
+        %p
+          Project Mosul is an initative started by Matthew Vincent (ITN-DCH Researcher), Chance Coughenour (ITN-DCH Researcher), and Marinos Ioannides (ITN-DCH Coordinator) of the Initial Training Network for Digital Cultural Heritage, a Marie Curie Actions FP7-PEOPLE funded project. The project is a response to the destruction of cultural heritage by the Islamic States, and proposes to use crowd-sourced imagery to digitally reconstruct the heritage that has been destroyed. 
+        %h3 Get Involved!
+        %p
+          Want to help out? Pick a location above, and start uploading, sorting, masking, or processing any of the reconstructions available.
+          %br
+          %br
+          Not sure where to start? Why not start 
+          = link_to 'here', location_path('mosul-museum')
+          %br
+          %br
+          Do you know how to code? Why not help out with building some of the tools
+          = link_to 'here', 'https://github.com/neshmi/projectmosul'
+          %br
+          %br
+          Whatever the case, join the conversation with the community of volunteers with our Slack channel
+          = link_to 'here.', 'https://projectmosul.github.io'
+        %p
+          Project Mosul has already expanded to working with two other European Union projects,
+          = link_to '4d-CH-World', "http://www.4d-ch-world.eu/", target: "_blank"
+          a FP7-PEOPLE IAPP project, and
+          = link_to 'Europeana Space', "http://www.europeana-space.eu/", target: "_blank"
+          also a European Union project. We are also working with private industry, particularly 
+          = link_to 'Sketchfab', "https://sketchfab.com", target: "_blank"
+          a start-up focusing on 3D content on the web, a sort of YouTube for 3D Objects. Together, we are working on a framework for the digital restoration and curation of lost heritage, with the ultimate goal to provide virtual reality access to these museums online. If you want to get involved, fill out this form 
+          = link_to 'here', "http://tinyurl.com/projectmosulvolunteer", target: "_blank"
+          and we will get you connected with the right area.
+      .col-md-6
+        .video-wrapper
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "281", :mozallowfullscreen => "true", :onmousewheel => "", :src => "https://sketchfab.com/models/55ea0aed9bfd462593f006ea8c4aade0/embed", :webkitallowfullscreen => "true", :width => "555"}
+          %p{:style => "font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"}
+          %a{:href => "https://sketchfab.com/models/55ea0aed9bfd462593f006ea8c4aade0?utm_source=oembed&utm_medium=embed&utm_campaign=55ea0aed9bfd462593f006ea8c4aade0", :style => "font-weight: bold; color: #1CAAD9;", :target => "_blank"} The Lion of Mosul
+          by
+          %a{:href => "https://sketchfab.com/neshmi?utm_source=oembed&utm_medium=embed&utm_campaign=55ea0aed9bfd462593f006ea8c4aade0", :style => "font-weight: bold; color: #1CAAD9;", :target => "_blank"} neshmi
+          on
+          %a{:href => "https://sketchfab.com?utm_source=oembed&utm_medium=embed&utm_campaign=55ea0aed9bfd462593f006ea8c4aade0", :style => "font-weight: bold; color: #1CAAD9;", :target => "_blank"} Sketchfab

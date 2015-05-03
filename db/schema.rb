@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420153944) do
+ActiveRecord::Schema.define(version: 20150501192201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,13 @@ ActiveRecord::Schema.define(version: 20150420153944) do
     t.integer  "masked_image_file_size"
     t.datetime "masked_image_updated_at"
     t.string   "uuid"
+    t.integer  "reconstruction_id"
+    t.integer  "location_id"
   end
 
   add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id", using: :btree
+  add_index "assets", ["location_id"], name: "index_assets_on_location_id", using: :btree
+  add_index "assets", ["reconstruction_id"], name: "index_assets_on_reconstruction_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -60,16 +64,59 @@ ActiveRecord::Schema.define(version: 20150420153944) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.float    "lat"
+    t.float    "long"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+    t.string   "uuid"
+  end
+
+  add_index "locations", ["uuid"], name: "index_locations_on_uuid", using: :btree
+
+  create_table "reconstructions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "uuid"
+    t.string   "slug"
+    t.text     "description"
+    t.integer  "cover_image_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "location_id"
+  end
+
+  add_index "reconstructions", ["cover_image_id"], name: "index_reconstructions_on_cover_image_id", using: :btree
+  add_index "reconstructions", ["location_id"], name: "index_reconstructions_on_location_id", using: :btree
+  add_index "reconstructions", ["uuid"], name: "index_reconstructions_on_uuid", using: :btree
+
   create_table "sketchfabs", force: :cascade do |t|
     t.integer  "artefact_id"
     t.string   "bbcode"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_id"
+    t.integer  "reconstruction_id"
   end
 
   add_index "sketchfabs", ["artefact_id"], name: "index_sketchfabs_on_artefact_id", using: :btree
+  add_index "sketchfabs", ["reconstruction_id"], name: "index_sketchfabs_on_reconstruction_id", using: :btree
   add_index "sketchfabs", ["user_id"], name: "index_sketchfabs_on_user_id", using: :btree
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "uuid"
+    t.datetime "completed_at"
+    t.string   "state"
+    t.integer  "taskable_id"
+    t.string   "taskable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "tasks", ["taskable_type", "taskable_id"], name: "index_tasks_on_taskable_type_and_taskable_id", using: :btree
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",    null: false
@@ -124,4 +171,5 @@ ActiveRecord::Schema.define(version: 20150420153944) do
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
   add_foreign_key "sketchfabs", "artefacts"
+  add_foreign_key "tasks", "users"
 end

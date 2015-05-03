@@ -4,6 +4,13 @@ class PagesController < ApplicationController
   ]
 
   def home
+    @locations = Location.all
+    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+      marker.lat location.lat
+      marker.lng location.long
+      marker.title location.name
+      marker.infowindow view_context.link_to location.name, location_path(location)
+    end
   end
 
   def acknowledgements
@@ -24,7 +31,7 @@ class PagesController < ApplicationController
     if @name.blank?
       flash[:alert] = 'Please enter your name before sending your message. Thank you.'
       render :contact
-    elsif @email.blank? || @email.scan(%r{/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}).size < 1
+    elsif @email.blank? || @email.scan(/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i).size < 1
       flash[:alert] = 'You must provide a valid email address before sending your message. Thank you.'
       render :contact
     elsif @message.blank? || @message.length < 10

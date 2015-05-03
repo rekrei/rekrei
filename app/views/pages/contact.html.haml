@@ -1,4 +1,6 @@
 / Page Title
+- title "Contact Us"
+
 .section.section-breadcrumbs
   .container
     .row
@@ -22,7 +24,7 @@
               .col-sm-9
                 = text_field_tag :email, @email, placeholder: "Enter your email...", :autofocus => true, class: "form-control"
             .form-group
-              = label_tag :message, "Your email", class: "col-sm-3 control-label"
+              = label_tag :message, "Your message", class: "col-sm-3 control-label"
               .col-sm-9
                 = text_area_tag :message, @message, placeholder: "Enter your message...", :autofocus => true, rows: 5, class: "form-control"
             .form-group
