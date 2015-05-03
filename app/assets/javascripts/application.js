@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require dropzone
+//= require jquery.turbolinks
 //= require turbolinks
 //= require analytics
 //= require common
@@ -23,5 +24,7 @@
 //= require main-menu
 //= require modernizr-2.6.2-respond-1.1.0.min
 //= require template.js
+//= require underscore
+//= require gmaps/google
 //= require gallery
 //= require images

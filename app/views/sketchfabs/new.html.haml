@@ -4,14 +4,14 @@
       .col-md-6
         %h1 
           New Sketchfab for 
-          = @sketchfab.artefact.name
+          = @sketchfab.reconstruction.name
       .col-md-3
       .col-md-3
-        = link_to "cancel", artefact_path(@artefact), class: "btn"
+        = link_to "cancel", location_reconstruction_path(@reconstruction.location, @reconstruction), class: "btn"
 .section
   .container
     .row
       .col-md-12
         %h1 New Sketchfab
         = render 'form'
-        = link_to 'Back', artefact_path(@artefact)
+        = link_to 'Back', location_reconstruction_path(@reconstruction.location, @reconstruction)

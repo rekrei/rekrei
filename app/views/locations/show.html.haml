@@ -1,0 +1,63 @@
+- title "#{@location.name}"
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-sm-6
+        %h1 
+          = @location.name
+      .col-sm-3
+        %h1
+          = link_to "EDIT", edit_location_path(@location), class: "btn"
+      .col-sm-3
+        %h1
+          = link_to "BACK", locations_path, class: "btn"
+= render partial: 'shared/tasks', locals: {location: @location}
+.eshop-section.section
+  .container
+    .row
+      .col-md-12
+        %h1
+          Reconstructions
+          - if user_signed_in?
+            = link_to "New Reconstruction", new_location_reconstruction_path(@location), class: "btn btn-default"
+    .row
+      - @reconstructions.each do |reconstruction|
+        .col-md-3.col-sm-6
+          .shop-item
+            .shop-item-image
+              - if reconstruction.images.count > 0
+                = link_to image_tag(reconstruction.images.first.image.url(:square)),location_reconstruction_path(@location,reconstruction)
+              - else
+                = link_to image_tag("square/missing.png"), location_reconstruction_path(@location,reconstruction)
+            .title
+              %h3
+                =link_to reconstruction.name, location_reconstruction_path(@location,reconstruction)
+            .price
+              %br
+              %br
+            .actions
+              =link_to "Edit", location_reconstruction_path(@location,reconstruction), class: "btn btn-small"
+    .row  
+      .col-md-12
+        .digg_pagination
+          .page_info
+            = page_entries_info @reconstructions
+          = will_paginate @reconstructions, param_name: 'reconstructions_page'
+
+.section        
+  .container
+    .row
+      .col-md-12
+        - if user_signed_in?
+          %h1 Upload Images
+          %br/
+          = form_for([@location,Image.new], html: { multipart: true, class: "dropzone" }) do |f|
+            .fallback
+              = f.file_field :image, multiple: true
+              %br/
+              = f.submit "Upload"
+        - else
+          You must be signed in to upload images
+ 
+
+= render partial: 'shared/disqus', locals: {disqus_url: location_url(@location), disqus_uuid: @location.uuid, disqus_title: @location.name}

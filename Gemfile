@@ -9,6 +9,7 @@ gem 'uglifier', '2.6.0'
 gem 'coffee-rails', '4.1.0'
 gem 'jquery-rails', '4.0.3'
 gem 'turbolinks', '2.5.3'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
 # Necessary for Windows OS (won't install on *nix systems)
@@ -44,9 +45,16 @@ gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
 gem 'newrelic_rpm'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
+gem 'airbrake'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
+
+## Google Maps Integration
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'geonames_api'
+
 
 group :production, :staging do
   gem 'passenger'
@@ -81,6 +89,7 @@ group :development, :test do
   gem 'codeclimate-test-reporter', require: nil
   gem 'rubocop', require: false
   gem 'sqlite3', '1.3.10'
+  gem 'faker'
 end
 
 # Devise: https://github.com/plataformatec/devise

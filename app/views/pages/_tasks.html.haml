@@ -9,8 +9,8 @@
           %h2
             Images to Sort
           %h1
-            = Image.unassigned_to_artefact.count
-          = link_to "Sort Photos", images_path, class: "btn"
+            = Image.unassigned_to_reconstruction.count
+          = link_to "Sort Photos", location_images_path(location), class: "btn" if location
       .col-md-4.col-sm-6
         .service-wrapper
           %i.fa.fa-magic.fa-5x
@@ -18,7 +18,7 @@
             Images to Mask
           %h1
             = Image.unmasked.count
-          = link_to "Mask Photos", images_path, class: "btn"
+          =# link_to "Mask Photos", location_images_path(location), class: "btn" if location
       .col-md-4.col-sm-6
         .service-wrapper
           %i.fa.fa-cubes.fa-5x
@@ -26,4 +26,4 @@
             Artefacts to Process
           %h1
             = Artefact.sketchfabless.count
-          = link_to "Process Artefacts", artefacts_path, class: "btn"
+          = link_to "Process Artefacts", location_artefacts_path(location), class: "btn" if location

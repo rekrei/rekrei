@@ -12,12 +12,26 @@ Projectmosul::Application.routes.draw do
     end
   end
 
-  resources :artefacts do
-    resources :assets
-    resources :sketchfabs
+  resources :locations do
+    resources :images do
+      get 'download'
+    end
+    resources :reconstructions do
+      resources :assets
+      resources :sketchfabs
+    end
   end
 
-  resources :images do
+  resources :reconstructions, only: [] do
+    resources :sketchfabs, only: [:new, :create]
+  end
+
+  # resources :artefacts do
+  #   resources :assets
+  #   resources :sketchfabs
+  # end
+
+  resources :images, only: [] do
     member do
       get 'download'
     end

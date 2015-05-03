@@ -1,0 +1,8 @@
+- content_for(:head) do
+  %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"}
+.section.section-white.nopadding
+  .container
+    .row
+      .col-md-12
+        %h3 Create Location
+        = render 'form'

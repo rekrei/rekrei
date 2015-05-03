@@ -1,17 +1,15 @@
 <li class="logo-wrapper">
   <%#= link_to image_tag("mPurpose-logo.png"), root_path %>
-  <%= link_to "Home", root_path %>
+  <%= link_to "Home", root_path, data: { no_turbolink: true } %>
 </li>
-              
-<li class="active"><%= link_to "Contact", contact_path %></li>
-<li><%= link_to "Artefacts", artefacts_path %></li>
-<li><%= link_to "Images", images_path %></li>
-<li><%= link_to "3D Gallery", gallery_path %></li>
-<li><%= link_to 'Press', press_path %></li>
+<li class='locations'><%= link_to "Locations", locations_path, data: { no_turbolink: true } %></li>
+<li class='contact'><%= link_to "Contact", contact_path %></li>
+<li class='gallery'><%= link_to "3D Gallery", gallery_path %></li>
+<li class='press'><%= link_to 'Press', press_path %></li>
 <% if !user_signed_in? %>
-<li><%= link_to "Sign up", new_user_registration_path %></li>
+<li class='users'><%= link_to "Sign up", new_user_registration_path %></li>
 <% else %>
-<li><%= link_to "Edit your account", edit_user_registration_path %></li>
+<li class='users'><%= link_to "Edit your account", edit_user_registration_path %></li>
 
 <% if current_user.admin? %>
 <li><%#= link_to "Admin", admin_root_path %></li>

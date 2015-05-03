@@ -1,0 +1,53 @@
+- title "#{@location.name} - #{@reconstruction.name}"
+.section.section-breadcrumbs
+  .container
+    .row
+      .col-sm-6
+        %h1 
+          = @reconstruction.name.upcase
+      .col-sm-3
+        %h1
+          = link_to "EDIT", edit_location_reconstruction_path(@location,@reconstruction), class: "btn"
+      .col-sm-3
+        %h1
+          = link_to "BACK", location_path(@location), class: "btn"
+.section
+  .container
+    .row
+      / Image Column
+      .col-sm-6
+        .portfolio-item
+          .portfolio-image
+            - if @reconstruction.images.count > 0
+              = image_tag(@reconstruction.images.first.image.url(:square))
+            - else
+              = image_tag("square/missing.png")
+        / End Image Column
+        / Project Info Column
+      .portfolio-item-description.col-sm-6
+        %h3 Reconstruction Description
+        %p
+          = @reconstruction.description
+    %h3 
+      3D Models
+      = link_to 'Add 3D Model', new_reconstruction_sketchfab_path(@reconstruction)
+    .row
+      - @reconstruction.sketchfabs.each do |sketchfab|
+        .col-md-4
+          = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
+        
+    %h3 Reconstruction Photos
+    .row
+      - @reconstruction.images.each do |image|
+        .col-md-4.col-sm-6
+          .portfolio-item
+            .portfolio-image
+              = image_tag(image.image.url(:square))
+              .portfolio-info-fade
+                %ul
+                  %li.portfolio-project-name Download
+                  %li.read-more
+                    = link_to download_image_path(image) do
+                      <i class="fa fa-download"> Original</i>        
+= render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}            
+                      
