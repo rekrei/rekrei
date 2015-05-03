@@ -29,7 +29,7 @@ class ReconstructionsController < ApplicationController
         if params[:images]
           # The magic is here ;)
           params[:images].each do |image|
-            @reconstruction.images.create(image: image, location: @location)
+            @reconstruction.images.create(image: image, location_id: @location.id)
           end
         end
 

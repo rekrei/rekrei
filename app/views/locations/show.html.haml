@@ -18,13 +18,15 @@
       .col-md-12
         %h1
           Reconstructions
+          - if user_signed_in?
+            = link_to "New Reconstruction", new_location_reconstruction_path(@location), class: "btn btn-default"
     .row
       - @reconstructions.each do |reconstruction|
         .col-md-3.col-sm-6
           .shop-item
             .shop-item-image
-              - if reconstruction.cover_image.present?
-                = link_to image_tag(reconstruction.cover_image.image.url(:square)),location_reconstruction_path(@location,reconstruction)
+              - if reconstruction.images.count > 0
+                = link_to image_tag(reconstruction.images.first.image.url(:square)),location_reconstruction_path(@location,reconstruction)
               - else
                 = link_to image_tag("square/missing.png"), location_reconstruction_path(@location,reconstruction)
             .title
