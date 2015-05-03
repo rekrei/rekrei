@@ -27,12 +27,9 @@ Projectmosul::Application.routes.draw do
     resources :sketchfabs, only: [:new, :create]
   end
 
-  # resources :artefacts do
-  #   resources :assets
-  #   resources :sketchfabs
-  # end
+  resources :artefacts, only: [:show, :index] 
 
-  resources :images, only: [] do
+  resources :images, only: [:show, :index] do
     member do
       get 'download'
     end
