@@ -1,2 +1,12 @@
 - title("Locations")
-= render 'pages/map'
+
+.section
+  .container
+    .row
+      .col-md-12
+        = link_to 'Add Location', new_location_path, class: 'btn btn-success'
+        %br
+        %br
+    .row
+      .col-md-12
+        = render 'pages/map'
