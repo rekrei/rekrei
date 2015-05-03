@@ -4,6 +4,9 @@ class ReconstructionsController < ApplicationController
   before_action :require_admin!, only: [:destroy]
   before_action :authenticate_user!, except: [:show, :index]
 
+  def index
+    @reconstructions = @location.reconstructions.paginate per_page: 16, page: params[:reconstructions_page]
+  end
 
   def show
   end
@@ -15,9 +18,28 @@ class ReconstructionsController < ApplicationController
   end
 
   def new
+    @reconstruction = @location.reconstructions.new
   end
 
   def create
+    @reconstruction = @location.reconstructions.new(reconstruction_params)
+    respond_to do |format|
+      if @reconstruction.save
+
+        if params[:images]
+          # The magic is here ;)
+          params[:images].each do |image|
+            @reconstruction.images.create(image: image, location: @location)
+          end
+        end
+
+        format.html { redirect_to [@location, @reconstruction], notice: 'Reconstruction was successfully created.' }
+        format.json { render json: @reconstruction, status: :created, location: @reconstruction }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @reconstruction.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

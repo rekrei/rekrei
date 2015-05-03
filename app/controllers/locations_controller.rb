@@ -14,7 +14,6 @@ class LocationsController < ApplicationController
 
   def show
     @reconstructions = @location.reconstructions.paginate per_page: 16, page: params[:reconstructions_page]
-    @images = @location.images.paginate per_page: 16, page: params[:images_page]
   end
 
   def edit
@@ -35,7 +34,7 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     respond_to do |format|
       if @location.save
-        format.html { redirect_to location_path(@location.id), notice: 'Location was successfully created.' }
+        format.html { redirect_to location_path(@location), notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: 'new' }

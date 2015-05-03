@@ -30,7 +30,7 @@
           = @reconstruction.description
     %h3 
       3D Models
-      = link_to 'Add 3D Model', new_reconstruction_sketchfab_path(reconstruction_id: @reconstruction.id)
+      = link_to 'Add 3D Model', new_reconstruction_sketchfab_path(@reconstruction)
     .row
       - @reconstruction.sketchfabs.each do |sketchfab|
         .col-md-4
@@ -42,7 +42,7 @@
         .col-md-4.col-sm-6
           .portfolio-item
             .portfolio-image
-              = link_to image_tag(image.image.url(:square)), image_path(image)
+              = image_tag(image.image.url(:square))
               .portfolio-info-fade
                 %ul
                   %li.portfolio-project-name Download

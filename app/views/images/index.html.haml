@@ -2,7 +2,9 @@
   .container
     .row
       .col-md-6
-        %h1 Images
+        %h1
+          = link_to @location.name, location_path(@location) 
+          Images
       .col-md-2
       .col-md-4
         %h1
@@ -15,7 +17,7 @@
         - if user_signed_in?
           %h1 Upload Images
           %br/
-          = form_for(Image.new, html: { multipart: true, class: "dropzone" }) do |f|
+          = form_for([@location,@location.images.new], html: { multipart: true, class: "dropzone" }) do |f|
             .fallback
               = f.file_field :image, multiple: true
               %br/

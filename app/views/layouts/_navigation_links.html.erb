@@ -2,10 +2,8 @@
   <%#= link_to image_tag("mPurpose-logo.png"), root_path %>
   <%= link_to "Home", root_path, data: { no_turbolink: true } %>
 </li>
-
+<li class='locations'><%= link_to "Locations", locations_path, data: { no_turbolink: true } %></li>
 <li class='contact'><%= link_to "Contact", contact_path %></li>
-<li class='artefacts'><%= link_to "Artefacts", artefacts_path %></li>
-<li class='images'><%= link_to "Images", images_path %></li>
 <li class='gallery'><%= link_to "3D Gallery", gallery_path %></li>
 <li class='press'><%= link_to 'Press', press_path %></li>
 <% if !user_signed_in? %>

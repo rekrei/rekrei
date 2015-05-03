@@ -13,24 +13,25 @@ Projectmosul::Application.routes.draw do
   end
 
   resources :locations do
-    resources :images
-    resources :reconstructions, except: [:index, :destroy] do
+    resources :images do
+      get 'download'
+    end
+    resources :reconstructions do
       resources :assets
       resources :sketchfabs
     end
   end
 
-  resources :reconstructions do
-    resources :assets, shallow: true
-    resources :sketchfabs, shallow: true
+  resources :reconstructions, only: [] do
+    resources :sketchfabs, only: [:new, :create]
   end
 
-  resources :artefacts do
-    resources :assets
-    resources :sketchfabs
-  end
+  # resources :artefacts do
+  #   resources :assets
+  #   resources :sketchfabs
+  # end
 
-  resources :images do
+  resources :images, only: [] do
     member do
       get 'download'
     end

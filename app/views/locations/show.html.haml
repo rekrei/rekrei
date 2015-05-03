@@ -11,6 +11,7 @@
       .col-sm-3
         %h1
           = link_to "BACK", locations_path, class: "btn"
+= render partial: 'shared/tasks', locals: {location: @location}
 .eshop-section.section
   .container
     .row
@@ -55,19 +56,6 @@
               = f.submit "Upload"
         - else
           You must be signed in to upload images
-.eshop-section.section
-  .container
-    .row
-      .col-md-12
-        %h1 Unsorted Images
-    .row
-      = render "images/index"
-    .row  
-      .col-md-12
-        .digg_pagination
-          .page_info
-            = page_entries_info @images
-          = will_paginate @images, param_name: 'images_page'
-  
+ 
 
 = render partial: 'shared/disqus', locals: {disqus_url: location_url(@location), disqus_uuid: @location.uuid, disqus_title: @location.name}

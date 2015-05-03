@@ -1,0 +1,45 @@
+.section.section-white
+  .container
+    %h2
+      Tasks
+    .row
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-camera-retro.fa-5x
+          %h2
+            Images to Sort
+            %br
+            %br
+          %h1
+            - if location
+              = location.images.unassigned_to_reconstruction.count
+            - else
+              = Image.unassigned_to_reconstruction.count
+          = link_to "Sort Photos", location_images_path(location), class: "btn" if location
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-magic.fa-5x
+          %h2
+            Images to Mask
+            %br
+            %br
+          %h1
+            - if location
+              = location.images.unmasked.count
+            - else
+              = Image.unmasked.count
+          - if location  
+            .btn
+              Coming soon!
+          =# link_to "Mask Photos", location_images_path(location), class: "btn" if location
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-cubes.fa-5x
+          %h2
+            Reconstructions to Process
+          %h1
+            - if location
+              = location.reconstructions.sketchfabless.count
+            - else
+              = Reconstruction.sketchfabless.count
+          = link_to "Process Reconstruction", location_reconstructions_path(location), class: "btn" if location

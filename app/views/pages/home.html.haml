@@ -1,6 +1,6 @@
 - title("Home")
 = render 'map'
-= render 'tasks'
+= render partial: 'shared/tasks', locals: {location: false}
 = render 'introduction'
 = render 'partners'   
 

@@ -5,13 +5,13 @@
         %h1 Image Details
       .col-md-3
         %h1
-          = link_to "Previous", image_path(@previous), class: "btn" if @previous
+          = link_to "Previous", location_image_path(@location,@previous), class: "btn" if @previous
       .col-md-3
         %h1
-          = link_to "Images", images_path, class: "btn"
+          = link_to "Images", location_images_path(@location), class: "btn"
       .col-md-3
         %h1
-          = link_to "Next", image_path(@next), class: "btn" if @next
+          = link_to "Next", location_image_path(@location,@next), class: "btn" if @next
 .section
   .container
     .row
@@ -19,16 +19,16 @@
         .product-image-large
           = image_tag @image.image.url(:square)
       .col-sm-6.product-details
-        - if @image.artefact
+        - if @image.reconstruction
           %h4
-            Artefact:
-            = @image.artefact.name
+            Reconstruction:
+            = @image.reconstruction.name
         - else
           %h4
             No Artefact Assigned
         - modal ||= false
         - remote = modal ? true : false
-        = form_for(@image, remote: remote, html: {role: :form, 'data-model' => 'image'}) do |f|
+        = form_for([@location,@image], remote: remote, html: {role: :form, 'data-model' => 'image'}) do |f|
           - if @image.errors.any?
             #error_explanation
               %h2
@@ -42,10 +42,10 @@
             %tr
               %td
                 %b
-                  = f.label :artefact_id, class: 'control-label'
+                  = f.label :reconstruction_id, class: 'control-label'
               %td
                 .dropdown
-                  = f.select :artefact_id, Artefact.all.map{|artefact| [artefact.name, artefact.id]}, include_blank: true, class: 'form-control'
+                  = f.select :reconstruction_id, @location.reconstructions.all.map{|reconstruction| [reconstruction.name, reconstruction.id]}, include_blank: true, class: 'form-control'
             %tr
               %td &#160;
               %td
