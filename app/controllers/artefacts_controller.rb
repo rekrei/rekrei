@@ -2,7 +2,7 @@ class ArtefactsController < ApplicationController
   before_action :set_artefact, only: [:show, :edit, :update, :destroy]
   before_action :require_admin!, only: [:destroy]
   before_action :authenticate_user!, except: [:show, :index]
-
+  before_action :redirect_to_home
   # GET /artefacts
   # GET /artefacts.json
   def index
@@ -79,7 +79,9 @@ class ArtefactsController < ApplicationController
   end
 
   private
-
+  def redirect_to_home
+    redirect_to root_path, status: 301, notice: 'Artefacts are now reconstructions embedded in locations, please choose a location first.'
+  end
   # Use callbacks to share common setup or constraints between actions.
   def set_artefact
     @artefact = Artefact.find(params[:id])

@@ -8,7 +8,10 @@ module Api
       end
 
       def show
-        @artefact = Artefact.find_by_uuid(params[:id])
+        if @artefact = Artefact.find_by_uuid(params[:id])
+        else
+          render :json => {status: 404, error: "Image not found"}
+        end
       end
     end
   end

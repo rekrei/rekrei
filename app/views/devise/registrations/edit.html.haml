@@ -1,0 +1,41 @@
+.container
+  .row
+    .col-sm-6
+      %h1 Edit your profile
+      = form_for(resource, :as => resource_name,           |
+        :url => registration_path(resource_name),          |
+        :html => { :method => :put, role: "form" }) do |f| |
+        = devise_error_messages!
+        .form-group
+          = f.label :email
+          .row
+            .col-sm-6
+              = f.email_field :email, :autofocus => true, class: "form-control"
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          .row
+            .col-sm-6
+              %p
+                Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .form-group
+          = f.label :password
+          %i
+            %small (leave blank if you don't want to change it)
+          .row
+            .col-sm-6
+              = f.password_field :password, :autocomplete => "off", class: "form-control"
+        .form-group
+          = f.label :password_confirmation
+          .row
+            .col-sm-6
+              = f.password_field :password_confirmation, class: "form-control"
+        .form-group
+          = f.label :current_password
+          %i
+            %small (we need your current password to confirm your changes)
+          .row
+            .col-sm-6
+              = f.password_field :current_password, class: "form-control"
+        .row
+          .col-sm-6
+            = f.submit "Update", class: "btn btn-primary"
+            \- #{link_to "Cancel", root_path}

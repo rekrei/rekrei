@@ -3,10 +3,11 @@ Projectmosul::Application.routes.draw do
 
   #API
   namespace :api, defaults: {format: 'json'},
-                            constraints: { subdomain: 'api' },
+                            constraints: { subdomain: ['api', 'api.staging'] },
                             path: '/' do
     scope module: :v1,
                   constraints: ApiConstraints.new(version: 1, default: true) do
+      root 'base#index'                  
       resources :images, only: [:index, :show]
       resources :artefacts, only: [:index, :show]
     end
@@ -26,12 +27,9 @@ Projectmosul::Application.routes.draw do
     resources :sketchfabs, only: [:new, :create]
   end
 
-  # resources :artefacts do
-  #   resources :assets
-  #   resources :sketchfabs
-  # end
+  resources :artefacts, only: [:show, :index] 
 
-  resources :images, only: [] do
+  resources :images, only: [:show, :index] do
     member do
       get 'download'
     end
@@ -41,6 +39,7 @@ Projectmosul::Application.routes.draw do
   get 'home', to: 'pages#home', as: 'home'
   get 'gallery', to: 'pages#gallery', as: 'gallery'
   get 'press', to: 'pages#press', as: 'press'
+  get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/contact', to: 'pages#contact', as: 'contact'
   post '/emailconfirmation', to: 'pages#email', as: 'email_confirmation'
 
