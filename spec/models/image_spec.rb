@@ -29,6 +29,10 @@ describe Image do
       expect(Image.next(image_1)).to eq(image_2)
     end
 
+    it 'Image.previous image_3' do
+      expect(Image.previous(image_3)).to eq(image_2)
+    end
+
     it 'image_1.next' do
       expect(image_1.next).to eq(image_2)
     end
@@ -52,5 +56,13 @@ describe Image do
     it 'image_1.previous' do
       expect(image_1.previous).to be_nil
     end
+  end
+
+  describe 'compare' do
+    let(:image_1) { create(:image) }
+    let(:image_2) { create(:image) }
+
+    it "should compare two images"
+
   end
 end

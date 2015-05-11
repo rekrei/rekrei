@@ -1,3 +1,4 @@
+require 'json'
 module ImageTester
 
   def self.compare(images = [])
@@ -5,11 +6,10 @@ module ImageTester
     if images.empty?
       return false
     else
-      cmd = "python #{Rails.root.join("lib","python","image_test.py")} #{images[0].image.path} #{images[0].uuid} #{images[1].image.path} #{images[1].uuid}"
-      matches = IO::popen "python #{Rails.root.join("lib","python","image_test.py")} #{images[0].image.path} #{images[0].uuid} #{images[1].image.path} #{images[1].uuid}"
-      matches = system 'python', Rails.root.join("lib","python","image_test.py").to_s, images[0].image.path, images[0].uuid, images[1].image.path, images[1].uuid
+      matches = IO::popen(['python', Rails.root.join("lib","python","image_test.py").to_s, images[0].image.path.to_s, images[1].image.path.to_s])
     end
-    return matches
+    data = JSON.parse(matches.read, symbolize_names: true)
+    return data
   end
 
 end

@@ -9,4 +9,9 @@ class Image < Asset
                                     content_type: %r{image/.*}
 
   self.per_page = 16
+
+  def compare(image)
+    # results = ImageTester.compare([self, image])
+    
+  end
 end
