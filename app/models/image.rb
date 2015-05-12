@@ -11,7 +11,6 @@ class Image < Asset
   self.per_page = 16
 
   def compare(image)
-    # results = ImageTester.compare([self, image])
-    
+    ImageMatch.compare_images([self,image])    
   end
 end

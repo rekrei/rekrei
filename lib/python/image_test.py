@@ -5,7 +5,6 @@ import scipy as sp
 import time
 import random
 import sys
-import requests 
 import json
 
 debug = False
@@ -25,7 +24,6 @@ img1 = cv2.imread(sys.argv[1],0)
 img2 = cv2.imread(sys.argv[2],0) 
 t0 = time.clock()
 try:
-  # 1 / (1/0)
   surf = cv2.SURF(800)
   freakExtractor = cv2.DescriptorExtractor_create('FREAK')
   kp1 = surf.detect(img1,None)

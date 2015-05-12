@@ -4,6 +4,7 @@ class Asset < ActiveRecord::Base
 
   belongs_to :artefact
   belongs_to :reconstruction  
+  belongs_to :location
 
   has_attached_file :image, styles: {
     square: '600x360#',
@@ -18,35 +19,30 @@ class Asset < ActiveRecord::Base
   scope :assigned_to_reconstruction, -> { where('reconstruction_id IS NOT NULL') }
   scope :unmasked, -> { where('masked_image_file_name IS NULL') }
   scope :masked, -> { where('masked_image_file_name IS NOT NULL') }
+  scope :location, ->(location) { where(location: location)}
 
   def self.next(record)
-    unassigned_to_artefact.where('id > ?', record.id)
+    location(record.location)
+      .unassigned_to_reconstruction.where('id > ?', record.id)
       .limit(1)
       .order('id ASC')
       .first
   end
 
   def self.previous(record)
-    unassigned_to_artefact.where('id < ?', record.id)
+    location(record.location)
+      .unassigned_to_reconstruction.where('id < ?', record.id)
       .limit(1)
       .order('id DESC')
       .first
   end
 
-  def next(location = nil)
-    if location
-      return location.images.next(self)
-    else
-      return Image.next(self)
-    end
+  def next
+    return Image.next(self)
   end
 
-  def previous(location = nil)
-    if location
-      return location.images.previous(self)
-    else
-      return Image.previous(self)
-    end
+  def previous
+    return Image.previous(self)
   end
 
   def set_uuid_value

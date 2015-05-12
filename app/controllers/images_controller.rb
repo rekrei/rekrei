@@ -17,8 +17,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
-    @previous = @image.previous(@location)
-    @next = @image.next(@location)
+    @previous = @image.previous(@image)
+    @next = @image.next(@image)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @image }

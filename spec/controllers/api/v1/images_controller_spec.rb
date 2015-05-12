@@ -6,7 +6,7 @@ describe Api::V1::ImagesController do
   describe 'get /images' do
     render_views
     def get_images
-      FactoryGirl.create_list :image, 3
+      create_list :image, 3
       get :index, format: :json
     end
 
@@ -25,7 +25,7 @@ describe Api::V1::ImagesController do
   describe 'get images/:id' do
     render_views
     def get_image
-      @image = FactoryGirl.create :image
+      @image = FactoryGirl.create :image, :with_image
       get :show, id: @image.uuid, format: :json
       @image_response = JSON.parse(response.body, symbolize_names: true)
     end
@@ -49,7 +49,7 @@ describe Api::V1::ImagesController do
 
     it 'should assign url' do
       get_image
-      expect(@image_response[:url]).to match "http://test.host/system/images/images/000/000/#{"%03d" % @image.id}/original/test1500white.png?"
+      expect(@image_response[:url]).to match /http:\/\/test.host\/system\/images\/images\/\d{3}\/\d{3}\/\d{3}\/original\/test1500white.png\?\d{10}/
     end
 
     context 'it should assign image.artefact even when empty' do
@@ -87,4 +87,6 @@ describe Api::V1::ImagesController do
       end
     end
   end
+
+  after(:all) { Image.destroy_all }
 end
