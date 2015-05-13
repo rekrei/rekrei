@@ -72,7 +72,7 @@ describe Image do
     end
   end
 
-  describe 'image match scopes' do
+  describe 'image unmatch scopes' do
     let!(:parent_image) { create(:image) }
     let!(:comparison_image) { create(:image) }
     let!(:image_match_1){ create(:image_match, parent_image: parent_image, comparison_image: comparison_image) }
@@ -91,7 +91,25 @@ describe Image do
     it { expect(new_image.unmatched_images.count).to eq 2 }
     it { expect(new_image.unmatched_images).to include(parent_image) }
     it { expect(new_image.unmatched_images).to include(comparison_image) }
+  end
 
+  describe 'image matches scopes' do
+    let!(:image_1) { create(:image) }
+    let!(:image_2) { create(:image) }
+    let!(:image_3) { create(:image) }
+    let!(:image_4) { create(:image) }
+    let!(:image_5) { create(:image) }
+    let!(:image_6) { create(:image) }
+    let!(:image_match_1) { create(:image_match, matches: 900, parent_image: image_1, comparison_image: image_2) }
+    let!(:image_match_2) { create(:image_match, matches: 700, parent_image: image_1, comparison_image: image_4) }
+    let!(:image_match_3) { create(:image_match, matches: 800, parent_image: image_1, comparison_image: image_3) }
+    let!(:image_match_4) { create(:image_match, matches: 600, parent_image: image_1, comparison_image: image_5) }
+    let!(:image_match_5) { create(:image_match, matches: 500, parent_image: image_1, comparison_image: image_6) }
+
+    it { expect(ImageMatch.count).to eq 5 }
+    it { expect(Image.count).to eq 6 }
+    it { expect(image_1.compared_images.count).to eq 5 }
+    it { expect(image_1.compared_images).to eq([image_2, image_3, image_4, image_5, image_6])}
   end
 
   describe 'compare' do

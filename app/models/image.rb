@@ -2,10 +2,12 @@
 class Image < Asset
   # all images returned where image is parent image
   has_many :parent_matches, class_name: ImageMatch, foreign_key: :parent_image_id
+  has_many :compared_images, -> { order 'matches DESC' }, through: :parent_matches, class_name: Image, source: :comparison_image
+
   # all images where image is the compared image
   has_many :comparison_matches, class_name: ImageMatch, foreign_key: :comparison_image_id
 
-  after_save :update_matches
+  after_create :update_matches
 
   has_attached_file :masked_image, styles: {
     square: '600x360#',
