@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.0'
-gem 'sass-rails', '5.0.1'
+gem 'rails', '4.2.1'
+gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
 gem 'uglifier', '2.6.0'
 gem 'coffee-rails', '4.1.0'
@@ -55,6 +55,9 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geonames_api'
 
+# ActiveJob
+gem 'sidekiq'
+gem 'sinatra', :require => nil
 
 group :production, :staging do
   gem 'passenger'
@@ -86,6 +89,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'spring-commands-rspec'
   gem 'rspec-given'
+  gem 'rspec-activejob'
   gem 'codeclimate-test-reporter', require: nil
   gem 'rubocop', require: false
   gem 'sqlite3', '1.3.10'

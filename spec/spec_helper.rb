@@ -1,12 +1,19 @@
 require 'codeclimate-test-reporter'
+require 'rspec/active_job'
+
 CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
+  config.include(RSpec::ActiveJob)
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
+  end
+  config.after(:each) do
+    ActiveJob::Base.queue_adapter.enqueued_jobs = []
+    ActiveJob::Base.queue_adapter.performed_jobs = []
   end
 end

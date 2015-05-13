@@ -6,6 +6,7 @@ class Asset < ActiveRecord::Base
   belongs_to :reconstruction  
   belongs_to :location
 
+
   has_attached_file :image, styles: {
     square: '600x360#',
     medium: '300x300>',

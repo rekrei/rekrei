@@ -27,6 +27,10 @@ module Projectmosul
     # Test framework
     config.generators.test_framework false
 
+    # ActiveJob
+    config.active_job.queue_adapter = :sidekiq
+#     config.active_job.queue_name_prefix = Rails.env
+
     # autoload lib path
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]

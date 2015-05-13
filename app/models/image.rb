@@ -1,5 +1,12 @@
 # Inherited from Asset, image specific attachments
 class Image < Asset
+  # all images returned where image is parent image
+  has_many :parent_matches, class_name: ImageMatch, foreign_key: :parent_image_id
+  # all images where image is the compared image
+  has_many :comparison_matches, class_name: ImageMatch, foreign_key: :comparison_image_id
+
+  after_save :update_matches
+
   has_attached_file :masked_image, styles: {
     square: '600x360#',
     medium: '300x300>',
@@ -10,7 +17,30 @@ class Image < Asset
 
   self.per_page = 16
 
+  # scope :parent_match_images, lambda {
+  #   where('id IN (SELECT DISTINCT(parent_image_id) FROM image_matches)')
+  # }
+
+  scope :parent_match_images, -> { joins(:parent_matches) }
+  scope :comparison_match_images, -> { joins(:comparison_matches) }
+  scope :matched, -> { 
+    joins(:parent_matches, :comparison_matches).uniq
+  }
+  scope :unmatched, -> {
+    where.not(id: ImageMatch.pluck(:parent_image_id, :comparison_image_id).flatten.uniq )
+  }
+
+  scope :unmatched_for_image, ->(image) { where.not(id: image.parent_matches.pluck(:comparison_image_id).concat([image.id]).flatten.uniq) }
+
+  def unmatched_images
+    Image.unmatched_for_image(self)
+  end
+
   def compare(image)
     ImageMatch.compare_images([self,image])    
+  end
+
+  def update_matches
+    QueueUnmatchedImagesJob.perform_later image: self
   end
 end

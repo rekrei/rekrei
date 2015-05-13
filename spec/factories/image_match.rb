@@ -4,6 +4,6 @@ FactoryGirl.define do
     has_error false
     time_to_match 0.101
     parent_image { create(:image) }
-    comparison_image { crate(:image) }
+    comparison_image { create(:image) }
   end
 end

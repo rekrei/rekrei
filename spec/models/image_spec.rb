@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe Image do
+  it { should have_many(:parent_matches) }
+  it { should have_many(:comparison_matches) }
+
   describe 'images related to reconstruction' do
     let(:image) { create(:image) }
     let(:image_belonging_to_reconstruction) { create(:image, :with_reconstruction) }
@@ -69,14 +72,45 @@ describe Image do
     end
   end
 
+  describe 'image match scopes' do
+    let!(:parent_image) { create(:image) }
+    let!(:comparison_image) { create(:image) }
+    let!(:image_match_1){ create(:image_match, parent_image: parent_image, comparison_image: comparison_image) }
+    let!(:image_match_2){ create(:image_match, parent_image: comparison_image, comparison_image: parent_image) }    
+    let!(:new_image){ create(:image) }
+
+    # the two image matches above will create two images each
+    it { expect(Image.count).to eq(3) }
+    it { expect(ImageMatch.count).to eq(2) }
+    it { expect(Image.parent_match_images.count).to eq(2) } 
+    it { expect(Image.comparison_match_images.count).to eq(2) } 
+    it { expect(Image.matched.count).to eq(2) }
+    it { expect(Image.unmatched.count).to eq(1) }
+
+    # find images that haven't been matched against another
+    it { expect(new_image.unmatched_images.count).to eq 2 }
+    it { expect(new_image.unmatched_images).to include(parent_image) }
+    it { expect(new_image.unmatched_images).to include(comparison_image) }
+
+  end
+
   describe 'compare' do
     let(:image_1) { create(:image) }
     let(:image_2) { create(:image) }
+    let!(:existing_image) { create(:image) }
+    let(:new_image) { build(:image) }
 
     it "should create two new table entries upon comparison" do
       expect {
         image_1.compare(image_2)
       }.to change(ImageMatch, :count).by(2)
+    end
+
+    it "should create image matches after creating" do
+      expect {
+        expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 1
+        new_image.save
+      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
     end
   end
 end
