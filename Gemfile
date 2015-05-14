@@ -94,6 +94,8 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'sqlite3', '1.3.10'
   gem 'faker'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 # Devise: https://github.com/plataformatec/devise

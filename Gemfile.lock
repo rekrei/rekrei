@@ -388,6 +388,9 @@ GEM
       tilt (>= 1.3, < 3)
     slop (3.6.0)
     sorcerer (1.0.2)
+    spring (1.3.6)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (3.1.0)
       rack (~> 1.0)
     sprockets-rails (2.3.1)
@@ -487,6 +490,8 @@ DEPENDENCIES
   sidekiq
   sinatra
   sketchfably!
+  spring
+  spring-commands-rspec
   sqlite3 (= 1.3.10)
   therubyracer
   turbolinks (= 2.5.3)
