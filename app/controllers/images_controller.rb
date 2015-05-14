@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_location, except: [:download]
+  before_action :set_user, only: [:create]
   before_action :require_admin!, only: [:destroy]
   before_action :authenticate_user!, except: [:show, :index, :download]
   before_action :set_image, only: [:show, :edit, :update, :destroy]
@@ -17,6 +18,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @user = @image.user
     @previous = @image.previous(@location)
     @next = @image.next(@location)
     respond_to do |format|
@@ -39,7 +41,8 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = @location.images.create(image_params)
+    save_params = image_params.merge({ user_id: @user.id })
+    @image = @location.images.create(save_params)
     if @image.save
       # send success header
       render json: { message: 'success', fileID: @image.id }, status: 200
@@ -93,6 +96,9 @@ class ImagesController < ApplicationController
   end
 
   private
+  def set_user
+    @user = current_user
+  end
 
   def set_location
     @location = Location.friendly.find(params[:location_id])
@@ -103,6 +109,6 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:reconstruction_id, :image)
+    params.require(:image).permit(:user_id, :reconstruction_id, :image)
   end
 end
