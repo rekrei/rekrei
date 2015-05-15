@@ -127,6 +127,7 @@ describe Image do
 
     it "should create two new table entries upon comparison" do
       expect {
+        allow(ImageTester).to receive(:compare).and_return({:matches=>1000, :error=>false, :time=>0.201})
         image_1.compare(image_2)
       }.to change(ImageMatch, :count).by(2)
     end

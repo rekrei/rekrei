@@ -11,6 +11,7 @@ RSpec.describe MatchImageJob, type: :job do
 
     it "should create image matches for image" do
       expect { 
+        allow(ImageTester).to receive(:compare).and_return({:matches=>1000, :error=>false, :time=>0.201})
         MatchImageJob.perform_now image: unmatched_image, unmatched_image: image_match.parent_image
       }.to change(ImageMatch, :count).by(2)
     end
