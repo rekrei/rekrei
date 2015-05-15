@@ -2,7 +2,7 @@
 class Image < Asset
   # all images returned where image is parent image
   has_many :parent_matches, class_name: ImageMatch, foreign_key: :parent_image_id
-  has_many :compared_images, -> { order 'matches DESC' }, through: :parent_matches, class_name: Image, source: :comparison_image
+  has_many :compared_images, -> (image) { where('image_matches.location_id = ?', image.location_id).order 'matches DESC' }, through: :parent_matches, class_name: Image, source: :comparison_image
 
   # all images where image is the compared image
   has_many :comparison_matches, class_name: ImageMatch, foreign_key: :comparison_image_id
@@ -32,7 +32,7 @@ class Image < Asset
     where.not(id: ImageMatch.pluck(:parent_image_id, :comparison_image_id).flatten.uniq )
   }
 
-  scope :unmatched_for_image, ->(image) { where.not(id: image.parent_matches.pluck(:comparison_image_id).concat([image.id]).flatten.uniq) }
+  scope :unmatched_for_image, ->(image) { where(location: image.location).where.not(id: image.parent_matches.pluck(:comparison_image_id).concat([image.id]).flatten.uniq) }
 
   def unmatched_images
     Image.unmatched_for_image(self)

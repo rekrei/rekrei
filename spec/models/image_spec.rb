@@ -73,19 +73,21 @@ describe Image do
   end
 
   describe 'image unmatch scopes' do
-    let!(:parent_image) { create(:image) }
-    let!(:comparison_image) { create(:image) }
-    let!(:image_match_1){ create(:image_match, parent_image: parent_image, comparison_image: comparison_image) }
-    let!(:image_match_2){ create(:image_match, parent_image: comparison_image, comparison_image: parent_image) }    
-    let!(:new_image){ create(:image) }
+    let!(:location) { create(:location) }
+    let!(:parent_image) { create(:image, location: location) }
+    let!(:comparison_image) { create(:image, location: location) }
+    let!(:image_match_1){ create(:image_match, parent_image: parent_image, comparison_image: comparison_image, location: location) }
+    let!(:image_match_2){ create(:image_match, parent_image: comparison_image, comparison_image: parent_image, location: location) }    
+    let!(:new_image){ create(:image, location: location) }
+    let!(:new_image_from_another_location){ create(:image) }
 
     # the two image matches above will create two images each
-    it { expect(Image.count).to eq(3) }
+    it { expect(Image.count).to eq(4) }
     it { expect(ImageMatch.count).to eq(2) }
     it { expect(Image.parent_match_images.count).to eq(2) } 
     it { expect(Image.comparison_match_images.count).to eq(2) } 
     it { expect(Image.matched.count).to eq(2) }
-    it { expect(Image.unmatched.count).to eq(1) }
+    it { expect(Image.unmatched.count).to eq(2) }
 
     # find images that haven't been matched against another
     it { expect(new_image.unmatched_images.count).to eq 2 }
@@ -94,29 +96,34 @@ describe Image do
   end
 
   describe 'image matches scopes' do
-    let!(:image_1) { create(:image) }
-    let!(:image_2) { create(:image) }
-    let!(:image_3) { create(:image) }
-    let!(:image_4) { create(:image) }
-    let!(:image_5) { create(:image) }
-    let!(:image_6) { create(:image) }
-    let!(:image_match_1) { create(:image_match, matches: 900, parent_image: image_1, comparison_image: image_2) }
-    let!(:image_match_2) { create(:image_match, matches: 700, parent_image: image_1, comparison_image: image_4) }
-    let!(:image_match_3) { create(:image_match, matches: 800, parent_image: image_1, comparison_image: image_3) }
-    let!(:image_match_4) { create(:image_match, matches: 600, parent_image: image_1, comparison_image: image_5) }
-    let!(:image_match_5) { create(:image_match, matches: 500, parent_image: image_1, comparison_image: image_6) }
+    let!(:location_1) { create(:location) }
+    let!(:location_2) { create(:location) }
+    let!(:image_1) { create(:image, location: location_1) }
+    let!(:image_2) { create(:image, location: location_1) }
+    let!(:image_3) { create(:image, location: location_1) }
+    let!(:image_4) { create(:image, location: location_1) }
+    let!(:image_5) { create(:image, location: location_1) }
+    let!(:image_6) { create(:image, location: location_1) }
+    let!(:image_7) { create(:image, location: location_2) }
+    let!(:image_match_1) { create(:image_match, matches: 900, parent_image: image_1, comparison_image: image_2, location: location_1) }
+    let!(:image_match_2) { create(:image_match, matches: 700, parent_image: image_1, comparison_image: image_4, location: location_1) }
+    let!(:image_match_3) { create(:image_match, matches: 800, parent_image: image_1, comparison_image: image_3, location: location_1) }
+    let!(:image_match_4) { create(:image_match, matches: 600, parent_image: image_1, comparison_image: image_5, location: location_1) }
+    let!(:image_match_5) { create(:image_match, matches: 500, parent_image: image_1, comparison_image: image_6, location: location_1) }
+    let!(:image_match_6) { create(:image_match, matches: 500, parent_image: image_1, comparison_image: image_6, location: location_2) }
 
-    it { expect(ImageMatch.count).to eq 5 }
-    it { expect(Image.count).to eq 6 }
+    it { expect(ImageMatch.count).to eq 6 }
+    it { expect(Image.count).to eq 7 }
     it { expect(image_1.compared_images.count).to eq 5 }
     it { expect(image_1.compared_images).to eq([image_2, image_3, image_4, image_5, image_6])}
   end
 
   describe 'compare' do
-    let(:image_1) { create(:image) }
-    let(:image_2) { create(:image) }
-    let!(:existing_image) { create(:image) }
-    let(:new_image) { build(:image) }
+    let(:location) { create(:location) }
+    let(:image_1) { create(:image, location: location) }
+    let(:image_2) { create(:image, location: location) }
+    let!(:existing_image) { create(:image, location: location) }
+    let(:new_image) { build(:image, location: location) }
 
     it "should create two new table entries upon comparison" do
       expect {

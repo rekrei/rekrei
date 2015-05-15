@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511220333) do
+ActiveRecord::Schema.define(version: 20150514214940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,9 +72,11 @@ ActiveRecord::Schema.define(version: 20150511220333) do
     t.binary   "has_error"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "location_id"
   end
 
   add_index "image_matches", ["comparison_image_id"], name: "index_image_matches_on_comparison_image_id", using: :btree
+  add_index "image_matches", ["location_id"], name: "index_image_matches_on_location_id", using: :btree
   add_index "image_matches", ["parent_image_id"], name: "index_image_matches_on_parent_image_id", using: :btree
 
   create_table "locations", force: :cascade do |t|

@@ -1,6 +1,7 @@
 class Location < ActiveRecord::Base
   has_many :reconstructions
   has_many :images, dependent: :destroy
+  has_many :image_matches
   extend FriendlyId
   friendly_id :name, use: :slugged
   

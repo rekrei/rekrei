@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe MatchImageJob, type: :job do
   context "match image job should create image matches" do
-    let!(:image_match) { create(:image_match) }
-    let!(:unmatched_image) { create(:image) }
+    let!(:location) { create(:location) }
+    let!(:image_match) { create(:image_match, location: location) }
+    let!(:unmatched_image) { create(:image, location: location) }
 
     it { expect(Image.count).to eq 3 }
     it { expect(unmatched_image.unmatched_images.count).to eq 2 }

@@ -17,8 +17,9 @@ RSpec.describe QueueUnmatchedImagesJob, type: :job do
   end
 
   context "queue match image jobs" do
-    let!(:image_matches) { create_list(:image_match, 5) }
-    let!(:image){ build(:image) }
+    let!(:location) { create(:location) }
+    let!(:image_matches) { create_list(:image_match, 5, location: location) }
+    let!(:image){ build(:image, location: location) }
 
     it { expect(Image.count).to eq 10 }
     it { expect(ImageMatch.count).to eq 5 }
