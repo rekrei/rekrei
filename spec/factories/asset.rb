@@ -8,11 +8,15 @@ FactoryGirl.define do
                           'files', 'test1500white.png'), 'image/png')
       end
     end
+
+    trait :with_reconstruction do
+      after(:create) do |instance|
+        create :asset_relation, :with_reconstruction, asset: instance
+      end
+    end
+
     trait :with_artefact do
       artefact
-    end
-    trait :with_reconstruction do
-      reconstruction
     end
   end
 end

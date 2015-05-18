@@ -3,10 +3,13 @@ require 'rails_helper'
 describe Image do
   it { should have_many(:parent_matches) }
   it { should have_many(:comparison_matches) }
+  it { should have_one :location }
+  it { should have_one :reconstruction }
 
   describe 'images related to reconstruction' do
-    let(:image) { create(:image) }
-    let(:image_belonging_to_reconstruction) { create(:image, :with_reconstruction) }
+    let!(:image) { create(:image) }
+    let!(:image_belonging_to_reconstruction) { create(:image) }
+    let!(:image_relation) { create(:asset_relation, :with_reconstruction, asset: image_belonging_to_reconstruction) }
 
     it '.assigned_to_reconstruction' do
       expect(Image.location(image_belonging_to_reconstruction.location).assigned_to_reconstruction).to eq([image_belonging_to_reconstruction])
@@ -38,38 +41,18 @@ describe Image do
     let!(:image_2) { create(:image, location: location) }
     let!(:image_3) { create(:image, location: location) }
     let!(:image_4) { create(:image, :with_reconstruction, location: location) }
+    let!(:image_5) { create(:image) }
 
-    it 'Image.next image_1' do
-      expect(Image.next(image_1)).to eq(image_2)
-    end
-
-    it 'Image.previous image_3' do
-      expect(Image.previous(image_3)).to eq(image_2)
-    end
-
-    it 'image_1.next' do
-      expect(image_1.next).to eq(image_2)
-    end
-
-    it 'image_2.next' do
-      expect(image_2.next).to eq(image_3)
-    end
-
-    it 'image_3.next' do
-      expect(image_3.next).to be_nil
-    end
-
-    it 'image_3.previous' do
-      expect(image_3.previous).to eq(image_2)
-    end
-
-    it 'image_2.previous' do
-      expect(image_2.previous).to eq(image_1)
-    end
-
-    it 'image_1.previous' do
-      expect(image_1.previous).to be_nil
-    end
+    it { expect(Image.count).to eq 5 }
+    it { expect(Image.location(location).unassigned_to_reconstruction.count).to eq 3}
+    it { expect(Image.next(image_1)).to eq(image_2) }
+    it { expect(Image.previous(image_3)).to eq(image_2) }
+    it { expect(image_1.next).to eq(image_2) }
+    it { expect(image_2.next).to eq(image_3) }
+    it { expect(image_3.next).to be_nil }
+    it { expect(image_3.previous).to eq(image_2) }
+    it { expect(image_2.previous).to eq(image_1) }
+    it { expect(image_1.previous).to be_nil }
   end
 
   describe 'image unmatch scopes' do
