@@ -1,6 +1,6 @@
 $(document).on "page:change", ->
   if $('#gallery').length > 0
-    $.ajax(url: "https://api.sketchfab.com/v2/models?tags_filter=projectmosul").done (data) ->
+    $.ajax(url: "https://api.sketchfab.com/v2/models?tags=projectmosul").done (data) ->
       for model in data['results']
         width = 320
         height = 240
