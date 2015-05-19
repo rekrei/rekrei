@@ -4,6 +4,8 @@ $(document).on "page:change", ->
       sketchfabAPI = 'https://api.sketchfab.com/v2/models?'
       $.getJSON(sketchfabAPI,
         tags: 'projectmosul'
+        callback: ''
+        jsonp: ''
         format: 'json').done (data) ->
         $.each data.results, (i, model) ->
           if model.isPrintable == true
