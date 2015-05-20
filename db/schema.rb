@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501192201) do
+ActiveRecord::Schema.define(version: 20150513192907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,13 @@ ActiveRecord::Schema.define(version: 20150501192201) do
     t.string   "uuid"
     t.integer  "reconstruction_id"
     t.integer  "location_id"
+    t.integer  "user_id"
   end
 
   add_index "assets", ["artefact_id"], name: "index_assets_on_artefact_id", using: :btree
   add_index "assets", ["location_id"], name: "index_assets_on_location_id", using: :btree
   add_index "assets", ["reconstruction_id"], name: "index_assets_on_reconstruction_id", using: :btree
+  add_index "assets", ["user_id"], name: "index_assets_on_user_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

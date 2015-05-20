@@ -3,7 +3,8 @@ class Asset < ActiveRecord::Base
   after_initialize :set_uuid_value
 
   belongs_to :artefact
-  belongs_to :reconstruction  
+  belongs_to :reconstruction
+  belongs_to :user
 
   has_attached_file :image, styles: {
     square: '600x360#',

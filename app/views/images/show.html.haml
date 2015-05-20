@@ -26,6 +26,13 @@
         - else
           %h4
             No Artefact Assigned
+        - if @user
+          %h4
+            User:
+            = @user.username
+        - else
+          %h4
+            No User Assigned
         - modal ||= false
         - remote = modal ? true : false
         = form_for([@location,@image], remote: remote, html: {role: :form, 'data-model' => 'image'}) do |f|
