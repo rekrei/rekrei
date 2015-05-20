@@ -96,6 +96,7 @@ group :development, :test do
   gem 'faker'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'database_cleaner'
 end
 
 # Devise: https://github.com/plataformatec/devise

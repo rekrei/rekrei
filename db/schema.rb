@@ -130,20 +130,6 @@ ActiveRecord::Schema.define(version: 20150517141932) do
   add_index "sketchfabs", ["reconstruction_id"], name: "index_sketchfabs_on_reconstruction_id", using: :btree
   add_index "sketchfabs", ["user_id"], name: "index_sketchfabs_on_user_id", using: :btree
 
-  create_table "tasks", force: :cascade do |t|
-    t.string   "uuid"
-    t.datetime "completed_at"
-    t.string   "state"
-    t.integer  "taskable_id"
-    t.string   "taskable_type"
-    t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "tasks", ["taskable_type", "taskable_id"], name: "index_tasks_on_taskable_type_and_taskable_id", using: :btree
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",    null: false
     t.string   "email",                  default: "",    null: false
@@ -196,16 +182,5 @@ ActiveRecord::Schema.define(version: 20150517141932) do
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
-  create_table "votes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "votable_id"
-    t.string  "votable_type"
-    t.integer "vote"
-  end
-
-  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
-  add_index "votes", ["vote"], name: "index_votes_on_vote", using: :btree
-
   add_foreign_key "sketchfabs", "artefacts"
-  add_foreign_key "tasks", "users"
 end

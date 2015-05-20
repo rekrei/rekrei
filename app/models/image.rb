@@ -45,4 +45,10 @@ class Image < Asset
   def update_matches
     QueueUnmatchedImagesJob.perform_later image: self
   end
+
+  def self.create_with_location(params:, location:)
+    image = self.create(params)
+    image.asset_relations.create(relatable: location)
+    return image
+  end
 end
