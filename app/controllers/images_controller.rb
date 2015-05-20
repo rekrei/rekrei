@@ -39,6 +39,7 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
+    byebug
     @image = @location.images.create(image_params)
     if @image.save
       # send success header
