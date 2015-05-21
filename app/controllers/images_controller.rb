@@ -39,8 +39,7 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-
-    @image = Image.create_with_location(params: image_params, location: @location)
+    @image = @location.images.create(params: image_params)
     if @image.save
       # send success header
       render json: { message: 'success', fileID: @image.id }, status: 200
@@ -96,7 +95,6 @@ class ImagesController < ApplicationController
   private
 
   def set_location
-    byebug
     @location = Location.friendly.find(params[:location_id])
   end
 

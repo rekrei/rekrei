@@ -3,8 +3,8 @@ require 'rails_helper'
 describe Image do
   it { should have_many(:parent_matches) }
   it { should have_many(:comparison_matches) }
-  it { should have_one :location }
-  it { should have_one :reconstruction }
+  it { should belong_to :location }
+  it { should have_many :reconstructions }
 
   describe 'images related to reconstruction' do
     let!(:image) { create(:image) }

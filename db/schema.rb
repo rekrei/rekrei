@@ -29,14 +29,13 @@ ActiveRecord::Schema.define(version: 20150517141932) do
 
   create_table "asset_relations", force: :cascade do |t|
     t.integer  "asset_id"
-    t.integer  "relatable_id"
-    t.string   "relatable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "reconstruction_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "asset_relations", ["asset_id"], name: "index_asset_relations_on_asset_id", using: :btree
-  add_index "asset_relations", ["relatable_type", "relatable_id"], name: "index_asset_relations_on_relatable_type_and_relatable_id", using: :btree
+  add_index "asset_relations", ["reconstruction_id"], name: "index_asset_relations_on_reconstruction_id", using: :btree
 
   create_table "assets", force: :cascade do |t|
     t.string   "asset_type"

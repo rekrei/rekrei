@@ -32,7 +32,7 @@ class Image < Asset
     where.not(id: ImageMatch.pluck(:parent_image_id, :comparison_image_id).flatten.uniq )
   }
 
-  scope :unmatched_for_image, ->(image) { joins(:asset_relations).where("asset_relations.relatable_id = ? AND relatable_type = 'Location'", image.location.id).where.not(id: image.parent_matches.pluck(:comparison_image_id).concat([image.id]).flatten.uniq) }
+  scope :unmatched_for_image, ->(image) { location(image.location).where.not(id: image.parent_matches.pluck(:comparison_image_id).concat([image.id]).flatten.uniq) }
 
   def unmatched_images
     Image.unmatched_for_image(self)

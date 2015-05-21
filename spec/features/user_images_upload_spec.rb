@@ -6,6 +6,7 @@ describe 'User Uploads Image' do
   let(:reconstruction) { create(:reconstruction, location: location) }
 
   it "can upload images" do
+    pending
     expect {
       visit location_path(location)
       attach_file('image_image',
