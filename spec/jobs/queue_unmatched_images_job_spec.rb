@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe QueueUnmatchedImagesJob, type: :job do
+
   context "queue unmatched images" do
-    let!(:image_matches) { create_list(:image_match, 5) }
+    let!(:image_matches) { create_list(:image_match, 1) }
     let!(:image){ build(:image) }
 
-    it { expect(Image.count).to eq 10 }
-    it { expect(ImageMatch.count).to eq 5 }
-    it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 10 }
+    it { expect(Image.count).to eq 2 }
+    it { expect(ImageMatch.count).to eq 1 }
+    it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 2 }
 
     it "should enqueue image matching jobs" do
       expect { 
