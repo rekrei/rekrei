@@ -2,7 +2,10 @@ class Reconstruction < ActiveRecord::Base
   belongs_to :cover_image, class_name: Image
   belongs_to :location
 
-  has_many :images, dependent: :destroy
+  has_many :asset_relations
+  has_many :images, through: :asset_relations, dependent: :destroy, source: :asset
+
+  has_many :old_images, dependent: :destroy, class: Image
   has_many :sketchfabs, dependent: :destroy
 
   after_initialize :set_uuid_value

@@ -1,6 +1,8 @@
 # Artefact, base level model for movable heritage
 class Artefact < ActiveRecord::Base
-  has_many :images, dependent: :destroy
+  has_many :asset_relations, as: :relatable
+  has_many :images, through: :asset_relations, dependent: :destroy, source: :asset
+
   has_many :sketchfabs, dependent: :destroy
 
   after_initialize :set_uuid_value

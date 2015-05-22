@@ -1,0 +1,98 @@
+FORMAT: 1A
+HOST: http://api.projectmosul.org/
+
+# Project Mosul
+
+Project Mosul is a volunteer crowd-sourced initiative to digitally restore the heritage destroyed by the Islamic State in Northern Iraq. The API provides direct access to the images and artefacts and will be building blocks for future extensions to the site.
+
+# Project Mosul API Root [/]
+
+This resource does not have any attributes. Instead it offers the initial
+API affordances in the form of the links in the JSON body.
+
+## Retrieve the Entry Point [GET]
+
++ Response 200 (application/json)
+
+        {
+            "images_url": "/images",
+            "artefacts_url": "/artefacts"
+        }
+
+## Artefacts [/artefacts/]
+
+Returns a list of all the artefacts available
+
+## Images [/images/]
+
+Returns a list of all the images available
+
+## Image [/images/{image_uuid}]
+
+An Image object has the following attributes:
+
++ uuid
++ created_at - An ISO8601 date when the image was published.
++ updated_at - An ISO8601 date when the image was last updated.
++ url
++ artefact - A hash for the assigned artefact, if any.
+
++ Parameters
+    + image_uuid (required, uuid, `011fc522-d5ed-48d8-a754-0b1c6be4a099`) ... UUID of the Image in form of a string
+
+### View an Image Detail [GET]
+
++ Response 200 (application/json)
+
+        {
+          "created_at": "2015-03-12T22:10:00.377Z",
+          "updated_at": "2015-04-20T20:15:51.054Z",
+          "uuid": "011fc522-d5ed-48d8-a754-0b1c6be4a099",
+          "url": "http://projectmosul.org/system/images/images/000/000/008/original/MCM_Qais_Rashid_Visit_DS_May08_%28136%29.JPG?1426798649",
+          "artefact": {
+            "id": 15,
+            "uuid": "eddfa2ae-7cfe-441a-ac7b-eda912e3d867",
+            "name": "Lion Statue",
+            "uri": "http://api.projectmosul.org/artefacts/eddfa2ae-7cfe-441a-ac7b-eda912e3d867"
+          }
+        }
+
+## Artefact [/artefacts/{artefact_uuid}]
+
+An Image object has the following attributes:
+
++ uuid
++ created_at - An ISO8601 date when the image was published.
++ updated_at - An ISO8601 date when the image was last updated.
++ url
++ images - An array of assigned images, if any.
+
++ Parameters
+    + artefact_uuid (required, uuid, `eddfa2ae-7cfe-441a-ac7b-eda912e3d867`) ... UUID of the Image in form of a string
+
+### View an Artefact Detail [GET]
+
++ Response 200 (application/json)
+
+        {
+          "uuid": "eddfa2ae-7cfe-441a-ac7b-eda912e3d867",
+          "id": 15,
+          "created_at": "2015-03-12T22:09:59.172Z",
+          "updated_at": "2015-03-18T00:05:18.428Z",
+          "name": "Lion Statue",
+          "url": "http://api.projectmosul.org/artefacts/15",
+          "images": [
+            {
+              "created_at": "2015-03-12T22:10:00.377Z",
+              "updated_at": "2015-04-20T20:15:51.054Z",
+              "uuid": "011fc522-d5ed-48d8-a754-0b1c6be4a099",
+              "url": "http://projectmosul.org/system/images/images/000/000/008/original/MCM_Qais_Rashid_Visit_DS_May08_%28136%29.JPG?1426798649"
+            },
+            {
+              "created_at": "2015-03-12T22:10:01.363Z",
+              "updated_at": "2015-04-20T20:15:51.057Z",
+              "uuid": "a4e50a89-93eb-40fa-a65b-431c72e4ef92",
+              "url": "http://projectmosul.org/system/images/images/000/000/009/original/MCM_Qais_Rashid_Visit_DS_May08_%28151%29.JPG?1426798650"
+            }
+          ]
+        }

@@ -4,11 +4,14 @@ module Api
       respond_to :json
 
       def index
-        respond_with Image.all
+        @images = Image.all
       end
 
       def show
-        @image = Image.find(params[:id])
+        if @image = Image.find_by_uuid(params[:id])
+        else
+          render :json => {status: 404, error: "Image not found"}
+        end
       end
     end
   end

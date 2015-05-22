@@ -17,8 +17,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
-    @previous = @image.previous(@location)
-    @next = @image.next(@location)
+    @previous = @image.previous(@image)
+    @next = @image.next(@image)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @image }
@@ -39,8 +39,10 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = @location.images.create(image_params)
+    @image = @location.images.build(image_params)
+
     if @image.save
+      @image.reconstructions << @reconstruction if @reconstruction
       # send success header
       render json: { message: 'success', fileID: @image.id }, status: 200
     else
@@ -103,6 +105,9 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:reconstruction_id, :image)
+    if params[:reconstruction_id]
+      @reconstruction = Reconstruction.find(params[:reconstruction_id])
+    end
+    params.require(:image).permit(:image)
   end
 end

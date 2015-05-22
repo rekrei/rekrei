@@ -15,6 +15,21 @@ class ReconstructionsController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @reconstruction.update_attributes(reconstruction_params)
+        if params[:images]
+          # The magic is here ;)
+          params[:images].each do |image|
+            @reconstruction.images.create(image: image, location_id: @location.id)
+          end
+        end
+        format.html { redirect_to [@location, @reconstruction], notice: 'Reconstruction was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @reconstruction.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def new

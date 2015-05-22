@@ -1,8 +1,17 @@
 # Asset class for handling all uploads, attached files
 class Asset < ActiveRecord::Base
-  belongs_to :artefact
-  belongs_to :reconstruction
+  after_initialize :set_uuid_value
+
+  has_many :asset_relations
+  has_many :reconstructions, through: :asset_relations  
   
+  # has_one :asset_reconstruction_relation, -> { where(relatable_type: 'Reconstruction') }, class: AssetRelation
+  # has_one :reconstruction, through: :asset_reconstruction_relation, source: :relatable, source_type: 'Reconstruction'
+
+  belongs_to :artefact
+  belongs_to :location
+  belongs_to :old_reconstruction, class_name: 'Reconstruction', foreign_key: 'reconstruction_id'
+
   has_attached_file :image, styles: {
     square: '600x360#',
     medium: '300x300>',
@@ -11,39 +20,43 @@ class Asset < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: %r{image/.*}
 
   scope :assigned_to_artefact, -> { where('artefact_id IS NOT NULL') }
-  scope :unassigned_to_artefact, -> { where('artefact_id IS NULL') }
-  scope :unassigned_to_reconstruction, -> { where('reconstruction_id IS NULL') }
-  scope :assigned_to_reconstruction, -> { where('reconstruction_id IS NOT NULL') }
   scope :unmasked, -> { where('masked_image_file_name IS NULL') }
   scope :masked, -> { where('masked_image_file_name IS NOT NULL') }
+  scope :location, ->(location) { where(location: location) }
+
+  scope :assigned_to_reconstruction, -> { where(id: AssetRelation.pluck(:asset_id)) }
+  scope :unassigned_to_reconstruction, -> { where.not(id: AssetRelation.pluck(:asset_id)) }
+
 
   def self.next(record)
-    unassigned_to_artefact.where('id > ?', record.id)
+    location(record.location)
+      .unassigned_to_reconstruction.where('id > ?', record.id)
       .limit(1)
       .order('id ASC')
       .first
   end
 
   def self.previous(record)
-    unassigned_to_artefact.where('id < ?', record.id)
+    location(record.location)
+      .unassigned_to_reconstruction.where('id < ?', record.id)
       .limit(1)
       .order('id DESC')
       .first
   end
 
-  def next(location = nil)
-    if location
-      return location.images.next(self)
-    else
-      return Image.next(self)
-    end
+  def next
+    return Image.next(self)
   end
 
-  def previous(location = nil)
-    if location
-      return location.images.previous(self)
-    else
-      return Image.previous(self)
-    end
+  def previous
+    return Image.previous(self)
+  end
+
+  def set_uuid_value
+    self.uuid ||= SecureRandom.uuid
+  end
+
+  def add_uuid
+    self.uuid ||= SecureRandom.uuid
   end
 end

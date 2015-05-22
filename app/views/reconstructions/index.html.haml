@@ -35,4 +35,4 @@
         .digg_pagination
           .page_info
             = page_entries_info @reconstructions
-          = will_paginate @reconstructions
+          = will_paginate @reconstructions, param_name: 'reconstructions_page'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501192201) do
+ActiveRecord::Schema.define(version: 20150517141932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20150501192201) do
   end
 
   add_index "artefacts", ["uuid"], name: "index_artefacts_on_uuid", using: :btree
+
+  create_table "asset_relations", force: :cascade do |t|
+    t.integer  "asset_id"
+    t.integer  "reconstruction_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "asset_relations", ["asset_id"], name: "index_asset_relations_on_asset_id", using: :btree
+  add_index "asset_relations", ["reconstruction_id"], name: "index_asset_relations_on_reconstruction_id", using: :btree
 
   create_table "assets", force: :cascade do |t|
     t.string   "asset_type"
@@ -63,6 +73,21 @@ ActiveRecord::Schema.define(version: 20150501192201) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "image_matches", force: :cascade do |t|
+    t.integer  "parent_image_id"
+    t.integer  "comparison_image_id"
+    t.integer  "matches"
+    t.string   "time_to_match"
+    t.binary   "has_error"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "location_id"
+  end
+
+  add_index "image_matches", ["comparison_image_id"], name: "index_image_matches_on_comparison_image_id", using: :btree
+  add_index "image_matches", ["location_id"], name: "index_image_matches_on_location_id", using: :btree
+  add_index "image_matches", ["parent_image_id"], name: "index_image_matches_on_parent_image_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -103,20 +128,6 @@ ActiveRecord::Schema.define(version: 20150501192201) do
   add_index "sketchfabs", ["artefact_id"], name: "index_sketchfabs_on_artefact_id", using: :btree
   add_index "sketchfabs", ["reconstruction_id"], name: "index_sketchfabs_on_reconstruction_id", using: :btree
   add_index "sketchfabs", ["user_id"], name: "index_sketchfabs_on_user_id", using: :btree
-
-  create_table "tasks", force: :cascade do |t|
-    t.string   "uuid"
-    t.datetime "completed_at"
-    t.string   "state"
-    t.integer  "taskable_id"
-    t.string   "taskable_type"
-    t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "tasks", ["taskable_type", "taskable_id"], name: "index_tasks_on_taskable_type_and_taskable_id", using: :btree
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",    null: false
@@ -171,5 +182,4 @@ ActiveRecord::Schema.define(version: 20150501192201) do
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
   add_foreign_key "sketchfabs", "artefacts"
-  add_foreign_key "tasks", "users"
 end

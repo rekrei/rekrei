@@ -4,15 +4,16 @@ describe Api::V1::ImagesController do
   before(:each) { request.headers['Accept'] = "application/vnd.marketplace.v1" }
 
   describe 'get /images' do
+    render_views
     def get_images
-      FactoryGirl.create_list :image, 3
+      create_list :image, 3, :with_stubbed_image
       get :index, format: :json
     end
 
     it "returns the information about a reporter on a hash" do
       get_images
       image_response = JSON.parse(response.body, symbolize_names: true)
-      expect(image_response.count).to eql 3
+      expect(image_response[:images].count).to eql 3
     end
 
     it 'should respond with 200' do
@@ -24,15 +25,15 @@ describe Api::V1::ImagesController do
   describe 'get images/:id' do
     render_views
     def get_image
-      @image = FactoryGirl.create :image
-      get :show, id: @image.id, format: :json
+      @image = create :image, :with_stubbed_image
+      get :show, id: @image.uuid, format: :json
       @image_response = JSON.parse(response.body, symbolize_names: true)
     end
 
     def get_image_with_artefact
-      @image_with_artefact = FactoryGirl.create :image, :with_artefact
+      @image_with_artefact = create :image, :with_artefact
       @artefact = @image_with_artefact.artefact
-      get :show, id: @image_with_artefact.id, format: :json
+      get :show, id: @image_with_artefact.uuid, format: :json
       @image_with_artefact_response = JSON.parse(response.body, symbolize_names: true)
     end
 
@@ -43,12 +44,12 @@ describe Api::V1::ImagesController do
 
     it "should assign id" do
       get_image
-      expect(@image_response[:id]).to eq @image.id
+      expect(@image_response[:uuid]).to eq @image.uuid
     end
 
     it 'should assign url' do
       get_image
-      expect(@image_response[:url]).to match "http://test.host/system/images/images/000/000/#{@image.id}/original/test1500white.png?"
+      expect(@image_response[:url]).to match /http:\/\/test.host\/system\/images\/images\/\d{3}\/\d{3}\/\d{3}\/original\/test1500white.png/
     end
 
     context 'it should assign image.artefact even when empty' do
@@ -82,7 +83,7 @@ describe Api::V1::ImagesController do
       end
 
       it 'should assign artefact uri' do
-        expect(@image_with_artefact_response[:artefact][:uri]).to eq "http://api.test.host/artefacts/#{@artefact.uuid}"
+        expect(@image_with_artefact_response[:artefact][:uri]).to eq "/artefacts/#{@artefact.uuid}"
       end
     end
   end
