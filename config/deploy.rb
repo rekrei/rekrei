@@ -21,3 +21,33 @@ namespace :deploy do
     end
   end
 end
+
+namespace :sidekiq do
+  desc 'Start the sidekiq workers via Upstart'
+  task :start do
+    sudo 'start staging-worker-1'
+  end
+ 
+  desc 'Stop the sidekiq workers via Upstart'
+  task :stop do
+    sudo 'stop staging-worker-1 || true'
+  end
+ 
+  desc 'Restart the sidekiq workers via Upstart'
+  task :restart do
+    sudo 'stop staging-worker-1 || true'
+    sudo 'start staging-worker-1'
+  end
+ 
+  desc "Quiet sidekiq (stop accepting new work)"
+  task :quiet do
+    pid_file       = "#{current_path}/tmp/pids/sidekiq.pid"
+    sidekiqctl_cmd = "bundle exec sidekiqctl"
+    run "if [ -d #{current_path} ] && [ -f #{pid_file} ] && kill -0 `cat #{pid_file}`> /dev/null 2>&1; then cd #{current_path} && #{sidekiqctl_cmd} quiet #{pid_file} ; else echo 'Sidekiq is not running'; fi"
+  end
+end
+ 
+before 'deploy:update_code', 'sidekiq:quiet'
+after  'deploy:stop',        'sidekiq:stop'
+after  'deploy:start',       'sidekiq:start'
+before 'deploy:restart',     'sidekiq:restart'
