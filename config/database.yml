@@ -7,7 +7,7 @@ production:
   password: <%= ENV['DB_PASSWORD'] %>
 
 staging:
-  url: postgresql://localhost/project_mosul_staging?pool=5
+  url: <%= ENV['DATABASE_URL'] %>
 
 development:
   url: postgresql://localhost/project_mosul_development?pool=5
