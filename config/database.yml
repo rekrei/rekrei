@@ -10,7 +10,7 @@ staging:
   url: <%= ENV['DATABASE_URL'] %>
 
 development:
-  url: postgresql://localhost/project_mosul_development?pool=5
+  url: postgres://localhost/project_mosul_development?pool=5
 
 test:
   adapter: postgresql
