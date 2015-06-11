@@ -60,15 +60,15 @@ describe Image do
     let!(:parent_image) { create(:image, location: location) }
     let!(:comparison_image) { create(:image, location: location) }
     let!(:image_match_1){ create(:image_match, parent_image: parent_image, comparison_image: comparison_image, location: location) }
-    let!(:image_match_2){ create(:image_match, parent_image: comparison_image, comparison_image: parent_image, location: location) }    
+    let!(:image_match_2){ create(:image_match, parent_image: comparison_image, comparison_image: parent_image, location: location) }
     let!(:new_image){ create(:image, location: location) }
     let!(:new_image_from_another_location){ create(:image) }
 
     # the two image matches above will create two images each
     it { expect(Image.count).to eq(4) }
     it { expect(ImageMatch.count).to eq(2) }
-    it { expect(Image.parent_match_images.count).to eq(2) } 
-    it { expect(Image.comparison_match_images.count).to eq(2) } 
+    it { expect(Image.parent_match_images.count).to eq(2) }
+    it { expect(Image.comparison_match_images.count).to eq(2) }
     it { expect(Image.matched.count).to eq(2) }
     it { expect(Image.unmatched.count).to eq(2) }
 

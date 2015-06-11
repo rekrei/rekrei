@@ -3,6 +3,11 @@ class Location < ActiveRecord::Base
   has_many :reconstructions, -> { uniq }, through: :images
 
   has_many :image_matches
+
+  validates :name, presence: true
+  validates :lat, presence: true
+  validates :long, presence: true
+
   extend FriendlyId
   friendly_id :name, use: :slugged
   

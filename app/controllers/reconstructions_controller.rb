@@ -9,6 +9,7 @@ class ReconstructionsController < ApplicationController
   end
 
   def show
+    @comparison_images = @reconstruction.show_cover_image.compared_images
   end
 
   def edit
@@ -33,21 +34,19 @@ class ReconstructionsController < ApplicationController
   end
 
   def new
-    @reconstruction = @location.reconstructions.new
+    @image = Image.find(params[:image_id])
+    @reconstruction = Reconstruction.new(cover_image: @image, location: @location)
   end
 
   def create
-    @reconstruction = @location.reconstructions.new(reconstruction_params)
+    @image = Image.find(reconstruction_params[:cover_image_id])
+    @reconstruction = Reconstruction.new reconstruction_params
+    @reconstruction.location = @location
+    @reconstruction.cover_image = @image
+
     respond_to do |format|
       if @reconstruction.save
-
-        if params[:images]
-          # The magic is here ;)
-          params[:images].each do |image|
-            @reconstruction.images.create(image: image, location_id: @location.id)
-          end
-        end
-
+        @reconstruction.asset_relations.create(asset: @image)
         format.html { redirect_to [@location, @reconstruction], notice: 'Reconstruction was successfully created.' }
         format.json { render json: @reconstruction, status: :created, location: @reconstruction }
       else
@@ -67,6 +66,6 @@ class ReconstructionsController < ApplicationController
   end
 
   def reconstruction_params
-    params.require(:reconstruction).permit(:name, :description, :images)
+    params.require(:reconstruction).permit(:name, :description, :images, :cover_image_id)
   end
 end

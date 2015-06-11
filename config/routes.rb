@@ -1,18 +1,18 @@
 require 'sidekiq/web'
 Projectmosul::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
+
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
-  
+
   #API
   namespace :api, defaults: {format: 'json'},
                             constraints: { subdomain: ['api', 'api.staging'] },
                             path: '/' do
     scope module: :v1,
                   constraints: ApiConstraints.new(version: 1, default: true) do
-      root 'base#index'                  
+      root 'base#index'
       resources :images, only: [:index, :show]
       resources :artefacts, only: [:index, :show]
     end
@@ -30,9 +30,12 @@ Projectmosul::Application.routes.draw do
 
   resources :reconstructions, only: [] do
     resources :sketchfabs, only: [:new, :create]
+    resources :asset_relations, only: [:create]
   end
 
-  resources :artefacts, only: [:show, :index] 
+  resources :asset_relations, only: [:destroy]
+
+  resources :artefacts, only: [:show, :index]
 
   resources :images, only: [:show, :index] do
     member do

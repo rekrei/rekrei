@@ -3,7 +3,7 @@
   .container
     .row
       .col-sm-6
-        %h1 
+        %h1
           = @reconstruction.name.upcase
       .col-sm-3
         %h1
@@ -28,26 +28,34 @@
         %h3 Reconstruction Description
         %p
           = @reconstruction.description
-    %h3 
+    %h3
       3D Models
       = link_to 'Add 3D Model', new_reconstruction_sketchfab_path(@reconstruction)
     .row
       - @reconstruction.sketchfabs.each do |sketchfab|
         .col-md-4
           = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
-        
+
     %h3 Reconstruction Photos
     .row
       - @reconstruction.images.each do |image|
-        .col-md-4.col-sm-6
-          .portfolio-item
-            .portfolio-image
+        .col-md-3.col-sm-6
+          .shop-item
+            .shop-item-image
               = image_tag(image.image.url(:square))
-              .portfolio-info-fade
-                %ul
-                  %li.portfolio-project-name Download
-                  %li.read-more
-                    = link_to download_image_path(image) do
-                      <i class="fa fa-download"> Original</i>        
-= render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}            
-                      
+            .actions
+              = link_to download_image_path(image) do
+                <i class="fa fa-download"> Original</i>
+    .row
+      - if @comparison_images
+        %h3 Possible Related Images
+      - @comparison_images.each do |comparison_image|
+        .col-md-3.col-sm-6
+          .shop-item
+            .shop-item-image
+              = image_tag(comparison_image.image.url(:square))
+            .actions
+              = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn-small' do
+                <i class="fa fa-plus-square"> Add Image</i>
+
+= render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}
