@@ -25,9 +25,8 @@ class AssetRelationsController < ApplicationController
   def destroy
     respond_to do |format|
       if @asset_relation = AssetRelation.find(params[:id])
-        @locaiton = @asset_relation.try(:asset).try(:location)
-        @reconstruction = @asset_relation.reconstruction
         @asset_relation_id = @asset_relation.id
+        @reconstruction = @asset_relation.reconstruction
         @asset_relation.destroy
         format.html do
           redirect_to [@reconstruction.location, @reconstruction], notice: 'Asset Removed from Reconstruction'

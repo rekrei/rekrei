@@ -9,7 +9,7 @@ class ReconstructionsController < ApplicationController
   end
 
   def show
-    @comparison_images = @reconstruction.show_cover_image.compared_images
+    @comparison_images = @reconstruction.show_cover_image.compared_images.exclude_in_reconstruction(@reconstruction)
   end
 
   def edit
