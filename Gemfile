@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.3'
 gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
 gem 'uglifier', '2.6.0'
@@ -97,6 +97,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
+  gem 'simplecov', :require => false
 end
 
 # Devise: https://github.com/plataformatec/devise
