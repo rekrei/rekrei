@@ -70,6 +70,7 @@ group :development, :test do
   gem 'capistrano-passenger'
   gem 'capistrano-maintenance', github: 'capistrano/maintenance', require: false
   gem 'capistrano-rails-console'
+  gem 'capistrano-sidekiq'
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
 
