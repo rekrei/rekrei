@@ -5,7 +5,7 @@ class Reconstruction < ActiveRecord::Base
   has_many :asset_relations
   has_many :images, -> { uniq }, through: :asset_relations, dependent: :destroy, source: :asset
 
-  has_many :old_images, dependent: :destroy, class: Image
+  has_many :old_images, dependent: :destroy, class_name: Image
   has_many :sketchfabs, dependent: :destroy
 
   after_initialize :set_uuid_value
