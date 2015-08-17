@@ -6,7 +6,12 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = @location.images.unassigned_to_reconstruction.paginate(page: params[:page])
+    if params[:show] == "all"
+      @images = @location.images.paginate(page: params[:page])
+      @all = true
+    else
+      @images = @location.images.unassigned_to_reconstruction.paginate(page: params[:page])
+    end
     @image = @location.images.new
     respond_to do |format|
       format.html # index.html.erb

@@ -16,6 +16,7 @@
             - else
               = Image.unassigned_to_reconstruction.count
           = link_to "Sort Photos", location_images_path(location), class: "btn" if location
+          = link_to "See all Photos", location_images_path(location, show: "all"), class: "btn" if location
       .col-md-4.col-sm-6
         .service-wrapper
           %i.fa.fa-magic.fa-5x
@@ -28,7 +29,7 @@
               = location.images.unmasked.count
             - else
               = Image.unmasked.count
-          - if location  
+          - if location
             .btn
               Coming soon!
           =# link_to "Mask Photos", location_images_path(location), class: "btn" if location

@@ -38,14 +38,20 @@
 
     %h3 Reconstruction Photos
     .row
-      - @reconstruction.images.each do |image|
+      - @reconstruction.asset_relations.each do |asset_relation|
         .col-md-3.col-sm-6
           .shop-item
             .shop-item-image
-              = image_tag(image.image.url(:square))
+              = image_tag(asset_relation.asset.image.url(:square))
             .actions
-              = link_to download_image_path(image) do
-                <i class="fa fa-download"> Original</i>
+              .row
+                .col-md-6
+                  = link_to download_image_path(asset_relation.asset), class: 'btn btn-small' do
+                    <i class="fa fa-download"> Original</i>
+                .col-md-6
+                  - unless asset_relation.asset.id == @reconstruction.cover_image_id
+                    = link_to asset_relation_path(asset_relation), method: :delete, class: 'btn btn-small' do
+                      <i class="fa fa-minus-square"> Remove</i>
     .row
       - if @comparison_images
         %h3 Possible Related Images
@@ -55,7 +61,7 @@
             .shop-item-image
               = image_tag(comparison_image.image.url(:square))
             .actions
-              = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn-small' do
-                <i class="fa fa-plus-square"> Add Image</i>
+              = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn btn-small' do
+                <i class="fa fa-plus-square"> Add</i>
 
 = render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}
