@@ -122,4 +122,31 @@ describe Image do
       }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
     end
   end
+
+  describe 'scoping asset relations relating to reconstruction' do
+    let!(:location){ create(:location) }
+    let!(:reconstruction){ create(:reconstruction, location: location) }
+    let!(:image) { create(:image, location: location) }
+    let!(:asset_relation) { create(:asset_relation, :with_reconstruction, reconstruction: reconstruction, asset: image) }
+    let!(:other_images) { create_list(:image, 3, location: location) }
+    let!(:image_match_1) { create(:image_match, parent_image: other_images.first, comparison_image: other_images.third, location: location) }
+    let!(:image_match_2) { create(:image_match, parent_image: other_images.first, comparison_image: other_images.second, location: location) }
+    let!(:image_match_3) { create(:image_match, parent_image: other_images.first, comparison_image: image, location: location) }
+    let!(:image_match_4) { create(:image_match, parent_image: other_images.second, comparison_image: other_images.first, location: location) }
+    let!(:image_match_5) { create(:image_match, parent_image: other_images.second, comparison_image: other_images.third, location: location) }
+    let!(:image_match_6) { create(:image_match, parent_image: other_images.second, comparison_image: image, location: location) }
+    let!(:image_match_7) { create(:image_match, parent_image: image, comparison_image: other_images.first, location: location) }
+    let!(:image_match_8) { create(:image_match, parent_image: image, comparison_image: other_images.second, location: location) }
+    let!(:image_match_9) { create(:image_match, parent_image: image, comparison_image: other_images.third, location: location) }
+    let!(:asset_relation_2) { create(:asset_relation, :with_reconstruction, reconstruction: reconstruction, asset: other_images.third) }
+
+    it { expect(location.images.count).to eq 4 }
+    it { expect(location.images).to include image }
+    it { expect(location.images).to include other_images.first }
+    it { expect(location.images).to include other_images.second }
+    it { expect(location.images).to include other_images.third }
+    it { expect(reconstruction.show_cover_image.compared_images.count).to eq 3 }
+    it { expect(reconstruction.show_cover_image.compared_images.exclude_in_reconstruction(reconstruction).count).to eq 2 }
+
+  end
 end

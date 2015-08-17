@@ -49,6 +49,16 @@ describe AssetRelationsController do
 
       it { is_expected.to change(AssetRelation, :count).by(1) }
     end
+
+    describe 'remove image from reconstruciton' do
+      let!(:reconstruction) { create(:reconstruction) }
+      let!(:asset) { create(:image) }
+      let!(:asset_relation) { create(:asset_relation, :with_reconstruction, reconstruction: reconstruction, asset: asset) }
+
+      subject(:delete_reconstruction_asset) { -> { delete :destroy, id: asset_relation.id } }
+
+      it { is_expected.to change(AssetRelation, :count).by(-1) }
+    end
   end
 
 end
