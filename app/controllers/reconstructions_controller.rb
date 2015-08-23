@@ -19,6 +19,9 @@ class ReconstructionsController < ApplicationController
   def update
     respond_to do |format|
       if @reconstruction.update_attributes(reconstruction_params)
+        @image = Image.find(reconstruction_params[:cover_image_id])
+        @reconstruction.cover_image = @image
+
         if params[:images]
           # The magic is here ;)
           params[:images].each do |image|
