@@ -13,6 +13,7 @@ class ReconstructionsController < ApplicationController
   end
 
   def edit
+    @image = @reconstruction.cover_image
   end
 
   def update
