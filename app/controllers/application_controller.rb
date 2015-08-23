@@ -46,11 +46,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Redirects on successful sign in
-  def after_sign_in_path_for(_resource)
-    root_path
-  end
-
   # Auto-sign out locked users
   def reject_locked!
     if current_user && current_user.locked?
