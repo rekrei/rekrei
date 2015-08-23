@@ -8,7 +8,7 @@
         - @reconstruction.errors.full_messages.each do |message|
           %li= message
   .form-group
-    = f.hidden_field :cover_image_id, value: @image.id
+    = f.hidden_field :cover_image_id, value: @image.id if @image
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
