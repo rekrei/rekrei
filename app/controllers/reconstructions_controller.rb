@@ -9,7 +9,9 @@ class ReconstructionsController < ApplicationController
   end
 
   def show
-    @comparison_images = @reconstruction.show_cover_image.compared_images.exclude_in_reconstruction(@reconstruction)
+    unless @reconstruction.show_cover_image.nil?
+      @comparison_images = @reconstruction.show_cover_image.compared_images.exclude_in_reconstruction(@reconstruction)
+    end
   end
 
   def edit
@@ -22,7 +24,7 @@ class ReconstructionsController < ApplicationController
         @image = Image.find(reconstruction_params[:cover_image_id])
         @reconstruction.cover_image = @image
         @reconstruction.save
-        
+
         if params[:images]
           # The magic is here ;)
           params[:images].each do |image|
