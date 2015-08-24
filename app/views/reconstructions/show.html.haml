@@ -55,13 +55,13 @@
     .row
       - if @comparison_images
         %h3 Possible Related Images
-      - @comparison_images.each do |comparison_image|
-        .col-md-3.col-sm-6
-          .shop-item
-            .shop-item-image
-              = image_tag(comparison_image.image.url(:square))
-            .actions
-              = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn btn-small' do
-                <i class="fa fa-plus-square"> Add</i>
+        - @comparison_images.each do |comparison_image|
+          .col-md-3.col-sm-6
+            .shop-item
+              .shop-item-image
+                = image_tag(comparison_image.image.url(:square))
+              .actions
+                = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn btn-small' do
+                  <i class="fa fa-plus-square"> Add</i>
 
 = render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}
