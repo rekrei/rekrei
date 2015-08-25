@@ -1,4 +1,6 @@
 require 'airbrake/capistrano3'
+require 'byebug'
+require 'capistrano/sidekiq'
 
 # config valid only for current version of Capistrano
 lock '3.3.5'
@@ -13,6 +15,8 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 set :keep_releases, 5
 
+# set :sidekiq_worker, -> { fetch(:sidekiq_worker) }
+
 after 'deploy:finished', 'airbrake:deploy'
 
 namespace :deploy do
@@ -21,3 +25,6 @@ namespace :deploy do
     end
   end
 end
+
+before 'deploy:updating', 'sidekiq:quiet'
+before 'deploy:restart',  'sidekiq:restart'

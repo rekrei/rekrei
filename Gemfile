@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.3'
 gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
 gem 'uglifier', '2.6.0'
@@ -46,7 +46,7 @@ gem 'newrelic_rpm'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
-
+gem 'flickr_fu'
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
@@ -70,6 +70,7 @@ group :development, :test do
   gem 'capistrano-passenger'
   gem 'capistrano-maintenance', github: 'capistrano/maintenance', require: false
   gem 'capistrano-rails-console'
+  gem 'capistrano-sidekiq'
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
 
@@ -97,6 +98,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
+  gem 'simplecov', :require => false
 end
 
 # Devise: https://github.com/plataformatec/devise
