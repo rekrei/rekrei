@@ -135,7 +135,7 @@
     function loadCurrentMarker() {
       var marker = new google.maps.Marker({
         map: map,
-        title: "#{@location.name}",
+        title: "#{h @location.name}",
         position: new google.maps.LatLng(#{@location.lat}, #{@location.long}),
         draggable: true
       });

@@ -9,6 +9,7 @@ class ReconstructionsController < ApplicationController
   end
 
   def show
+    @images = @location.images.exclude_in_reconstruction(@reconstruction).paginate per_page: 16, page: params[:all_images_page]
     unless @reconstruction.show_cover_image.nil?
       @comparison_images = @reconstruction.show_cover_image.compared_images.exclude_in_reconstruction(@reconstruction)
     end

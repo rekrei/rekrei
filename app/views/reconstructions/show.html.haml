@@ -31,7 +31,7 @@
     %h3
       3D Models
       = link_to 'Add 3D Model', new_reconstruction_sketchfab_path(@reconstruction)
-    .row
+    .row.mt30
       - @reconstruction.sketchfabs.each do |sketchfab|
         .col-md-4
           = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
@@ -52,7 +52,7 @@
                   - unless asset_relation.asset.id == @reconstruction.cover_image_id
                     = link_to asset_relation_path(asset_relation), method: :delete, class: 'btn btn-small' do
                       <i class="fa fa-minus-square"> Remove</i>
-    .row
+    .row.mt30
       - if @comparison_images
         %h3 Possible Related Images
         - @comparison_images.each do |comparison_image|
@@ -63,5 +63,22 @@
               .actions
                 = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn btn-small' do
                   <i class="fa fa-plus-square"> Add</i>
+    .row.mt30
+      - if @images
+        %h3 All Images at Location
+        - @images.each do |image|
+          .col-md-3.col-sm-6
+            .shop-item
+              .shop-item-image
+                = image_tag(image.image.url(:square))
+              .actions
+                = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: image.id), method: :post, class: 'btn btn-small' do
+                  <i class="fa fa-plus-square"> Add</i>
+    .row
+      .col-md-12
+        .digg_pagination
+          .page_info
+            = page_entries_info @images
+          = will_paginate @images, param_name: 'all_images_page'
 
 = render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}
