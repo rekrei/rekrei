@@ -25,7 +25,7 @@ class Image < Asset
 
   scope :parent_match_images, -> { joins(:parent_matches) }
   scope :comparison_match_images, -> { joins(:comparison_matches) }
-  scope :matched, -> { 
+  scope :matched, -> {
     joins(:parent_matches, :comparison_matches).uniq
   }
   scope :unmatched, -> {
@@ -33,13 +33,14 @@ class Image < Asset
   }
 
   scope :unmatched_for_image, ->(image) { location(image.location).where.not(id: image.parent_matches.pluck(:comparison_image_id).concat([image.id]).flatten.uniq) }
+  scope :exclude_in_reconstruction, -> (reconstruction) { where.not(id: AssetRelation.where(reconstruction: reconstruction).pluck(:asset_id)) }
 
   def unmatched_images
     Image.unmatched_for_image(self)
   end
 
   def compare(image)
-    ImageMatch.compare_images([self,image])    
+    ImageMatch.compare_images([self,image])
   end
 
   def update_matches

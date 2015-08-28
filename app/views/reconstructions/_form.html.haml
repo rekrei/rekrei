@@ -8,14 +8,13 @@
         - @reconstruction.errors.full_messages.each do |message|
           %li= message
   .form-group
+    = f.hidden_field :cover_image_id, value: @image.id if @image
+  .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
   .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control'
-  .form-group
-    = f.label :images
-    = file_field_tag "images[]", type: :file, multiple: true, class: 'form-control'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), location_reconstructions_path(@location), :class => 'btn btn-mini'

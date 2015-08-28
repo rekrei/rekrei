@@ -19,10 +19,13 @@
         .product-image-large
           = image_tag @image.image.url(:square)
       .col-sm-6.product-details
-        - if @image.reconstruction
+        - if @image.reconstructions.count > 0
           %h4
-            Reconstruction:
-            = @image.reconstruction.name
+            Included in the following reconstructions:
+            %ul
+              - @image.reconstructions.each do |reconstruction|
+                %ul
+                  = link_to reconstruction.name, location_reconstruction_path(@location, reconstruction)
         - else
           %h4
             No Artefact Assigned

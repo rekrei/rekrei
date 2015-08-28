@@ -3,14 +3,19 @@
     .row
       .col-md-6
         %h1
-          = link_to @location.name, location_path(@location) 
+          = link_to @location.name, location_path(@location)
           Images
+          - if @all
+            = link_to '(see unsorted)', location_images_path(@location)
+          - else
+            = link_to '(see all images)', location_images_path(@location, show: 'all')
+
       .col-md-2
       .col-md-4
         %h1
           - if !user_signed_in?
             = link_to "Login to upload images", new_user_session_path
-.section        
+.section
   .container
     .row
       .col-md-12
@@ -31,10 +36,9 @@
         %h1 Unsorted Images
     .row
       = render "index"
-    .row  
+    .row
       .col-md-12
         .digg_pagination
           .page_info
             = page_entries_info @images
           = will_paginate @images
-  

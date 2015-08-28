@@ -28,7 +28,7 @@ class Artefact < ActiveRecord::Base
   end
 
   def migrate_to_reconstruction
-    reconstruction = Reconstruction.create(name: self.name, description: self.description, uuid: self.uuid, location_id: 1)
+    reconstruction = Reconstruction.find_or_create(name: self.name, description: self.description, uuid: self.uuid, location_id: 1)
 
     self.images.each do |image|
       image.update(reconstruction: reconstruction)

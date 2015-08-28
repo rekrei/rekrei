@@ -1,7 +1,6 @@
+## scikit-image for skimage.measure
 import numpy as np
 import cv2
-from matplotlib import pyplot as plt
-import scipy as sp
 import time
 import random
 import sys
@@ -18,33 +17,36 @@ def exceptionHandler(exception_type, exception, traceback, debug_hook=sys.except
 sys.tracebacklimit=0
 sys.excepthook = exceptionHandler
 
-# cv2.redirectError exceptionHandler
+# What should the minimum be?
+MIN_MATCH_COUNT = 10
 
 img1 = cv2.imread(sys.argv[1],0)
-img2 = cv2.imread(sys.argv[2],0) 
-t0 = time.clock()
+img2 = cv2.imread(sys.argv[2],0)
 try:
-  surf = cv2.SURF(800)
-  freakExtractor = cv2.DescriptorExtractor_create('FREAK')
-  kp1 = surf.detect(img1,None)
-  kp1,des1 = freakExtractor.compute(img1,kp1)
-  kp2 = surf.detect(img2,None)
-  kp2,des2 = freakExtractor.compute(img2,kp2)
+  t0 = time.clock()
 
-  t1=time.clock() - t0 #time for Descriptors
+  # Initiate SIFT detector
+  sift = cv2.SIFT()
 
-  # create BFMatcher object
-  bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+  # find the keypoints and descriptors with SIFT
+  kp1, des1 = sift.detectAndCompute(img1,None)
+  kp2, des2 = sift.detectAndCompute(img2,None)
 
-  # print "Brute-force Matcher...."
-  t2 = time.clock() #initiate matcher
-  # Match descriptors.
-  matches = bf.match(des1,des2)
+  FLANN_INDEX_KDTREE = 0
+  index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+  search_params = dict(checks = 50)
 
-  t3=time.clock() - t2 # time for matcher
+  flann = cv2.FlannBasedMatcher(index_params, search_params)
 
-  # Sort them in the order of their distance.
-  matches = sorted(matches, key = lambda x:x.distance)
-  print json.dumps({'matches': len(matches), 'time': t3, 'error': False})
+  matches = flann.knnMatch(des1,des2,k=2)
+
+  # store all the good matches as per Lowe's ratio test.
+  good = []
+  for m,n in matches:
+      if m.distance < 0.7*n.distance:
+          good.append(m)
+
+  t1 = time.clock() - t0 # time for matcher
+  print json.dumps({'matches': len(good), 'time': t1, 'error': False})
 except:
   raise

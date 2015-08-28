@@ -34,7 +34,7 @@ FactoryGirl.define do
 
     trait :with_reconstruction do
       after(:create) do |instance|
-        create :asset_relation, asset: instance
+        create :asset_relation, :with_reconstruction, asset: instance
       end
     end
 

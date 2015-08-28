@@ -1,16 +1,13 @@
 $(document).on "page:change", ->
   if $('#gallery').length > 0
     do ->
-      sketchfabAPI = 'https://api.sketchfab.com/v2/models?'
+      sketchfabAPI = 'https://api.sketchfab.com/v2/models?tags=projectmosul'
       $.getJSON(sketchfabAPI,
-        tags: 'projectmosul'
         callback: ''
         jsonp: ''
         format: 'json').done (data) ->
         $.each data.results, (i, model) ->
-          if model.isPrintable == true
-            return false
-          else
+          unless model.isPrintable == true
             width = 320
             height = 240
             html = """

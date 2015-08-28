@@ -1,6 +1,6 @@
 class ImageMatch < ActiveRecord::Base
-  belongs_to :parent_image, class: Image
-  belongs_to :comparison_image, class: Image
+  belongs_to :parent_image, class_name: Image
+  belongs_to :comparison_image, class_name: Image
   belongs_to :location
 
   def self.compare_images(images)
