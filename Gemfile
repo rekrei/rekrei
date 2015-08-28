@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
 gem 'uglifier', '2.6.0'
@@ -46,7 +46,8 @@ gem 'newrelic_rpm'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
-gem 'flickr_fu'
+gem 'flickraw'
+gem 'rgeo'
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 

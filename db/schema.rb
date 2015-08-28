@@ -164,7 +164,8 @@ ActiveRecord::Schema.define(version: 20150825172742) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "flickr_token"
+    t.string   "flickr_oauth_token"
+    t.string   "flickr_oauth_secret"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -10,11 +10,18 @@ Projectmosul::Application.routes.draw do
   namespace :api, defaults: {format: 'json'},
                             constraints: { subdomain: ['api', 'api.staging'] },
                             path: '/' do
+
+    root 'base#index'
     scope module: :v1,
-                  constraints: ApiConstraints.new(version: 1, default: true) do
-      root 'base#index'
+                  constraints: ApiConstraints.new(version: 1, default: false) do
       resources :images, only: [:index, :show]
       resources :artefacts, only: [:index, :show]
+    end
+    scope module: :v2,
+                  constraints: ApiConstraints.new(version: 2, default: true) do
+      resources :images, only: [:index, :show]
+      resources :reconstructions, only: [:index, :show]
+      resources :locations, only: [:index, :show]
     end
   end
 
@@ -49,6 +56,8 @@ Projectmosul::Application.routes.draw do
   get 'press', to: 'pages#press', as: 'press'
   get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/contact', to: 'pages#contact', as: 'contact'
+  get 'flickr_connect', to: 'flickr#create', as: 'create_flickr_connection'
+  get 'flickr_callback', to: 'flickr#callback', as: 'flickr_callback'
   post '/emailconfirmation', to: 'pages#email', as: 'email_confirmation'
 
   devise_for :users

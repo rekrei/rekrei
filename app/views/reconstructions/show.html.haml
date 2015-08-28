@@ -64,6 +64,10 @@
                 = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn btn-small' do
                   <i class="fa fa-plus-square"> Add</i>
     .row.mt30
+      - if current_user && current_user.flickr_authorized?
+      - elsif current_user
+        = link_to 'Sign into Flickr', create_flickr_connection_path
+    .row.mt30
       - if @images
         %h3 All Images at Location
         - @images.each do |image|

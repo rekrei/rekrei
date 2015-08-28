@@ -1,4 +1,14 @@
---- !map:HashWithIndifferentAccess
-key: <%= ENV['FLICKR_KEY'] %>
-secret: <%= ENV['FLICKR_SECRET'] %>
-token_cache: "token_cache.yml"
+---
+development: &default
+  :key: <%= ENV['FLICKR_KEY'] %>
+  :secret: <%= ENV['FLICKR_SECRET'] %>
+
+staging:
+  <<: *default
+
+production: &defaults
+  <<: *default
+
+test:
+  :key: "testkey"
+  :secret: "testsecret"

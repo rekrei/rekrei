@@ -63,4 +63,8 @@ class User < ActiveRecord::Base
   def self.users_count
     where('admin = ? AND locked = ?', false, false).count
   end
+
+  def flickr_authorized?
+    flickr_oauth_token.present? && flickr_oauth_secret.present?
+  end
 end
