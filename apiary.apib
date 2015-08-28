@@ -16,12 +16,16 @@ API affordances in the form of the links in the JSON body.
 
         {
             "images_url": "/images",
-            "artefacts_url": "/artefacts"
+            "reconstructions_url": "/reconstructions",
+            "locations_url": "/locations"
         }
 
-## Artefacts [/artefacts/]
+## Artefacts [/artefacts]
 
-Returns a list of all the artefacts available
+Returns a list of all the artefacts available, each with the following attributes:
+
++ uuid - ID of the image
++ location - Location of the image
 
 ## Images [/images/]
 
