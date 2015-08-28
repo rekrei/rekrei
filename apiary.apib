@@ -6,37 +6,21 @@ The API for Project Mosul returns structured JSON documents of all the heritage 
 ---
 
 --
-Locations 
+Locations
 The coarsest level of organisation on the site is a location, all reconstructions and images belong to that location. Retrieving the locations is a good entry point, since one can then deal with the resources, location by location.
 --
-List products added into your shopping-cart. (comment block again in Markdown)
-GET /shopping-cart
+List all locations.
+GET /locations
 < 200
 < Content-Type: application/json
-{ "items": [
-{ "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
-] }
+< Accept: application/vnd.projectmosul.v2
+{ "locations": [ { "created_at": "2015-05-20T10:05:23.860Z", "updated_at": "2015-05-20T10:05:23.860Z", "uuid": "612fab52-ecb7-46f0-8643-b295653d6ea4", "name": "Mosul Museum", "coordinates": { "longitude": 43.377582, "latitude": 36.270774 }, "images": [ { "uuid": "db3fbb34-006f-4449-b0e9-c71d8c0ced57", "url": "http://placekitten.com/g/200/300" }, { "uuid": "575f9c28-990a-4953-877c-a21fbc9fc5c3", "url": "http://placekitten.com/g/500/800" }, ], "reconstructions": [ { "uuid": "d9b55ce0-5074-476f-af4d-7921b81b0b9e", "name": "Statue", "images": [ "575f9c28-990a-4953-877c-a21fbc9fc5c3", "db3fbb34-006f-4449-b0e9-c71d8c0ced57" ] } ] } ] }
 
 
-Save new products in your shopping cart
-POST /shopping-cart
-> Content-Type: application/json
-{ "product":"1AB23ORM", "quantity": 2 }
-< 201
-< Content-Type: application/json
-{ "status": "created", "url": "/shopping-cart/2" }
-
-
--- Payment Resources --
-This resource allows you to submit payment information to process your *shopping cart* items
-POST /payment
-{ "cc": "12345678900", "cvc": "123", "expiry": "0112" }
-< 200
-{ "receipt": "/payment/receipt/1" }
-
--- Photo --
-Get photo urls
-GET /api/v1/photo/123
+Retrieve a single location
+GET /locations/db3fbb34-006f-4449-b0e9-c71d8c0ced57
 < 200
 < Content-Type: application/json
-{ "photo-id": 123, "name", "sizes": [{"size": "large", "url":"test.com"},{"size":"thumb", "url":"www.test.com"}]
+< Accept: application/vnd.projectmosul.v2
+{ "uuid": "83b7ea83-35b5-44e1-b166-260027b7b192", "created_at": "2015-05-20T10:05:54.354Z", "updated_at": "2015-05-20T10:05:54.354Z", "name": "Bablyon", "slug": "bablyon", "url": "http://api.projectmosul.dev/locations/bablyon", "coordinates": { "latitude": 32.468191, "longitude": 44.5501935 }, "reconstrucions": [ { "uuid": "d9b55ce0-5074-476f-af4d-7921b81b0b9e", "name": "Statue", "images": [ "61bd115d-e41b-4b92-aecc-f5c3bca16b6b", "c367d8b2-8ea8-444e-9454-128116f7f961", "1d7904d3-3cca-43d2-a30b-de486c50bf54" ] }, { "uuid": "af06c6c9-d3a4-4399-8064-35bb0564531a", "name": "Lion Relief", "images": [ "61bd115d-e41b-4b92-aecc-f5c3bca16b6b", "c367d8b2-8ea8-444e-9454-128116f7f961", "1d7904d3-3cca-43d2-a30b-de486c50bf54" ] } ], "images": [ { "uuid": "db3fbb34-006f-4449-b0e9-c71d8c0ced57", "file_name": "Screen_Shot_2015-08-25_at_10.31.33.png", "url": "http://placekitten.com/g/200/300" }, { "uuid": "575f9c28-990a-4953-877c-a21fbc9fc5c3", "file_name": "Screen_Shot_2015-08-24_at_19.21.02.png", "url": "http://placekitten.com/g/200/300" }, { "uuid": "4da80414-0a76-40e2-a88b-0d02aabf2824", "file_name": "Screen_Shot_2015-08-24_at_19.20.49.png", "url": "http://placekitten.com/g/200/300" } ] }
+
