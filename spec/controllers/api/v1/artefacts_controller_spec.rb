@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::V1::ArtefactsController do
-  before(:each) { request.headers['Accept'] = "application/vnd.marketplace.v1" }
+  before(:each) { request.headers['Accept'] = "application/vnd.projectmosul.v1" }
 
   describe 'get /artefacts' do
     def get_artefacts
