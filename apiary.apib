@@ -1,98 +1,326 @@
 FORMAT: 1A
-HOST: http://api.projectmosul.org/
+HOST: api.projectmosul.org
 
-# Project Mosul
+# Project Mosul API
+The API is currently a read-only interface for retrieving the data related to the reconstructions found on the site. The three primary interfaces are for retrieving locations, reconstructions, and images.
 
-Project Mosul is a volunteer crowd-sourced initiative to digitally restore the heritage destroyed by the Islamic State in Northern Iraq. The API provides direct access to the images and artefacts and will be building blocks for future extensions to the site.
+## Versioning
+The interface is versioned using headers, by default the API will access the latest version, however if you are writing software to retrieve data from Project Mosul, it is best to write your software with those headers programmed into your interface to ensure stability in case of changes to the API.
 
-# Project Mosul API Root [/]
+### Headers
+Accept: vnd.projectmosul.v2
 
-This resource does not have any attributes. Instead it offers the initial
-API affordances in the form of the links in the JSON body.
+# Group Locations
+Locations represent the locations identified by volunteers of Project Mosul. Each location contains images, and groupings of images known as reconstructions.
 
-## Retrieve the Entry Point [GET]
+## List of all Locations [/locations]
+### Get all locations [GET]
++ Request
+  + Header
+
+            Accept: vmd.projectmosul.v2
 
 + Response 200 (application/json)
 
         {
-            "images_url": "/images",
-            "artefacts_url": "/artefacts"
+          "locations": [
+            {
+              "created_at": "2015-05-20T10:05:23.860Z",
+              "updated_at": "2015-05-20T10:05:23.860Z",
+              "uuid": "612fab52-ecb7-46f0-8643-b295653d6ea4",
+              "name": "Mosul Museum",
+              "coordinates": {
+                "longitude": 43.377582,
+                "latitude": 36.270774
+              },
+              "images": [
+                {
+                  "uuid": "db3fbb34-006f-4449-b0e9-c71d8c0ced57",
+                  "url": "http://placekitten.com/g/200/300"
+                },
+                {
+                  "uuid": "575f9c28-990a-4953-877c-a21fbc9fc5c3",
+                  "url": "http://placekitten.com/g/500/800"
+                }
+              ],
+              "reconstructions": [
+                {
+                  "uuid": "d9b55ce0-5074-476f-af4d-7921b81b0b9e",
+                  "name": "Statue",
+                  "images": [
+                    "575f9c28-990a-4953-877c-a21fbc9fc5c3",
+                    "db3fbb34-006f-4449-b0e9-c71d8c0ced57"
+                  ]
+                }
+              ]
+            }
+          ]
         }
 
-## Artefacts [/artefacts/]
-
-Returns a list of all the artefacts available
-
-## Images [/images/]
-
-Returns a list of all the images available
-
-## Image [/images/{image_uuid}]
-
-An Image object has the following attributes:
-
-+ uuid
-+ created_at - An ISO8601 date when the image was published.
-+ updated_at - An ISO8601 date when the image was last updated.
-+ url
-+ artefact - A hash for the assigned artefact, if any.
+## Single Record [/locations/{uuid}]
+### Get a location [GET]
 
 + Parameters
-    + image_uuid (required, uuid, `011fc522-d5ed-48d8-a754-0b1c6be4a099`) ... UUID of the Image in form of a string
+  + uuid (string) - The UUID string of the location
 
-### View an Image Detail [GET]
++ Request
+  + Header
+
+            Accept: vmd.projectmosul.v2
 
 + Response 200 (application/json)
 
         {
-          "created_at": "2015-03-12T22:10:00.377Z",
-          "updated_at": "2015-04-20T20:15:51.054Z",
-          "uuid": "011fc522-d5ed-48d8-a754-0b1c6be4a099",
-          "url": "http://projectmosul.org/system/images/images/000/000/008/original/MCM_Qais_Rashid_Visit_DS_May08_%28136%29.JPG?1426798649",
-          "artefact": {
-            "id": 15,
-            "uuid": "eddfa2ae-7cfe-441a-ac7b-eda912e3d867",
-            "name": "Lion Statue",
-            "uri": "http://api.projectmosul.org/artefacts/eddfa2ae-7cfe-441a-ac7b-eda912e3d867"
+          "uuid": "83b7ea83-35b5-44e1-b166-260027b7b192",
+          "created_at": "2015-05-20T10:05:54.354Z",
+          "updated_at": "2015-05-20T10:05:54.354Z",
+          "name": "Bablyon",
+          "slug": "bablyon",
+          "url": "http://api.projectmosul.dev/locations/bablyon",
+          "coordinates": {
+            "latitude": 32.468191,
+            "longitude": 44.5501935
+          },
+          "reconstrucions": [
+            {
+              "uuid": "d9b55ce0-5074-476f-af4d-7921b81b0b9e",
+              "name": "Statue",
+              "images": [
+                "61bd115d-e41b-4b92-aecc-f5c3bca16b6b",
+                "c367d8b2-8ea8-444e-9454-128116f7f961",
+                "1d7904d3-3cca-43d2-a30b-de486c50bf54"
+              ]
+            },
+            {
+              "uuid": "af06c6c9-d3a4-4399-8064-35bb0564531a",
+              "name": "Lion Relief",
+              "images": [
+                "61bd115d-e41b-4b92-aecc-f5c3bca16b6b",
+                "c367d8b2-8ea8-444e-9454-128116f7f961",
+                "1d7904d3-3cca-43d2-a30b-de486c50bf54"
+              ]
+            }
+          ],
+          "images": [
+            {
+              "uuid": "db3fbb34-006f-4449-b0e9-c71d8c0ced57",
+              "file_name": "Screen_Shot_2015-08-25_at_10.31.33.png",
+              "url": "http://placekitten.com/g/200/300"
+            },
+            {
+              "uuid": "575f9c28-990a-4953-877c-a21fbc9fc5c3",
+              "file_name": "Screen_Shot_2015-08-24_at_19.21.02.png",
+              "url": "http://placekitten.com/g/200/300"
+            },
+            {
+              "uuid": "4da80414-0a76-40e2-a88b-0d02aabf2824",
+              "file_name": "Screen_Shot_2015-08-24_at_19.20.49.png",
+              "url": "http://placekitten.com/g/200/300"
+            }
+          ]
+        }
+
+# Group Reconstructions
+Reconstructions represent groups of images that are used for photogrammetric reconstructions. The included images are listed with each reconstruction.
+
+## List of all Reconstructions [/reconstructions]
+### Get all locations [GET]
++ Request
+  + Header
+
+            Accept: vmd.projectmosul.v2
+
++ Response 200 (application/json)
+
+        {
+          "reconstructions": [
+            {
+              "created_at": "2015-08-21T14:50:02.598Z",
+              "updated_at": "2015-08-21T14:50:02.598Z",
+              "uuid": "ade47bbd-354e-42d5-88d0-b56fec553cae",
+              "name": "Reconstruction Example",
+              "slug": "reconstruction-example",
+              "location": {
+                "uuid": "83b7ea83-35b5-44e1-b166-260027b7b192",
+                "name": "St. Albans",
+                "slug": "st-albans"
+              },
+              "images": [
+                {
+                  "uuid": "61bd115d-e41b-4b92-aecc-f5c3bca16b6b",
+                  "url": "http://placekitten.com/g/200/300"
+                }
+              ]
+            },
+            {
+              "created_at": "2015-08-23T15:17:59.387Z",
+              "updated_at": "2015-08-23T15:17:59.387Z",
+              "uuid": "6544738c-dc80-4cb6-a2dd-c8c5d346db13",
+              "name": "Eiffel Tower",
+              "slug": "eiffel-tower",
+              "location": {
+                "uuid": "83b7ea83-35b5-44e1-b166-260027b7b192",
+                "name": "Paris",
+                "slug": "paris"
+              },
+              "images": [
+                {
+                  "uuid": "b6b464da-bb20-4b3a-896a-bd3bd2b50262",
+                  "url": "http://placekitten.com/g/500/500"
+                },
+                {
+                  "uuid": "4da80414-0a76-40e2-a88b-0d02aabf2824",
+                  "url": "http://placekitten.com/g/500/500"
+                },
+                {
+                  "uuid": "61bd115d-e41b-4b92-aecc-f5c3bca16b6b",
+                  "url": "http://placekitten.com/g/500/500"
+                }
+              ]
+            }
+          ]
+        }
+
+## Single Record [/reconstructions/{uuid}]
+### Get a reconstruction [GET]
+
++ Parameters
+  + uuid (string) - The UUID string of the reconstruction
+
++ Request
+  + Header
+
+            Accept: vmd.projectmosul.v2
+
++ Response 200 (application/json)
+
+        {
+          "uuid": "6544738c-dc80-4cb6-a2dd-c8c5d346db13",
+          "created_at": "2015-08-23T15:17:59.387Z",
+          "updated_at": "2015-08-23T15:17:59.387Z",
+          "name": "Lion Relief",
+          "slug": "lion-relief",
+          "url": "http://api.projectmosul.org/locations/bablyon/reconstructions/lion-relief",
+          "images": [
+            {
+              "created_at": "2015-08-25T13:34:31.740Z",
+              "updated_at": "2015-08-25T13:34:31.740Z",
+              "uuid": "b6b464da-bb20-4b3a-896a-bd3bd2b50262",
+              "file_name": "placekitten.jpg",
+              "content_type": "image/png",
+              "file_size": 1089853,
+              "url": "http://placekitten.com/g/1500/1500"
+            },
+            {
+              "created_at": "2015-08-25T13:35:10.619Z",
+              "updated_at": "2015-08-25T13:35:10.619Z",
+              "uuid": "4da80414-0a76-40e2-a88b-0d02aabf2824",
+              "file_name": "placekitten.jpg",
+              "content_type": "image/png",
+              "file_size": 392464,
+              "url": "http://placekitten.com/g/1500/1500"
+            },
+            {
+              "created_at": "2015-05-24T10:35:56.873Z",
+              "updated_at": "2015-05-24T10:35:56.873Z",
+              "uuid": "61bd115d-e41b-4b92-aecc-f5c3bca16b6b",
+              "file_name": "placekitten.jpg",
+              "content_type": "image/jpeg",
+              "file_size": 2750910,
+              "url": "http://placekitten.com/g/1500/1500"
+            }
+          ],
+          "location": {
+            "uuid": "83b7ea83-35b5-44e1-b166-260027b7b192",
+            "name": "Mosul Museum",
+            "slug": "mosul-museum",
+            "coordinates": {
+              "latitude": 32.468191,
+              "longitude": 44.5501935
+            }
           }
         }
 
-## Artefact [/artefacts/{artefact_uuid}]
+# Group Images
+The images are the basis for the reconstructions.
 
-An Image object has the following attributes:
+## List of all Images [/images]
+### Get all images [GET]
++ Request
+  + Header
 
-+ uuid
-+ created_at - An ISO8601 date when the image was published.
-+ updated_at - An ISO8601 date when the image was last updated.
-+ url
-+ images - An array of assigned images, if any.
-
-+ Parameters
-    + artefact_uuid (required, uuid, `eddfa2ae-7cfe-441a-ac7b-eda912e3d867`) ... UUID of the Image in form of a string
-
-### View an Artefact Detail [GET]
+            Accept: vmd.projectmosul.v2
 
 + Response 200 (application/json)
 
         {
-          "uuid": "eddfa2ae-7cfe-441a-ac7b-eda912e3d867",
-          "id": 15,
-          "created_at": "2015-03-12T22:09:59.172Z",
-          "updated_at": "2015-03-18T00:05:18.428Z",
-          "name": "Lion Statue",
-          "url": "http://api.projectmosul.org/artefacts/15",
           "images": [
             {
-              "created_at": "2015-03-12T22:10:00.377Z",
-              "updated_at": "2015-04-20T20:15:51.054Z",
-              "uuid": "011fc522-d5ed-48d8-a754-0b1c6be4a099",
-              "url": "http://projectmosul.org/system/images/images/000/000/008/original/MCM_Qais_Rashid_Visit_DS_May08_%28136%29.JPG?1426798649"
+              "created_at": "2015-05-24T10:35:56.873Z",
+              "updated_at": "2015-05-24T10:35:56.873Z",
+              "uuid": "61bd115d-e41b-4b92-aecc-f5c3bca16b6b",
+              "url": "http://placekitten.com/g/200/300",
+              "location": "83b7ea83-35b5-44e1-b166-260027b7b192",
+              "reconstructions": [
+                "d9b55ce0-5074-476f-af4d-7921b81b0b9e",
+                "af06c6c9-d3a4-4399-8064-35bb0564531a",
+                "ade47bbd-354e-42d5-88d0-b56fec553cae",
+                "6544738c-dc80-4cb6-a2dd-c8c5d346db13"
+              ]
             },
             {
-              "created_at": "2015-03-12T22:10:01.363Z",
-              "updated_at": "2015-04-20T20:15:51.057Z",
-              "uuid": "a4e50a89-93eb-40fa-a65b-431c72e4ef92",
-              "url": "http://projectmosul.org/system/images/images/000/000/009/original/MCM_Qais_Rashid_Visit_DS_May08_%28151%29.JPG?1426798650"
+              "created_at": "2015-05-24T10:36:19.194Z",
+              "updated_at": "2015-05-24T10:36:19.194Z",
+              "uuid": "1d7904d3-3cca-43d2-a30b-de486c50bf54",
+              "url": "http://placekitten.com/g/200/300",
+              "location": "83b7ea83-35b5-44e1-b166-260027b7b192",
+              "reconstructions": [
+                "d9b55ce0-5074-476f-af4d-7921b81b0b9e",
+                "af06c6c9-d3a4-4399-8064-35bb0564531a",
+                "ccd69bcb-3948-45d1-8f96-74c1028c82e0"
+              ]
+            },
+            {
+              "created_at": "2015-05-24T10:38:05.391Z",
+              "updated_at": "2015-05-24T10:38:05.391Z",
+              "uuid": "c367d8b2-8ea8-444e-9454-128116f7f961",
+              "url": "http://placekitten.com/g/200/300",
+              "location": "83b7ea83-35b5-44e1-b166-260027b7b192",
+              "reconstructions": [
+                "d9b55ce0-5074-476f-af4d-7921b81b0b9e",
+                "af06c6c9-d3a4-4399-8064-35bb0564531a",
+                "6544738c-dc80-4cb6-a2dd-c8c5d346db13"
+              ]
             }
           ]
+        }
+
+## Single Record [/images/{uuid}]
+### Get an image [GET]
+
++ Parameters
+  + uuid (string) - The UUID string of the reconstruction
+
++ Request
+  + Header
+
+            Accept: vmd.projectmosul.v2
+
++ Response 200 (application/json)
+
+        {
+          "created_at": "2015-05-24T10:35:56.873Z",
+          "updated_at": "2015-05-24T10:35:56.873Z",
+          "uuid": "61bd115d-e41b-4b92-aecc-f5c3bca16b6b",
+          "image_file_name": "placekitten.JPG",
+          "image_file_size": 2750910,
+          "image_content_type": "image/jpeg",
+          "url": "http://placekitten.com/g/200/300",
+          "reconstructions": [
+            "d9b55ce0-5074-476f-af4d-7921b81b0b9e",
+            "af06c6c9-d3a4-4399-8064-35bb0564531a",
+            "ade47bbd-354e-42d5-88d0-b56fec553cae",
+            "6544738c-dc80-4cb6-a2dd-c8c5d346db13"
+          ],
+          "location": "83b7ea83-35b5-44e1-b166-260027b7b192"
         }

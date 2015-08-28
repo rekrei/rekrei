@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Api::V1::ImagesController do
-  before(:each) { request.headers['Accept'] = "application/vnd.projectmosul.v1" }
+describe Api::V2::ImagesController do
+  before(:each) { request.headers['Accept'] = "application/vnd.projectmosul.v2" }
 
   describe 'get /images' do
     render_views
