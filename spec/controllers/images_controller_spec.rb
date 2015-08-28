@@ -16,7 +16,7 @@ describe ImagesController do
 
   describe 'user' do
     login_user
-    
+
     describe 'without reconstruction' do
       let!(:location) { create(:location) }
 
@@ -35,6 +35,28 @@ describe ImagesController do
       it { is_expected.to change(Image, :count).by 1 }
       it { is_expected.to change(AssetRelation, :count).by(1) }
       it { is_expected.to change(reconstruction.images, :count).by(1) }
+    end
+
+    describe 'all images' do
+      let!(:location) { create(:location) }
+      let!(:images_with_reconstruction) { create_list(:image, 2, :with_stubbed_image, :with_reconstruction, location: location) }
+      let!(:images_without_reconstruction) { create_list(:image, 2, :with_stubbed_image, location: location) }
+
+      it 'get unassigned images' do
+        get :index, location_id: location.id
+        expect(assigns(:images).count).to eq 2
+        expect(assigns(:images)).to include(images_without_reconstruction.first)
+        expect(assigns(:images)).to include(images_without_reconstruction.last)
+      end
+
+      it 'get all images' do
+        get :index, location_id: location.id, show: "all"
+        expect(assigns(:images).count).to eq 4
+        expect(assigns(:images)).to include(images_without_reconstruction.first)
+        expect(assigns(:images)).to include(images_without_reconstruction.last)
+        expect(assigns(:images)).to include(images_with_reconstruction.first)
+        expect(assigns(:images)).to include(images_with_reconstruction.last)
+      end
     end
   end
 
