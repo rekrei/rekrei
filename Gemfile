@@ -14,6 +14,7 @@ gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'skylight'
 
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.2'
