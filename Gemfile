@@ -26,7 +26,7 @@ gem 'friendly_id', '5.1.0'
 gem 'font-awesome-sass', '4.2.2'
 
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
-gem 'bootstrap-sass', '3.3.3'
+gem 'bootstrap-sass', '3.3.5'
 gem 'rmagick'
 gem 'paperclip', '~> 4.2'
 gem 'paper_trail', '~> 4.0.0.beta2'
