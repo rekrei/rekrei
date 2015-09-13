@@ -12,6 +12,8 @@ gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
+gem "bower-rails", "~> 0.10.0"
+
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
@@ -47,7 +49,7 @@ gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
 gem 'flickraw'
-gem 'rgeo'
+gem 'geokit-rails'
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 

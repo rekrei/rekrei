@@ -52,21 +52,16 @@
                   - unless asset_relation.asset.id == @reconstruction.cover_image_id
                     = link_to asset_relation_path(asset_relation), method: :delete, class: 'btn btn-small' do
                       <i class="fa fa-minus-square"> Remove</i>
-    .row.mt30
-      - if @comparison_images
-        %h3 Possible Related Images
-        - @comparison_images.each do |comparison_image|
-          .col-md-3.col-sm-6
-            .shop-item
-              .shop-item-image
-                = image_tag(comparison_image.image.url(:square))
-              .actions
-                = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: comparison_image.id), method: :post, class: 'btn btn-small' do
-                  <i class="fa fa-plus-square"> Add</i>
-    .row.mt30
-      - if current_user && current_user.flickr_authorized?
-      - elsif current_user
-        = link_to 'Sign into Flickr', create_flickr_connection_path
+    #flickr.row.mt30{"ng-app" => "appRekrei", "ng-controller" => "FlickrPhotosController"}
+      .row
+        %h3 Flickr Photos
+        .col-md-12
+          %dir-pagination-controls{"on-page-change"=>"pageChanged(newPageNumber)"}
+      .row
+        .col-md-3.col-sm-6{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "pagination.current"}
+          .shop-item
+            .shop-item-image
+              %img.flickr_square(ng-src= "{{flickrPhoto.url_q}}")
     .row.mt30
       - if @images
         %h3 All Images at Location

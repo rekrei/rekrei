@@ -1,0 +1,9 @@
+<% @flickr_images.each do |flickr_image| %>
+  $.ajax(
+    url: "/flickr_photos/#{image.id}"
+    type: 'GET'
+    contentType: 'application/json'
+  )
+  .then (response) =>
+    photos = []
+<% end %>

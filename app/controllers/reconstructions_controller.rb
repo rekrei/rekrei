@@ -13,9 +13,6 @@ class ReconstructionsController < ApplicationController
     unless @reconstruction.show_cover_image.nil?
       @comparison_images = @reconstruction.show_cover_image.compared_images.exclude_in_reconstruction(@reconstruction)
     end
-    if current_user && current_user.flickr_authorized?
-      byebug
-    end
   end
 
   def edit

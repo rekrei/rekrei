@@ -33,6 +33,7 @@ Projectmosul::Application.routes.draw do
       resources :assets
       resources :sketchfabs
     end
+    resources :flickr_photos, only: [:index]
   end
 
   resources :reconstructions, only: [] do
@@ -49,6 +50,8 @@ Projectmosul::Application.routes.draw do
       get 'download'
     end
   end
+
+  resources :flickr_photos, only: [:show]
 
   root 'pages#home'
   get 'home', to: 'pages#home', as: 'home'

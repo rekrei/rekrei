@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require dropzone
-//= require jquery.turbolinks
-//= require turbolinks
 //= require analytics
 //= require common
 //= require jquery.bxslider
@@ -28,3 +26,10 @@
 //= require gmaps/google
 //= require gallery
 //= require images
+//= require angular
+//= require angular-resource
+//= require angular-utils-pagination
+//= require angularjs-slider
+//= require rekrei
+//= require services/flickr-photos
+//= require controllers/flickr-photos-controller
