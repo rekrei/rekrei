@@ -57,11 +57,30 @@
         %h3 Flickr Photos
         .col-md-12
           %dir-pagination-controls{"on-page-change"=>"pageChanged(newPageNumber)"}
+        .col-md-12
+          %div
+            %h4 Distance from Location (in metres)
+            %rzslider{"rz-slider-model"=>"distanceSlider.value", "rz-slider-floor"=>"distanceSlider.floor", "rz-slider-ceil"=>"distanceSlider.ceil", "rz-slider-on-change"=>"sliderChanged()"}
       .row
         .col-md-3.col-sm-6{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "pagination.current"}
           .shop-item
             .shop-item-image
               %img.flickr_square(ng-src= "{{flickrPhoto.url_q}}")
+            .actions
+              %p
+                %b
+                  {{ flickrPhoto.title }}
+              %p by
+              %p {{ flickrPhoto.ownername }}
+              %p
+                %a{href: "https://www.flickr.com/photos/{{ flickrPhoto.owner }}/{{ flickrPhoto.id }}", target: "_blank"}
+                  %i.fa.fa-flickr
+                  Flickr Page
+              %p
+                %a{href: ""}
+                  %i.fa.fa-cloud-download
+                  Import from Flickr
+
     .row.mt30
       - if @images
         %h3 All Images at Location

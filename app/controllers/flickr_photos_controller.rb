@@ -10,7 +10,8 @@ class FlickrPhotosController < ActionController::Base
     args = {}
     args[:lat] = @location.lat
     args[:lon] = @location.long
-    args[:radius] = "0.20"
+    distance = params[:distance].to_i / 100.0 || 0.20
+    args[:radius] = distance.to_s
     args[:radius_units] = "km"
     # args[:min_taken_date] = start_date
     # args[:max_taken_date] = end_date
