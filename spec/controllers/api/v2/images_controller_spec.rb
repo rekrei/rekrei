@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Api::V1::ImagesController do
-  before(:each) { request.headers['Accept'] = "application/vnd.projectmosul.v1" }
+describe Api::V2::ImagesController do
+  before(:each) { request.headers['Accept'] = "application/vnd.projectmosul.v2" }
 
   describe 'get /images' do
     render_views
@@ -30,11 +30,12 @@ describe Api::V1::ImagesController do
       @image_response = JSON.parse(response.body, symbolize_names: true)
     end
 
-    def get_image_with_artefact
-      @image_with_artefact = create :image, :with_artefact
-      @artefact = @image_with_artefact.artefact
-      get :show, id: @image_with_artefact.uuid, format: :json
-      @image_with_artefact_response = JSON.parse(response.body, symbolize_names: true)
+    def get_image_with_reconstruction
+      @reconstruction = create :reconstruction
+      @image = create :image, :with_stubbed_image
+      @reconstruction.images << @image
+      get :show, id: @image.uuid, format: :json
+      @image_with_reconstruction_response = JSON.parse(response.body, symbolize_names: true)
     end
 
     it "should respond with 200" do
@@ -52,38 +53,23 @@ describe Api::V1::ImagesController do
       expect(@image_response[:url]).to match /http:\/\/test.host\/system\/images\/images\/\d{3}\/\d{3}\/\d{3}\/original\/test1500white.png/
     end
 
-    context 'it should assign image.artefact even when empty' do
+    context 'it should assign image.location' do
       before(:each) do
         get_image
       end
-      it 'should assign an artefact even when empty' do
-        expect(@image_response[:artefact].class).to eq Hash
-      end
 
       it 'should assign an artefact even when empty' do
-        expect(@image_response[:artefact][:id]).to be_nil
+        expect(@image_response[:location]).to eq @image.location.uuid
       end
     end
 
-    context 'it should assign image.artefact when associated' do
+    context 'it should assign image.reconstruction when associated' do
       before(:each) do
-        get_image_with_artefact
+        get_image_with_reconstruction
       end
 
-      it 'should assign artefact id' do
-        expect(@image_with_artefact_response[:artefact][:id]).to eq @artefact.id
-      end
-
-      it 'should assign artefact uuid' do
-        expect(@image_with_artefact_response[:artefact][:uuid]).to eq @artefact.uuid
-      end
-
-      it 'should assign artefact name' do
-        expect(@image_with_artefact_response[:artefact][:name]).to eq @artefact.name
-      end
-
-      it 'should assign artefact uri' do
-        expect(@image_with_artefact_response[:artefact][:uri]).to eq "/artefacts/#{@artefact.uuid}"
+      it 'should assign reconstructions id' do
+        expect(@image_with_reconstruction_response[:reconstructions]).to eq [@reconstruction.uuid]
       end
     end
   end

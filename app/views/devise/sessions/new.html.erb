@@ -17,8 +17,8 @@
           :url => session_path(resource_name),
           role: "form", class: "form-signin") do |f| %>
           <div class="form-group">
-            <%= f.label :username, class: "sr-only" %>
-            <%= f.text_field :username, :autofocus => true, placeholder: "Username",class: "form-control" %>
+            <%= f.label :login, class: "sr-only" %>
+            <%= f.text_field :login, :autofocus => true, placeholder: "Username/e-mail",class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :password, class: "sr-only" %><i class="icon-lock"></i>

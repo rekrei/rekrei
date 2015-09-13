@@ -17,6 +17,7 @@ Projectmosul::Application.routes.draw do
       resources :images, only: [:index, :show]
       resources :artefacts, only: [:index, :show]
     end
+
     scope module: :v2,
                   constraints: ApiConstraints.new(version: 2, default: true) do
       resources :images, only: [:index, :show]

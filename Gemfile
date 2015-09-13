@@ -16,6 +16,7 @@ gem "bower-rails", "~> 0.10.0"
 
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'skylight'
 
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.2'
@@ -27,7 +28,7 @@ gem 'friendly_id', '5.1.0'
 gem 'font-awesome-sass', '4.2.2'
 
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
-gem 'bootstrap-sass', '3.3.3'
+gem 'bootstrap-sass', '3.3.5'
 gem 'rmagick'
 gem 'paperclip', '~> 4.2'
 gem 'paper_trail', '~> 4.0.0.beta2'

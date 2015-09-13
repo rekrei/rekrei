@@ -15,7 +15,7 @@ Devise.setup do |config|
   config.secret_key = secure_token
   config.mailer_sender = ENV['SENDER_EMAIL']
   require 'devise/orm/active_record'
-  config.authentication_keys = [:username]
+  config.authentication_keys = [:login]
   config.case_insensitive_keys = [:username]
   config.strip_whitespace_keys = [:username]
   config.skip_session_storage = [:http_auth]
