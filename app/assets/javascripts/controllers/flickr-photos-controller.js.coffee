@@ -2,9 +2,9 @@
   '$scope'
   '$http'
   ($scope, $http) ->
-
     getFlickrPhotos = (page) ->
-      $http.get('/locations/palmyra/flickr_photos', {'params': {'flickr_page': page, 'distance': $scope.distanceSlider.value}}).success((data, status, headers, config) ->
+      locationSlug = angular.element( document.querySelector('#flickr') )[0].attributes['reconstructionLocation'].value
+      $http.get("/locations/#{locationSlug}/flickr_photos", {'params': {'flickr_page': page, 'distance': $scope.distanceSlider.value}}).success((data, status, headers, config) ->
         $scope.currentPage = page
         $scope.flickrPhotos = data.photo
         $scope.totalFlickrPhotos = data.total

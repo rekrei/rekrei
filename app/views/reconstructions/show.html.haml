@@ -52,7 +52,7 @@
                   - unless asset_relation.asset.id == @reconstruction.cover_image_id
                     = link_to asset_relation_path(asset_relation), method: :delete, class: 'btn btn-small' do
                       <i class="fa fa-minus-square"> Remove</i>
-    #flickr.row.mt30{"ng-app" => "appRekrei", "ng-controller" => "FlickrPhotosController"}
+    #flickr.row.mt30{"ng-app" => "appRekrei", "ng-controller" => "FlickrPhotosController", "reconstructionLocation" => "#{@location.slug}" }
       .row
         %h3 Flickr Photos
         .col-md-12
