@@ -4,6 +4,7 @@
     "angular": "~> 1.4",
     "angular-resource": "latest",
     "angular-utils-pagination": "latest",
-    "angularjs-slider": "latest"
+    "angularjs-slider": "latest",
+    "angular-devise": "latest"
   }
 }

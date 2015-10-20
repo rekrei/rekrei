@@ -35,68 +35,8 @@
       - @reconstruction.sketchfabs.each do |sketchfab|
         .col-md-4
           = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
-
-    %h3 Reconstruction Photos
-    .row
-      - @reconstruction.asset_relations.each do |asset_relation|
-        .col-md-3.col-sm-6
-          .shop-item
-            .shop-item-image
-              = image_tag(asset_relation.asset.image.url(:square))
-            .actions
-              .row
-                .col-md-6
-                  = link_to download_image_path(asset_relation.asset), class: 'btn btn-small' do
-                    <i class="fa fa-download"> Original</i>
-                .col-md-6
-                  - unless asset_relation.asset.id == @reconstruction.cover_image_id
-                    = link_to asset_relation_path(asset_relation), method: :delete, class: 'btn btn-small' do
-                      <i class="fa fa-minus-square"> Remove</i>
-    #flickr.row.mt30{"ng-app" => "appRekrei", "ng-controller" => "FlickrPhotosController", "reconstructionLocation" => "#{@location.slug}" }
-      .row
-        %h3 Flickr Photos
-        .col-md-12
-          %dir-pagination-controls{"on-page-change"=>"pageChanged(newPageNumber)"}
-        .col-md-12
-          %div
-            %h4 Distance from Location (in metres)
-            %rzslider{"rz-slider-model"=>"distanceSlider.value", "rz-slider-floor"=>"distanceSlider.floor", "rz-slider-ceil"=>"distanceSlider.ceil", "rz-slider-on-change"=>"sliderChanged()"}
-      .row
-        .col-md-3.col-sm-6{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "pagination.current"}
-          .shop-item
-            .shop-item-image
-              %img.flickr_square(ng-src= "{{flickrPhoto.url_q}}")
-            .actions
-              %p
-                %b
-                  {{ flickrPhoto.title }}
-              %p by
-              %p {{ flickrPhoto.ownername }}
-              %p
-                %a{href: "https://www.flickr.com/photos/{{ flickrPhoto.owner }}/{{ flickrPhoto.id }}", target: "_blank"}
-                  %i.fa.fa-flickr
-                  Flickr Page
-              %p
-                %a{href: ""}
-                  %i.fa.fa-cloud-download
-                  Import from Flickr
-
-    .row.mt30
-      - if @images
-        %h3 All Images at Location
-        - @images.each do |image|
-          .col-md-3.col-sm-6
-            .shop-item
-              .shop-item-image
-                = image_tag(image.image.url(:square))
-              .actions
-                = link_to reconstruction_asset_relations_path(@reconstruction, asset_id: image.id), method: :post, class: 'btn btn-small' do
-                  <i class="fa fa-plus-square"> Add</i>
-    .row
-      .col-md-12
-        .digg_pagination
-          .page_info
-            = page_entries_info @images
-          = will_paginate @images, param_name: 'all_images_page'
-
+    #reconstruction-photos{"ng-controller" => "ReconstructionPhotosController", "reconstructionLocation" => "#{@location.slug}", "reconstructionSlug" => "#{@reconstruction.slug}" }
+      = render "reconstructions/photos"
+      = render "flickr_photos/index"
+      = render "locations/photos"
 = render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}

@@ -52,8 +52,6 @@ Projectmosul::Application.routes.draw do
     end
   end
 
-  resources :flickr_photos, only: [:show]
-
   root 'pages#home'
   get 'home', to: 'pages#home', as: 'home'
   get 'gallery', to: 'pages#gallery', as: 'gallery'

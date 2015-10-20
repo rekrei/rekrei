@@ -13,13 +13,15 @@
     <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
 
 
-<body>
+<body ng-app="Rekrei">
   <div id="wrap">
     <header>
       <%= render 'layouts/navigation' %>

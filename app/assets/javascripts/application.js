@@ -26,10 +26,12 @@
 //= require gmaps/google
 //= require gallery
 //= require images
+//= require bootstrap-sprockets
 //= require angular
 //= require angular-resource
 //= require angular-utils-pagination
 //= require angularjs-slider
+//= require angular-devise
 //= require rekrei
-//= require services/flickr-photos
-//= require controllers/flickr-photos-controller
+//= require controllers/tabs-controller
+//= require controllers/reconstruction-photos-controller

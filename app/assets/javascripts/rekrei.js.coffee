@@ -3,4 +3,4 @@ $(document).on 'page:load', ->
     module = $(this).attr('ng-app')
     angular.bootstrap(this, [module])
 
-@rekrei = angular.module 'appRekrei', ['ngResource','angularUtils.directives.dirPagination','rzModule']
+@rekrei = angular.module 'Rekrei', ['ngResource','angularUtils.directives.dirPagination','rzModule', 'Devise']

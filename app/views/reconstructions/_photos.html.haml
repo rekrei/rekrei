@@ -1,0 +1,14 @@
+#reconstruction-photos.row.mt30
+  .row
+    %h3 Reconstruction Photos
+    .col-md-12
+      %dir-pagination-controls{"on-page-change"=>"reconstructionPageChanged(newPageNumber)", "pagination-id" => "reconstruction"}
+  .row
+    .col-md-3.col-sm-6{"dir-paginate" => "photo in allReconstructionPhotos | itemsPerPage: reconstrctionPhotosPerPage", "total-items" => "totalReconstructionPhotos", "current-page" => "pagination.current", "pagination-id" => "reconstruction"}
+      .shop-item
+        .shop-item-image
+          %img(ng-src= "{{ photo.square_url }}")
+        .actions
+          %b download link here
+          %button.btn{"ng-click" => "removeImageFromReconstruction(photo)"}
+            Remove Image
