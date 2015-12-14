@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-1.11.3.min
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require dropzone
@@ -24,6 +24,8 @@
 //= require template.js
 //= require underscore
 //= require gmaps/google
+//= require plugins
+//= require bskit-scripts
 //= require gallery
 //= require images
 //= require bootstrap-sprockets

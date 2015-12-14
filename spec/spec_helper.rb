@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'simplecov'
 SimpleCov.start do
   add_filter 'vendor/'
@@ -35,4 +36,5 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
 end

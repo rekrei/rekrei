@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.2.3'
 # ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.4'
@@ -51,6 +51,11 @@ gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
 gem 'flickraw'
 gem 'geokit-rails'
+
+
+# Devise: https://github.com/plataformatec/devise
+gem 'devise', '3.4.1'
+
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
@@ -89,6 +94,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
   gem 'guard-migrate', require: false
+  gem 'guard-spring'
   gem 'capybara'
   gem 'fuubar'
   gem 'factory_girl_rails'
@@ -103,7 +109,5 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
   gem 'simplecov', :require => false
+  gem 'compass-rails'
 end
-
-# Devise: https://github.com/plataformatec/devise
-gem 'devise', '3.4.1'

@@ -1,13 +1,15 @@
 #location-photos.row.mt30
   .row
-    %h3 All Images at Location
+    .col-md-12
+      %h3 All Images at Location
     .col-md-12
       %dir-pagination-controls{"on-page-change"=>"locationPageChanged(newPageNumber)", "pagination-id" => "all"}
   .row
-    .col-md-3.col-sm-6{"dir-paginate" => "photo in allLocationPhotos | itemsPerPage: photosPerPage", "total-items" => "totalLocationPhotos", "current-page" => "pagination.current", "pagination-id" => "all"}
-      .shop-item
-        .shop-item-image
-          %img(ng-src= "{{ photo.square_url }}")
-        .actions
-          %button.btn{"ng-click" => "addReconstructionPhoto(photo)"}
-            Add Image
+    .isotope-gallery-container
+      .col-md-2.col-sm-6.col-xs-12.gallery-item-wrapper.artwork.creative{"dir-paginate" => "photo in allLocationPhotos | itemsPerPage: photosPerPage", "total-items" => "totalLocationPhotos", "current-page" => "pagination.current", "pagination-id" => "all"}
+        .gallery-item
+          .gallery-thumb
+            %img(ng-src= "{{ photo.square_url }}")
+          .gallery-details
+            %button.btn{"ng-click" => "addReconstructionPhoto(photo)"}
+              Add Image

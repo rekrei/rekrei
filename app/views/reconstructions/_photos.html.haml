@@ -4,11 +4,12 @@
     .col-md-12
       %dir-pagination-controls{"on-page-change"=>"reconstructionPageChanged(newPageNumber)", "pagination-id" => "reconstruction"}
   .row
-    .col-md-3.col-sm-6{"dir-paginate" => "photo in allReconstructionPhotos | itemsPerPage: reconstrctionPhotosPerPage", "total-items" => "totalReconstructionPhotos", "current-page" => "pagination.current", "pagination-id" => "reconstruction"}
-      .shop-item
-        .shop-item-image
-          %img(ng-src= "{{ photo.square_url }}")
-        .actions
-          %b download link here
-          %button.btn{"ng-click" => "removeImageFromReconstruction(photo)"}
-            Remove Image
+    .isotope-gallery-container
+      .col-md-2.col-sm-6.col-xs-12.gallery-item-wrapper.artwork.creative{"dir-paginate" => "photo in allReconstructionPhotos | itemsPerPage: reconstrctionPhotosPerPage", "total-items" => "totalReconstructionPhotos", "current-page" => "pagination.current", "pagination-id" => "reconstruction"}
+        .gallery-item
+          .gallery-thumb
+            %img(ng-src= "{{ photo.square_url }}")
+          .gallery-details
+            %b download link here
+            %button.btn{"ng-click" => "removeImageFromReconstruction(photo)"}
+              Remove Image

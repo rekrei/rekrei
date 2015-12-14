@@ -1,0 +1,64 @@
+//
+// Flat UI Pro main stylesheet that aggregates all modules
+// --------------------------------------------------
+
+// Loading config with variables (changing them leads to changing a color scheme)
+@import "flat-ui-pro/variables";
+
+// Utility mixins for greater good
+@import "flat-ui-pro/mixins";
+
+// Loading custom fonts
+//@import url("https://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
+@import "flat-ui-pro/modules/local-fonts";
+@import "flat-ui-pro/modules/glyphicons";
+
+// Modules
+@import "flat-ui-pro/modules/scaffolding";
+@import "flat-ui-pro/modules/type";
+@import "flat-ui-pro/modules/code";
+@import "flat-ui-pro/modules/thumbnails";
+@import "flat-ui-pro/modules/buttons";
+@import "flat-ui-pro/modules/button-groups";
+@import "flat-ui-pro/modules/forms";
+@import "flat-ui-pro/modules/input-groups";
+@import "flat-ui-pro/modules/file-input";
+@import "flat-ui-pro/modules/radiocheck";
+@import "flat-ui-pro/modules/tagsinput";
+@import "flat-ui-pro/modules/typeahead";
+@import "flat-ui-pro/modules/progress-bars";
+@import "flat-ui-pro/modules/slider";
+@import "flat-ui-pro/modules/spinner";
+@import "flat-ui-pro/modules/datepicker";
+@import "flat-ui-pro/modules/timepicker";
+@import "flat-ui-pro/modules/pager";
+@import "flat-ui-pro/modules/pagination";
+@import "flat-ui-pro/modules/tooltip";
+@import "flat-ui-pro/modules/dropdowns";
+@import "flat-ui-pro/modules/select";
+@import "flat-ui-pro/modules/tables";
+@import "flat-ui-pro/modules/labels";
+@import "flat-ui-pro/modules/badges";
+@import "flat-ui-pro/modules/alerts";
+@import "flat-ui-pro/modules/bottom-menu";
+@import "flat-ui-pro/modules/navs";
+@import "flat-ui-pro/modules/navbar";
+@import "flat-ui-pro/modules/iconbar";
+@import "flat-ui-pro/modules/iconic-list";
+@import "flat-ui-pro/modules/tiles";
+@import "flat-ui-pro/modules/breadcrumbs";
+@import "flat-ui-pro/modules/popovers";
+@import "flat-ui-pro/modules/dialog";
+@import "flat-ui-pro/modules/modals";
+@import "flat-ui-pro/modules/switch";
+@import "flat-ui-pro/modules/carousel";
+@import "flat-ui-pro/modules/video";
+@import "flat-ui-pro/modules/panels";
+@import "flat-ui-pro/modules/todo-list";
+@import "flat-ui-pro/modules/datatables";
+
+// Spaces
+@import "flat-ui-pro/spaces";
+
+//Print styles
+@import "flat-ui-pro/modules/print";

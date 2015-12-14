@@ -12,31 +12,32 @@
         %h1
           = link_to "BACK", locations_path, class: "btn"
 = render partial: 'shared/tasks', locals: {location: @location}
-.eshop-section.section
+
+%section.content-block.gallery-1.gallery-1-2
   .container
-    .row
-      .col-md-12
-        %h1
-          Reconstructions
-          - if user_signed_in?
+    .underlined-title
+      %h1 Reconstructions
+      - if user_signed_in?
+        %hr
+          %h2
             = link_to "New Reconstruction", new_location_reconstruction_path(@location), class: "btn btn-default"
     .row
       - @reconstructions.each do |reconstruction|
-        .col-md-3.col-sm-6
-          .shop-item
-            .shop-item-image
-              - if reconstruction.images.count > 0
-                = link_to image_tag(reconstruction.images.first.image.url(:square)),location_reconstruction_path(@location,reconstruction)
-              - else
-                = link_to image_tag("square/missing.png"), location_reconstruction_path(@location,reconstruction)
-            .title
-              %h3
-                =link_to reconstruction.name, location_reconstruction_path(@location,reconstruction)
-            .price
-              %br
-              %br
-            .actions
-              =link_to "Edit", location_reconstruction_path(@location,reconstruction), class: "btn btn-small"
+        .isotope-gallery-container
+          .col-md-4.col-sm-6.col-xs-12.gallery-item-wrapper.artwork.creative
+            .gallery-item
+              .gallery-thumb
+                - if reconstruction.images.count > 0
+                  = image_tag reconstruction.images.first.image.url(:medium), class: "img img-responsive"
+                  = link_to reconstruction.images.first.image.url(:original), class: "gallery-zoom" do
+                    %i.fa.fa-eye{:alt => "This is the title"}
+                - else
+                  = image_tag "medium/missing.png"
+                  .image-overlay
+                =link_to "", location_reconstruction_path(@location,reconstruction), class: "gallery-link fa fa-link"
+              .gallery-details
+                %h5= reconstruction.name
+                %p= reconstruction.description
     .row
       .col-md-12
         .digg_pagination

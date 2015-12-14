@@ -1,6 +1,5 @@
-.col-md-3.col-sm-6
-  .shop-item
-    .shop-item-image
-      = link_to image_tag(image.image.url(:square)),location_image_path(@location,image)
-    .actions
-      =link_to "Recreate This", new_location_reconstruction_path(@location, image_id: image.id), class: "btn btn-small"
+.col-xs-6.col-md-3
+  .thumbnail
+    = link_to image_tag(image.image.url(:square)),location_image_path(@location,image)
+  .actions
+    =link_to "Recreate This", new_location_reconstruction_path(@location, image_id: image.id), class: "btn btn-default"

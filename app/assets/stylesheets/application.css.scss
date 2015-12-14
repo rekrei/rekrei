@@ -8,12 +8,17 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require dropzone/dropzone
+
  *= require bootstrap.min
  *= require bootstrap_and_overrides
+ *= require font-awesome.min
+ *= require dropzone/dropzone
+ *= require rekrei
+ *= require plugins
+ *= require blocks
+ *= require custom
  *= require icomoon-social
  *= require leaflet
- *= require main
  *= require pagination
  *= require angularjs-slider
  */
@@ -34,19 +39,6 @@
 .nomargin {
   margin: 0 !important;
 }
-
-#map {
-  height: 400px;
-  width: 100%;
-}
-
-#map img {
-  max-width: none;
-}
-#map label {
-  width: auto; display:inline;
-}
-
 
 // more map stuff
 #map-canvas {

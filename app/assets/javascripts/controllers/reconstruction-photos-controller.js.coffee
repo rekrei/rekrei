@@ -5,19 +5,19 @@
     $scope.currentReconstructionPage = 0
     $scope.allReconstructionPhotos = []
     $scope.totalReconstrucionPhotos = 0
-    $scope.reconstructionPhotosPerPage = 16
+    $scope.reconstructionPhotosPerPage = 12
     $scope.reconstruction = ""
 
     $scope.currentLocaltionPage = 0
     $scope.allLocationPhotos = []
     $scope.totalLocationPhotos = 0
-    $scope.locationPhotosPerPage = 16
+    $scope.locationPhotosPerPage = 12
     $scope.reconstruction = ""
 
     $scope.currentFlickrPage = 0
     $scope.flickrPhotos = []
     $scope.totalFlickrPhotos = 0
-    $scope.flickrPhotosPerPage = 16
+    $scope.flickrPhotosPerPage = 12
     $scope.distanceSlider =
       min: 10
       max: 250

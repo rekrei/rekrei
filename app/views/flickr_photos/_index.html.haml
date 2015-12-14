@@ -8,21 +8,22 @@
         %h4 Distance from Location (in metres)
         %rzslider{"rz-slider-model"=>"distanceSlider.value", "rz-slider-floor"=>"distanceSlider.floor", "rz-slider-ceil"=>"distanceSlider.ceil", "rz-slider-on-change"=>"sliderChanged()"}
   .row
-    .col-md-3.col-sm-6{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "pagination.current", "pagination-id" => "flickr"}
-      .shop-item
-        .shop-item-image
-          %img.flickr_square(ng-src= "{{flickrPhoto.url_q}}")
-        .actions
-          %p
-            %b
-              {{ flickrPhoto.title }}
-          %p by
-          %p {{ flickrPhoto.ownername }}
-          %p
-            %a{href: "https://www.flickr.com/photos/{{ flickrPhoto.owner }}/{{ flickrPhoto.id }}", target: "_blank"}
-              %i.fa.fa-flickr
-              Flickr Page
-          %p
-            %button.btn{"ng-click" => "addPhotoFromFlickr(flickrPhoto)"}
-              %i.fa.fa-cloud-download
-                Import from Flickr
+    .isotope-gallery-container
+      .col-md-2.col-sm-6.col-xs-12.gallery-item-wrapper.artwork.creative{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "pagination.current", "pagination-id" => "flickr"}
+        .gallery-item
+          .gallery-thumb
+            %img.flickr_square(ng-src= "{{flickrPhoto.url_q}}")
+          .gallery-details
+            %p
+              %b
+                {{ flickrPhoto.title }}
+            %p by
+            %p {{ flickrPhoto.ownername }}
+            %p
+              %a{href: "https://www.flickr.com/photos/{{ flickrPhoto.owner }}/{{ flickrPhoto.id }}", target: "_blank"}
+                %i.fa.fa-flickr
+                Flickr Page
+            %p
+              %button.btn{"ng-click" => "addPhotoFromFlickr(flickrPhoto)"}
+                %i.fa.fa-cloud-download
+                  Import

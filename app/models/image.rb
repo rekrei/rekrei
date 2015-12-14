@@ -17,7 +17,7 @@ class Image < Asset
   validates_attachment_content_type :masked_image,
                                     content_type: %r{image/.*}
 
-  self.per_page = 16
+  self.per_page = 12
 
   # scope :parent_match_images, lambda {
   #   where('id IN (SELECT DISTINCT(parent_image_id) FROM image_matches)')
