@@ -16,12 +16,10 @@
     .row
       / Image Column
       .col-sm-6
-        .portfolio-item
-          .portfolio-image
-            - if @reconstruction.images.count > 0
-              = image_tag(@reconstruction.images.first.image.url(:square))
-            - else
-              = image_tag("square/missing.png")
+        - if @reconstruction.images.count > 0
+          = image_tag(@reconstruction.images.first.image.url(:square), class: "img-responsive")
+        - else
+          = image_tag("square/missing.png")
         / End Image Column
         / Project Info Column
       .portfolio-item-description.col-sm-6
