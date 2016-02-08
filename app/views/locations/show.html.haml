@@ -28,7 +28,7 @@
             .gallery-item
               .gallery-thumb
                 - if reconstruction.images.count > 0
-                  = image_tag reconstruction.images.first.image.url(:medium), class: "img img-responsive"
+                  = image_tag reconstruction.images.first.image.url(:square), class: "img img-responsive"
                   = link_to reconstruction.images.first.image.url(:original), class: "gallery-zoom" do
                     %i.fa.fa-eye{:alt => "This is the title"}
                 - else
