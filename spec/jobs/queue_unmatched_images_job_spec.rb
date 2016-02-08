@@ -8,12 +8,12 @@ RSpec.describe QueueUnmatchedImagesJob, type: :job do
 
     it { expect(Image.count).to eq 2 }
     it { expect(ImageMatch.count).to eq 1 }
-    it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 2 }
+    it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0 } #changed to zero until we can get the image matcher working in production
 
     it "should enqueue image matching jobs" do
-      expect { 
+      expect {
         image.save
-      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
+      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(0) # same as above
     end
   end
 
@@ -24,13 +24,13 @@ RSpec.describe QueueUnmatchedImagesJob, type: :job do
 
     it { expect(Image.count).to eq 10 }
     it { expect(ImageMatch.count).to eq 5 }
-    it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 10 }
+    it { expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0 } #disabled, as above
 
     it "should enqueue image matching jobs" do
-      expect { 
+      expect {
         image.save
         QueueUnmatchedImagesJob.perform_now image: image
-      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(11)
+      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(10) #from 11 to 10, while jobs are disabled above
     end
   end
 end
