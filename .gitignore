@@ -31,3 +31,5 @@ doc/
 .secret
 public/assets
 coverage/*
+
+.envrc
