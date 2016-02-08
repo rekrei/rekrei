@@ -6,7 +6,7 @@ development: &default
 staging:
   <<: *default
 
-production: &defaults
+production:
   <<: *default
 
 test:
