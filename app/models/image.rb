@@ -7,7 +7,7 @@ class Image < Asset
   # all images where image is the compared image
   has_many :comparison_matches, class_name: ImageMatch, foreign_key: :comparison_image_id
 
-  after_create :update_matches
+  # after_create :update_matches
 
   has_attached_file :masked_image, styles: {
     square: '600x360#',
