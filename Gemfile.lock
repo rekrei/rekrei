@@ -59,6 +59,12 @@ GEM
     autoprefixer-rails (6.1.2)
       execjs
       json
+    awesome_print (1.6.1)
+    aws-sdk (1.66.0)
+      aws-sdk-v1 (= 1.66.0)
+    aws-sdk-v1 (1.66.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.9)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -297,6 +303,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.4)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -475,6 +483,8 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
+  awesome_print
+  aws-sdk (< 2.0)
   bcrypt (= 3.1.9)
   bootstrap-sass (= 3.3.5)
   bower-rails (~> 0.10.0)
@@ -520,6 +530,7 @@ DEPENDENCIES
   paperclip (~> 4.2)
   passenger
   pg
+  pry-rails
   rails (= 4.2.4)
   rails_admin
   rmagick
@@ -548,4 +559,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
