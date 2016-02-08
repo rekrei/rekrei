@@ -67,7 +67,7 @@ group :development, :test do
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano-passenger'
+  gem 'capistrano-passenger', '0.2.0'
   gem 'capistrano-maintenance', github: 'capistrano/maintenance', require: false
   gem 'capistrano-rails-console'
   gem 'capistrano-sidekiq'

@@ -78,7 +78,7 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-passenger (0.0.5)
+    capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
     capistrano-rails (1.1.3)
       capistrano (~> 3.1)
@@ -453,7 +453,7 @@ DEPENDENCIES
   capistrano (~> 3.3.0)
   capistrano-bundler
   capistrano-maintenance!
-  capistrano-passenger
+  capistrano-passenger (= 0.2.0)
   capistrano-rails
   capistrano-rails-console
   capistrano-sidekiq
@@ -513,3 +513,6 @@ DEPENDENCIES
   underscore-rails
   web-console (= 2.0.0)
   will_paginate
+
+BUNDLED WITH
+   1.11.2
