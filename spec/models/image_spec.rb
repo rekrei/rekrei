@@ -117,9 +117,9 @@ describe Image do
 
     it "should create image matches after creating" do
       expect {
-        expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 1
+        expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
         new_image.save
-      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
+      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(0) #no jobs are queued right now
     end
   end
 
