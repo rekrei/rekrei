@@ -56,8 +56,6 @@ gem 'geonames_api'
 # gem 'sidekiq'
 # gem 'sinatra', :require => nil
 
-group :production do
-
 group :production, :staging do
   gem 'puma'
   gem 'newrelic_rpm'
