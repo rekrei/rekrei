@@ -2,28 +2,23 @@
   .container
     .row
       .col-md-6
-        %h3 Project Mosul
+        %h3 Rekrei
         %p
-          Project Mosul is an initative started by Matthew Vincent (ITN-DCH Researcher), Chance Coughenour (ITN-DCH Researcher), and Marinos Ioannides (ITN-DCH Coordinator) of the Initial Training Network for Digital Cultural Heritage, a Marie Curie Actions FP7-PEOPLE funded project. The project is a response to the destruction of cultural heritage by the Islamic States, and proposes to use crowd-sourced imagery to digitally reconstruct the heritage that has been destroyed.
+          Rekrei, formally known as Project Mosul, is an initiative started by Matthew Vincent and Chance Coughenour. By integrating our knowledge in archaeology, web development, and photogrammetry, our objective is to promote the digital preservation of lost cultural heritage using crowdsourced data in a cooperative, open-source project.
         %h3 Get Involved!
-        %p
-          Want to help out? Pick a location above, and start uploading, sorting, masking, or processing any of the reconstructions available.
-          %br
-          %br
-          Not sure where to start? Why not start
-          = link_to 'here', location_path('mosul-museum')
-          %br
-          %br
-          Do you know how to code? Why not help out with building some of the tools
-          = link_to 'here', 'https://github.com/neshmi/projectmosul'
-          %br
-          %br
-          Whatever the case, join the conversation with the community of volunteers with our Slack channel
-          = link_to 'here.', 'https://projectmosul.github.io'
-        %p
-          Together, we are working on a framework for the digital restoration and curation of lost heritage, with the ultimate goal to provide virtual reality access to these museums online. If you want to get involved, fill out this form
-          = link_to 'here', "http://tinyurl.com/projectmosulvolunteer", target: "_blank"
-          and we will get you connected with the right area.
+        %ul
+          %li
+            Help us locate cultural heritage sites at risk or recently destroyed
+            = link_to 'here.', locations_path
+          %li Have pictures of a site or artefact that no longer exists? Sign-up and upload the your pictures at the corresponding location above.
+          %li
+            Know how to code? Why not help out with building the project’s tool
+            = link_to 'here.', 'https://github.com/neshmi/projectmosul'
+          %li Want to volunteer your time and help us sort and group images? You can start by selecting one of the locations on the map above.
+          %li Familiar with photogrammetry software? Try your expertise with creating new or improving the models.
+          %li
+            Join the conversation with the community of volunteers on our Slack channel
+            = link_to 'here.', 'https://projectmosul.github.io'
       .col-md-6
         .video-wrapper
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :mozallowfullscreen => "true", :onmousewheel => "", :src => "https://sketchfab.com/models/55ea0aed9bfd462593f006ea8c4aade0/embed", :webkitallowfullscreen => "true", :width => "100%"}

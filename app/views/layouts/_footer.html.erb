@@ -24,30 +24,4 @@
         </ul>
       </div>
     </div>
-    <div class="row footer-copyright">
-      <div class="col-md-9">
-        <p>This website is a volunteer effort by fellows who are partly funded by the EU Community’s FP7 PEOPLE under the ITN-DCH Project (Grant Agreement 608013). The website reflects only the creators views and the Community is not liable for any use that may be made of the information contained therein. Neither the ITN-DCH consortium as a whole, nor a certain participant of the ITN-DCH consortium, warrant that the information contained in this site is capable of use, nor that use of the information is free from risk, and accepts no liability for loss or damage suffered by any person using this information.</p>
-      </div>
-      <div class="col-md-1">
-        <%#= image_tag "logos/itndch.jpg", height: "50" %>
-      </div>
-      <div class="col-md-1">
-        <%= image_tag "logos/mca_logo.png", height: "50" %>
-      </div>
-      <div class="col-md-1">
-        <%= image_tag "logos/ec_logo.png", height: "50" %>
-      </div>
-    </div>
 </div>
-
-<% if Rails.env.production? %>
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-60227281-1', 'auto');
-ga('send', 'pageview');
-</script>
-<% end %>

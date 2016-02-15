@@ -3,8 +3,8 @@ class Asset < ActiveRecord::Base
   after_initialize :set_uuid_value
 
   has_many :asset_relations
-  has_many :reconstructions, through: :asset_relations  
-  
+  has_many :reconstructions, through: :asset_relations
+
   # has_one :asset_reconstruction_relation, -> { where(relatable_type: 'Reconstruction') }, class: AssetRelation
   # has_one :reconstruction, through: :asset_reconstruction_relation, source: :relatable, source_type: 'Reconstruction'
 
@@ -16,7 +16,7 @@ class Asset < ActiveRecord::Base
     square: '600x360#',
     medium: '300x300>',
     thumb: '100x100>'
-  }, default_url: '/assets/:style/missing.png'
+  }#, default_url: '/assets/:style/missing.png'
   validates_attachment_content_type :image, content_type: %r{image/.*}
 
   scope :assigned_to_artefact, -> { where('artefact_id IS NOT NULL') }

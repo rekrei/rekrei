@@ -1,4 +1,7 @@
 FROM ruby:2.3.0
+
+MAINTAINER Matthew Vincent <matt@averails.com>
+
 RUN apt-get update && apt-get install imagemagick libmagickcore-dev libmagickwand-dev libpq-dev nodejs
 RUN rm -rf /var/lib/apt/lists/*
 RUN mkdir /rekrei
@@ -9,7 +12,7 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5 --without developm
 COPY . /rekrei
 ENV RAILS_ENV production
 ENV RACK_ENV production
-# RUN bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile
 EXPOSE 80
 EXPOSE 443
 CMD ["bundle","exec","puma","-C","config/puma.rb"]

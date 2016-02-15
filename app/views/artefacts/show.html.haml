@@ -2,7 +2,7 @@
   .container
     .row
       .col-sm-6
-        %h1 
+        %h1
           = @artefact.name.upcase
       .col-sm-3
         %h1
@@ -31,14 +31,14 @@
           %li
             %b Museum ID:
             = @artefact.museum_identifier
-    %h3 
+    %h3
       3D Models
       = link_to 'Add 3D Model', new_artefact_sketchfab_path(artefact_id: @artefact.id)
     .row
       - @artefact.sketchfabs.each do |sketchfab|
         .col-md-4
           = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
-        
+
     %h3 Artefact Photos
     .row
       - @artefact.images.each do |image|
@@ -50,6 +50,5 @@
                 %ul
                   %li.portfolio-project-name Download
                   %li.read-more
-                    = link_to download_image_path(image) do
-                      <i class="fa fa-download"> Original</i>                    
-                      
+                    = link_to image.image.url(:original), download: image.image_file_name do
+                      <i class="fa fa-download"> Original</i>

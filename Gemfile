@@ -32,12 +32,10 @@ gem 'paperclip', '~> 4.2'
 gem 'paper_trail', '~> 4.0.0.beta2'
 
 gem 'dropzonejs-rails'
-gem 'therubyracer'
 
 # for now, until we decide if we want to use this in production or not
 gem 'pg'
-gem 'dotenv-rails'
-gem 'less-rails'
+# gem 'dotenv-rails'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 # gem 'will_paginate-bootstrap'
@@ -62,7 +60,7 @@ gem 'geonames_api'
 # gem 'sinatra', :require => nil
 
 group :production, :staging do
-  gem 'passenger'
+  # gem 'passenger'
 end
 
 group :development, :test do
