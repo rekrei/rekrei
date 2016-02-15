@@ -12,10 +12,8 @@ gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
-gem 'puma'
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-gem 'skylight'
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.2'
 
@@ -41,7 +39,6 @@ gem 'will_paginate'
 # gem 'will_paginate-bootstrap'
 
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
-gem 'newrelic_rpm'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
@@ -59,8 +56,12 @@ gem 'geonames_api'
 # gem 'sidekiq'
 # gem 'sinatra', :require => nil
 
+group :production do
+
 group :production, :staging do
-  # gem 'passenger'
+  gem 'puma'
+  gem 'newrelic_rpm'
+  gem 'skylight'
 end
 
 group :development, :test do
