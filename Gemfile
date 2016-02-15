@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.3.0'
 # ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.3'
@@ -12,10 +12,10 @@ gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
+gem 'puma'
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'skylight'
-
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.2'
 
@@ -47,6 +47,8 @@ gem 'newrelic_rpm'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
+gem 'aws-sdk', '< 2.0'
+
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
@@ -56,8 +58,8 @@ gem 'underscore-rails'
 gem 'geonames_api'
 
 # ActiveJob
-gem 'sidekiq'
-gem 'sinatra', :require => nil
+# gem 'sidekiq'
+# gem 'sinatra', :require => nil
 
 group :production, :staging do
   gem 'passenger'
