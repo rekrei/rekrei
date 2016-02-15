@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5.1'
 gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
 gem 'uglifier', '2.6.0'
