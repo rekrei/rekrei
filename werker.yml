@@ -1,0 +1,9 @@
+box: ruby:2.3.0
+services:
+    - postgres
+build:
+    steps:
+        - bundle-install
+        - script:
+            name: rspec
+            code: bundle exec rspec
