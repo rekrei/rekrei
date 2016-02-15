@@ -28,7 +28,7 @@ module Projectmosul
     config.generators.test_framework false
 
     # ActiveJob
-    config.active_job.queue_adapter = :sidekiq
+    # config.active_job.queue_adapter = :sidekiq
 #     config.active_job.queue_name_prefix = Rails.env
 
     # autoload lib path
