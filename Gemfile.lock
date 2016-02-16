@@ -317,6 +317,8 @@ GEM
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rmagick (2.14.0)
+    rollbar (2.7.1)
+      multi_json
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -472,6 +474,7 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   rails_admin
   rmagick
+  rollbar (~> 2.7.1)
   rspec-activejob
   rspec-given
   rspec-rails (~> 3.0)
