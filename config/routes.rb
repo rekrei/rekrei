@@ -51,7 +51,6 @@ Projectmosul::Application.routes.draw do
   get 'about', to: 'pages#about', as: 'about'
   get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/contact', to: 'pages#contact', as: 'contact'
-  get '/kathmandu', :to => redirect('/kathmandu.html')
   post '/emailconfirmation', to: 'pages#email', as: 'email_confirmation'
 
   devise_for :users
