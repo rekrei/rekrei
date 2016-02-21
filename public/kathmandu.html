@@ -1,0 +1,157 @@
+
+<!-- Some divs to wrap the model iframes and two buttons -->
+<body>
+    <iframe src="" id="api-frame" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <div class="buttons">
+        <button id="before">Before</button>
+        <button id="after">After</button>
+    </div>
+
+    <!-- The API -->
+    <script src="https://d2f25wgezub9nf.cloudfront.net/api/sketchfab-viewer-1.0.0.js"></script>
+
+    <!-- Your new script -->
+    <script>
+        // Model
+        var model = 'e21d746815b248b1b566b12aa7fa596e',
+
+            // Two buttons
+            beforeButton = document.getElementById( 'before' ),
+            afterButton = document.getElementById( 'after' ),
+
+            beforeNode,
+            afterNode,
+
+            beforeObj = 'Mesh.part',
+            afterObj = '3D_OBJ.part',
+
+            // API version
+            version = '1.0.0',
+
+            // The iframe
+            iframe = document.getElementById( 'api-frame' ),
+
+            // The API client object
+            client = new Sketchfab( version, iframe ),
+
+            // The API object
+            api,
+
+            // Defining error and success outside initialization, for easy reading
+            error = function () {
+                console.error( 'Sketchfab API Error!' );
+            },
+
+            // If initilization succeeds, start the model immediately
+            success = function( callback ) {
+                api = callback;
+                // api.start();
+                // Wait for viewer to be ready
+                api.addEventListener( 'viewerready', function() {
+                    // Get the object nodes
+                    api.getNodeMap( function ( err, nodes ) {
+                        if ( !err ) {
+                            console.log( 'got nodes:', nodes );
+                            for ( var prop in nodes ) {
+                                if ( nodes.hasOwnProperty( prop ) ) {
+                                    // Check nodes against object names
+                                    if ( nodes[ prop ].name === beforeObj ) {
+                                        beforeNode = nodes[prop].instanceID;
+                                        console.log( 'before node: ' + beforeNode );
+                                        // Add button event
+                                        beforeButton.addEventListener( 'click', function() {
+                                            api.hide( afterNode );
+                                            api.show( beforeNode );
+                                        });
+                                    }
+                                    if ( nodes[ prop ].name === afterObj ) {
+                                        afterNode = nodes[prop].instanceID;
+                                        console.log( 'after node: ' + afterNode );
+                                        // Add button event
+                                        afterButton.addEventListener( 'click', function() {
+                                            api.hide( beforeNode );
+                                            api.show( afterNode );
+                                        });
+                                    }
+                                }
+                                // When both nodes are ready, hide after
+                                if ( beforeNode && afterNode ) {
+                                    api.hide( afterNode );
+                                    console.log( 'model loaded and showing before' );
+                                    break;
+                                }
+                            }
+                        }
+                    });
+                });
+            };
+
+        // A function to load a model
+        function loadModel( client, urlid ) {
+            console.log( 'loading a model' );
+            client.init( urlid, {
+                success: success,
+                error: error,
+                internal: 1,
+                ui_infos: 0,
+                ui_controls: 0,
+                ui_stop: 1,
+                watermark: 1,
+                continuousRender: 1
+            });
+        }
+
+        loadModel( client, model );
+
+    </script>
+
+    <!-- Lastly, some CSS -->
+    <style type="text/css">
+
+        body {
+            margin: 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Button style */
+        .buttons {
+            margin: 16px 0;
+            left: 50%;
+            bottom: 0;
+            -webkit-transform: translate(-50%);
+            -ms-transform: translate(-50%);
+            transform: translate(-50%);
+            z-index: 1;
+            display: block;
+            position: absolute;
+        }
+
+        button {
+            width: 80px;
+            height: 25px;
+            line-height: 21px;
+            text-transform: uppercase;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            vertical-align: middle;
+            float: left;
+            margin-right: 5px;
+        }
+
+        #before {
+            background: #1caad9;
+        }
+
+        #after {
+            background: #cc211f;
+        }
+
+    </style>
+</body>
