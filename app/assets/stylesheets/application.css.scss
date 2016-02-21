@@ -21,7 +21,7 @@
 }
 
 .portfolio-item {
-  min-height: 350px !important;
+  min-height: 150px !important;
 }
 
 .nopadding {
@@ -122,4 +122,8 @@
 }
 .noPaddingTop {
 	padding-top:0
+}
+
+.logo-wrapper img {
+  max-height: 20px;
 }

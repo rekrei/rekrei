@@ -1,0 +1,30 @@
+.footer
+  .container
+    .row.mb30
+      .col-footer.col-md-4.col-xs-6
+        %h3 About the Website
+        %p
+          Developed and designed by
+          %a{:href => "https://github.com/neshmi"} Matthew Vincent
+        %p
+          Project logo designed by Chance Coughenour
+        %p
+          We are using the awesome mPurpose template, you can get it
+          = succeed "." do
+            %a{:href => "http://dragdropsite.github.io/mPurpose/index.html"} here
+      .col-footer.col-md-4.col-xs-6
+        %h3 Contacts
+        %p.contact-us-details
+          %b Email:
+          %a{:href => "mailto:info@projectmosul.org"} info@projectmosul.org
+        %p
+          = image_tag "logos/rekrei_text_dark_400pxwide_png24.png", class: "img img-responsive"
+      .col-footer.col-md-4.col-xs-6
+        %h3 Stay Connected
+        %ul.footer-stay-connected.no-list-style
+          %li
+            %a.facebook{:href => "https://www.facebook.com/projectmosul"}
+          %li
+            %a.twitter{:href => "https://twitter.com/projectmosul"}
+          %li
+            %a.googleplus{:href => "https://plus.google.com/u/0/b/101278760726149246768/101278760726149246768/about"}
