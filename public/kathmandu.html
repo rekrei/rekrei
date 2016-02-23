@@ -45,7 +45,8 @@
             // If initilization succeeds, start the model immediately
             success = function( callback ) {
                 api = callback;
-                // api.start();
+                api.start();
+                api.stop();
                 // Wait for viewer to be ready
                 api.addEventListener( 'viewerready', function() {
                     // Get the object nodes
