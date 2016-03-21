@@ -9,26 +9,32 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
 
- *= require bootstrap.min
+ *= require dropzone/dropzone
  *= require bootstrap_and_overrides
  *= require font-awesome.min
- *= require dropzone/dropzone
- *= require rekrei
  *= require plugins
- *= require blocks
- *= require custom
  *= require icomoon-social
  *= require leaflet
+ *= require main
  *= require pagination
  *= require angularjs-slider
+ *= require carousel
  */
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+ @font-face {
+   font-family: 'Glyphicons Halflings';
+   src: url('/assets/glyphicons-halflings-regular.eot');
+   src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+ }
 
 .sketchfab-gallery-item p {
   height: 50px;
 }
 
 .portfolio-item {
-  min-height: 350px !important;
+  min-height: 150px !important;
 }
 
 .nopadding {
@@ -38,6 +44,19 @@
 
 .nomargin {
   margin: 0 !important;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+#map img {
+  max-width: none;
+}
+
+#map label {
+  width: auto; display:inline;
 }
 
 // more map stuff
@@ -121,4 +140,16 @@
 /** Flickr Photo Classes **/
 .flickr_square {
   width: 320px;
+}
+
+.logo-wrapper img {
+  max-height: 20px;
+}
+
+.flickr-item {
+  height: 365px;
+}
+
+.flickr-item b {
+  white-space: pre;
 }

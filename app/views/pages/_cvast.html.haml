@@ -1,2 +1,8 @@
-.col-md-2.col-sm-4.mb15
-  = link_to image_tag("logos/cvast.png"), "https://www.facebook.com/USFCVAST", traget: "_blank"
+.col-md-3.col-sm-6
+  .portfolio-item
+    .portfolio-image
+      = image_tag "logos/cvast.png"
+    .portfolio-info
+      %ul
+        %li.read-more
+          = link_to "Read More", "https://www.facebook.com/USFCVAST/", target: "_blank", class: "btn"

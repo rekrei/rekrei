@@ -46,7 +46,7 @@
     getFlickrPhotos 1
 
     $scope.flickrSliderChanged = () ->
-      getFlickrPhotos $scope.currentPage
+      getFlickrPhotos $scope.currentFlickrPage
       return
 
     $scope.flickrPageChanged = (newPage) ->

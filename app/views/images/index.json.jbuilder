@@ -5,4 +5,6 @@ json.reconstruction @reconstruction.slug
 json.images @images do |image|
   json.(image, :created_at, :updated_at, :id)
   json.square_url image.image.url(:square)
+  json.original_url image.image.url(:original)
+  json.file_name image.image_file_name
 end

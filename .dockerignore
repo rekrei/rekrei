@@ -1,0 +1,21 @@
+# Ignore the bundle directory itself.
+/vendor/bundle
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/system
+# Ignore other unneeded files.
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.env
+# Ignore application configuration
+/config/application.yml
+.secret
+public/assets
+coverage/*
+.envrc
+.dockerenv

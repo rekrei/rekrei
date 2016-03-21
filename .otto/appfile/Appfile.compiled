@@ -1,0 +1,178 @@
+{
+    "File": {
+        "ID": "e40aed9a-db04-beb3-f074-add1e75a6c8e",
+        "Path": "/Users/neshmi/code/projectmosul/Appfile",
+        "Source": "",
+        "Application": {
+            "Name": "projectmosul",
+            "Type": "rails",
+            "Detect": false,
+            "Dependencies": [
+                {
+                    "Source": "github.com/hashicorp/otto/examples/postgresql"
+                },
+                {
+                    "Source": "github.com/hashicorp/otto/examples/redis"
+                }
+            ]
+        },
+        "Project": {
+            "Name": "projectmosul",
+            "Infrastructure": "projectmosul"
+        },
+        "Infrastructure": [
+            {
+                "Name": "projectmosul",
+                "Type": "aws",
+                "Flavor": "simple",
+                "Foundations": [
+                    {
+                        "Name": "consul",
+                        "Config": null
+                    }
+                ]
+            }
+        ],
+        "Customization": null,
+        "Imports": null
+    },
+    "Vertices": [
+        {
+            "File": {
+                "ID": "e40aed9a-db04-beb3-f074-add1e75a6c8e",
+                "Path": "/Users/neshmi/code/projectmosul/Appfile",
+                "Source": "",
+                "Application": {
+                    "Name": "projectmosul",
+                    "Type": "rails",
+                    "Detect": false,
+                    "Dependencies": [
+                        {
+                            "Source": "github.com/hashicorp/otto/examples/postgresql"
+                        },
+                        {
+                            "Source": "github.com/hashicorp/otto/examples/redis"
+                        }
+                    ]
+                },
+                "Project": {
+                    "Name": "projectmosul",
+                    "Infrastructure": "projectmosul"
+                },
+                "Infrastructure": [
+                    {
+                        "Name": "projectmosul",
+                        "Type": "aws",
+                        "Flavor": "simple",
+                        "Foundations": [
+                            {
+                                "Name": "consul",
+                                "Config": null
+                            }
+                        ]
+                    }
+                ],
+                "Customization": null,
+                "Imports": null
+            },
+            "Dir": "",
+            "NameValue": "projectmosul"
+        },
+        {
+            "File": {
+                "ID": "b0f8aaef-4cb4-2ef1-cb31-07cbbd925c7d",
+                "Path": "/Users/neshmi/code/projectmosul/.otto/appfile/deps/5b18aa002a643beec4692279cbaf4f77/Appfile",
+                "Source": "git::https://github.com/hashicorp/otto.git//examples/postgresql",
+                "Application": {
+                    "Name": "postgresql",
+                    "Type": "docker-external",
+                    "Detect": true,
+                    "Dependencies": null
+                },
+                "Project": {
+                    "Name": "5b18aa002a643beec4692279cbaf4f77",
+                    "Infrastructure": "projectmosul"
+                },
+                "Infrastructure": [
+                    {
+                        "Name": "projectmosul",
+                        "Type": "aws",
+                        "Flavor": "simple",
+                        "Foundations": [
+                            {
+                                "Name": "consul",
+                                "Config": null
+                            }
+                        ]
+                    }
+                ],
+                "Customization": {
+                    "Raw": [
+                        {
+                            "Type": "app",
+                            "Config": {
+                                "image": "postgres:9.5",
+                                "run_args": "-p 5432:5432"
+                            }
+                        }
+                    ]
+                },
+                "Imports": null
+            },
+            "Dir": "/Users/neshmi/code/projectmosul/.otto/appfile/deps/5b18aa002a643beec4692279cbaf4f77",
+            "NameValue": "postgresql"
+        },
+        {
+            "File": {
+                "ID": "a6d8b83a-5ec4-8318-a8ec-20964e865b51",
+                "Path": "/Users/neshmi/code/projectmosul/.otto/appfile/deps/64983b6cfa2bcecaaccd0cc781256405/Appfile",
+                "Source": "git::https://github.com/hashicorp/otto.git//examples/redis",
+                "Application": {
+                    "Name": "redis",
+                    "Type": "docker-external",
+                    "Detect": true,
+                    "Dependencies": null
+                },
+                "Project": {
+                    "Name": "64983b6cfa2bcecaaccd0cc781256405",
+                    "Infrastructure": "projectmosul"
+                },
+                "Infrastructure": [
+                    {
+                        "Name": "projectmosul",
+                        "Type": "aws",
+                        "Flavor": "simple",
+                        "Foundations": [
+                            {
+                                "Name": "consul",
+                                "Config": null
+                            }
+                        ]
+                    }
+                ],
+                "Customization": {
+                    "Raw": [
+                        {
+                            "Type": "app",
+                            "Config": {
+                                "image": "redis:3",
+                                "run_args": "-p 6379:6379"
+                            }
+                        }
+                    ]
+                },
+                "Imports": null
+            },
+            "Dir": "/Users/neshmi/code/projectmosul/.otto/appfile/deps/64983b6cfa2bcecaaccd0cc781256405",
+            "NameValue": "redis"
+        }
+    ],
+    "Edges": [
+        {
+            "0": "1"
+        },
+        {
+            "0": "2"
+        }
+    ]
+}

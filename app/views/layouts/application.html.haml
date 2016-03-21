@@ -2,15 +2,13 @@
 %html{:lang => "en", :style => "height:100%;"}
   %head
     %meta{:charset => "utf-8"}
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %meta{:content => "rekrei, heritage, lost heritage, reconstruction, patrimony, syria, iraq", :name => "keywords"}/
-    %meta{:content => "My new website", :name => "description"}/
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %meta{:content => "Rekrei is a project that seeks to restore lost cultural heritage through crowd-sourced photogrammetric reconstructions.", :name => "description"}
-    %title= @title || "Project Mosul"
+    %meta{:content => "rekrei, heritage, lost heritage, reconstruction, patrimony, recovery, virtual, digital cultural heritage", :name => "keywords"}
+    %title= @title || "Rekrei"
     = favicon_link_tag 'favicon.ico'
     = favicon_link_tag 'rekrei.icns', rel: 'apple-touch-icon'
-
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700", :rel => "stylesheet"}
     %link{:href => "http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic", :rel => "stylesheet"}
@@ -18,18 +16,27 @@
     %link{:href => "https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css", :rel => "stylesheet"}/
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    %link{:href => "ico/favicon.png", :rel => "shortcut icon"}
-    <!--[if gt IE 9]><!-->
+    / [if gt IE 9]><!
     = javascript_include_tag "html5shiv"
     = javascript_include_tag "respond.min"
-    <!--<![endif]-->
+    / <![endif]
     = yield(:head)
   %body{"data-spy" => "scroll", "data-target" => "nav", "ng-app" => "Rekrei"}
-    %header#header-1.header-1
-      = render 'layouts/navigation'
-    .row
-      .col-sm-6.col-sm-offset-3.text-center
-        = render 'layouts/messages'
-    = yield
-    = render 'layouts/footer'
-  = yield(:scripts)
+    #wrap
+      %header
+        = render 'layouts/navigation'
+      .row
+        .col-sm-6.col-sm-offset-3.text-center
+          = render 'layouts/messages'
+      = yield
+      = render 'layouts/footer'
+      = yield :scripts
+      - if Rails.env.production?
+        :javascript
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60227281-1', 'auto');
+          ga('send', 'pageview');

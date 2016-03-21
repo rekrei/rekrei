@@ -16,7 +16,7 @@ class Asset < ActiveRecord::Base
     square: '600x360#',
     medium: '300x300>',
     thumb: '100x100>'
-  }, default_url: '/assets/:style/missing.png'
+  }#, default_url: '/assets/:style/missing.png'
   validates_attachment_content_type :image, content_type: %r{image/.*}
 
   scope :assigned_to_artefact, -> { where('artefact_id IS NOT NULL') }

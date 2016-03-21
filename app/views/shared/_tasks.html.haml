@@ -1,48 +1,46 @@
-%section#content-2-7.content-block.content-2-7.bg-deepocean.pb15
+.section.section-white
   .container
+    %h2
+      Tasks
     .row
-      .col-sm-12
-        .underlined-title
-          %h1 Tasks and Stats
-          %hr
-            %h2
-              Since March, 2015
-      .col-sm-4.text-center
-        .counter-icon
-          %span.fa.fa-camera-retro
-        .counter-text
-          %h3.counter
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-camera-retro.fa-5x
+          %h2
+            Images to Sort
+            %br
+            %br
+          %h1
             - if location
               = location.images.unassigned_to_reconstruction.count
             - else
               = Image.unassigned_to_reconstruction.count
-          %span Images Uploaded
-          %p
-            = link_to "Sort Photos", location_images_path(location), class: "btn" if location
-            = link_to "See all Photos", location_images_path(location, show: "all"), class: "btn" if location
-      .col-sm-4.text-center
-        .counter-icon
-          %span.fa.fa-magic
-        .counter-text
-          %h3.counter
+          = link_to "Sort Photos", location_images_path(location), class: "btn" if location
+          = link_to "See all Photos", location_images_path(location, show: "all"), class: "btn" if location
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-magic.fa-5x
+          %h2
+            Images to Mask
+            %br
+            %br
+          %h1
             - if location
               = location.images.unmasked.count
             - else
               = Image.unmasked.count
-          %span Images to Mask
-      .col-sm-4.text-center
-        .counter-icon
-          %span.fa.fa-cubes
-        .counter-text
-          %h3.counter
+          - if location
+            .btn
+              Coming soon!
+          =# link_to "Mask Photos", location_images_path(location), class: "btn" if location
+      .col-md-4.col-sm-6
+        .service-wrapper
+          %i.fa.fa-cubes.fa-5x
+          %h2
+            Reconstructions to Process
+          %h1
             - if location
               = location.reconstructions.sketchfabless.count
             - else
               = Reconstruction.sketchfabless.count
-          %span Reconstructions to Process
           = link_to "Process Reconstruction", location_reconstructions_path(location), class: "btn" if location
-      .col-sm-12.text-center.pad45
-        %strong.white
-          Thanks to all the volunteers who make these numbers possible
-    / /.row
-  / /.container

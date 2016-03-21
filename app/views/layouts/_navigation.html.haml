@@ -1,42 +1,5 @@
-/ Navbar
-%nav.main-nav.navbar-fixed-top.headroom.headroom--pinned
+.mainmenu-wrapper
   .container
-    / Brand and toggle
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to image_tag("logo_horizontal_white.png", class: "brand-img img-responsive"), root_path
-
-    / Navigation
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-right
-        %li.active.nav-item
-          = link_to "Home", root_path, data: { no_turbolink: true }
-        %li.nav-item.locations
-          = link_to "Locations", locations_path, data: { no_turbolink: true }
-        %li.nav-item.gallery
-          = link_to "3D Gallery", gallery_path
-        %li.nav-item.press
-          = link_to "Press", press_path
-        %li.nav-item.contact
-          = link_to "Contact", contact_path
-        - if !user_signed_in?
-          %li.nav-item.users
-            = link_to "Sign Up", new_user_registration_path
-          %li.nav-item
-            = link_to "Login", new_user_session_path
-        - else
-          %li.nav-item
-            = link_to "Edit your account", edit_user_registration_path
-          - if current_user.admin?
-            %li.nav-item
-              = link_to "Admin", rails_admin_path
-          %li.nav-item
-            = link_to "Sign out", destroy_user_session_path, data: { method: :delete }
-      / //nav
-    / // End Navigation
-  / // End Container
-/ // End Navbar
+    %nav#mainmenu.mainmenu
+      %ul
+        = render 'layouts/navigation_links'

@@ -1,11 +1,11 @@
 <li class="logo-wrapper">
-  <%#= link_to image_tag("mPurpose-logo.png"), root_path %>
-  <%= link_to "Home", root_path, data: { no_turbolink: true } %>
+  <%= link_to image_tag("logos/rekrei_text_light_60pxhigh.png"), root_path, data: { no_turbolink: true }, class: "img img-responsive"  %>
 </li>
-<li class='locations'><%= link_to "Locations", locations_path, data: { no_turbolink: true } %></li>
+<li class='locations'><%= link_to "Locations", locations_path, class: "img img-responsive", data: { no_turbolink: true } %></li>
 <li class='contact'><%= link_to "Contact", contact_path %></li>
 <li class='gallery'><%= link_to "3D Gallery", gallery_path %></li>
 <li class='press'><%= link_to 'Press', press_path %></li>
+<li class='about'><%= link_to 'About', about_path %></li>
 <% if !user_signed_in? %>
 <li class='users'><%= link_to "Sign up", new_user_registration_path %></li>
 <li><%= link_to "Login", new_user_session_path %></li>

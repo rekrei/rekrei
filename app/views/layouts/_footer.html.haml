@@ -1,25 +1,38 @@
-%section.content-block-nopad.bg-deepocean.footer-wrap-1-3
-  .container.footer-1-3
-    .col-md-4.pull-left
-      = image_tag "logos/rekrei_footer.png", class: "brand-img img-response"
-    .col-md-4.pull-left
-      .footer-text
-        %p Rekrei is a volunteer project supported by a community of volunteers who dedicate their time for the preservation of cultural heritage through digital restoration of heritage that has been destroyed through human or natural means.
-    .col-md-3.pull-right
-      %p.address.small
-        info@rekrei.org
-      %ul.social.social-light
-        %li
-          %a{:href => "https://www.facebook.com/rekrei.org"}
-            %i.fa.fa-2x.fa-facebook
-        %li
-          %a{:href => "https://twitter.com/rekrei"}
-            %i.fa.fa-2x.fa-twitter
-        %li
-          %a{:href => "#"}
-            %i.fa.fa-2x.fa-google-plus
-        / /.social
-    .col-xs-12.footer-text
-      %p Rekrei is made possible through the dedication of the public and volunteers around the world.
-      %p Thank you!
-  / /.container
+.footer
+  .container
+    .row.mb30
+      .col-footer.col-md-4.col-xs-6
+        %h3 About the Website
+        %p
+          Developed and designed by
+          %a{:href => "https://github.com/neshmi"} Matthew Vincent
+        %p
+          Project logo designed by Chance Coughenour
+        %p
+          We are using the awesome mPurpose template, you can get it
+          = succeed "." do
+            %a{:href => "http://dragdropsite.github.io/mPurpose/index.html"} here
+        %p
+          We would like to acknowledge the kind sponsorship of Digital Ocean that has made our current hosting possible:
+        %p
+          = link_to image_tag('logos/DO_Logo_Horizontal_White-118f4ee5.png', class: "img img-responsive"), 'https://m.do.co/c/411ca1d7b00c'
+        %p
+          If you need to host any of your own projects, you can help us out by using our affiliate link when you sign up:
+        %p
+          = link_to 'https://m.do.co/c/411ca1d7b00c', 'https://m.do.co/c/411ca1d7b00c'
+      .col-footer.col-md-4.col-xs-6
+        %h3 Contacts
+        %p.contact-us-details
+          %b Email:
+          %a{:href => "mailto:info@rekrei.org"} info@rekrei.org
+        %p
+          = image_tag "logos/rekrei_text_dark_400pxwide_png24.png", class: "img img-responsive"
+      .col-footer.col-md-4.col-xs-6
+        %h3 Stay Connected
+        %ul.footer-stay-connected.no-list-style
+          %li
+            %a.facebook{:href => "https://www.facebook.com/projectmosul"}
+          %li
+            %a.twitter{:href => "https://twitter.com/projectmosul"}
+          %li
+            %a.googleplus{:href => "https://plus.google.com/u/0/b/101278760726149246768/101278760726149246768/about"}

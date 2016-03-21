@@ -1,13 +1,22 @@
 production:
   adapter: postgresql
-  database: project_mosul_production
-  host: localhost
-  port: 5432
+  database: <%= ENV['DB_NAME'] %>
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  sslmode: 'verify-full'
+  sslrootcert: 'config/ca/rds.pem'
 
 staging:
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  sslmode: 'verify-full'
+  sslrootcert: 'config/ca/rds.pem'
 
 development:
   url: postgres://localhost/project_mosul_development?pool=5

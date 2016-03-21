@@ -24,20 +24,22 @@
     .row
       - @reconstructions.each do |reconstruction|
         .isotope-gallery-container
-          .col-md-4.col-sm-6.col-xs-12.gallery-item-wrapper.artwork.creative
-            .gallery-item
-              .gallery-thumb
+          .col-md-3.col-sm-6.col-xs-12.gallery-item-wrapper.artwork.creative
+            .shop-item
+              .shop-item-item
                 - if reconstruction.images.count > 0
-                  = image_tag reconstruction.images.first.image.url(:square), class: "img img-responsive"
-                  = link_to reconstruction.images.first.image.url(:original), class: "gallery-zoom" do
-                    %i.fa.fa-eye{:alt => "This is the title"}
+                  = link_to image_tag(reconstruction.images.first.image.url(:square), class: "img img-responsive"), reconstruction.images.first.image.url(:original), class: "gallery-zoom"
                 - else
                   = image_tag "medium/missing.png"
                   .image-overlay
-                =link_to "", location_reconstruction_path(@location,reconstruction), class: "gallery-link fa fa-link"
-              .gallery-details
-                %h5= reconstruction.name
-                %p= reconstruction.description
+              .title
+                %h3
+                  =link_to reconstruction.name, location_reconstruction_path(@location,reconstruction)
+              .price
+                %br
+              .actions
+                %p
+                  = link_to " Edit", location_reconstruction_path(@location,reconstruction), class: "btn btn-small"
     .row
       .col-md-12
         .digg_pagination

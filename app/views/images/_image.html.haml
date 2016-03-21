@@ -1,5 +1,5 @@
-.col-xs-6.col-md-3
+.col-xs-6.col-md-2
   .thumbnail
-    = link_to image_tag(image.image.url(:square)),location_image_path(@location,image)
+    = link_to image_tag(image.image.url(:square, class: "img img-responsive")),image.image.url(:original), download: image.image_file_name
   .actions
     =link_to "Recreate This", new_location_reconstruction_path(@location, image_id: image.id), class: "btn btn-default"

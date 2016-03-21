@@ -1,2 +1,8 @@
-.col-md-2.col-sm-4.mb15
-  = link_to image_tag("logos/nframes.png"), "https://nframes.com/", traget: "_blank"
+.col-md-3.col-sm-6
+  .portfolio-item
+    .portfolio-image
+      = image_tag "logos/nframes.png"
+    .portfolio-info
+      %ul
+        %li.read-more
+          = link_to "Read More", "http://nframes.com/", target: "_blank", class: "btn"

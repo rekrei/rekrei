@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
+# ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5.1'
 gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
 gem 'uglifier', '2.6.0'
@@ -14,8 +16,6 @@ gem "bower-rails", "~> 0.10.0"
 
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-gem 'skylight'
-
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.2'
 
@@ -33,27 +33,23 @@ gem 'aws-sdk', '< 2.0'
 gem 'paper_trail', '~> 4.0.0.beta2'
 
 gem 'dropzonejs-rails'
-gem 'therubyracer'
 
 # for now, until we decide if we want to use this in production or not
 gem 'pg'
-gem 'dotenv-rails'
-gem 'less-rails'
+# gem 'dotenv-rails'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 # gem 'will_paginate-bootstrap'
 
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
-gem 'newrelic_rpm'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
 gem 'flickraw'
-gem 'geokit-rails'
-
-
+gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '3.4.1'
+gem 'rollbar', '~> 2.7.1'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
@@ -64,11 +60,13 @@ gem 'underscore-rails'
 gem 'geonames_api'
 
 # ActiveJob
-gem 'sidekiq'
-gem 'sinatra', :require => nil
+# gem 'sidekiq'
+# gem 'sinatra', :require => nil
 
 group :production, :staging do
-  gem 'passenger'
+  gem 'puma'
+  gem 'newrelic_rpm'
+  gem 'skylight'
 end
 
 group :development, :test do

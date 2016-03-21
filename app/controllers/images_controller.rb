@@ -50,7 +50,7 @@ class ImagesController < ApplicationController
     if params[:flickr_url]
       @image = @location.images.new
       @image.image_remote_url = params[:flickr_url]
-      @image.metadata = params[:flickr_metadata]
+      @image.metadata = params[:flickr_metadata].to_json
     else
       @image = @location.images.build(image_params)
     end
@@ -100,16 +100,7 @@ class ImagesController < ApplicationController
     end
   end
 
-  def download
-    @image = Image.find(params[:id])
-    send_data File.read(@image.image.path),
-              filename: @image.image_file_name,
-              type: @image.image_content_type,
-              disposition: 'attachment' if @image.image
-  end
-
   private
-
   def set_location
     @location = Location.friendly.find(params[:location_id])
   end

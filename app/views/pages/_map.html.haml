@@ -1,8 +1,8 @@
 .section.nopadding
   #map
 
-- content_for :scripts do 
-  %script{:src => "//maps.google.com/maps/api/js?v=3.19&amp;sensor=false&amp;libraries=geometry", :type => "text/javascript"}
+- content_for :scripts do
+  %script{:src => "//maps.google.com/maps/api/js?libraries=geometry", :type => "text/javascript"}
   %script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.1.2/src/markerclusterer_packed.js", :type => "text/javascript"}
   :coffeescript
     handler = Gmaps.build('Google')

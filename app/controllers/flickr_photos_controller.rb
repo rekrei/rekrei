@@ -4,7 +4,7 @@ class FlickrPhotosController < ActionController::Base
   respond_to :json
 
   def index
-    start_date = "1900-01-01 00:00:00"
+    start_date = "1800-01-01 00:00:00"
     end_date = Date.today.strftime("%Y-%m-%d 00:00:00")
 
     args = {}
@@ -31,5 +31,9 @@ class FlickrPhotosController < ActionController::Base
 
   def set_location
     @location = Location.friendly.find(params[:location_id])
+  end
+
+  def location_photos_
+
   end
 end

@@ -4,7 +4,7 @@ Project Mosul is a volunteer action by the fellows of the Initial Trianing Netwo
 
 ##  Project Mosul: Call For Action
 
-We are looking for volunteers to help virtually restore the Mosul Museum. This includes finding photos, processing data, contributing to the website and generally helping out with organising the effort to identify the museum artefacts. If you can help, drop us a line ([here](http://projectmosul.org/contact)), or e-mail us directly at info@projectmosul.org.
+We are looking for volunteers to help virtually restore the Mosul Museum. This includes finding photos, processing data, contributing to the website and generally helping out with organising the effort to identify the museum artefacts. If you can help, drop us a line ([here](http://projectmosul.org/contact)), or e-mail us directly at info@rekrei.org.
 
 Thanks!
 
