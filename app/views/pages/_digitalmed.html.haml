@@ -1,8 +1,4 @@
 .col-md-2.col-sm-6
   .portfolio-item
     .portfolio-image
-      = image_tag "logos/digitalmed.jpg"
-    .portfolio-info
-      %ul
-        %li.read-more
-          = link_to "Read More", "http://www.um.es/web/digitalmed/", target: "_blank", class: "btn"
+      = link_to image_tag("logos/digitalmed.jpg"), "http://www.um.es/web/digitalmed/", target: "_blank"

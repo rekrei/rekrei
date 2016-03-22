@@ -1,8 +1,4 @@
 .col-md-2.col-sm-6
   .portfolio-item
     .portfolio-image
-      = image_tag "logos/agisoft.png"
-    .portfolio-info
-      %ul
-        %li.read-more
-          = link_to "Read More", "http://www.agisoft.com/", target: "_blank", class: "btn"
+      = link_to image_tag("logos/agisoft.png"), "http://www.agisoft.com/", target: "_blank"
