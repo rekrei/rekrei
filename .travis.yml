@@ -1,8 +1,9 @@
 language: ruby
 rvm:
-  - 2.1.5
+  - 2.3.0
+bundler_args: --without production --binstubs
 addons:
-  postgresql: "9.3"
+  postgresql: "9.4"
 before_script:
     - psql -c 'create database travis_ci_test;' -U postgres
     - cp config/database.yml.travis config/database.yml

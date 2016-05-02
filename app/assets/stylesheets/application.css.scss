@@ -9,20 +9,25 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require dropzone/dropzone
- *= require bootstrap.min
  *= require bootstrap_and_overrides
  *= require icomoon-social
  *= require leaflet
  *= require main
  *= require pagination
+ *= require carousel
+ *= require timeline
  */
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+ @font-face {
+   font-family: 'Glyphicons Halflings';
+   src: url('/assets/glyphicons-halflings-regular.eot');
+   src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+ }
 
 .sketchfab-gallery-item p {
   height: 50px;
-}
-
-.portfolio-item {
-  min-height: 350px !important;
 }
 
 .nopadding {
@@ -123,4 +128,8 @@
 }
 .noPaddingTop {
 	padding-top:0
+}
+
+.logo-wrapper img {
+  max-height: 20px;
 }

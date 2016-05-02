@@ -1,33 +1,27 @@
-#  About Project Mosul
+#  About Rekrei
 
-Project Mosul is a volunteer action by the fellows of the Initial Trianing Network for Digital Cultural Heritage ([www.itn-dch.eu](http://www.itn-dch.eu)), a Marie Curie Actions training project that is part of the Seventh Framework Programme. The fellows of the ITN-DCH are asking 
+Rekrei (formerlly Project Mosul) is a volunteer project that crowdsources the digital reconstruction of lost heritage. The project was founded by Matthew Vincent and Chance Coughenour in March 2015.
 
-##  Project Mosul: Call For Action
+# Helping Out
 
-We are looking for volunteers to help virtually restore the Mosul Museum. This includes finding photos, processing data, contributing to the website and generally helping out with organising the effort to identify the museum artefacts. If you can help, drop us a line ([here](http://projectmosul.org/contact)), or e-mail us directly at info@projectmosul.org.
+Rekrei is all about community action. If you want to get involved, there are several ways to do so.
 
-Thanks!
+## Identify Locations
 
-### How can I help?
+There are lots of reports about heritage being destroyed or lost around the globe. If you are aware of these locations, drop a pin on the map and that will help the community know where they can focus their own efforts.
 
-1.  **Upload Pictures**
+## Upload Photos
 
-    We need pictures of the artefacts found in the Mosul Museum. These pictures allow us to digitally reconstruct the original artefacts, and can eventually aid in the restoration those artefacts. The more pictures the better, and as many angles and perspectives, even better still!
+Have you been to some of these places identified on the map? Do you have photos you've taken at those places? Why not donate them to the project, your photos could help cover missing angles in our digital reconstructions.
 
-    If you have pictures to contribute, search for the artefact in the list of artefacts and simply edit that artefact, adding your photos to the collection.
+## Organise Photos
 
-2.  **Develop the Web Platform**
+It takes time to figure out what photos belong together. Each location acts as a container for the photos, but we need more fine-grain control, and that comes when we can group the photographs together in relevant groups. Right now, the human eye is still the best way to do this. Anyone can look for photos that share similar elements, architecture, a monument, part of a wall, whatever it might be. There is no limit on how many groups a photograph can belong to, so go ahead and start grouping photos that you think belong together.
 
-    Know how to code in Ruby on Rails, Angular, or Go? Why not contribute to the web framework and help combat the destruction of ISIS with your coding skills. Visit the GitHub project page ([https://github.com/neshmi/projectmosul](https://github.com/neshmi/projectmosul)) and check out the issues. Fork the repository, make a change and issue a pull request.
+## Process Reconstructions
 
-3.  **Mask Some Images**
+You don't have to be an expert to use photogrammetry software. We personally recommend using [nframes](http://nframes.com/), [3DF Zephyr](http://www.3dflow.net/), [PhotoScan](http://www.agisoft.com/), or [Memento](https://memento.autodesk.com/about) by Autodesk. The last one is free, and should be fairly easy and intuitive to use. The first three require a bit more familiarity with how photogrammetry works, but won't take long to learn.
 
-    Our results will be improved if we can mask the artefacts in the images. Help us by masking some of the images in Photoshop (we are working on developing a web platform for the masking), save the mask in an alpha channel. This takes time, so the more hands we have the easier this task wll be!
+# Questions?
 
-    **Get the word out**
-
-    Know someone who has visited Mosul? Let them know about the project. We need as many pictures from inside and outside the building, the more people we can reach the greater the possibilities are of virtual restoration.
-
-4.  **Process an artefact!**
-
-    Do you know how to use Structure from Motion to create three-dimensional models? Help us by downloading some of the photosets and processing the images.
+Please feel free to contact us directly at info@rekrei.org or through the [contact page](http://rekrei.org/contact) on the website.

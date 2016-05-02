@@ -20,7 +20,7 @@ Projectmosul::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_files = false
+  config.serve_static_files = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -89,8 +89,16 @@ Projectmosul::Application.configure do
     port: ENV['SMTP_PORT'].to_i,
     domain: ENV['MAILER_DOMAIN'],
     authentication: 'plain',
-    enable_starttls_auto: true,
     user_name: ENV['SMTP_USER'],
     password: ENV['SMTP_PWD']
+  }
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY']
+    }
   }
 end

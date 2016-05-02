@@ -1,10 +1,10 @@
-require 'sidekiq/web'
+# require 'sidekiq/web'
 Projectmosul::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
+  # authenticate :user, lambda { |u| u.admin? } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 
   #API
   namespace :api, defaults: {format: 'json'},
@@ -25,10 +25,11 @@ Projectmosul::Application.routes.draw do
     end
   end
 
+  resources :donations, only: [:new, :create]
+
+
   resources :locations do
-    resources :images do
-      get 'download'
-    end
+    resources :images
     resources :reconstructions do
       resources :assets
       resources :sketchfabs
@@ -44,19 +45,17 @@ Projectmosul::Application.routes.draw do
 
   resources :artefacts, only: [:show, :index]
 
-  resources :images, only: [:show, :index] do
-    member do
-      get 'download'
-    end
-  end
+  resources :images, only: [:show, :index]
 
   root 'pages#home'
   get 'home', to: 'pages#home', as: 'home'
   get 'gallery', to: 'pages#gallery', as: 'gallery'
   get 'press', to: 'pages#press', as: 'press'
+  get 'about', to: 'pages#about', as: 'about'
   get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/contact', to: 'pages#contact', as: 'contact'
   post '/emailconfirmation', to: 'pages#email', as: 'email_confirmation'
+  get 'donate', to: 'donations#new', as: 'donate'
 
   devise_for :users
 

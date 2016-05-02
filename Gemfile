@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.3.0'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5.1'
 gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
 gem 'uglifier', '2.6.0'
@@ -14,7 +14,6 @@ gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.2'
 
@@ -25,27 +24,26 @@ gem 'friendly_id', '5.1.0'
 gem 'font-awesome-sass', '4.2.2'
 
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
-gem 'bootstrap-sass', '3.3.3'
+gem 'bootstrap-sass', '3.3.5'
 gem 'rmagick'
 gem 'paperclip', '~> 4.2'
 gem 'paper_trail', '~> 4.0.0.beta2'
 
 gem 'dropzonejs-rails'
-gem 'therubyracer'
 
 # for now, until we decide if we want to use this in production or not
 gem 'pg'
-gem 'dotenv-rails'
-gem 'less-rails'
+# gem 'dotenv-rails'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 # gem 'will_paginate-bootstrap'
 
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
-gem 'newrelic_rpm'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'airbrake'
+gem 'rollbar', '~> 2.7.1'
+gem 'aws-sdk', '< 2.0'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
@@ -56,18 +54,23 @@ gem 'underscore-rails'
 gem 'geonames_api'
 
 # ActiveJob
-gem 'sidekiq'
-gem 'sinatra', :require => nil
+# gem 'sidekiq'
+# gem 'sinatra', :require => nil
+
+# donations
+gem 'stripe'
 
 group :production, :staging do
-  gem 'passenger'
+  gem 'puma'
+  gem 'newrelic_rpm'
+  gem 'skylight'
 end
 
 group :development, :test do
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano-passenger'
+  gem 'capistrano-passenger', '0.2.0'
   gem 'capistrano-maintenance', github: 'capistrano/maintenance', require: false
   gem 'capistrano-rails-console'
   gem 'capistrano-sidekiq'

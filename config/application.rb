@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
-Dotenv::Railtie.load
+# Dotenv::Railtie.load
 
 module Projectmosul
   class Application < Rails::Application
@@ -28,7 +28,7 @@ module Projectmosul
     config.generators.test_framework false
 
     # ActiveJob
-    config.active_job.queue_adapter = :sidekiq
+    # config.active_job.queue_adapter = :sidekiq
 #     config.active_job.queue_name_prefix = Rails.env
 
     # autoload lib path

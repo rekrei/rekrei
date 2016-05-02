@@ -1,11 +1,4 @@
-.col-md-4.col-sm-6
+.col-md-2.col-sm-6
   .portfolio-item
     .portfolio-image
-      = image_tag "logos/add4d.jpg"
-    .portfolio-info
-      %ul
-        %li.portfolio-project-name AD&D 4D
-        %li Photogrammetry
-        %li 3D Support
-        %li.read-more
-          = link_to "Read More", "https://sketchfab.com/add4d", target: "_blank", class: "btn"
+      = link_to image_tag("logos/add4d.jpg"), "https://sketchfab.com/add4d", target: "_blank"

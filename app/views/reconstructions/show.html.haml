@@ -46,7 +46,7 @@
             .actions
               .row
                 .col-md-6
-                  = link_to download_image_path(asset_relation.asset), class: 'btn btn-small' do
+                  = link_to asset_relation.asset.image.url(:original), class: 'btn btn-small', download: asset_relation.asset.image.url(:original) do
                     <i class="fa fa-download"> Original</i>
                 .col-md-6
                   - unless asset_relation.asset.id == @reconstruction.cover_image_id

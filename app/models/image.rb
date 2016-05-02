@@ -7,13 +7,13 @@ class Image < Asset
   # all images where image is the compared image
   has_many :comparison_matches, class_name: ImageMatch, foreign_key: :comparison_image_id
 
-  after_create :update_matches
+  # after_create :update_matches
 
   has_attached_file :masked_image, styles: {
     square: '600x360#',
     medium: '300x300>',
     thumb: '100x100>'
-  }, default_url: '/assets/:style/missing.png'
+  }
   validates_attachment_content_type :masked_image,
                                     content_type: %r{image/.*}
 

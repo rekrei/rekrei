@@ -1,0 +1,15 @@
+web:
+  build: .
+  command: bundle exec puma -C config/puma.rb
+  working_dir: /rekrei
+  volumes:
+    - '.:/rekrei'
+  environment:
+    DATABASE_URL: "postgres://postgres:postgres@db:5432/postgres?pool=5"
+    PORT: 3000
+  ports:
+    - '3000:3000'
+  links:
+    - db
+db:
+  image: postgres

@@ -1,0 +1,1 @@
+{"version":1,"plugins":[{"args":["plugin-builtin","app-ruby"],"builtin":true},{"args":["plugin-builtin","app-docker-external"],"builtin":true}]}

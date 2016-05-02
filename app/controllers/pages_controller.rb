@@ -23,6 +23,9 @@ class PagesController < ApplicationController
   def press
   end
 
+  def about
+  end
+
   def email
     @name = params[:name]
     @email = params[:email]

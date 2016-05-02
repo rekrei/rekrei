@@ -3,6 +3,15 @@ class User < ActiveRecord::Base
   # Use friendly_id on Users
   extend FriendlyId
   friendly_id :friendify, use: :slugged
+  attr_accessor :login
+
+  def login=(login)
+    @login = login
+  end
+
+  def login
+    @login || self.username || self.email
+  end
 
   # necessary to override friendly_id reserved words
   def friendify
@@ -62,5 +71,15 @@ class User < ActiveRecord::Base
 
   def self.users_count
     where('admin = ? AND locked = ?', false, false).count
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    conditions[:email].downcase! if conditions[:email]
+    if login = conditions.delete(:login)
+      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions.to_hash).first
+    end
   end
 end
