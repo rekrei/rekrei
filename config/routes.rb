@@ -25,6 +25,9 @@ Projectmosul::Application.routes.draw do
     end
   end
 
+  resources :donations, only: [:new, :create]
+
+
   resources :locations do
     resources :images
     resources :reconstructions do
@@ -52,6 +55,7 @@ Projectmosul::Application.routes.draw do
   get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/contact', to: 'pages#contact', as: 'contact'
   post '/emailconfirmation', to: 'pages#email', as: 'email_confirmation'
+  get 'donate', to: 'donations#new', as: 'donate'
 
   devise_for :users
 

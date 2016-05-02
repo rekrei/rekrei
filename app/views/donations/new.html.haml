@@ -1,0 +1,64 @@
+.section.section-white
+  .container
+    .row
+      .col-md-6
+        %h1 Donate by Credit Card
+        %p
+          Payments are processed through
+          = link_to 'Stripe', 'https://stripe.com', target: '_blank'
+          and no credit card or payment information is stored on our servers.
+        = form_tag donations_path, id: "donation_form" do
+          %article
+            - if flash[:error].present?
+              #error_explanation
+                %p= flash[:error]
+            %label.amount
+              %span Amount €
+              %input#amount{:name => "amount", :type => "text"}
+            %input#stripeToken{:name => "stripeToken", :type => "hidden"}
+            %input#stripeEmail{:name => "stripeEmail", :type => "hidden"}
+        %button#customButton Donate
+        %p
+        %p We will be adding options for other currencies soon.
+        %script{:src => "https://checkout.stripe.com/checkout.js"}
+        :javascript
+          var handler = StripeCheckout.configure({
+              key: "#{Rails.configuration.stripe[:publishable_key]}",
+              locale: 'auto',
+              token: function (token) {
+                  $("#stripeToken").val(token.id);
+                  $("#stripeEmail").val(token.email);
+                  $("#donation_form").submit();
+              }
+          });
+
+          $('#customButton').on('click', function (e) {
+              var amount = $("#amount").val() * 100;
+              var displayAmount = parseFloat(Math.floor($("#amount").val() * 100) / 100).toFixed(2);
+              // Open Checkout with further options
+              handler.open({
+                  name: 'Rekrei',
+                  description: 'Donate (€' + displayAmount + ')',
+                  currency: "eur",
+                  amount: amount
+              });
+              e.preventDefault();
+          });
+
+          // Close Checkout on page navigation
+          $(window).on('popstate', function () {
+              handler.close();
+          });
+      .col-md-6
+        %h1 Bitcoin
+        %p Bitcoin is a cyptocurrency that allows you to be completely anonymous in your donation.
+        %p
+          = image_tag "bitcoin_rekrei_vault.png"
+        %h3 Wallet: 1FS1ZsEu8G5kNEcNjthQzLWLjjsVP6TDBA
+    .row.mt30
+      .col-md-12
+        %h3 What do we use your donations for?
+        %p Rekrei is a completely volunteer project, including the costs of operation. We do have operating costs to maintain the server, and as such, would be delighted if there are those who are willing to donate not only their time, but some of their financial resources to making this project sustainable.
+        %p Donations will be used to cover the operating costs related to the running of the website. Typical this is covering the cost of the server, storage space, and the database.
+        %p
+          %b Thank you!
