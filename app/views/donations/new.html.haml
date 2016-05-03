@@ -22,32 +22,34 @@
         %p We will be adding options for other currencies soon.
         %script{:src => "https://checkout.stripe.com/checkout.js"}
         :javascript
-          var handler = StripeCheckout.configure({
-              key: "#{Rails.configuration.stripe[:publishable_key]}",
-              locale: 'auto',
-              token: function (token) {
-                  $("#stripeToken").val(token.id);
-                  $("#stripeEmail").val(token.email);
-                  $("#donation_form").submit();
-              }
-          });
+          $(document).ready(function() {
+            var handler = StripeCheckout.configure({
+                key: "#{Rails.configuration.stripe[:publishable_key]}",
+                locale: 'auto',
+                token: function (token) {
+                    $("#stripeToken").val(token.id);
+                    $("#stripeEmail").val(token.email);
+                    $("#donation_form").submit();
+                }
+            });
 
-          $('#customButton').on('click', function (e) {
-              var amount = $("#amount").val() * 100;
-              var displayAmount = parseFloat(Math.floor($("#amount").val() * 100) / 100).toFixed(2);
-              // Open Checkout with further options
-              handler.open({
-                  name: 'Rekrei',
-                  description: 'Donate (€' + displayAmount + ')',
-                  currency: "eur",
-                  amount: amount
-              });
-              e.preventDefault();
-          });
+            $('#customButton').on('click', function (e) {
+                var amount = $("#amount").val() * 100;
+                var displayAmount = parseFloat(Math.floor($("#amount").val() * 100) / 100).toFixed(2);
+                // Open Checkout with further options
+                handler.open({
+                    name: 'Rekrei',
+                    description: 'Donate (€' + displayAmount + ')',
+                    currency: "eur",
+                    amount: amount
+                });
+                e.preventDefault();
+            });
 
-          // Close Checkout on page navigation
-          $(window).on('popstate', function () {
-              handler.close();
+            // Close Checkout on page navigation
+            $(window).on('popstate', function () {
+                handler.close();
+            });
           });
       .col-md-6
         %h1 Bitcoin
