@@ -1,4 +1,5 @@
 require 'rails_helper'
+SingleCov.covered!
 
 describe Image do
   it { should have_many(:parent_matches) }
