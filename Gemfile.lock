@@ -329,7 +329,7 @@ GEM
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rmagick (2.15.4)
-    rollbar (2.7.1)
+    rollbar (2.11.3)
       multi_json
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
@@ -489,7 +489,7 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   rails_admin
   rmagick
-  rollbar (~> 2.7.1)
+  rollbar (~> 2.11)
   rspec-activejob
   rspec-given
   rspec-rails (~> 3.0)

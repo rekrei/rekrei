@@ -41,7 +41,7 @@ gem 'will_paginate'
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
-gem 'rollbar', '~> 2.7.1'
+gem 'rollbar', '~> 2.11'
 gem 'aws-sdk', '< 2.0'
 
 #For API
