@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.1'
 # ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.5.1'
@@ -41,7 +41,6 @@ gem 'will_paginate'
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
-gem 'airbrake'
 gem 'rollbar', '~> 2.7.1'
 gem 'aws-sdk', '< 2.0'
 
@@ -83,7 +82,7 @@ group :development, :test do
   # Spring: https://github.com/rails/spring
   # gem 'spring'
   gem 'rspec-rails', '~> 3.0'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
@@ -102,6 +101,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
   gem 'simplecov', :require => false
+  gem 'single_cov'
 end
 
 # Devise: https://github.com/plataformatec/devise
