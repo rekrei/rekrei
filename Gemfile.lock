@@ -231,6 +231,7 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    markerclustererplus-rails (2.1.2)
     method_source (0.8.2)
     mime-types (2.99.1)
     mimemagic (0.3.0)
@@ -479,6 +480,7 @@ DEPENDENCIES
   jquery-rails (= 4.0.3)
   jquery-turbolinks
   kaminari (= 0.16.2)
+  markerclustererplus-rails
   newrelic_rpm
   paper_trail (~> 4.0.0.beta2)
   paperclip (~> 4.2)

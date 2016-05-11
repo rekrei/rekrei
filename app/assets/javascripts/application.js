@@ -28,3 +28,4 @@
 //= require gmaps/google
 //= require gallery
 //= require images
+//= require markerclusterer
