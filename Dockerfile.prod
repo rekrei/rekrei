@@ -1,9 +1,7 @@
-FROM ruby:2.3.1
+FROM rekrei/rekrei-base:latest
 
 MAINTAINER Matthew Vincent <matt@averails.com>
 
-RUN apt-get update && apt-get -y install imagemagick libmagickcore-dev libmagickwand-dev libpq-dev nodejs
-RUN rm -rf /var/lib/apt/lists/*
 RUN mkdir /rekrei
 WORKDIR /rekrei
 COPY Gemfile /rekrei/Gemfile
