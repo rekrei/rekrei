@@ -1,15 +1,32 @@
-web:
-  build: .
-  command: bundle exec puma -C config/puma.rb
-  working_dir: /rekrei
-  volumes:
-    - '.:/rekrei'
-  environment:
-    DATABASE_URL: "postgres://postgres:postgres@db:5432/postgres?pool=5"
-    PORT: 3000
-  ports:
-    - '3000:3000'
-  links:
-    - db
-db:
-  image: postgres
+version: '2'
+
+services:
+  db:
+    image: postgres:9.5
+    ports:
+      - "5432:5432"
+  nginx:
+    build:
+      context: .
+      dockerfile: ./config/deploy/nginx/Dockerfile
+    depends_on:
+      - web
+    ports:
+      - '88:80'
+      - '445:443'
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/rekrei
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    # env_file: .envrc
+    environment:
+      DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
+      RAILS_ENV: development
+      RACK_ENV: development
