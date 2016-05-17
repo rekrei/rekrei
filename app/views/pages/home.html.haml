@@ -1,4 +1,10 @@
 - title("Home")
+- if cookies[:has_visited_about] != "true"
+  .section.section-white
+    .container
+      %p
+        New to Rekrei? Read more about the project
+        = link_to 'here', about_path
 = render 'map'
 = render partial: 'shared/tasks', locals: {location: false}
 = render 'news'

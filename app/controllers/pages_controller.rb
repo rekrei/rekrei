@@ -24,6 +24,7 @@ class PagesController < ApplicationController
   end
 
   def about
+    cookies[:has_visited_about] = "true"
   end
 
   def email
