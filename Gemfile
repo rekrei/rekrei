@@ -62,8 +62,7 @@ gem 'stripe'
 
 group :production, :staging do
   gem 'puma'
-  gem 'newrelic_rpm'
-  gem 'skylight'
+  gem "puma_worker_killer"
 end
 
 group :development, :test do
