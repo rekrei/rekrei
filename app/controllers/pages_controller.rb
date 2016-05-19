@@ -23,6 +23,10 @@ class PagesController < ApplicationController
   def press
   end
 
+  def check
+    render nothing: true
+  end
+
   def about
     cookies[:has_visited_about] = "true"
   end

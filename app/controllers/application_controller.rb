@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   after_filter :store_location
 
+  def not_found
+    render :file => 'public/404.html', :status => :not_found, :layout => false
+  end
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get?
@@ -27,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   # Devise permitted params
-  def configure_permitted_parameters    
+  def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) do |u|
       u.permit(
         :login,
