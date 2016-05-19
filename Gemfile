@@ -44,7 +44,6 @@ gem 'will_paginate'
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
-gem 'airbrake'
 gem 'flickraw'
 gem 'geokit'
 # Devise: https://github.com/plataformatec/devise

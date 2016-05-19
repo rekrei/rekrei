@@ -23,9 +23,8 @@ development: &default
   database: rekrei_development
   min_messages: WARNING
   pool: 5
-  username: postgres
-  host: db
+  username: rails_dev
+  password: rails_Dev
+  host: localhost
 
-test:
-  <<: *default
-  database: rekrei_test
+test: "postgresql://localhost/rekrei_test"
