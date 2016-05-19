@@ -25,7 +25,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
-    # env_file: .envrc
+    env_file: .env
     environment:
       DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
       RAILS_ENV: development
