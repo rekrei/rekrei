@@ -18,13 +18,8 @@ staging:
   sslmode: 'verify-full'
   sslrootcert: 'config/ca/rds.pem'
 
-development: &default
-  adapter: postgresql
-  database: rekrei_development
-  min_messages: WARNING
-  pool: 5
-  username: rails_dev
-  password: rails_Dev
-  host: localhost
+development:
+  url: <%= ENV['DATABASE_URL'] || "postgresql://localhost/rekrei_development" %>
 
-test: "postgresql://localhost/rekrei_test"
+test:
+  url: <%= ENV['DATABASE_URL'] || "postgresql://localhost/rekrei_test" %>
