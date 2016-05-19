@@ -1,14 +1,32 @@
-db:
-  image: mdillon/postgis
-redis:
-  image: redis
-web:
-  build: .
-  command: bundle exec rails s -p 3000 -b '0.0.0.0'
-  volumes: .:/rekrei
-  ports:
-    - '3000:3000'
-  links:
-    - db
-    - redis
+version: '2'
 
+services:
+  db:
+    image: postgres:9.5
+    ports:
+      - "5432:5432"
+  nginx:
+    build:
+      context: .
+      dockerfile: ./config/deploy/nginx/Dockerfile
+    depends_on:
+      - web
+    ports:
+      - '80:80'
+      - '443:443'
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/rekrei
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    # env_file: .envrc
+    environment:
+      DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
+      RAILS_ENV: development
+      RACK_ENV: development

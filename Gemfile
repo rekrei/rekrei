@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.1'
 # ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.5.1'
@@ -50,12 +50,14 @@ gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '3.4.1'
 gem 'rollbar', '~> 2.7.1'
+gem 'aws-sdk', '< 2.0'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
 ## Google Maps Integration
 gem 'gmaps4rails'
+gem 'markerclustererplus-rails'
 gem 'underscore-rails'
 gem 'geonames_api'
 
@@ -63,10 +65,12 @@ gem 'geonames_api'
 # gem 'sidekiq'
 # gem 'sinatra', :require => nil
 
+# donations
+gem 'stripe'
+
 group :production, :staging do
   gem 'puma'
-  gem 'newrelic_rpm'
-  gem 'skylight'
+  gem "puma_worker_killer"
 end
 
 group :development, :test do
@@ -88,7 +92,7 @@ group :development, :test do
   # Spring: https://github.com/rails/spring
   # gem 'spring'
   gem 'rspec-rails', '~> 3.0'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
@@ -109,4 +113,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'simplecov', :require => false
   gem 'compass-rails'
+  gem 'single_cov'
 end

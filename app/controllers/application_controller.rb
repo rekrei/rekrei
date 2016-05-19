@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 
+  def not_found
+    render :file => 'public/404.html', :status => :not_found, :layout => false
+  end
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get?

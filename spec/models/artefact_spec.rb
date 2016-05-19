@@ -1,4 +1,5 @@
 require 'rails_helper'
+SingleCov.covered!
 
 describe Artefact do
   it { should respond_to(:name) }

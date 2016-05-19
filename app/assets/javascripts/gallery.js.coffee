@@ -1,12 +1,33 @@
 $(document).on "page:change", ->
   if $('#gallery').length > 0
-    do ->
-      sketchfabAPI = 'https://api.sketchfab.com/v2/models?tags=projectmosul'
-      $.getJSON(sketchfabAPI,
+    nextUrl = ''
+    prevUrl = ''
+    getUrl = (url) ->
+      $.getJSON(url,
         callback: ''
         jsonp: ''
         format: 'json').done (data) ->
-        $.each data.results, (i, model) ->
+          if data.next
+            $('#nextBtn').prop 'disabled', false
+            nextUrl = data.next
+          else
+            $('#nextBtn').prop 'disabled', true
+          if data.previous
+            prevUrl = data.previous
+            $('#prevBtn').prop 'disabled', false
+          else
+            $('#prevBtn').prop 'disabled', true
+          displayData(data)
+          return
+    nextPage = ->
+      $('#gallery').empty()
+      getUrl(nextUrl)
+    prevPage = ->
+      $('#gallery').empty()
+      getUrl(prevUrl)
+    displayData = (data) ->
+      $.each data.results, (i, model) ->
+        unless model.isPrintable == true
           width = 320
           height = 240
           html = """
@@ -23,3 +44,9 @@ $(document).on "page:change", ->
           return
         return
       return
+    do ->
+      $('#nextBtn').prop 'disabled', true
+      $('#nextBtn').click(nextPage)
+      $('#prevBtn').prop 'disabled', true
+      $('#prevBtn').click(prevPage)
+      getUrl('https://api.sketchfab.com/v2/models?tags=projectmosul')

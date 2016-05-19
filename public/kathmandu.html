@@ -13,6 +13,7 @@
     <!-- Your new script -->
     <script>
         // Model
+        DEBUG = false;
         var model = 'e21d746815b248b1b566b12aa7fa596e',
 
             // Two buttons
@@ -39,7 +40,7 @@
 
             // Defining error and success outside initialization, for easy reading
             error = function () {
-                console.error( 'Sketchfab API Error!' );
+                DEBUG && console.error( 'Sketchfab API Error!' );
             },
 
             // If initilization succeeds, start the model immediately
@@ -52,13 +53,13 @@
                     // Get the object nodes
                     api.getNodeMap( function ( err, nodes ) {
                         if ( !err ) {
-                            console.log( 'got nodes:', nodes );
+                            DEBUG && console.log( 'got nodes:', nodes );
                             for ( var prop in nodes ) {
                                 if ( nodes.hasOwnProperty( prop ) ) {
                                     // Check nodes against object names
                                     if ( nodes[ prop ].name === beforeObj ) {
                                         beforeNode = nodes[prop].instanceID;
-                                        console.log( 'before node: ' + beforeNode );
+                                        DEBUG && console.log( 'before node: ' + beforeNode );
                                         // Add button event
                                         beforeButton.addEventListener( 'click', function() {
                                             api.hide( afterNode );
@@ -67,7 +68,7 @@
                                     }
                                     if ( nodes[ prop ].name === afterObj ) {
                                         afterNode = nodes[prop].instanceID;
-                                        console.log( 'after node: ' + afterNode );
+                                        DEBUG && console.log( 'after node: ' + afterNode );
                                         // Add button event
                                         afterButton.addEventListener( 'click', function() {
                                             api.hide( beforeNode );
@@ -78,7 +79,7 @@
                                 // When both nodes are ready, hide after
                                 if ( beforeNode && afterNode ) {
                                     api.hide( afterNode );
-                                    console.log( 'model loaded and showing before' );
+                                    DEBUG && console.log( 'model loaded and showing before' );
                                     break;
                                 }
                             }
@@ -89,7 +90,7 @@
 
         // A function to load a model
         function loadModel( client, urlid ) {
-            console.log( 'loading a model' );
+            DEBUG && console.log( 'loading a model' );
             client.init( urlid, {
                 success: success,
                 error: error,

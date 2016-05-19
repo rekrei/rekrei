@@ -4,11 +4,90 @@
     .row
       .col-md-12
         %h1 About Rekrei
-.section
+.section.section-white
   .container
-    .row
-      .col-md-1
-      .col-md-10.span-1
-        %p This project strives to preserve the memory of lost cultural heritage through the means of digital restoration.
-        %p Following the destruction of cultural heritage in northern Iraq, Project Mosul was founded by Matthew Vincent and Chance Coughenour as a volunteer effort to facilitate the empowerment of volunteers from across the globe to aid in the restoration of our shared heritage in face of its unnecessary loss. The recent acts of cultural destruction have been described by UNESCO as a ‘cultural tragedy’ and strongly condemned by ICOMOS. Beyond just destruction, we are witness to looting and black market sales of cultural heritage from Iraq, Syria and beyond. But we need not feel helpless nor passive spectators. Beyond just destruction, we are witness to looting and black market sales of cultural heritage from Iraq, Syria and beyond. Likewise, cultural heritage is also at risk such as the devastating results of the earthquake in Nepal has demonstrated.
-        %p As the project has advanced its scope internationally, so too, has its name. Rekrei means recreate in Esperanto, a language that was constructed for the purpose of international universality. Building on the initial workflow of using crowdsourced images to virtually recreate artefacts using photogrammetry, our web-based platform is evolving to better utilise publicly-available data on the web to assist our volunteers in new ways.
+    .page-header
+      %h1 Rekrei: A Summary
+    %p Rekrei is a crowdsourced project to collect photographs of monuments, museums, and artefacts damaged by natural disasters or human intervention, and to use those data to create 3D representations and help to preserve our global, shared, human heritage.
+    %h3 The long version (tl;dr)
+    %p This project strives to preserve the memory of lost cultural heritage through the means of digital restoration. Using crowdsourced photographs from experts, tourists, or anyone with digital imagery, the project applies photogrammetric techniques to create three-dimensional representations of heritage that has been lost around the globe.
+    %p Following the destruction of cultural heritage in northern Iraq, Project Mosul was founded by Matthew Vincent and Chance Coughenour, two Europe-based researchers, as a volunteer effort to facilitate the empowerment of volunteers from across the globe to aid in the restoration of our shared heritage in face of its unnecessary loss. The recent acts of cultural destruction have been described by UNESCO as a ‘cultural tragedy’ and strongly condemned by ICOMOS. Beyond just destruction, we are witness to looting and black market sales of cultural heritage from Iraq, Syria and elsewhere. But we need not feel helpless nor passive spectators. Likewise, cultural heritage is also at risk such as the devastating results of the earthquake in Nepal has demonstrated.
+    %p As the project has advanced its scope internationally, so too, has its name. Rekrei means recreate in Esperanto, a language that was constructed for the purpose of international universality. Building on the initial workflow of using crowdsourced images to virtually recreate artefacts using photogrammetry, our web-based platform is evolving to better utilise publicly-available data on the web to assist our volunteers in new ways.
+  .container
+    .page-header
+      %h1#timeline Rekrei: A Brief History
+    %ul.timeline
+      %li
+        .timeline-badge
+        .timeline-panel
+          .timeline-heading
+            %h4.timeline-title Destruction of the Mosul Museum
+            %p
+              %i.glyphicon.glyphicon-time
+              %small.text-muted 27 February, 2015
+          .timeline-body
+            %p
+              On the 26th of February, 2015, a video was released by Daesh (the self-proclaimed Islamic State) depicting iconoclasm of numerous ancient artifacts in the Mosul Cultural Museum in Iraq. As the video circulated through international media and social networks, this systematic destruction of heritage was met with vast public outcry. Since Daesh occupied the the region, it was impossible to assess the damages. Some confusing early reports claimed that the artifacts were all reproductions, which has since been disproven by a curator from the museum. The endorsement of our project from the Iraqi Ministry of Tourism and Culture and other Iraqi cultural organizations is significant, stating “the heritage of Iraqi isn’t only for the Iraqis, this is our shared, global heritage."
+      %li.timeline-inverted
+        .timeline-badge
+        .timeline-panel
+          .timeline-heading
+            %h4.timeline-title Launch of Project Mosul
+            %p
+              %i.glyphicon.glyphicon-time
+              %small.text-muted 8 March, 2015
+          .timeline-body
+            %p
+              Following a short conversation between two archaeology students over social media, the idea was presented that it might be possible to crowdsource the digital reconstruction of the destroyed artifacts. Then, if this could be achieved, maybe one day a virtual museum could be created where people from around the world could virtually visit the museum and offer a way to digitally preserve its memory. After a discussion with numerous people in the heritage community and without another similar existing project to join, the volunteer initiative and web platform was launched on March 8, 2015.
+            %p
+              As the first project dedicated to the digital preservation of lost heritage through crowdsourcing, we have received an enormous amount of support from academia, industry, media, and the general public. What’s more, this has all been accomplished without any funding. Instead its been thanks to the engagement of a global community who work together transparently to help promote a positive narrative of lost heritage through human and natural means.
+      %li
+        .timeline-badge
+        .timeline-panel
+          .timeline-heading
+            %h4.timeline-title Nepal Earthquake
+            %p
+              %i.glyphicon.glyphicon-time
+              %small.text-muted 25 April, 2015
+          .timeline-body
+            %p
+              Following the earthquake in Nepal on April 25, 2015, our community suggested we try to use the same crowdsourcing tactics to help with extensive destruction of cultural heritage in areas such as Kathmandu. Although we didn’t receive many images of the area from individuals a unique example of collaboration was undertaken for the destroyed architecture in Durbar Square.
+              =link_to 'nFrames', 'http://nframes.com/', target: '_blank'
+              a photogrammetric software company in Germany, used high-altitude imagery from Germany’s National Aeronautics and Space Research Center of Berlin to produce a 3D model of Kathmandu from before the earthquake. The company
+              = link_to 'Drones Imaging', 'http://www.dronesimaging.com/', target: '_blank'
+              used an unmanned aerial system (UAS) to capture photos of the same area after the earthquake. Finally, both models were brought together and visualized thanks to a special viewer created by Sketchfab the project. Following this milestone for the project, we foresaw how our initiative should be shifted globally, for heritage loss by human or natural causes.
+      %li.timeline-inverted
+        .timeline-badge
+        .timeline-panel
+          .timeline-heading
+            %h4.timeline-title Occupation of Palmyra
+            %p
+              %i.glyphicon.glyphicon-time
+              %small.text-muted 21 May, 2015
+          .timeline-body
+            %p
+              Towards the end of May, Daesh entered the ancient city of Palmyra and took control of the area. Immediately the international community expressed concerns about the site and its well-being. The following days saw the tragic death of Khaled al-Assad, who refused to cooperate with the extremists. Ultimately, parts of the city were destroyed by Daesh before the city was recaptured in 2016. These events only served to highlight how Rekrei could help preserve sites like this, especially with the wealth of tourist photos available on the Internet today.
+      %li
+        .timeline-badge
+        .timeline-panel
+          .timeline-heading
+            %h4.timeline-title Economist Media Lab Collaboration
+            %p
+              %i.glyphicon.glyphicon-time
+              %small.text-muted July, 2015
+          .timeline-body
+            %p
+              In July 2015, the
+              = link_to 'Economist Media Lab', 'http://labs.economist.com', target: '_blank'
+              invited Project Mosul to collaborate in the creation of a virtual museum to showcase destroyed art and release it to the public. As one of the principal ideas during the founding of the project, we were excited to take part by providing the digital models created by the volunteers to virtually return them to the museum. As part of the first launch of RecoVR: Mosul, we also helped them create a unique exhibition space at the International Documentary Film Festival in Amsterdam in November 2015. The VR museum experience was enriched with an audio track of a discussion between cultural heritage specialists. The exhibition space also included a dramatic display of 3D printed artefacts along with illustrating the crowdsourced images used for the photogrammetric reconstructions as a projected slideshow behind each scaled down object.
+      %li.timeline-inverted
+        .timeline-badge
+        .timeline-panel
+          .timeline-heading
+            %h4.timeline-title CyArk Annual Summit Award for Innovation
+            %p
+              %i.glyphicon.glyphicon-time
+              %small.text-muted 19 October, 2015
+          .timeline-body
+            %p
+              Rekrei was presented with the 2015 CyArk Annual Summit Award for Innovation for their work on the project to date. The founders later presented the project at the Annual Summit, where they first announced publicaly the renaming of Project Mosul to Rekrei.

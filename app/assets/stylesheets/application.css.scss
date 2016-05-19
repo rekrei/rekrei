@@ -19,6 +19,7 @@
  *= require pagination
  *= require angularjs-slider
  *= require carousel
+ *= require timeline
  */
  @import "font-awesome-sprockets";
  @import "font-awesome";
@@ -31,10 +32,6 @@
 
 .sketchfab-gallery-item p {
   height: 50px;
-}
-
-.portfolio-item {
-  min-height: 150px !important;
 }
 
 .nopadding {

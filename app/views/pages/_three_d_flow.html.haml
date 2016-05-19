@@ -1,8 +1,4 @@
-.col-md-3.col-sm-6
+.col-md-2.col-sm-6
   .portfolio-item
     .portfolio-image
-      = image_tag "logos/3dflow.png"
-    .portfolio-info
-      %ul
-        %li.read-more
-          = link_to "Read More", "http://www.3dflow.net/", target: "_blank", class: "btn"
+      = link_to image_tag("logos/3dflow.png"), "http://www.3dflow.net/", target: "_blank"
