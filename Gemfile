@@ -49,7 +49,6 @@ gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '3.4.1'
 gem 'rollbar', '~> 2.7.1'
-gem 'aws-sdk', '< 2.0'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
