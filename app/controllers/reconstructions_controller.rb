@@ -42,15 +42,19 @@ class ReconstructionsController < ApplicationController
   end
 
   def new
-    @image = Image.find(params[:image_id])
-    @reconstruction = Reconstruction.new(cover_image: @image, location: @location)
+    if params[:image_id]
+      @image = Image.find(params[:image_id])
+      @reconstruction = Reconstruction.new(cover_image: @image, location: @location)
+    else
+      @reconstruction = Reconstruction.new(location: @location)
+    end
   end
 
   def create
-    @image = Image.find(reconstruction_params[:cover_image_id])
+    @image = Image.find(reconstruction_params[:cover_image_id]) if reconstruction_params[:cover_image_id]
     @reconstruction = Reconstruction.new reconstruction_params
     @reconstruction.location = @location
-    @reconstruction.cover_image = @image
+    @reconstruction.cover_image = @image if @image
 
     respond_to do |format|
       if @reconstruction.save
