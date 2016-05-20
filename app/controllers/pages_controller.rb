@@ -4,16 +4,6 @@ class PagesController < ApplicationController
   ]
 
   def home
-    @locations = Rails.cache.fetch("all_locations", :expires_in => 24.hours) do
-      Location.all
-    end
-    # @locations = Location.find_by_sql("SELECT * FROM locations")
-    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.lat
-      marker.lng location.long
-      marker.title location.name
-      marker.infowindow view_context.link_to location.name, location_path(location)
-    end
   end
 
   def acknowledgements
