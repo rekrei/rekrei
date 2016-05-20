@@ -25,7 +25,6 @@
 //= require modernizr-2.6.2-respond-1.1.0.min
 //= require template.js
 //= require underscore
-//= require gmaps/google
 //= require gallery
 //= require images
 //= require markerclusterer
