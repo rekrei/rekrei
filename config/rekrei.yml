@@ -1,0 +1,11 @@
+production:
+  host: https://rekrei.org
+
+development:
+  host: http://rekrei.dev
+
+test:
+  host: http://test.host
+
+staging:
+  host: https://staging.rekrei.org
