@@ -1,15 +1,36 @@
 .section.nopadding
   #map
+:javascript
+  var map;
+  function initMap() {
+    var infowindow = new google.maps.InfoWindow();
+    var bounds = new google.maps.LatLngBounds();
+    var markers = new Array();
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: {lat: 39.4699, lng: 0.3763}
+    });
 
+    $.getJSON("/locations.json", function(data) {
+      $.each(data.locations, function(key, location) {
+        var latLng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            title: location.name,
+        });
+        bounds.extend(latLng);
+        marker.addListener('click', function() {
+          infowindow.setContent("<a href='" + location.url + "'>" + location.name + "</a>");
+          infowindow.open(map, marker);
+        });
+        markers.push(marker);
+      });
+      map.fitBounds(bounds);
+      var markerCluster = new MarkerClusterer(map, markers);
+    });
+  }
+
+- # AIzaSyC0DOiTq9RckijTomflJYks-WVGBRImyYE
 - content_for :scripts do
-  %script{:src => "//maps.google.com/maps/api/js?key=AIzaSyC0DOiTq9RckijTomflJYks-WVGBRImyYE&libraries=geometry", :type => "text/javascript"}
-  :coffeescript
-    handler = Gmaps.build('Google')
-    handler.buildMap {
-      provider: {}
-      internal: id: 'map'
-    }, ->
-      markers = handler.addMarkers(#{raw @hash.to_json})
-      handler.bounds.extendWith markers
-      handler.fitMapToBounds()
-      return
+  %script{:async => "", :defer => "", :src => "//maps.googleapis.com/maps/api/js?callback=initMap&libraries=geometry", :type => "text/javascript"}
