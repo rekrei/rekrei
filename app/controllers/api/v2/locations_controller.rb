@@ -4,7 +4,9 @@ module Api
       respond_to :json
 
       def index
-        @locations = Location.all
+        @locations = Rails.cache.fetch("all_locations", expires_in: 24.hours) do
+          Location.all
+        end
       end
 
       def show
