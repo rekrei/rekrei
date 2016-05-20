@@ -161,7 +161,6 @@ GEM
       sorcerer (>= 0.3.7)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    gmaps4rails (2.1.2)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -471,7 +470,6 @@ DEPENDENCIES
   friendly_id (= 5.1.0)
   fuubar
   geonames_api
-  gmaps4rails
   guard
   guard-bundler
   guard-migrate

@@ -48,7 +48,6 @@ gem 'aws-sdk', '< 2.0'
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
 ## Google Maps Integration
-gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
 gem 'underscore-rails'
 gem 'geonames_api'
