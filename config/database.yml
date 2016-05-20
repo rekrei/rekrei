@@ -18,14 +18,6 @@ staging:
   sslmode: 'verify-full'
   sslrootcert: 'config/ca/rds.pem'
 
-development: &default
-  adapter: postgresql
-  database: rekrei_development
-  min_messages: WARNING
-  pool: 5
-  username: postgres
-  host: db
+development: "postgresql://localhost/rekrei_development"
 
-test:
-  <<: *default
-  database: rekrei_test
+test: "postgresql://localhost/rekrei_test"
