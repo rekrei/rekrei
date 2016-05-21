@@ -7,10 +7,11 @@
         Download an image
       %i.fa.fa-minus-circle
         Remove image from Reconsturction Group
+  .row
     .col-md-12
       %dir-pagination-controls{"on-page-change"=>"reconstructionPageChanged(newPageNumber)", "pagination-id" => "reconstruction"}
   .row
-    .col-md-2.col-sm-6.col-xs-12.shop-item{"dir-paginate" => "photo in allReconstructionPhotos | itemsPerPage: reconstrctionPhotosPerPage", "total-items" => "totalReconstructionPhotos", "current-page" => "pagination.current", "pagination-id" => "reconstruction"}
+    .col-md-2.col-sm-6.col-xs-12.shop-item{"dir-paginate" => "photo in allReconstructionPhotos | itemsPerPage: reconstructionPhotosPerPage", "total-items" => "totalReconstructionPhotos", "current-page" => "pagination.current", "pagination-id" => "reconstruction"}
       .shop-item-image
         %img.img.img-responsive(ng-src= "{{ photo.square_url }}")
       .actions

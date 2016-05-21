@@ -4,11 +4,11 @@
   ($scope, $http) ->
     $scope.currentReconstructionPage = 0
     $scope.allReconstructionPhotos = []
-    $scope.totalReconstrucionPhotos = 0
+    $scope.totalReconstructionPhotos = 0
     $scope.reconstructionPhotosPerPage = 12
     $scope.reconstruction = ""
 
-    $scope.currentLocaltionPage = 0
+    $scope.currentLocationPage = 0
     $scope.allLocationPhotos = []
     $scope.totalLocationPhotos = 0
     $scope.locationPhotosPerPage = 12
@@ -17,13 +17,16 @@
     $scope.currentFlickrPage = 0
     $scope.flickrPhotos = []
     $scope.totalFlickrPhotos = 0
-    $scope.flickrPhotosPerPage = 12
+    $scope.flickrPhotosPerPage = 6
     $scope.distanceSlider =
-      min: 10
-      max: 250
-      ceil: 250
-      floor: 10
-      value: 20
+      value: 10
+      options:
+        floor: 1
+        ceil: 500
+
+    $scope.$on 'slideEnded', ->
+      getFlickrPhotos $scope.currentFlickrPage
+      return
 
     processError = (status) ->
       switch status
@@ -59,7 +62,7 @@
       $http.get("/locations/#{locationSlug}/images.json", {'params': {'page': page, 'show': 'reconstruction', 'reconstruction_slug': reconstructionSlug}}).success((data, status, headers, config) ->
         $scope.currentReconstructionPage = data.current_page
         $scope.allReconstructionPhotos = data.images
-        $scope.totalReconstrucionPhotos = data.total_count
+        $scope.totalReconstructionPhotos = data.total_count
         $scope.reconstructionPhotosPerPage = data.per_page
         $scope.reconstruction = data.reconstruction
         return

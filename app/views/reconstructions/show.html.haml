@@ -35,13 +35,8 @@
           = sketchfab.bbcode_to_html(width: 320, height: 240).html_safe
     #reconstruction-photos{"ng-controller" => "ReconstructionPhotosController", "reconstructionLocation" => "#{@location.slug}", "reconstructionSlug" => "#{@reconstruction.slug}" }
       = render "reconstructions/photos"
-      = render "flickr_photos/index"
+      = render "flickr_photos/index" if current_user && current_user.can_flickr?
       = render "locations/photos"
-    .row
-      .col-md-12
-        .digg_pagination
-          .page_info
-            = page_entries_info @images
-          = will_paginate @images, param_name: 'all_images_page'
+
 
 = render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}

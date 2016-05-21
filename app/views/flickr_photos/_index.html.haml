@@ -6,7 +6,7 @@
     .col-md-12
       %div
         %h4 Distance from Location (in metres)
-        %rzslider{"rz-slider-model"=>"distanceSlider.value", "rz-slider-floor"=>"distanceSlider.floor", "rz-slider-ceil"=>"distanceSlider.ceil", "rz-slider-on-change"=>"sliderChanged()"}
+        %rzslider{"rz-slider-model"=>"distanceSlider.value", "rz-slider-options"=>"distanceSlider.options"}
   .row
     .isotope-gallery-container
       .col-md-2.col-sm-6.col-xs-12.shop-item.flickr-item{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "pagination.current", "pagination-id" => "flickr"}

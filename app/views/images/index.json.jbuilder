@@ -1,4 +1,4 @@
-json.total_count @images.total_entries
+json.total_count @images.count
 json.current_page @images.current_page.to_i
 json.per_page @images.per_page
 json.reconstruction @reconstruction.slug

@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
       @images = @location.images.exclude_in_reconstruction(@reconstruction).paginate(page: params[:page])
       @all = true
     elsif params[:show] == "reconstruction"
-      @images = @reconstruction.images.paginate(page: params[:page])
+      @images = @reconstruction.images.paginate(page: params[:page], per_page: 12)
     else
       @images = @location.images.unassigned_to_reconstruction.paginate(page: params[:page])
     end

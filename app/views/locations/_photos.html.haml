@@ -3,9 +3,9 @@
     .col-md-12
       %h3 All Images at Location
     .col-md-12
-      %dir-pagination-controls{"on-page-change"=>"locationPageChanged(newPageNumber)", "pagination-id" => "all"}
+      %dir-pagination-controls{"on-page-change"=>"locationPageChanged(newPageNumber)", "pagination-id" => "location"}
   .row
-    .col-md-2.col-sm-6.col-xs-12{"dir-paginate" => "photo in allLocationPhotos | itemsPerPage: photosPerPage", "total-items" => "totalLocationPhotos", "current-page" => "pagination.current", "pagination-id" => "all"}
+    .col-md-2.col-sm-6.col-xs-12{"dir-paginate" => "photo in allLocationPhotos | itemsPerPage: locationPhotosPerPage", "total-items" => "totalLocationPhotos", "current-page" => "pagination.current", "pagination-id" => "location"}
       .shop-item
         .shop-item-image
           %img(ng-src= "{{ photo.square_url }}")
