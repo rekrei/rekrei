@@ -50,4 +50,9 @@ Projectmosul::Application.configure do
     user_name: ENV['SMTP_USER'],
     password: ENV['SMTP_PWD']
   }
+
+  unless ENV['RAILS_ENABLE_TEST_LOG']
+    config.logger = Logger.new(nil)
+    config.log_level = :fatal
+  end
 end
