@@ -1,0 +1,62 @@
+- content_for :scripts do
+  :javascript
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+
+      player = new YT.Player('video', {
+        videoId: '0EazGA673fk',
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    var done = false;
+    function onPlayerStateChange(event) {
+      switch(event.data){
+        case 1:
+          $('#myCarousel').carousel('pause');
+          break;
+        default:
+          $('#myCarousel').carousel('cycle');
+          break;
+      }
+    }
+    function stopVideo() {
+      player.stopVideo();
+    }
+.container.mt15
+  .row
+    .col-md-6.col-sm-12
+      .youtube-container
+        .youtube-video#video
+      %p RecoVR: Mosul - YouTube 360 Experience
+      %p
+        You can experience the museum in virtual relaity using
+        = link_to 'Google Cardboard VR', 'https://vr.google.com/cardboard/index.html'
+        or other similar low-cost viewers.
+      %p
+        Download the RecoVR application for Android and Apple  devices below.
+      .links
+        .app-store-link
+          = link_to image_tag('google-play-badge.png'), 'https://play.google.com/store/apps/details?id=com.Economist.RecoVRMosul', target: '_blank'
+        .app-store-link
+          = link_to image_tag('Download_on_the_App_Store_Badge_US-UK_135x40.svg'), 'https://itunes.apple.com/us/app/recovr-mosul-collective-reconstruction/id1112262389?ls=1&mt=8', target: '_blank'
+      .clearfix
+    .col-md-6.col-sm-12
+      %h2
+        RecoVR: Mosul
+        %br
+        a collective reconstruction
+      %p
+        In 2015, we had the pleasure of collaborating with the Economist Media Lab to create the first virtual reconstruction of the Mosul Cultural Museum, the destruction of which was the catalyst for Rekrei. The creation of the virtual museum represents an important step for the project in that we have seen the collective reconstructions now brought forward for retelling through virtual reality.
+      %p
+        You can read more about the creation of the museum on the Economists blog.
+        = link_to 'http://www.economist.com/blogs/prospero/2016/05/virtual-reality', 'http://www.economist.com/blogs/prospero/2016/05/virtual-reality', target: '_blank'
