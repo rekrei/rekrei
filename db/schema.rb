@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018215157) do
+ActiveRecord::Schema.define(version: 20160521112147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20151018215157) do
     t.string   "name"
     t.string   "description"
     t.string   "museum_identifier"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",        precision: 6, null: false
+    t.datetime "updated_at",        precision: 6, null: false
     t.string   "uuid"
   end
 
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20151018215157) do
   create_table "asset_relations", force: :cascade do |t|
     t.integer  "asset_id"
     t.integer  "reconstruction_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",        precision: 6, null: false
+    t.datetime "updated_at",        precision: 6, null: false
   end
 
   add_index "asset_relations", ["asset_id"], name: "index_asset_relations_on_asset_id", using: :btree
@@ -40,18 +40,18 @@ ActiveRecord::Schema.define(version: 20151018215157) do
   create_table "assets", force: :cascade do |t|
     t.string   "asset_type"
     t.integer  "artefact_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                precision: 6, null: false
+    t.datetime "updated_at",                precision: 6, null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "image_updated_at",          precision: 6
     t.string   "type"
     t.boolean  "masked"
     t.string   "masked_image_file_name"
     t.string   "masked_image_content_type"
     t.integer  "masked_image_file_size"
-    t.datetime "masked_image_updated_at"
+    t.datetime "masked_image_updated_at",   precision: 6
     t.string   "uuid"
     t.integer  "reconstruction_id"
     t.integer  "location_id"
@@ -63,11 +63,11 @@ ActiveRecord::Schema.define(version: 20151018215157) do
   add_index "assets", ["reconstruction_id"], name: "index_assets_on_reconstruction_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
+    t.string   "slug",                                    null: false
+    t.integer  "sluggable_id",                            null: false
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
-    t.datetime "created_at"
+    t.datetime "created_at",                precision: 6
   end
 
   add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20151018215157) do
     t.integer  "matches"
     t.string   "time_to_match"
     t.binary   "has_error"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",          precision: 6, null: false
+    t.datetime "updated_at",          precision: 6, null: false
     t.integer  "location_id"
   end
 
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 20151018215157) do
     t.string   "name"
     t.float    "lat"
     t.float    "long"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string   "slug"
     t.string   "uuid"
   end
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 20151018215157) do
     t.string   "slug"
     t.text     "description"
     t.integer  "cover_image_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",     precision: 6, null: false
+    t.datetime "updated_at",     precision: 6, null: false
     t.integer  "location_id"
   end
 
@@ -120,8 +120,8 @@ ActiveRecord::Schema.define(version: 20151018215157) do
   create_table "sketchfabs", force: :cascade do |t|
     t.integer  "artefact_id"
     t.string   "bbcode"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",        precision: 6, null: false
+    t.datetime "updated_at",        precision: 6, null: false
     t.integer  "user_id"
     t.integer  "reconstruction_id"
   end
@@ -130,33 +130,42 @@ ActiveRecord::Schema.define(version: 20151018215157) do
   add_index "sketchfabs", ["reconstruction_id"], name: "index_sketchfabs_on_reconstruction_id", using: :btree
   add_index "sketchfabs", ["user_id"], name: "index_sketchfabs_on_user_id", using: :btree
 
+  create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
+    t.string  "auth_name", limit: 256
+    t.integer "auth_srid"
+    t.string  "srtext",    limit: 2048
+    t.string  "proj4text", limit: 2048
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "username",               default: "",    null: false
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.boolean  "admin",                  default: false, null: false
-    t.boolean  "locked",                 default: false, null: false
+    t.string   "username",                             default: "",    null: false
+    t.string   "email",                                default: "",    null: false
+    t.string   "encrypted_password",                   default: "",    null: false
+    t.boolean  "admin",                                default: false, null: false
+    t.boolean  "locked",                               default: false, null: false
     t.string   "slug"
     t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at",    precision: 6
+    t.integer  "sign_in_count",                        default: 0,     null: false
+    t.datetime "current_sign_in_at",     precision: 6
+    t.datetime "last_sign_in_at",        precision: 6
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at",           precision: 6
+    t.datetime "confirmation_sent_at",   precision: 6
     t.string   "unconfirmed_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             precision: 6
+    t.datetime "updated_at",             precision: 6
     t.string   "flickr_oauth_token"
     t.string   "flickr_oauth_secret"
+    t.boolean  "can_flickr",                           default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["id"], name: "index_users_on_id", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
@@ -171,12 +180,12 @@ ActiveRecord::Schema.define(version: 20151018215157) do
   add_index "version_associations", ["version_id"], name: "index_version_associations_on_version_id", using: :btree
 
   create_table "versions", force: :cascade do |t|
-    t.string   "item_type",      null: false
-    t.integer  "item_id",        null: false
-    t.string   "event",          null: false
+    t.string   "item_type",                    null: false
+    t.integer  "item_id",                      null: false
+    t.string   "event",                        null: false
     t.string   "whodunnit"
     t.text     "object"
-    t.datetime "created_at"
+    t.datetime "created_at",     precision: 6
     t.text     "object_changes"
     t.integer  "transaction_id"
   end
@@ -184,5 +193,4 @@ ActiveRecord::Schema.define(version: 20151018215157) do
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
-  add_foreign_key "sketchfabs", "artefacts"
 end
