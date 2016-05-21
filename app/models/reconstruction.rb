@@ -12,10 +12,10 @@ class Reconstruction < ActiveRecord::Base
   has_paper_trail
 
   scope :sketchfabless, lambda {
-    where('reconstructions.id NOT IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)')
+    where('reconstructions.id NOT IN (SELECT DISTINCT(reconstruction_id) FROM sketchfabs)')
   }
   scope :with_sketchfabs, lambda {
-    where('reconstructions.id IN (SELECT DISTINCT(artefact_id) FROM sketchfabs)')
+    where('reconstructions.id IN (SELECT DISTINCT(reconstruction_id) FROM sketchfabs)')
   }
 
   validates :location, presence: true

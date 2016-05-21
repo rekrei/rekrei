@@ -5,7 +5,7 @@
     .row
       .col-md-4.col-sm-6
         .service-wrapper
-          %i.fa.fa-camera-retro.fa-5x
+          %i.fa.fa-folder-open.fa-5x
           %h2
             Images to Sort
             %br
@@ -16,12 +16,12 @@
             - else
               = Rails.cache.fetch("unassigned_to_reconstruction", :expires_in => 24.hours) { Image.unassigned_to_reconstruction.count }
           = link_to "Sort Photos", location_images_path(location), class: "btn" if location
-          = link_to "See all Photos", location_images_path(location, show: "all"), class: "btn" if location
+
       .col-md-4.col-sm-6
         .service-wrapper
-          %i.fa.fa-magic.fa-5x
+          %i.fa.fa-camera-retro.fa-5x
           %h2
-            Images to Mask
+            Images to Uploaded
             %br
             %br
           %h1
@@ -30,8 +30,7 @@
             - else
               = Rails.cache.fetch('unmasked', :expires_in => 24.hours) { Image.unmasked.count }
           - if location
-            .btn
-              Coming soon!
+            = link_to "See all Photos", location_images_path(location, show: "all"), class: "btn" if location
           =# link_to "Mask Photos", location_images_path(location), class: "btn" if location
       .col-md-4.col-sm-6
         .service-wrapper
@@ -42,5 +41,5 @@
             - if location
               = location.reconstructions.sketchfabless.count
             - else
-              0
+              = Rails.cache.fetch('all_sketchfabless', expires_in: 24.hours) { Reconstruction.sketchfabless.count }
           = link_to "Process Reconstruction", location_reconstructions_path(location), class: "btn" if location
