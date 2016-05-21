@@ -1,0 +1,10 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "angular": "~> 1.5",
+    "angular-resource": "latest",
+    "angular-utils-pagination": "~> 0.11",
+    "angularjs-slider": "~> 2.13",
+    "angular-devise": "latest"
+  }
+}

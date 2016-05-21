@@ -8,7 +8,7 @@ json.images @reconstruction.images.each do |image|
   json.file_name image.image_file_name
   json.content_type image.image_content_type
   json.file_size image.image_file_size
-  json.url Rails.application.config_for(:project_mosul)['host'] + image.image.url(:original)
+  json.url Rails.application.config_for(:rekrei)['host'] + image.image.url(:original)
 end
 
 json.location do

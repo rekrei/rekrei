@@ -1,4 +1,5 @@
 require 'rails_helper'
+SingleCov.covered!
 
 RSpec.describe AssetRelation, type: :model do
   it { should belong_to(:asset) }

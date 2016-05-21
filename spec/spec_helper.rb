@@ -1,7 +1,9 @@
-require 'simplecov'
-SimpleCov.start do
-  add_filter 'vendor/'
-end
+# require 'simplecov'
+# SimpleCov.start do
+#   add_filter 'vendor/'
+# end
+require 'single_cov'
+SingleCov.setup :rspec
 
 require 'codeclimate-test-reporter'
 require 'rspec/active_job'
@@ -35,4 +37,5 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
 end

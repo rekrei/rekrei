@@ -10,12 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-1.11.3.min
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require dropzone
-//= require jquery.turbolinks
-//= require turbolinks
 //= require analytics
 //= require common
 //= require jquery.bxslider
@@ -25,6 +23,18 @@
 //= require modernizr-2.6.2-respond-1.1.0.min
 //= require template.js
 //= require underscore
-//= require gmaps/google
+//= require plugins
+//= require bskit-scripts
 //= require gallery
 //= require images
+//= require bootstrap-sprockets
+//= require angular
+//= require angular-resource
+//= require angular-utils-pagination
+//= require angularjs-slider
+//= require angular-devise
+//= require rekrei
+//= require controllers/tabs-controller
+//= require controllers/reconstruction-photos-controller
+//= require controllers/location-photos-controller
+//= require markerclusterer

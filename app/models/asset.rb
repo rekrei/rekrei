@@ -59,4 +59,12 @@ class Asset < ActiveRecord::Base
   def add_uuid
     self.uuid ||= SecureRandom.uuid
   end
+
+  def image_remote_url=(url_value)
+    self.image = URI.parse(url_value)
+    # Assuming url_value is http://example.com/photos/face.png
+    # avatar_file_name == "face.png"
+    # avatar_content_type == "image/png"
+    @image_remote_url = url_value
+  end
 end

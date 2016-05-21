@@ -34,5 +34,6 @@ module Projectmosul
     # autoload lib path
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

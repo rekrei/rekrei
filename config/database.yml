@@ -18,11 +18,6 @@ staging:
   sslmode: 'verify-full'
   sslrootcert: 'config/ca/rds.pem'
 
-development:
-  url: postgres://localhost/project_mosul_development?pool=5
+development: "postgresql://localhost/rekrei_development"
 
-test:
-  adapter: postgresql
-  database: project_mosul_test
-  username: rails_dev
-  password: rails_dev
+test: "postgresql://localhost/rekrei_test"

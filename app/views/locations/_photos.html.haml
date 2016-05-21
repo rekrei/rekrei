@@ -1,0 +1,14 @@
+#location-photos.row.mt30
+  .row
+    .col-md-12
+      %h3 All Images at Location
+    .col-md-12
+      %dir-pagination-controls{"on-page-change"=>"locationPageChanged(newPageNumber)", "pagination-id" => "location"}
+  .row
+    .col-md-2.col-sm-6.col-xs-12{"dir-paginate" => "photo in allLocationPhotos | itemsPerPage: locationPhotosPerPage", "total-items" => "totalLocationPhotos", "current-page" => "currentLocationPage", "pagination-id" => "location"}
+      .shop-item
+        .shop-item-image
+          %img(ng-src= "{{ photo.square_url }}")
+        .actions
+          %button.btn.fa.fa-plus-square{"ng-click" => "addReconstructionPhoto(photo)"}
+            Add

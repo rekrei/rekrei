@@ -1,4 +1,5 @@
 require 'rails_helper'
+SingleCov.covered!
 
 describe Sketchfab do
   it { should respond_to(:bbcode) }
@@ -15,5 +16,5 @@ describe Sketchfab do
     it { should be_valid }
   end
 
-  
+
 end

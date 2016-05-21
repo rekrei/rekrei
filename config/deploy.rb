@@ -1,4 +1,3 @@
-require 'airbrake/capistrano3'
 require 'byebug'
 require 'capistrano/sidekiq'
 

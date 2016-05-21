@@ -11,26 +11,30 @@
             = link_to "New Reconstruction", new_location_reconstruction_path(@location)
           - else
             = link_to "Login to create a reconstruction", new_user_session_path
-.eshop-section.section
+%section.content-block.gallery-1.gallery-1-2
   .container
+    .underlined-title
+      %h1 A selection of our work
+      %hr
+        %h2 Hand-picked just for you
+    / /.gallery-filter
     .row
       - @reconstructions.each do |reconstruction|
-        .col-md-3.col-sm-6
-          .shop-item
-            .shop-item-image
-              - if reconstruction.images.count > 0
-                = link_to image_tag(reconstruction.images.first.image.url(:square)),location_reconstruction_path(@location,reconstruction)
-              - else
-                = link_to image_tag("square/missing.png"), location_reconstruction_path(@location,reconstruction)
-            .title
-              %h3
-                =link_to reconstruction.name, location_reconstruction_path(@location,reconstruction)
-            .price
-              %br
-              %br
-            .actions
-              =link_to "Edit", location_reconstruction_path(@location,reconstruction), class: "btn btn-small"
-    .row  
+        .isotope-gallery-container
+          .col-md-4.col-sm-6.col-xs-12.gallery-item-wrapper.artwork.creative
+            .gallery-item
+              .gallery-thumb
+                - if reconstruction.images.count > 0
+                  = image_tag reconstruction.images.first.image.url(:medium), class: "img img-responsive"
+                  -# .image-overlay
+                  -# = link_to
+                  -# %a.gallery-zoom{:href => "http://placehold.it/800x600"}
+                  -#   %i.fa.fa-eye{:alt => "This is the title"}
+                  =link_to reconstruction.name, location_reconstruction_path(@location,reconstruction), class: "gallery-link fa fa-link"
+              .gallery-details
+                %h5= reconstruction.name
+                %p= reconstruction.description
+    .row
       .col-md-12
         .digg_pagination
           .page_info

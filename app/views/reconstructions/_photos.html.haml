@@ -1,0 +1,24 @@
+#reconstruction-photos.row.mt30
+  .row
+    %h3 Reconstruction Photos
+    %p
+      Actions:
+      %i.fa.fa-cloud-download
+        Download an image
+      %i.fa.fa-minus-circle
+        Remove image from Reconsturction Group
+  .row
+    .col-md-12
+      %dir-pagination-controls{"on-page-change"=>"reconstructionPageChanged(newPageNumber)", "pagination-id" => "reconstruction"}
+  .row
+    .col-md-2.col-sm-6.col-xs-12.shop-item{"dir-paginate" => "photo in allReconstructionPhotos | itemsPerPage: reconstructionPhotosPerPage", "total-items" => "totalReconstructionPhotos", "current-page" => "currentReconstructionPage", "pagination-id" => "reconstruction"}
+      .shop-item-image
+        %img.img.img-responsive(ng-src= "{{ photo.square_url }}")
+      .actions
+        .row
+          .col-md-6
+            %a.btn.btn-default{href: "{{ photo.original_url }}", download: "{{ photo.image_file_name }}"}
+              %i.fa.fa-cloud-download
+          .col-md-6
+            %button.btn{"ng-click" => "removeImageFromReconstruction(photo)"}
+              %i.fa.fa-minus-circle

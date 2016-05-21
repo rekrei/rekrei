@@ -1,4 +1,5 @@
 require 'rails_helper'
+SingleCov.covered!
 
 describe ImageMatch do
   it { should respond_to(:matches) }
@@ -42,7 +43,7 @@ describe ImageMatch do
       }.to change(ImageMatch, :count).by(0)
     end
   end
-  
+
   context "image match results" do
     let!(:location) { create(:location) }
     let!(:images) { create_pair(:image, location: location) }
@@ -94,23 +95,23 @@ describe ImageMatch do
     let(:image_2) { create(:image, location: nil) }
     let(:image) { create(:image) }
 
-    subject(:image_imatches_1) do 
+    subject(:image_imatches_1) do
       expect(ImageTester).to_not receive(:compare)
-      image_matches = ImageMatch.compare_images([image_1, image_2]) 
+      image_matches = ImageMatch.compare_images([image_1, image_2])
     end
 
     it { expect(image_imatches_1).to eq false }
 
-    subject(:image_imatches_2) do 
+    subject(:image_imatches_2) do
       expect(ImageTester).to_not receive(:compare)
-      image_matches = ImageMatch.compare_images([image_1, image]) 
+      image_matches = ImageMatch.compare_images([image_1, image])
     end
 
     it { expect(image_imatches_2).to eq false }
 
-    subject(:image_imatches_3) do 
+    subject(:image_imatches_3) do
       expect(ImageTester).to_not receive(:compare)
-      image_matches = ImageMatch.compare_images([image, image_2]) 
+      image_matches = ImageMatch.compare_images([image, image_2])
     end
 
     it { expect(image_imatches_3).to eq false }

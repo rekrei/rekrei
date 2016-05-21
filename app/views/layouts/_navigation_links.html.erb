@@ -10,7 +10,7 @@
   <li class='users'><%= link_to "Sign up", new_user_registration_path %></li>
   <li><%= link_to "Login", new_user_session_path %></li>
 <% else %>
-  <li class='users'><%= link_to "Edit your account", edit_user_registration_path %></li>
+  <li class='users'><%= link_to "Account", edit_user_registration_path %></li>
 
   <% if current_user.admin? %>
   <li><%= link_to "Admin", rails_admin_path %></li>
@@ -18,4 +18,4 @@
 
   <li><%= link_to "Sign out", destroy_user_session_path, data:{method: :delete} %></li>
 <% end %>
-<li><%= link_to 'Donate', donate_path %></li>
+<li><%= link_to 'Donate', donate_path, data: { no_turbolink: true } %></li>

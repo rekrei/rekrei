@@ -12,6 +12,38 @@ describe ImagesController do
         expect(response).to redirect_to new_user_session_path
       end
     end
+
+    describe 'all images' do
+      let!(:location) { create(:location) }
+      let!(:images_with_reconstruction) { create_list(:image, 2, :with_stubbed_image, :with_reconstruction, location: location) }
+      let!(:image_with_reconstruction) { create(:image, :with_stubbed_image, :with_reconstruction, location: location) }
+      let!(:images_without_reconstruction) { create_list(:image, 2, :with_stubbed_image, location: location) }
+
+      it 'get unassigned images' do
+        get :index, location_id: location.id
+        expect(assigns(:images).count).to eq 2
+        expect(assigns(:images)).to include(images_without_reconstruction.first)
+        expect(assigns(:images)).to include(images_without_reconstruction.last)
+      end
+
+      it 'get all images' do
+        get :index, location_id: location.id, show: "all"
+        expect(assigns(:images).count).to eq 5
+        expect(assigns(:images)).to include(images_without_reconstruction.first)
+        expect(assigns(:images)).to include(images_without_reconstruction.last)
+        expect(assigns(:images)).to include(images_with_reconstruction.first)
+        expect(assigns(:images)).to include(images_with_reconstruction.last)
+      end
+
+      it 'get all images except for ones included in a reconstruction' do
+        get :index, location_id: location.id, show: "all", reconstruction_slug: image_with_reconstruction.reconstructions.first.slug
+        expect(assigns(:images).count).to eq 4
+        expect(assigns(:images)).to include(images_without_reconstruction.first)
+        expect(assigns(:images)).to include(images_without_reconstruction.last)
+        expect(assigns(:images)).to include(images_with_reconstruction.first)
+        expect(assigns(:images)).to include(images_with_reconstruction.last)
+      end
+    end
   end
 
   describe 'user' do

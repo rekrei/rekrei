@@ -1,0 +1,14 @@
+---
+development: &default
+  :key: <%= ENV['FLICKR_KEY'] %>
+  :secret: <%= ENV['FLICKR_SECRET'] %>
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
+
+test:
+  :key: "testkey"
+  :secret: "testsecret"

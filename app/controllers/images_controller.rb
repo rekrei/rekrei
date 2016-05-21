@@ -6,16 +6,19 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
+    @reconstruction = Reconstruction.friendly.find(params[:reconstruction_slug]) if params[:reconstruction_slug]
     if params[:show] == "all"
-      @images = @location.images.paginate(page: params[:page])
+      @images = @location.images.exclude_in_reconstruction(@reconstruction).paginate(page: params[:page])
       @all = true
+    elsif params[:show] == "reconstruction"
+      @images = @reconstruction.images.paginate(page: params[:page], per_page: 12)
     else
       @images = @location.images.unassigned_to_reconstruction.paginate(page: params[:page])
     end
     @image = @location.images.new
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @images.map(&:to_jq_image) }
+      format.json
     end
   end
 
@@ -44,12 +47,21 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = @location.images.build(image_params)
+    if params[:flickr_url]
+      @image = @location.images.new
+      @image.image_remote_url = params[:flickr_url]
+      @image.metadata = params[:flickr_metadata].to_json
+      if params[:reconstruction_slug]
+        @reconstruction = Reconstruction.friendly.find(params[:reconstruction_slug])
+      end
+    else
+      @image = @location.images.build(image_params)
+    end
 
     if @image.save
       @image.reconstructions << @reconstruction if @reconstruction
       # send success header
-      render json: { message: 'success', fileID: @image.id }, status: 200
+      render json: { message: 'success', photo: {square_url: @image.image.url(:square), id: @image.id} }, status: 200
     else
       #  you need to send an error header, otherwise Dropzone
       #  will not interpret the response as an error:
@@ -104,6 +116,6 @@ class ImagesController < ApplicationController
     if params[:reconstruction_id]
       @reconstruction = Reconstruction.find(params[:reconstruction_id])
     end
-    params.require(:image).permit(:image)
+    params.require(:image).permit(:image) unless params[:flickr_url].present?
   end
 end

@@ -10,6 +10,7 @@ Projectmosul::Application.routes.draw do
   namespace :api, defaults: {format: 'json'},
                             constraints: { subdomain: ['api', 'api.staging'] },
                             path: '/' do
+
     root 'base#index'
     scope module: :v1,
                   constraints: ApiConstraints.new(version: 1, default: false) do
@@ -34,6 +35,7 @@ Projectmosul::Application.routes.draw do
       resources :assets
       resources :sketchfabs
     end
+    resources :flickr_photos, only: [:index]
   end
 
   resources :reconstructions, only: [] do
@@ -53,7 +55,10 @@ Projectmosul::Application.routes.draw do
   get 'press', to: 'pages#press', as: 'press'
   get 'about', to: 'pages#about', as: 'about'
   get 'dashboard', to: 'dashboard#show', as: 'dashboard'
+  get 'check', to: 'pages#check', as: 'check'
   get '/contact', to: 'pages#contact', as: 'contact'
+  get 'flickr_connect', to: 'flickr#create', as: 'create_flickr_connection'
+  get 'flickr_callback', to: 'flickr#callback', as: 'flickr_callback'
   post '/emailconfirmation', to: 'pages#email', as: 'email_confirmation'
   get 'donate', to: 'donations#new', as: 'donate'
 
@@ -64,4 +69,6 @@ Projectmosul::Application.routes.draw do
   #   resources :users
 
   # end
+  get '*unmatched_route', to: 'application#not_found'
+
 end

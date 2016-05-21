@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.1'
 # ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.5.1'
@@ -12,6 +12,8 @@ gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
+gem "bower-rails", "~> 0.10.0"
+
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Kaminari: https://github.com/amatsuda/kaminari
@@ -27,6 +29,7 @@ gem 'font-awesome-sass', '4.2.2'
 gem 'bootstrap-sass', '3.3.5'
 gem 'rmagick'
 gem 'paperclip', '~> 4.2'
+gem 'aws-sdk', '< 2.0'
 gem 'paper_trail', '~> 4.0.0.beta2'
 
 gem 'dropzonejs-rails'
@@ -41,15 +44,18 @@ gem 'will_paginate'
 gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
-gem 'airbrake'
-gem 'rollbar', '~> 2.7.1'
-gem 'aws-sdk', '< 2.0'
+gem 'flickraw'
+gem 'geokit'
+# Devise: https://github.com/plataformatec/devise
+gem 'devise', '3.4.1'
+gem 'rollbar', '~> 2.11'
+gem 'newrelic_rpm'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
 ## Google Maps Integration
-gem 'gmaps4rails'
+gem 'markerclustererplus-rails'
 gem 'underscore-rails'
 gem 'geonames_api'
 
@@ -61,9 +67,8 @@ gem 'geonames_api'
 gem 'stripe'
 
 group :production, :staging do
-  gem 'puma'
-  gem 'newrelic_rpm'
-  gem 'skylight'
+  gem 'puma', '~> 3.4'
+  gem "puma_worker_killer"
 end
 
 group :development, :test do
@@ -76,6 +81,8 @@ group :development, :test do
   gem 'capistrano-sidekiq'
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
+  gem 'awesome_print'
+  gem 'pry-rails'
 
   # Figaro: https://github.com/laserlemon/figaro
   gem 'figaro', '1.0.0'
@@ -83,11 +90,12 @@ group :development, :test do
   # Spring: https://github.com/rails/spring
   # gem 'spring'
   gem 'rspec-rails', '~> 3.0'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
   gem 'guard-migrate', require: false
+  gem 'guard-spring'
   gem 'capybara'
   gem 'fuubar'
   gem 'factory_girl_rails'
@@ -102,7 +110,6 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
   gem 'simplecov', :require => false
+  gem 'compass-rails'
+  gem 'single_cov'
 end
-
-# Devise: https://github.com/plataformatec/devise
-gem 'devise', '3.4.1'

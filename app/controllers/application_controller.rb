@@ -7,6 +7,17 @@ class ApplicationController < ActionController::Base
   before_action :reject_locked!, if: :devise_controller?
 
   after_filter :store_location
+  after_filter :set_csrf_cookie_for_ng
+
+  respond_to :html, :json
+
+  def set_csrf_cookie_for_ng
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
+
+  def not_found
+    render :file => 'public/404.html', :status => :not_found, :layout => false
+  end
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
@@ -17,8 +28,10 @@ class ApplicationController < ActionController::Base
         request.path != "/users/password/edit" &&
         request.path != "/users/confirmation" &&
         request.path != "/users/sign_out" &&
+        !request.format.json? &&
         !request.xhr?) # don't store ajax calls
-      session[:previous_url] = request.fullpath
+      session[:previous_url] = request.original_url
+
     end
   end
 
@@ -27,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   # Devise permitted params
-  def configure_permitted_parameters    
+  def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) do |u|
       u.permit(
         :login,
@@ -70,8 +83,24 @@ class ApplicationController < ActionController::Base
   # Only permits admin users
   def require_admin!
     authenticate_user!
-
-    redirect_to root_path if current_user && !current_user.admin?
+    respond_to do |format|
+      format.html { redirect_to root_path if current_user && !current_user.admin? }
+      format.js { render json: { error: "User not an admin!" }, status: 401 }
+    end
   end
+
   helper_method :require_admin!
+
+  def require_user!
+    unless current_user
+      render json: { error: "Authentication failure!" }, status: 401
+    end
+  end
+
+  helper_method :require_user!
+
+  protected
+  def verified_request?
+    super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
+  end
 end

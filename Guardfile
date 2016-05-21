@@ -88,7 +88,15 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
-guard 'migrate' do
+guard :migrate do
+  require 'guard/migrate'
   watch(%r{^db/migrate/(\d+).+\.rb})
   watch('db/seeds.rb')
+end
+
+guard 'spring', bundler: true do
+  watch('Gemfile.lock')
+  watch(%r{^config/})
+  watch(%r{^spec/(support|factories)/})
+  watch(%r{^spec/factory.rb})
 end
