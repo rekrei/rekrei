@@ -6,14 +6,6 @@ json.locations @locations do |location|
     json.longitude location.long
     json.latitude location.lat
   end
-  json.images location.images.each do |image|
-    json.uuid image.uuid
-    json.url Rails.application.config_for(:project_mosul)['host'] + image.image.url(:original)
-  end
-
-  json.reconstructions location.reconstructions.each do |reconstruction|
-    json.uuid reconstruction.uuid
-    json.name reconstruction.name
-    json.images reconstruction.images.collect(&:uuid)
-  end
+  json.url location_url(location)
+  json.url Rails.application.config_for(:rekrei)['host'] + location_path(location)
 end

@@ -48,13 +48,14 @@ gem 'flickraw'
 gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '3.4.1'
-gem 'rollbar', '~> 2.7.1'
+gem 'rollbar', '~> 2.11'
+gem 'aws-sdk', '< 2.0'
+gem 'newrelic_rpm'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
 ## Google Maps Integration
-gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
 gem 'underscore-rails'
 gem 'geonames_api'

@@ -4,11 +4,15 @@ class LocationsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @locations = Location.all
-    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.lat
-      marker.lng location.long
-      marker.infowindow view_context.link_to location.name, location_path(location)
+    @locations = Rails.cache.fetch('all_locations', expires_in: 24.hours) do
+      Location.all
+    end
+    respond_to do |format|
+      format.json do
+        render template: "api/v2/locations/index"
+      end
+      format.html do
+      end
     end
   end
 

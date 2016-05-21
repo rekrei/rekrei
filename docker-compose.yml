@@ -27,6 +27,6 @@ services:
       - db
     env_file: .env
     environment:
-      DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
-      RAILS_ENV: development
-      RACK_ENV: development
+      #DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
+      RAILS_ENV: production
+      RACK_ENV: production

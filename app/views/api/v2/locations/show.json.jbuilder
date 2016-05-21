@@ -15,5 +15,5 @@ end
 json.images  @location.images.each do |image|
   json.uuid image.uuid
   json.file_name image.image_file_name
-  json.url Rails.application.config_for(:project_mosul)['host'] + image.image.url(:original)
+  json.url Rails.application.config_for(:rekrei)['host'] + image.image.url(:original)
 end
