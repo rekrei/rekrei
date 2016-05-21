@@ -43,6 +43,7 @@ gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'rollbar', '~> 2.11'
 gem 'aws-sdk', '< 2.0'
+gem 'newrelic_rpm'
 
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
