@@ -36,4 +36,5 @@
 //= require rekrei
 //= require controllers/tabs-controller
 //= require controllers/reconstruction-photos-controller
+//= require controllers/location-photos-controller
 //= require markerclusterer

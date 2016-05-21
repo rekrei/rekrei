@@ -76,8 +76,9 @@
       return
 
     $scope.addPhotoFromFlickr = (flickrImage) ->
+      reconstructionSlug = angular.element( document.querySelector('#reconstruction-photos') )[0].attributes['reconstructionSlug'].value
       locationSlug = angular.element( document.querySelector('#reconstruction-photos') )[0].attributes['reconstructionLocation'].value
-      $http.post("/locations/#{locationSlug}/images.json", {'flickr_url': flickrImage.url_o, 'flickr_metadata': flickrImage}).success((data, status, headers, config) ->
+      $http.post("/locations/#{locationSlug}/images.json", {'flickr_url': flickrImage.url_o, 'flickr_metadata': flickrImage, 'reconstruction_slug': reconstructionSlug}).success((data, status, headers, config) ->
         $scope.allReconstructionPhotos.push data.photo
       ).error (data, status, headers, config) ->
         processError(status)
