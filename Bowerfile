@@ -2,8 +2,8 @@
 # Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
 
 # asset 'bootstrap'
-asset 'angular', '~> 1.4'
+asset 'angular', '~> 1.5'
 asset 'angular-resource'
-asset 'angular-utils-pagination'
-asset 'angularjs-slider'
+asset 'angular-utils-pagination', '~> 0.11'
+asset 'angularjs-slider', '~> 2.13'
 asset 'angular-devise'
