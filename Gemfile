@@ -49,7 +49,6 @@ gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '3.4.1'
 gem 'rollbar', '~> 2.11'
-gem 'aws-sdk', '< 2.0'
 gem 'newrelic_rpm'
 
 #For API
@@ -68,7 +67,7 @@ gem 'geonames_api'
 gem 'stripe'
 
 group :production, :staging do
-  gem 'puma'
+  gem 'puma', '~> 3.4'
   gem "puma_worker_killer"
 end
 
