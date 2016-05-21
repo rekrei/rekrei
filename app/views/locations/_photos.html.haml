@@ -5,7 +5,7 @@
     .col-md-12
       %dir-pagination-controls{"on-page-change"=>"locationPageChanged(newPageNumber)", "pagination-id" => "location"}
   .row
-    .col-md-2.col-sm-6.col-xs-12{"dir-paginate" => "photo in allLocationPhotos | itemsPerPage: locationPhotosPerPage", "total-items" => "totalLocationPhotos", "current-page" => "pagination.current", "pagination-id" => "location"}
+    .col-md-2.col-sm-6.col-xs-12{"dir-paginate" => "photo in allLocationPhotos | itemsPerPage: locationPhotosPerPage", "total-items" => "totalLocationPhotos", "current-page" => "currentLocationPage", "pagination-id" => "location"}
       .shop-item
         .shop-item-image
           %img(ng-src= "{{ photo.square_url }}")

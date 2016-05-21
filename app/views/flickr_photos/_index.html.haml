@@ -9,7 +9,7 @@
         %rzslider{"rz-slider-model"=>"distanceSlider.value", "rz-slider-options"=>"distanceSlider.options"}
   .row
     .isotope-gallery-container
-      .col-md-2.col-sm-6.col-xs-12.shop-item.flickr-item{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "pagination.current", "pagination-id" => "flickr"}
+      .col-md-2.col-sm-6.col-xs-12.shop-item.flickr-item{"dir-paginate" => "flickrPhoto in flickrPhotos | itemsPerPage: flickrPhotosPerPage", "total-items" => "totalFlickrPhotos", "current-page" => "currentFlickrPages", "pagination-id" => "flickr"}
         .shop-item-image
           %img.flickr_square(ng-src= "{{flickrPhoto.url_q}}")
         .actions

@@ -15,7 +15,7 @@ class FlickrPhotosController < ActionController::Base
     args[:radius_units] = "km"
     args[:sort] = "date-taken-desc"
     args[:accuracy] = 6
-    args[:per_page] = 12
+    args[:per_page] = 6
     args[:extras] = "description, license, date_upload, date_taken, owner_name, geo, tags, machine_tags, url_q, url_o"
     args[:page] = params[:flickr_page] || 1
     args[:license] = "1,2,4,5,7,8"

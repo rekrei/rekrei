@@ -51,6 +51,9 @@ class ImagesController < ApplicationController
       @image = @location.images.new
       @image.image_remote_url = params[:flickr_url]
       @image.metadata = params[:flickr_metadata].to_json
+      if params[:reconstruction_slug]
+        @reconstruction = Reconstruction.friendly.find(params[:reconstruction_slug])
+      end
     else
       @image = @location.images.build(image_params)
     end
