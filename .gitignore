@@ -23,10 +23,5 @@ doc/
 .secret
 public/assets
 coverage/*
-<<<<<<< HEAD
-
-.envrc
-=======
 .envrc
 .dockerenv
->>>>>>> master
