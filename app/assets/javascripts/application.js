@@ -25,7 +25,6 @@
 //= require underscore
 //= require plugins
 //= require bskit-scripts
-//= require gallery
 //= require images
 //= require bootstrap-sprockets
 //= require angular
