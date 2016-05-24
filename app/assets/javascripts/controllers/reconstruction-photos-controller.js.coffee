@@ -14,6 +14,11 @@
     $scope.locationPhotosPerPage = 12
     $scope.reconstruction = ""
 
+    $scope.currentFlickrTextPage = 0
+    $scope.flickrTextPhotos = []
+    $scope.totalFlickrTextPhotos = 0
+    $scope.flickrTextPhotosPerPage = 6
+
     $scope.currentFlickrPage = 0
     $scope.flickrPhotos = []
     $scope.totalFlickrPhotos = 0
@@ -33,6 +38,24 @@
         when 401 then alert 'Not Authorized, you need to login'
         when 404 then alert 'Item not found'
         when 500 then alert 'Oh no! Something went wrong!'
+
+    getFlickrPhotosText = (page) ->
+      $http.get("/flickr_photos", {'params': {'flickr_page': page, 'text': $scope.flickrTextSearch}}).success((data, status, headers, config) ->
+        $scope.currentFlickrTextPage = page
+        $scope.flickrTextPhotos = data.photo
+        $scope.totalFlickrTextPhotos = data.total
+        return
+      ).error (data, status, headers, config) ->
+        processError(status)
+        return
+      return
+
+    $scope.searchForFlickrPhotos = ->
+      getFlickrPhotosText 1
+
+    $scope.flickrTextPageChanged = (newPage) ->
+      getFlickrPhotosText newPage
+      return
 
     getFlickrPhotos = (page) ->
       locationSlug = angular.element( document.querySelector('#reconstruction-photos') )[0].attributes['reconstructionLocation'].value

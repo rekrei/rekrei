@@ -25,3 +25,31 @@
             %button.btn{"ng-click" => "addPhotoFromFlickr(flickrPhoto)"}
               %i.fa.fa-cloud-download
                 Import
+#flickr-text-search.row.mt30
+  .row
+    .col-md-12
+      %dir-pagination-controls{"on-page-change"=>"flickrTextPageChanged(newPageNumber)", "pagination-id" => "flickr-text"}
+    .col-md-12
+      %div
+        %h4 Free Text Search
+        %input{"type"=>"text", "ng-model"=>"flickrTextSearch"}
+        %button.btn{"ng-click" => "searchForFlickrPhotos()"}
+          Search
+  .row
+    .isotope-gallery-container
+      .col-md-2.col-sm-6.col-xs-12.shop-item.flickr-item{"dir-paginate" => "flickrTextPhoto in flickrTextPhotos | itemsPerPage: flickrTextPhotosPerPage", "total-items" => "totalFlickrTextPhotos", "current-page" => "currentFlickrTextPages", "pagination-id" => "flickr-text"}
+        .shop-item-image
+          %img.flickr_square(ng-src= "{{flickrTextPhoto.url_q}}")
+        .actions
+          %p
+            %b
+              {{ flickrTextPhoto.title | uppercase | limitTo : 15 }}
+          %p {{ flickrTextPhoto.ownername }}
+          %p
+            %a{href: "https://www.flickr.com/photos/{{ flickrTextPhoto.owner }}/{{ flickrTextPhoto.id }}", target: "_blank"}
+              %i.fa.fa-flickr
+              View on Flickr
+          %p
+            %button.btn{"ng-click" => "addPhotoFromFlickr(flickrTextPhoto)"}
+              %i.fa.fa-cloud-download
+                Import

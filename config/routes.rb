@@ -38,6 +38,8 @@ Projectmosul::Application.routes.draw do
     resources :flickr_photos, only: [:index]
   end
 
+  resources :flickr_photos, only: [:index]
+
   resources :reconstructions, only: [] do
     resources :sketchfabs, only: [:new, :create]
     resources :asset_relations, only: [:create]
