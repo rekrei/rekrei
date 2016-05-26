@@ -66,4 +66,4 @@
             You must be signed in to upload images
 
 
-= render partial: 'shared/disqus', locals: {disqus_url: location_url(@location), disqus_uuid: @location.uuid, disqus_title: @location.name}
+= render partial: 'shared/disqus', locals: {disqus_url: location_url(@location), disqus_uuid: h(@location.uuid), disqus_title: h(@location.name)}

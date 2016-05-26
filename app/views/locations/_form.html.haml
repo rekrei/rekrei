@@ -136,7 +136,7 @@
       var marker = new google.maps.Marker({
         map: map,
         title: "#{h @location.name}",
-        position: new google.maps.LatLng(#{@location.lat}, #{@location.long}),
+        position: new google.maps.LatLng(#{h @location.lat}, #{h @location.long}),
         draggable: true
       });
       markers = [marker];

@@ -39,4 +39,4 @@
       = render "locations/photos"
 
 
-= render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: @reconstruction.uuid, disqus_title: @reconstruction.name}
+= render partial: 'shared/disqus', locals: {disqus_url: location_reconstruction_url(@location, @reconstruction), disqus_uuid: h(@reconstruction.uuid), disqus_title: h(@reconstruction.name)}
