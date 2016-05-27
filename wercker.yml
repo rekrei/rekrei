@@ -1,10 +1,10 @@
 box: ruby:2.3.1
 services:
-  - wercker/postgresql
+    - wercker/postgres
 build:
-  steps:
-    - rails-database-yml
-    - bundle-install
-    - script:
-      name: rspec
-      code: bundle exec rspec
+    steps:
+        - rails-database-yml
+        - bundle-install
+        - script:
+            name: rspec
+            code: bundle exec rspec
