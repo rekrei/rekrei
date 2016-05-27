@@ -7,6 +7,7 @@ build:
   steps:
     - rails-database-yml
     - bundle-install
+      service: postgres
     - script:
         name: rspec
         code: bundle exec rspec
