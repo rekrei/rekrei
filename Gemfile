@@ -50,7 +50,7 @@ gem 'geokit'
 gem 'devise', '3.4.1'
 gem 'rollbar', '~> 2.11'
 gem 'newrelic_rpm'
-
+gem 'le'
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
