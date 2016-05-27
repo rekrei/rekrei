@@ -20,4 +20,4 @@ staging:
 
 development: "postgresql://localhost/rekrei_development"
 
-test: "postgresql://localhost/rekrei_test"
+test: <%= ENV['DATABASE_URL'] || "postgresql://localhost/rekrei_test" %>
