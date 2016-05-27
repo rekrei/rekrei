@@ -1,5 +1,4 @@
 require 'rails_helper'
-SingleCov.covered!
 
 describe Location do
   it { should respond_to(:name) }

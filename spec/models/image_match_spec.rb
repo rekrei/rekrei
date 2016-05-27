@@ -1,5 +1,4 @@
 require 'rails_helper'
-SingleCov.covered!
 
 describe ImageMatch do
   it { should respond_to(:matches) }

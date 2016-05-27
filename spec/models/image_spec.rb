@@ -122,6 +122,13 @@ describe Image do
         new_image.save
       }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(0) #no jobs are queued right now
     end
+
+    it "should create image matches on request" do
+      expect {
+        expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
+        image_1.update_matches
+      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
+    end
   end
 
   describe 'scoping asset relations relating to reconstruction' do
