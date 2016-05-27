@@ -1,10 +1,12 @@
 box: ruby:2.3.1
 services:
-    - postgres
+  - id: postgres
+  env:
+    POSTGRES_PASSWORD: ourlittlesecret
 build:
-    steps:
-        - rails-database-yml
-        - bundle-install
-        - script:
-            name: rspec
-            code: bundle exec rspec
+  steps:
+    - rails-database-yml
+    - bundle-install
+    - script:
+        name: rspec
+        code: bundle exec rspec
