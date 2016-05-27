@@ -5,6 +5,7 @@ service:
       - POSTGRES_PASSWORD: ourlittlesecret
 build:
   steps:
+    - rails-database-yml
     - bundle-install
     - script:
         name: rspec
