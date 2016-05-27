@@ -2,9 +2,9 @@ box: ruby:2.3.1
 services:
    - id: postgres
      env:
-       POSTGRES_PASSWORD: $APP_POSTGRES_PASSWORD
-       POSTGRES_USER: $APP_POSTGRES_USER
-       POSTGRES_DB: $APP_POSTGRES_DB
+       POSTGRES_PASSWORD: supersecret
+       POSTGRES_USER: root
+       POSTGRES_DB: rekrei_test
 build:
   steps:
     - rails-database-yml
