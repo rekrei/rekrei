@@ -1,8 +1,10 @@
 box: ruby:2.3.1
 services:
-  - id: postgresql
-    env:
-      - POSTGRES_PASSWORD: ourlittlesecret
+   - id: postgres
+     env:
+       POSTGRES_PASSWORD: $APP_POSTGRES_PASSWORD
+       POSTGRES_USER: $APP_POSTGRES_USER
+       POSTGRES_DB: $APP_POSTGRES_DB
 build:
   steps:
     - rails-database-yml
