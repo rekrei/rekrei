@@ -1,6 +1,6 @@
 box: ruby:2.3.1
 services:
-    - wercker/postgres
+    - postgres
 build:
     steps:
         - rails-database-yml
