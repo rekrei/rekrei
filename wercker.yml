@@ -1,6 +1,6 @@
 box: ruby:2.3.1
 services:
-  - id: postgres
+  - id: postgresql
     env:
       - POSTGRES_PASSWORD: ourlittlesecret
 build:
