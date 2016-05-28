@@ -35,5 +35,15 @@ module Projectmosul
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_protocol => :https,
+      :s3_credentials => {
+        :bucket => ENV['AWS_BUCKET'],
+        :access_key_id => ENV['AWS_ACCESS_KEY'],
+        :secret_access_key => ENV['AWS_SECRET_KEY'],
+        :s3_region => ENV['AWS_REGION']
+      }
+    }
   end
 end

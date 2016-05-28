@@ -51,6 +51,10 @@ Projectmosul::Application.configure do
     password: ENV['SMTP_PWD']
   }
 
+  config.paperclip_defaults = {
+    :storage => :filesystem
+  }
+
   unless ENV['RAILS_ENABLE_TEST_LOG']
     config.logger = Logger.new(nil)
     config.log_level = :fatal
