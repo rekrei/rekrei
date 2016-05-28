@@ -3,7 +3,7 @@
 
 ## About Rekrei
 
-Rekrei (formerly Project Mosul) is a volunteer project that crowdsources the digital reconstruction of lost heritage. The project was founded by Matthew Vincent and Chance Coughenour in March 2015.
+Rekrei (founded as Project Mosul, we changed our name in late 2015) is a volunteer project that crowdsources the digital reconstruction of lost heritage. The project was founded by Matthew Vincent and Chance Coughenour in March 2015. You can read more about the project on our [about page](https://rekrei.org/about)
 
 ## Helping Out
 
@@ -27,4 +27,4 @@ You don't have to be an expert to use photogrammetry software. We personally rec
 
 ## Questions?
 
-Please feel free to contact us directly at info@rekrei.org or through the [contact page](http://rekrei.org/contact) on the website.
+Please feel free to contact us directly at info@rekrei.org or through the [contact page](https://rekrei.org/contact) on the website.
