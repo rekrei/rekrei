@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :reject_locked!, if: :devise_controller?
+  before_filter :set_paper_trail_whodunnit
 
   after_filter :store_location
   after_filter :set_csrf_cookie_for_ng

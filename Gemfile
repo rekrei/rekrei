@@ -31,7 +31,7 @@ gem 'bootstrap-sass', '~> 3.3'
 gem 'rmagick'
 gem 'paperclip', '~> 4.2'
 gem 'aws-sdk', '< 2.0'
-gem 'paper_trail', '~> 4.0.0.beta2'
+gem 'paper_trail', '~> 5.1'
 
 gem 'dropzonejs-rails'
 
@@ -48,7 +48,7 @@ gem 'rubyzip', '>= 1.0.0'
 gem 'flickraw'
 gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
-gem 'devise', '3.5.4'
+gem 'devise', '~> 4.1'
 gem 'rollbar', '~> 2.11'
 gem 'newrelic_rpm'
 gem 'le'
