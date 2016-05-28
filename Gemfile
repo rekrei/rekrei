@@ -29,7 +29,7 @@ gem 'font-awesome-sass', '~> 4.6'
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3'
 gem 'rmagick'
-gem 'paperclip', '~> 4.2'
+gem 'paperclip', '~> 5.0.0.beta'
 gem 'aws-sdk', '~> 2.3'
 gem 'paper_trail', '~> 5.1'
 
