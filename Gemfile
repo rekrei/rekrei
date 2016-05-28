@@ -30,7 +30,7 @@ gem 'font-awesome-sass', '~> 4.6'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'rmagick'
 gem 'paperclip', '~> 4.2'
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '~> 2.3'
 gem 'paper_trail', '~> 5.1'
 
 gem 'dropzonejs-rails'
