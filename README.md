@@ -3,7 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/rekrei/rekrei/badges/gpa.svg)](https://codeclimate.com/github/rekrei/rekrei)
 [![Test Coverage](https://codeclimate.com/github/rekrei/rekrei/badges/coverage.svg)](https://codeclimate.com/github/rekrei/rekrei/coverage)
 [![Dependency Status](https://gemnasium.com/badges/github.com/rekrei/rekrei.svg)](https://gemnasium.com/github.com/rekrei/rekrei)
-
+[![security](https://hakiri.io/github/rekrei/rekrei/master.svg)](https://hakiri.io/github/rekrei/rekrei/master)
 ## About Rekrei
 
 Rekrei (founded as Project Mosul, we changed our name in late 2015) is a volunteer project that crowdsources the digital reconstruction of lost heritage. The project was founded by Matthew Vincent and Chance Coughenour in March 2015. You can read more about the project on our [about page](https://rekrei.org/about)
