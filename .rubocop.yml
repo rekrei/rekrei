@@ -1,5 +1,5 @@
-AllCops:
-  RunRailsCops: true
+Rails:
+  Enabled: true
   Exclude:
     - 'db/**/*'
     - 'bin/**/*'
@@ -10,4 +10,3 @@ AllCops:
     - 'config/deploy.rb'
     - 'config/application.rb'
     - 'app/controllers/pages_controller.rb' #auto-generated, will fix
-  
