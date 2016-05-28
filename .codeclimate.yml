@@ -21,5 +21,18 @@ ratings:
   - "**.rb"
   - "**.go"
 exclude_paths:
-- spec/**/*
-- "**/vendor/**/*"
+  - "db/schema.rb"
+  - "app/assets/javascripts/bootstrap.js"
+  - "app/assets/javascripts/bootstrap.min.js"
+  - "app/assets/javascripts/plugins.js"
+  - "app/assets/javascripts/jquery.sequence.js"
+  - "app/assets/javascripts/modernizr-2.6.2-respond-1.1.0.min.js"
+  - "app/assets/javascripts/jquery.bxslider.js"
+  - "app/assets/javascripts/jquery.sequence-min.js"
+  - "app/assets/stylesheets/bootstrap.css"
+  - "app/assets/stylesheets/main-red.css"
+  - "app/assets/stylesheets/main.css"
+  - "app/assets/javascripts/respond.min.js"
+  - "db/migrate/20141010133701_devise_create_users.rb"
+  - spec/**/*
+  - "**/vendor/**/*"
