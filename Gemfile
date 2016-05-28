@@ -72,14 +72,17 @@ group :production, :staging do
   gem "puma_worker_killer"
 end
 
+group :development do
+  gem 'web-console', '~> 3.1'
+end
+
 group :development, :test do
-  gem 'byebug', '3.5.1'
-  gem 'web-console', '2.1.3'
+  gem 'byebug', '~> 9'
   gem 'awesome_print'
   gem 'pry-rails'
 
   # Figaro: https://github.com/laserlemon/figaro
-  gem 'figaro', '1.0.0'
+  gem 'figaro', '~> 1.1'
 
   # Spring: https://github.com/rails/spring
   # gem 'spring'
@@ -93,12 +96,10 @@ group :development, :test do
   gem 'capybara'
   gem 'fuubar'
   gem 'factory_girl_rails'
-  # gem 'spring-commands-rspec'
   gem 'rspec-given'
   gem 'rspec-activejob'
   gem 'codeclimate-test-reporter', require: nil
   gem 'rubocop', require: false
-  gem 'sqlite3', '1.3.10'
   gem 'faker'
   gem 'spring'
   gem 'spring-commands-rspec'
