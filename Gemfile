@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.5.2'
 gem 'sass-rails', '5.0.3'
 gem 'haml-rails'
-gem 'uglifier', '2.6.0'
+gem 'uglifier', '2.7.2'
 gem 'therubyracer'
 gem 'coffee-rails', '4.1.0'
-gem 'jquery-rails', '4.0.3'
+gem 'jquery-rails', '>= 4.0.4'
 gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '2.2.6'
@@ -42,13 +42,13 @@ gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 # gem 'will_paginate-bootstrap'
 
-gem 'sketchfably', git: 'git://github.com/neshmi/sketchfably.git'
+gem 'sketchfably', git: 'https://github.com/neshmi/sketchfably.git'
 gem 'rails_admin'
 gem 'rubyzip', '>= 1.0.0'
 gem 'flickraw'
 gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
-gem 'devise', '3.4.1'
+gem 'devise', '3.5.4'
 gem 'rollbar', '~> 2.11'
 gem 'newrelic_rpm'
 gem 'le'
@@ -73,15 +73,8 @@ group :production, :staging do
 end
 
 group :development, :test do
-  gem 'capistrano', '~> 3.3.0'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-passenger', '0.2.0'
-  gem 'capistrano-maintenance', github: 'capistrano/maintenance', require: false
-  gem 'capistrano-rails-console'
-  gem 'capistrano-sidekiq'
   gem 'byebug', '3.5.1'
-  gem 'web-console', '2.0.0'
+  gem 'web-console', '2.1.3'
   gem 'awesome_print'
   gem 'pry-rails'
 

@@ -103,3 +103,4 @@ Projectmosul::Application.configure do
     }
   }
 end
+Rails.logger = Le.new('a66c30f9-b5fc-4560-b62e-06e7fee0c660')
