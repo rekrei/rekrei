@@ -1,5 +1,8 @@
 # Rekrei Platform
 [![wercker status](https://app.wercker.com/status/713ce4c927150a5f4fcd9c3fb91c1cba/s/master "wercker status")](https://app.wercker.com/project/bykey/713ce4c927150a5f4fcd9c3fb91c1cba)
+[![Code Climate](https://codeclimate.com/github/rekrei/rekrei/badges/gpa.svg)](https://codeclimate.com/github/rekrei/rekrei)
+[![Test Coverage](https://codeclimate.com/github/rekrei/rekrei/badges/coverage.svg)](https://codeclimate.com/github/rekrei/rekrei/coverage)
+[![Dependency Status](https://gemnasium.com/badges/github.com/rekrei/rekrei.svg)](https://gemnasium.com/github.com/rekrei/rekrei)
 
 ## About Rekrei
 

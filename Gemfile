@@ -2,32 +2,32 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 # ruby-gemset=projectmosul
 # Standard Rails gems
-gem 'rails', '4.2.5.2'
-gem 'sass-rails', '5.0.3'
+gem 'rails', '4.2.6'
+gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
-gem 'uglifier', '2.7.2'
+gem 'uglifier', '~> 3.0'
 gem 'therubyracer'
-gem 'coffee-rails', '4.1.0'
+gem 'coffee-rails', '~> 4.1'
 gem 'jquery-rails', '>= 4.0.4'
 gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
-gem 'jbuilder', '2.2.6'
-gem 'bcrypt', '3.1.9'
+gem 'jbuilder', '~> 2.4'
+gem 'bcrypt', '~> 3.1'
 gem "bower-rails", "~> 0.10.0"
 
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Kaminari: https://github.com/amatsuda/kaminari
-gem 'kaminari', '0.16.2'
+gem 'kaminari', '~> 0.16'
 
 # Friendly_id: https://github.com/norman/friendly_id
 gem 'friendly_id', '5.1.0'
 
 # Font-awesome: https://github.com/FortAwesome/font-awesome-sass
-gem 'font-awesome-sass', '4.2.2'
+gem 'font-awesome-sass', '~> 4.6'
 
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
-gem 'bootstrap-sass', '3.3.5'
+gem 'bootstrap-sass', '~> 3.3'
 gem 'rmagick'
 gem 'paperclip', '~> 4.2'
 gem 'aws-sdk', '< 2.0'
