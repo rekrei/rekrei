@@ -46,9 +46,7 @@ Projectmosul::Application.routes.draw do
   end
 
   resources :asset_relations, only: [:destroy]
-
-  resources :artefacts, only: [:show, :index]
-
+  
   resources :images, only: [:show, :index]
 
   root 'pages#home'
