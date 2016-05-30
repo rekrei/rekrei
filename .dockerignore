@@ -1,9 +1,10 @@
 # Ignore the bundle directory itself.
-/vendor/bundle
+vendor/bundle/**/*
+vendor/bundle
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-/public/system
+log/*.log
+tmp
+public/system
 # Ignore other unneeded files.
 doc/
 *.swp
@@ -13,7 +14,7 @@ doc/
 .idea
 .env
 # Ignore application configuration
-/config/application.yml
+config/application.yml
 .secret
 public/assets
 coverage/*

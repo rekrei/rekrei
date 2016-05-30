@@ -30,7 +30,7 @@ gem 'font-awesome-sass', '~> 4.6'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'rmagick'
 gem 'paperclip', '~> 5.0.0.beta'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk', '<= 2.0'
 gem 'paper_trail', '~> 5.1'
 
 gem 'dropzonejs-rails'
@@ -48,10 +48,11 @@ gem 'rubyzip', '>= 1.0.0'
 gem 'flickraw'
 gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
-gem 'devise', '~> 4.1'
+gem 'devise', '~> 3.5.10'
 gem 'rollbar', '~> 2.11'
 gem 'newrelic_rpm'
 gem 'le'
+gem 'cocaine', '~> 0.5'
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 

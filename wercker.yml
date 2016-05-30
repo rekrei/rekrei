@@ -12,3 +12,11 @@ build:
     - script:
         name: rspec
         code: bundle exec rspec
+deploy:
+  steps:
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        tag: wercker_master
+        repository: rekrei/rekrei
+        registry: https://registry.hub.docker.com
