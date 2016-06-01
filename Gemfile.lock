@@ -227,7 +227,7 @@ GEM
     markerclustererplus-rails (2.1.2)
     method_source (0.8.2)
     mime-types (2.99.2)
-    mimemagic (0.3.1)
+    mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.9.0)
     multi_json (1.12.1)
@@ -245,12 +245,12 @@ GEM
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
       request_store (~> 1.1)
-    paperclip (5.0.0.beta2)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
+    paperclip (4.3.6)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
-      mimemagic (~> 0.3.0)
+      mimemagic (= 0.3.0)
     parser (2.3.1.0)
       ast (~> 2.2)
     pg (0.18.4)
@@ -469,7 +469,7 @@ DEPENDENCIES
   markerclustererplus-rails
   newrelic_rpm
   paper_trail (~> 5.1)
-  paperclip (~> 5.0.0.beta)
+  paperclip (= 4.3.6)
   pg
   pry-rails
   puma (~> 3.4)
