@@ -22,11 +22,11 @@ class LocationsController < ApplicationController
 
   def edit
     @locations = [@location]
-    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.lat
-      marker.lng location.long
-      marker.infowindow location.name
-    end
+    # @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+    #   marker.lat location.lat
+    #   marker.lng location.long
+    #   marker.infowindow location.name
+    # end
   end
 
   def new
