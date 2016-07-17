@@ -242,6 +242,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    pandoc-ruby (2.0.1)
     paper_trail (5.1.0)
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
@@ -471,6 +472,7 @@ DEPENDENCIES
   markerclustererplus-rails
   newrelic_rpm
   nokogiri (>= 1.6.8)
+  pandoc-ruby
   paper_trail (~> 5.1)
   paperclip (= 4.3.6)
   pg

@@ -20,6 +20,10 @@ class PagesController < ApplicationController
     render nothing: true
   end
 
+  def code_of_conduct
+
+  end
+
   def about
     cookies[:has_visited_about] = "true"
   end

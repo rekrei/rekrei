@@ -46,7 +46,7 @@ Projectmosul::Application.routes.draw do
   end
 
   resources :asset_relations, only: [:destroy]
-  
+
   resources :images, only: [:show, :index]
 
   root 'pages#home'
@@ -56,6 +56,7 @@ Projectmosul::Application.routes.draw do
   get 'about', to: 'pages#about', as: 'about'
   get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get 'check', to: 'pages#check', as: 'check'
+  get 'code_of_conduct', to: 'pages#code_of_conduct', as: 'code_of_conduct'
   get '/contact', to: 'pages#contact', as: 'contact'
   get 'flickr_connect', to: 'flickr#create', as: 'create_flickr_connection'
   get 'flickr_callback', to: 'flickr#callback', as: 'flickr_callback'

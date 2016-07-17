@@ -79,6 +79,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'pandoc-ruby'
   gem 'byebug', '~> 9'
   gem 'awesome_print'
   gem 'pry-rails'
