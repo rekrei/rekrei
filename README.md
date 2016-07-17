@@ -12,8 +12,8 @@ Rekrei (founded as Project Mosul, we changed our name in late 2015) is a volunte
 
 Rekrei is a community of people who actively contribute towards the preservation of cultural heritage that has been lost through either natural means or human intervention. As a community effort, we believe in a community ownership. However, the project has a leadership component and final decisions are made by the core team. Currently, the core team is composed of the founders, if you are interested in becoming an active member of the core team, don't hesitate to contact us.
 
-- Matthew Vincent, founder and developer [matthew@rekrei.org](mailto:matthew@rekrei.org)
-- Chance Coughenour, founder and community manager [chance@rekrei.org](mailto:chance@rekrei.org)
+- Matthew Vincent, founder, developer, photogrammetric processing [matthew@rekrei.org](mailto:matthew@rekrei.org)
+- Chance Coughenour, founder, community manager, photogrammetric processing [chance@rekrei.org](mailto:chance@rekrei.org)
 
 
 ## Helping Out
