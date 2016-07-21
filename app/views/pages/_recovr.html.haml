@@ -1,37 +1,3 @@
-- content_for :scripts do
-  :javascript
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-
-      player = new YT.Player('video', {
-        videoId: '0EazGA673fk',
-        events: {
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    var done = false;
-    function onPlayerStateChange(event) {
-      switch(event.data){
-        case 1:
-          $('#myCarousel').carousel('pause');
-          break;
-        default:
-          $('#myCarousel').carousel('cycle');
-          break;
-      }
-    }
-    function stopVideo() {
-      player.stopVideo();
-    }
 .container.mt15
   .row
     .col-md-6.col-sm-12

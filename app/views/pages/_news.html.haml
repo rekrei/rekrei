@@ -1,6 +1,49 @@
+- content_for :scripts do
+  :javascript
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+
+      player = new YT.Player('video', {
+        videoId: '0EazGA673fk',
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+      player = new YT.Player('tedxvideo', {
+        videoId: 'fCQpMgb7GMo',
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    var done = false;
+    function onPlayerStateChange(event) {
+      switch(event.data){
+        case 1:
+          $('#myCarousel').carousel('pause');
+          break;
+        default:
+          $('#myCarousel').carousel('cycle');
+          break;
+      }
+    }
+    function stopVideo() {
+      player.stopVideo();
+    }
+
 #myCarousel.carousel.slide{"data-ride" => "carousel"}
   .carousel-inner{:role => "listbox"}
     .item.active
+      = render 'tedx'
+    .item
       = render 'recovr'
     .item
       = render 'milpa'
@@ -9,6 +52,8 @@
   %ol.carousel-indicators
     %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
     %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "3", "data-target" => "#myCarousel"}
   %a.left.carousel-control.btn.btn-default{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
     %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "false"}
     %span.sr-only Previous
