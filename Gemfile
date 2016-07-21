@@ -54,8 +54,6 @@ gem 'rollbar', '~> 2.11'
 gem 'newrelic_rpm'
 gem 'le'
 gem 'cocaine', '~> 0.5'
-gem 'pandoc-ruby'
-
 #For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
@@ -81,6 +79,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'pandoc-ruby'
   gem 'byebug', '~> 9'
   gem 'awesome_print'
   gem 'pry-rails'
