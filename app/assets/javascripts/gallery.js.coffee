@@ -48,7 +48,7 @@ ready = ->
   $('#nextBtn').click(nextPage)
   $('#prevBtn').prop 'disabled', true
   $('#prevBtn').click(prevPage)
-  getUrl('https://api.sketchfab.com/v2/models?tags=projectmosul')
+  getUrl('https://api.sketchfab.com/v3/search?type=models&tags=projectmosul&sort_by=-publishedAt')
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
