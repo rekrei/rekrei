@@ -1,4 +1,4 @@
-FROM rekrei/rekrei-base:latest
+FROM rekrei/rekrei-base:2.3.1
 
 MAINTAINER Matthew Vincent <matt@averails.com>
 
