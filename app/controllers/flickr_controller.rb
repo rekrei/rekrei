@@ -31,9 +31,4 @@ class FlickrController < ActionController::Base
     redirect_to session[:flickr_url]
   end
 
-  def something_else_with_flickr
-    flickr = FlickRaw.new(YAML.load_file('flickr.yml').merge(:token => current_user.flickr_token))
-    # now you have full access on the user's data :)
-  end
-
 end
