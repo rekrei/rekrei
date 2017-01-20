@@ -18,6 +18,8 @@ staging:
   sslmode: 'verify-full'
   sslrootcert: 'config/ca/rds.pem'
 
-development: "postgresql://localhost/rekrei_development"
+development:
+  url: "postgresql://localhost/rekrei_development"
 
-test: <%= ENV['DATABASE_URL'] || "postgresql://localhost/rekrei_test" %>
+test:
+  url: <%= ENV['DATABASE_URL'] || "postgresql://localhost/rekrei_test" %>
