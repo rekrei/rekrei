@@ -13,7 +13,7 @@ gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.4'
 gem 'bcrypt', '~> 3.1'
-gem "bower-rails", "~> 0.10.0"
+gem "bower-rails", "~> 0.11"
 gem 'nokogiri', ">= 1.6.8"
 
 # Necessary for Windows OS (won't install on *nix systems)

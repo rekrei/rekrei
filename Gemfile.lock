@@ -45,7 +45,7 @@ GEM
     addressable (2.4.0)
     arel (6.0.3)
     ast (2.2.0)
-    autoprefixer-rails (6.3.6.1)
+    autoprefixer-rails (6.6.1)
       execjs
     awesome_print (1.6.1)
     aws-sdk (1.66.0)
@@ -54,7 +54,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.11)
-    bootstrap-sass (3.3.6)
+    bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     bower-rails (0.10.0)
