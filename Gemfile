@@ -11,7 +11,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails', '>= 4.0.4'
 gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
-gem 'jbuilder', '~> 2.4'
+gem 'jbuilder', '~> 2.6'
 gem 'bcrypt', '~> 3.1'
 gem "bower-rails", "~> 0.11"
 gem 'nokogiri', ">= 1.6.8"
@@ -22,10 +22,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'kaminari', '~> 0.16'
 
 # Friendly_id: https://github.com/norman/friendly_id
-gem 'friendly_id', '5.1.0'
+gem 'friendly_id', '~> 5.2'
 
 # Font-awesome: https://github.com/FortAwesome/font-awesome-sass
-gem 'font-awesome-sass', '~> 4.6'
+gem 'font-awesome-sass', '~> 4.7'
 
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3'

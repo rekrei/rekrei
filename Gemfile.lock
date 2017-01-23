@@ -136,10 +136,10 @@ GEM
     flickraw (0.9.9)
     font-awesome-rails (4.6.3.0)
       railties (>= 3.2, < 5.1)
-    font-awesome-sass (4.6.2)
+    font-awesome-sass (4.7.0)
       sass (>= 3.2)
     formatador (0.2.5)
-    friendly_id (5.1.0)
+    friendly_id (5.2.0)
       activerecord (>= 4.0.0)
     fuubar (2.0.0)
       rspec (~> 3.0)
@@ -196,7 +196,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.7.0)
-    jbuilder (2.5.0)
+    jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.1.1)
@@ -462,8 +462,8 @@ DEPENDENCIES
   faker
   figaro (~> 1.1)
   flickraw
-  font-awesome-sass (~> 4.6)
-  friendly_id (= 5.1.0)
+  font-awesome-sass (~> 4.7)
+  friendly_id (~> 5.2)
   fuubar
   geokit
   geonames_api
@@ -473,7 +473,7 @@ DEPENDENCIES
   guard-rspec
   guard-spring
   haml-rails
-  jbuilder (~> 2.4)
+  jbuilder (~> 2.6)
   jquery-rails (>= 4.0.4)
   jquery-turbolinks
   kaminari (~> 0.16)
