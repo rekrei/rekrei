@@ -2,6 +2,9 @@
 # SimpleCov.start do
 #   add_filter 'vendor/'
 # end
+require 'coveralls'
+Coveralls.wear!
+
 require 'single_cov'
 SingleCov.setup :rspec
 

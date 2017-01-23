@@ -52,6 +52,7 @@ gem 'geokit'
 gem 'devise', '~> 3.5.10'
 gem 'rollbar', '~> 2.11'
 gem 'newrelic_rpm'
+gem 'coveralls', require: false
 gem 'le'
 gem 'cocaine', '~> 0.5'
 #For API
