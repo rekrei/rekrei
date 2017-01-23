@@ -1,7 +1,7 @@
 # Rekrei Platform
 [![wercker status](https://app.wercker.com/status/713ce4c927150a5f4fcd9c3fb91c1cba/s/master "wercker status")](https://app.wercker.com/project/bykey/713ce4c927150a5f4fcd9c3fb91c1cba)
 [![Code Climate](https://codeclimate.com/github/rekrei/rekrei/badges/gpa.svg)](https://codeclimate.com/github/rekrei/rekrei)
-[![Coverage Status](https://coveralls.io/repos/github/rekrei/rekrei/badge.svg?branch=master)](https://coveralls.io/github/rekrei/rekrei?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/rekrei/rekrei/badge.svg?branch=HEAD)](https://coveralls.io/github/rekrei/rekrei?branch=HEAD)
 [![Dependency Status](https://gemnasium.com/badges/github.com/rekrei/rekrei.svg)](https://gemnasium.com/github.com/rekrei/rekrei)
 [![security](https://hakiri.io/github/rekrei/rekrei/master.svg)](https://hakiri.io/github/rekrei/rekrei/master)
 ## About Rekrei
