@@ -5,8 +5,8 @@
 require 'coveralls'
 Coveralls.wear!
 
-require 'single_cov'
-SingleCov.setup :rspec
+# require 'single_cov'
+# SingleCov.setup :rspec
 
 require 'codeclimate-test-reporter'
 require 'rspec/active_job'
