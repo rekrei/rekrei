@@ -50,7 +50,7 @@ gem 'flickraw'
 gem 'geokit'
 # Devise: https://github.com/plataformatec/devise
 gem 'devise', '~> 3.5.10'
-gem 'rollbar', '~> 2.11'
+gem 'rollbar', '~> 2.14'
 gem 'newrelic_rpm'
 gem 'coveralls', require: false
 gem 'le'
