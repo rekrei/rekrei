@@ -13,8 +13,8 @@ gem 'turbolinks', '2.5.3'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.6'
 gem 'bcrypt', '~> 3.1'
-gem "bower-rails", "~> 0.11"
-gem 'nokogiri', ">= 1.6.8"
+gem 'bower-rails', '~> 0.11'
+gem 'nokogiri', '~> 1.7'
 
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
@@ -55,7 +55,7 @@ gem 'newrelic_rpm'
 gem 'coveralls', require: false
 gem 'le'
 gem 'cocaine', '~> 0.5'
-#For API
+# For API
 # gem 'doorkeeper' # To include when it comes time to add authentication
 
 ## Google Maps Integration
@@ -72,7 +72,7 @@ gem 'stripe'
 
 group :production, :staging do
   gem 'puma', '~> 3.4'
-  gem "puma_worker_killer"
+  gem 'puma_worker_killer'
 end
 
 group :development do
@@ -108,7 +108,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'compass-rails'
   gem 'single_cov'
 end
