@@ -8,10 +8,10 @@ Coveralls.wear!
 # require 'single_cov'
 # SingleCov.setup :rspec
 
-require 'codeclimate-test-reporter'
 require 'rspec/active_job'
 
-CodeClimate::TestReporter.start
+require 'simplecov'
+SimpleCov.start
 
 RSpec.configure do |config|
   config.include(RSpec::ActiveJob)
@@ -40,5 +40,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
 end
