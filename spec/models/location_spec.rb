@@ -7,8 +7,8 @@ describe Location do
   it { should respond_to(:uuid) }
   it { should have_many(:reconstructions) }
 
-  describe ".find" do
-    let!(:location){ FactoryGirl.create(:location, name: 'test location') }
+  describe '.find' do
+    let!(:location) { FactoryGirl.create(:location, name: 'test location') }
 
     it 'should find location by id' do
       expect(Location.find(location.id)).to eq(location)

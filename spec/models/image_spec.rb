@@ -10,14 +10,19 @@ describe Image do
   describe 'images related to reconstruction' do
     let!(:image) { create(:image) }
     let!(:image_belonging_to_reconstruction) { create(:image) }
-    let!(:image_relation) { create(:asset_relation, :with_reconstruction, asset: image_belonging_to_reconstruction) }
+    let!(:image_relation) do
+      create :asset_relation, :with_reconstruction,
+             asset: image_belonging_to_reconstruction
+    end
 
     it '.assigned_to_reconstruction' do
-      expect(Image.location(image_belonging_to_reconstruction.location).assigned_to_reconstruction).to eq([image_belonging_to_reconstruction])
+      expect(Image.location(image_belonging_to_reconstruction.location)
+             .assigned_to_reconstruction).to eq([image_belonging_to_reconstruction])
     end
 
     it '.unassigned_to_reconstruction' do
-      expect(Image.location(image.location).unassigned_to_reconstruction).to eq([image])
+      expect(Image.location(image.location)
+             .unassigned_to_reconstruction).to eq([image])
     end
 
     it '.all' do
@@ -45,7 +50,7 @@ describe Image do
     let!(:image_5) { create(:image) }
 
     it { expect(Image.count).to eq 5 }
-    it { expect(Image.location(location).unassigned_to_reconstruction.count).to eq 3}
+    it { expect(Image.location(location).unassigned_to_reconstruction.count).to eq 3 }
     it { expect(Image.next(image_1)).to eq(image_2) }
     it { expect(Image.previous(image_3)).to eq(image_2) }
     it { expect(image_1.next).to eq(image_2) }
@@ -60,10 +65,10 @@ describe Image do
     let!(:location) { create(:location) }
     let!(:parent_image) { create(:image, location: location) }
     let!(:comparison_image) { create(:image, location: location) }
-    let!(:image_match_1){ create(:image_match, parent_image: parent_image, comparison_image: comparison_image, location: location) }
-    let!(:image_match_2){ create(:image_match, parent_image: comparison_image, comparison_image: parent_image, location: location) }
-    let!(:new_image){ create(:image, location: location) }
-    let!(:new_image_from_another_location){ create(:image) }
+    let!(:image_match_1) { create(:image_match, parent_image: parent_image, comparison_image: comparison_image, location: location) }
+    let!(:image_match_2) { create(:image_match, parent_image: comparison_image, comparison_image: parent_image, location: location) }
+    let!(:new_image) { create(:image, location: location) }
+    let!(:new_image_from_another_location) { create(:image) }
 
     # the two image matches above will create two images each
     it { expect(Image.count).to eq(4) }
@@ -99,7 +104,7 @@ describe Image do
     it { expect(ImageMatch.count).to eq 6 }
     it { expect(Image.count).to eq 7 }
     it { expect(image_1.compared_images.count).to eq 5 }
-    it { expect(image_1.compared_images).to eq([image_2, image_3, image_4, image_5, image_6])}
+    it { expect(image_1.compared_images).to eq([image_2, image_3, image_4, image_5, image_6]) }
   end
 
   describe 'compare' do
@@ -109,31 +114,31 @@ describe Image do
     let!(:existing_image) { create(:image, location: location) }
     let(:new_image) { build(:image, location: location) }
 
-    it "should create two new table entries upon comparison" do
-      expect {
-        allow(ImageTester).to receive(:compare).and_return({:matches=>1000, :error=>false, :time=>0.201})
+    it 'should create two new table entries upon comparison' do
+      expect do
+        allow(ImageTester).to receive(:compare).and_return(matches: 1000, error: false, time: 0.201)
         image_1.compare(image_2)
-      }.to change(ImageMatch, :count).by(2)
+      end.to change(ImageMatch, :count).by(2)
     end
 
-    it "should create image matches after creating" do
-      expect {
+    it 'should create image matches after creating' do
+      expect do
         expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
         new_image.save
-      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(0) #no jobs are queued right now
+      end.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(0) # no jobs are queued right now
     end
 
-    it "should create image matches on request" do
-      expect {
+    it 'should create image matches on request' do
+      expect do
         expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
         image_1.update_matches
-      }.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
+      end.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
     end
   end
 
   describe 'scoping asset relations relating to reconstruction' do
-    let!(:location){ create(:location) }
-    let!(:reconstruction){ create(:reconstruction, location: location) }
+    let!(:location) { create(:location) }
+    let!(:reconstruction) { create(:reconstruction, location: location) }
     let!(:image) { create(:image, location: location) }
     let!(:asset_relation) { create(:asset_relation, :with_reconstruction, reconstruction: reconstruction, asset: image) }
     let!(:other_images) { create_list(:image, 3, location: location) }
@@ -155,6 +160,5 @@ describe Image do
     it { expect(location.images).to include other_images.third }
     it { expect(reconstruction.show_cover_image.compared_images.count).to eq 3 }
     it { expect(reconstruction.show_cover_image.compared_images.exclude_in_reconstruction(reconstruction).count).to eq 2 }
-
   end
 end

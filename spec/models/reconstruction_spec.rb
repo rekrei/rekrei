@@ -6,11 +6,11 @@ describe Reconstruction do
   it { should belong_to(:cover_image) }
   it { should belong_to(:location) }
 
-  describe ".set_cover_image" do
-    let(:image){ create(:image) }
-    let(:reconstruction){ create(:reconstruction, :with_cover_image) }
+  describe '.set_cover_image' do
+    let(:image) { create(:image) }
+    let(:reconstruction) { create(:reconstruction, :with_cover_image) }
 
-    it "should update cover image" do
+    it 'should update cover image' do
       reconstruction.set_cover_image(image)
       reconstruction.reload
       expect(reconstruction.cover_image).to eq image
@@ -20,13 +20,14 @@ describe Reconstruction do
   describe 'asset relations' do
     let!(:image) { create(:image) }
     let!(:reconstruction) { create(:reconstruction) }
-    let!(:asset_relation) { create(:asset_relation, asset: image, reconstruction: reconstruction) }
-
-    it "should only allow unique asset relations" do
-      expect {
-        AssetRelation.create(reconstruction: reconstruction, asset: image)
-      }.to_not change(AssetRelation, :count)
+    let!(:asset_relation) do
+      create(:asset_relation, asset: image, reconstruction: reconstruction)
     end
 
+    it 'should only allow unique asset relations' do
+      expect do
+        AssetRelation.create(reconstruction: reconstruction, asset: image)
+      end.to_not change(AssetRelation, :count)
+    end
   end
 end
