@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe LocationsController do
-
   context 'guest' do
   end
 
@@ -11,11 +10,10 @@ describe LocationsController do
     describe 'with reconstruction' do
       let(:post_location) { post :create, location: attributes_for(:location) }
 
-      it { expect{ post_location }.to change(Location, :count).by(1) }
+      it { expect { post_location }.to change(Location, :count).by(1) }
     end
   end
 
   context 'admin' do
   end
-
 end

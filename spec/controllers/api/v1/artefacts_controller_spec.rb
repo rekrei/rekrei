@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::V1::ArtefactsController do
-  before(:each) { request.headers['Accept'] = "application/vnd.projectmosul.v1" }
+  before(:each) { request.headers['Accept'] = 'application/vnd.projectmosul.v1' }
 
   describe 'get /artefacts' do
     def get_artefacts
@@ -9,7 +9,7 @@ describe Api::V1::ArtefactsController do
       get :index, format: :json
     end
 
-    it "returns the information about a reporter on a hash" do
+    it 'returns the information about a reporter on a hash' do
       get_artefacts
       artefacts_response = JSON.parse(response.body, symbolize_names: true)
       expect(artefacts_response.count).to eql 3

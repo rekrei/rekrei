@@ -11,7 +11,7 @@ describe Api::V2::ReconstructionsController do
       get :index, format: :json
     end
 
-    it "returns the information about a reporter on a hash" do
+    it 'returns the information about a reporter on a hash' do
       get_reconstructions
       reconstructions_response = JSON.parse(response.body, symbolize_names: true)
       expect(reconstructions_response[:reconstructions].count).to eql 3

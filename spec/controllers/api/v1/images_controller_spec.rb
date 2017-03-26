@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::V1::ImagesController do
-  before(:each) { request.headers['Accept'] = "application/vnd.projectmosul.v1" }
+  before(:each) { request.headers['Accept'] = 'application/vnd.projectmosul.v1' }
 
   describe 'get /images' do
     render_views
@@ -10,7 +10,7 @@ describe Api::V1::ImagesController do
       get :index, format: :json
     end
 
-    it "returns the information about a reporter on a hash" do
+    it 'returns the information about a reporter on a hash' do
       get_images
       image_response = JSON.parse(response.body, symbolize_names: true)
       expect(image_response[:images].count).to eql 3
@@ -37,12 +37,12 @@ describe Api::V1::ImagesController do
       @image_with_artefact_response = JSON.parse(response.body, symbolize_names: true)
     end
 
-    it "should respond with 200" do
+    it 'should respond with 200' do
       get_image
       expect(response).to be_success
     end
 
-    it "should assign id" do
+    it 'should assign id' do
       get_image
       expect(@image_response[:uuid]).to eq @image.uuid
     end

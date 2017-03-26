@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 describe ImagesController do
-
   context 'guest' do
     describe 'attempts to upload a picture' do
       let!(:location) { create(:location) }
 
       it 'should redirect when not logged in' do
         post :create, location_id: location.slug, image: attributes_for(:image, :with_stubbed_image)
-        expect(response.code).to eq("302")
+        expect(response.code).to eq('302')
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -27,7 +26,7 @@ describe ImagesController do
       end
 
       it 'get all images' do
-        get :index, location_id: location.id, show: "all"
+        get :index, location_id: location.id, show: 'all'
         expect(assigns(:images).count).to eq 5
         expect(assigns(:images)).to include(images_without_reconstruction.first)
         expect(assigns(:images)).to include(images_without_reconstruction.last)
@@ -36,7 +35,7 @@ describe ImagesController do
       end
 
       it 'get all images except for ones included in a reconstruction' do
-        get :index, location_id: location.id, show: "all", reconstruction_slug: image_with_reconstruction.reconstructions.first.slug
+        get :index, location_id: location.id, show: 'all', reconstruction_slug: image_with_reconstruction.reconstructions.first.slug
         expect(assigns(:images).count).to eq 4
         expect(assigns(:images)).to include(images_without_reconstruction.first)
         expect(assigns(:images)).to include(images_without_reconstruction.last)
@@ -82,7 +81,7 @@ describe ImagesController do
       end
 
       it 'get all images' do
-        get :index, location_id: location.id, show: "all"
+        get :index, location_id: location.id, show: 'all'
         expect(assigns(:images).count).to eq 4
         expect(assigns(:images)).to include(images_without_reconstruction.first)
         expect(assigns(:images)).to include(images_without_reconstruction.last)
@@ -94,5 +93,4 @@ describe ImagesController do
 
   context 'admin' do
   end
-
 end
