@@ -1,4 +1,4 @@
-class FlickrController < ActionController::Base
+class FlickrController < ApplicationController
 
   def create
     flickr = FlickRaw::Flickr.new

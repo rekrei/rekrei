@@ -1,4 +1,4 @@
-class FlickrPhotosController < ActionController::Base
+class FlickrPhotosController < ApplicationController
   before_action :set_flickr
   respond_to :json
 
