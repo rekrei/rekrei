@@ -13,7 +13,7 @@ FactoryGirl.define do
       image_content_type 'image/jpeg'
       image_file_size 256
       after(:create) do |asset|
-        image_file = Rails.root.join("spec/fixtures/files/test1500white.png")
+        image_file = Rails.root.join('spec/fixtures/files/test1500white.png')
 
         # cp test image to direcotries
         [:original, :medium, :thumb].each do |size|
@@ -28,7 +28,8 @@ FactoryGirl.define do
       image do
         Rack::Test::UploadedFile.new(
           Rails.root.join('spec', 'fixtures',
-                          'files', 'test1500white.png'), 'image/png')
+                          'files', 'test1500white.png'), 'image/png'
+        )
       end
     end
 
