@@ -30,3 +30,16 @@ services:
       #DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
       RAILS_ENV: production
       RACK_ENV: production
+  test:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.test
+    command: sh -c 'bundle exec rake db:migrate && bundle exec guard --force-polling'
+    volumes:
+      - .:/rekrei
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgres://postgres@db:5432/rekrei_test?pool=5"
+      RAILS_ENV: test
+      RACK_ENV: test
