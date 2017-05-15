@@ -240,7 +240,7 @@ GEM
     nenv (0.3.0)
     nested_form (0.3.2)
     newrelic_rpm (4.1.0.333)
-    nokogiri (1.7.1)
+    nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -508,4 +508,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.3
+   1.14.6
