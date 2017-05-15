@@ -405,7 +405,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.7)
-    tins (1.13.2)
+    tins (1.13.3)
     turbolinks (2.5.3)
       coffee-rails
     twitter-bootstrap-rails (3.2.2)
