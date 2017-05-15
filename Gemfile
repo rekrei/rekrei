@@ -69,6 +69,7 @@ gem 'geonames_api'
 
 # donations
 gem 'stripe'
+gem 'mail', '~> 2.6.6.rc1'
 
 group :production, :staging do
   gem 'puma', '~> 3.4'

@@ -225,7 +225,7 @@ GEM
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.11)
-    mail (2.6.5)
+    mail (2.6.6.rc1)
       mime-types (>= 1.16, < 4)
     markerclustererplus-rails (2.1.2.1)
     method_source (0.8.2)
@@ -468,6 +468,7 @@ DEPENDENCIES
   jquery-turbolinks
   kaminari (~> 0.16)
   le
+  mail (~> 2.6.6.rc1)
   markerclustererplus-rails
   newrelic_rpm
   nokogiri (~> 1.7)
