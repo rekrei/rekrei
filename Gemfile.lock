@@ -240,6 +240,7 @@ GEM
     nenv (0.3.0)
     nested_form (0.3.2)
     newrelic_rpm (4.1.0.333)
+    ng-rails-csrf (0.1.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
@@ -471,6 +472,7 @@ DEPENDENCIES
   mail (~> 2.6.6.rc1)
   markerclustererplus-rails
   newrelic_rpm
+  ng-rails-csrf
   nokogiri (~> 1.7)
   pandoc-ruby
   paper_trail (~> 5.1)
