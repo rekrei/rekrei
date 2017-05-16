@@ -32,6 +32,7 @@
 //= require angular-utils-pagination
 //= require angularjs-slider
 //= require angular-devise
+//= require ng-rails-csrf
 //= require rekrei
 //= require controllers/tabs-controller
 //= require controllers/reconstruction-photos-controller
