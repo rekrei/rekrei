@@ -1,0 +1,15 @@
+steps:
+  - name: ":rspec:"
+    command: "rspec --color specs"
+    env:
+      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "test"
+  - name: ":docker: Build docker image"
+      agents:
+        queue: docker-build
+      plugins:
+        docker-compose:
+          build: app
+          image-repository: rekrei/rekrei
+          image-name: ${BUILDKITE_COMMIT:0:7}
+          config:
+            - Dockerfile

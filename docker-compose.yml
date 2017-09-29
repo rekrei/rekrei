@@ -10,11 +10,11 @@ services:
       context: .
       dockerfile: ./config/deploy/nginx/Dockerfile
     depends_on:
-      - web
+      - app
     ports:
       - '80:80'
       - '443:443'
-  web:
+  app:
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -28,8 +28,8 @@ services:
     env_file: .env
     environment:
       #DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
-      RAILS_ENV: production
-      RACK_ENV: production
+      RAILS_ENV: development
+      RACK_ENV: development
   test:
     build:
       context: .
