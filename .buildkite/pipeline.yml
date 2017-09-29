@@ -1,9 +1,12 @@
 steps:
-  - name: ":rspec: Run specs"
-    command: "rspec --color specs"
+  - label: ':rspec: Run specs'
+    command: 'rspec --color specs'
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: "test"
-  - name: ":docker: Build docker image"
+
+  - wait
+
+  - label: ':docker: Build docker image'
       agents:
         queue: docker-build
       plugins:
