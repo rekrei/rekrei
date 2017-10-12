@@ -39,3 +39,7 @@ You don't have to be an expert to use photogrammetry software. We personally rec
 ## Questions?
 
 Please feel free to contact us directly at info@rekrei.org or through the [contact page](https://rekrei.org/contact) on the website.
+
+## Contributing
+Please read the [contributing guide](./CONTRIBUTING.md).
+
