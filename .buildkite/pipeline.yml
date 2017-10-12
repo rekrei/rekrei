@@ -13,7 +13,7 @@ steps:
           image-repository: rekrei/rekrei
           image-name: ${BUILDKITE_COMMIT:0:7}
           config:
-            - docker-compose.yml
+            - docker-compose-build.yml
   - wait
 
   - label: ':rspec: Run specs'

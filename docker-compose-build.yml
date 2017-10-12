@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.5
+    ports:
+      - "5432:5432"
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/rekrei
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
