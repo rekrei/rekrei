@@ -1,3 +1,8 @@
+env:
+  CI: 1
+  LANG: en_US.UTF-8
+  LC_CTYPE: en_US.UTF-8
+
 steps:
   - label: ':docker: Build docker image'
       agents:
@@ -8,7 +13,7 @@ steps:
           image-repository: rekrei/rekrei
           image-name: ${BUILDKITE_COMMIT:0:7}
           config:
-            - Dockerfile
+            - docker-compose.yml
   - wait
 
   - label: ':rspec: Run specs'
