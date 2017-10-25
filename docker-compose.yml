@@ -1,19 +1,28 @@
-version: '2'
+version: '3.4'
+
+volumes:
+  bundler_cache: {}
+  database: {}
+  application: {}
+  asset_cache: {}
+
+networks:
+  backend: {}
+  frontend: {}
 
 services:
   db:
     image: postgres:9.5
-    ports:
-      - "5432:5432"
-  nginx:
-    build:
-      context: .
-      dockerfile: ./config/deploy/nginx/Dockerfile
-    depends_on:
-      - app
-    ports:
-      - '80:80'
-      - '443:443'
+  # nginx:
+    # build:
+    #   context: .
+    #   dockerfile: ./config/deploy/nginx/Dockerfile
+    # networks: [ "backend", "frontend" ]
+    # depends_on:
+    #   - app
+    # ports:
+    #   - '3737:80'
+    #   - '3738:443'
   app:
     build:
       context: .
@@ -21,25 +30,14 @@ services:
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/rekrei
+      - bundler_cache:/bundler
+      - asset_cache:/rekrei/public
     ports:
-      - "3000:3000"
+      - "3037:3000"
     depends_on:
       - db
     env_file: .env
     environment:
-      #DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
+      DATABASE_URL: "postgres://postgres@db:5432/postgres?pool=5"
       RAILS_ENV: development
       RACK_ENV: development
-  test:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.test
-    command: sh -c 'bundle exec rake db:migrate && bundle exec guard --force-polling'
-    volumes:
-      - .:/rekrei
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: "postgres://postgres@db:5432/rekrei_test?pool=5"
-      RAILS_ENV: test
-      RACK_ENV: test

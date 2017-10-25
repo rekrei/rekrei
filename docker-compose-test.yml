@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  app:
+    command: bundle exec guard --force-polling
+    environment:
+      RAILS_ENV: test
+      RACK_ENV: test
