@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if ! which docker-compose > /dev/null; then
+  echo "Please install docker-compose."
+  exit 1
+fi
+
+exec docker-compose -f docker-compose.yml $@ 2>&1
