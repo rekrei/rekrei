@@ -4,5 +4,6 @@ services:
   app:
     command: bundle exec guard --force-polling
     environment:
+      DATABASE_URL: "postgres://postgres@db:5432/rekrei-test?pool=5"
       RAILS_ENV: test
       RACK_ENV: test

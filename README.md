@@ -43,3 +43,16 @@ Please feel free to contact us directly at info@rekrei.org or through the [conta
 ## Contributing
 Please read the [contributing guide](./CONTRIBUTING.md).
 
+### Setting up the application
+In the root of the application, run:
+```bash
+bin/setup
+```
+
+And then go to http://rekrei.dev and you should find the application running. Hack away and have fun!
+
+You can run the specs with:
+
+```
+bin/test
+```
