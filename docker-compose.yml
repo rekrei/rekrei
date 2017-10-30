@@ -24,9 +24,7 @@ services:
     #   - '3737:80'
     #   - '3738:443'
   app:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: rekrei/rekrei:master
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/rekrei
