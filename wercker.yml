@@ -14,9 +14,12 @@ build:
         code: bundle exec rspec
 deploy:
   steps:
+    - internal/docker-build:
+        dockerfile: Dockerfile 
+        image-name: rekrei
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
-        tag: wercker_master
+        tag: latest, wercker-latest, $WERCKER_GIT_BRANCH, 
         repository: rekrei/rekrei
-        registry: https://registry.hub.docker.com
+        registry: https://hub.docker.com
