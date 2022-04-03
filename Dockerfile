@@ -7,7 +7,7 @@ ENV BUNDLE_GEMFILE=/rekrei/Gemfile \
     BUNDLE_PATH=/bundler \
     GEM_HOME=/bundler
 
-RUN mkdir /rekrei
+RUN mkdir -p /rekrei
 WORKDIR /rekrei
 COPY Gemfile* /rekrei/
 RUN gem install bundler && bundle install
