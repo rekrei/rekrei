@@ -1,6 +1,6 @@
-FROM rekrei/rekrei-base:2.3.1
+FROM rekrei/base:58270a24e586fe3107062135564ec5ea81638a91
 
-MAINTAINER Matthew Vincent <matt@averails.com>
+AUTHOR Matthew Vincent <matthew@rekrei.org>
 
 ENV BUNDLE_GEMFILE=/rekrei/Gemfile \
     BUNDLE_JOBS=20 \
