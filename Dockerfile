@@ -1,6 +1,6 @@
 FROM rekrei/base:58270a24e586fe3107062135564ec5ea81638a91
 
-AUTHOR Matthew Vincent <matthew@rekrei.org>
+LABEL org.opencontainers.image.authors="matthew@rekrei.org"
 
 ENV BUNDLE_GEMFILE=/rekrei/Gemfile \
     BUNDLE_JOBS=20 \
