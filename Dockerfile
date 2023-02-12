@@ -10,7 +10,7 @@ ENV BUNDLE_GEMFILE=/rekrei/Gemfile \
 RUN mkdir -p /rekrei
 WORKDIR /rekrei
 COPY Gemfile* /rekrei/
-RUN gem install bundler && bundle install
+RUN gem install bundler -v=1.16.0 && bundle install
 
 COPY . /rekrei
 RUN bundle exec rake assets:precompile

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.4.2'
 # ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.8'
@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.6'
 gem 'bcrypt', '~> 3.1'
 gem 'bower-rails', '~> 0.11'
 gem 'nokogiri', '~> 1.8.1'
+gem 'mimemagic', '~> 0.3.7'
 
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
