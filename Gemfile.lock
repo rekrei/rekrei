@@ -280,7 +280,7 @@ GEM
     pry-rails (0.3.5)
       pry (>= 0.9.10)
     public_suffix (2.0.5)
-    puma (3.8.2)
+    puma (3.12.6)
     puma_worker_killer (0.1.0)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 4)
@@ -494,7 +494,7 @@ DEPENDENCIES
   paperclip!
   pg
   pry-rails
-  puma (~> 3.4)
+  puma (~> 3.12)
   puma_worker_killer
   rails (= 4.2.8)
   rails_admin
