@@ -22,6 +22,12 @@
           'onStateChange': onPlayerStateChange
         }
       });
+      player = new YT.Player('rekreivideo', {
+        videoId: '27st_WIZmKY',
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
     }
 
     var done = false;
@@ -54,6 +60,7 @@
     %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
     %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
     %li{"data-slide-to" => "3", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "4", "data-target" => "#myCarousel"}
   %a.left.carousel-control.btn.btn-default{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
     %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "false"}
     %span.sr-only Previous

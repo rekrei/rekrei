@@ -1,1 +1,9 @@
 /* Put your custom styles here */
+.footer-logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	padding-top: 15px;
+	padding-bottom: 5px;
+}

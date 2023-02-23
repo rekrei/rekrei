@@ -1,6 +1,6 @@
 .footer
   .container
-    .row.mb30
+    .row.mb40
       .col-footer.col-md-4.col-xs-6
         %h3 About the Website
         %p
@@ -13,13 +13,11 @@
           = succeed "." do
             %a{:href => "http://dragdropsite.github.io/mPurpose/index.html"} here
         %p
-          We would like to acknowledge the kind sponsorship of Digital Ocean that has made our current hosting possible:
+          We are incredibly grateful for 1Password and their support of open source projects like ours. If you need a password manager, please consider using their product:
+          = link_to image_tag('logos/1P-wordmark-536px-tall.png', class: "img img-responsive footer-logo"), 'https://agilebits.com/onepassword?ref=1password-website'
         %p
-          = link_to image_tag('logos/DO_Logo_Horizontal_White-9dac4f5e.png', class: "img img-responsive"), 'https://m.do.co/c/411ca1d7b00c'
-        %p
-          If you need to host any of your own projects, you can help us out by using our affiliate link when you sign up:
-        %p
-          = link_to 'https://m.do.co/c/411ca1d7b00c', 'https://m.do.co/c/411ca1d7b00c'
+          If you need to host any of your own projects, you can help us out by using our Digital Ocean affiliate link when you sign up:
+          = link_to image_tag('logos/DO_Logo_Horizontal_White.png', class: "img img-responsive footer-logo"), 'https://m.do.co/c/411ca1d7b00c'
       .col-footer.col-md-4.col-xs-6
         %h3 Code of Conduct
         %p

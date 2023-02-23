@@ -93,4 +93,10 @@ Projectmosul::Application.configure do
     password: ENV['SMTP_PWD']
   }
 end
-Rails.logger = Le.new('a66c30f9-b5fc-4560-b62e-06e7fee0c660') unless ENV['DEBUG'] == true
+# Rails.logger = Le.new('a66c30f9-b5fc-4560-b62e-06e7fee0c660') unless ENV['DEBUG'] == true
+Rails.application.configure do
+  # ...
+  config.logger = Logger.new(STDOUT)
+  config.level = 0
+  # ...
+end
