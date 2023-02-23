@@ -61,4 +61,4 @@ We are grateful to 1password for supporting us with their open source program. I
 
 We have been supported with some credits from Digital Ocean in the past, and we are grateful. If you are looking for a cloud provider, check out [Digital Ocean](https://m.do.co/c/411ca1d7b00c). If you sign up with our affiliate link, you'll help us out!
 
-BuildKite provides us with a free open source plan, and we are grateful. If you are looking for a CI/CD tool, check out [BuildKite](https://buildkite.com/).
+BuildKite provides support with their awesome platform, and we are grateful. If you are looking for a CI/CD tool, check out [BuildKite](https://buildkite.com/).
