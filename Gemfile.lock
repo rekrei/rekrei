@@ -498,6 +498,7 @@ DEPENDENCIES
   puma_worker_killer
   rails (= 4.2.8)
   rails_admin
+  rake (= 12.3.1)
   rmagick (~> 2.15)
   rollbar (~> 2.14)
   rspec-activejob
@@ -523,7 +524,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.4.10p364
 
 BUNDLED WITH
-   1.16.0
+   1.17.3

@@ -1,4 +1,4 @@
-FROM rekrei/base:0ec6679c4de859972309e25f95d0b44f1886768e
+FROM rekrei/base:290a04173f9c1718543895404980eb5dc1fc318c
 
 LABEL org.opencontainers.image.authors="matthew@rekrei.org"
 
@@ -10,7 +10,7 @@ ENV BUNDLE_GEMFILE=/rekrei/Gemfile \
 RUN mkdir -p /rekrei
 WORKDIR /rekrei
 COPY Gemfile* /rekrei/
-RUN gem install bundler -v=1.16.0 && bundle install 
+RUN gem install bundler -v=1.16.0 && bundle install
 
 COPY . /rekrei
 RUN bundle exec rake assets:precompile
