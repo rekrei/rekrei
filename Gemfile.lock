@@ -4,6 +4,18 @@ GIT
   specs:
     sketchfably (0.0.2)
 
+GIT
+  remote: https://github.com/rekrei/paperclip.git
+  revision: 292c4074fde85cda890ef1ed73b8f1f1d15b2612
+  branch: mimemagic
+  specs:
+    paperclip (4.3.6)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.10)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -235,7 +247,9 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mimemagic (0.3.7)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.12.1)
@@ -254,12 +268,6 @@ GEM
     paper_trail (5.2.3)
       activerecord (>= 3.0, < 6.0)
       request_store (~> 1.1)
-    paperclip (4.3.6)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      cocaine (~> 0.5.5)
-      mime-types
-      mimemagic (= 0.3.7)
     parallel (1.12.0)
     parser (2.4.0.0)
       ast (~> 2.2)
@@ -477,12 +485,13 @@ DEPENDENCIES
   le
   mail (~> 2.6.6.rc1)
   markerclustererplus-rails
+  mimemagic (~> 0.3.10)
   newrelic_rpm
   ng-rails-csrf
   nokogiri (~> 1.8.1)
   pandoc-ruby
   paper_trail (~> 5.1)
-  paperclip (= 4.3.6)
+  paperclip!
   pg
   pry-rails
   puma (~> 3.4)
@@ -514,7 +523,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.7.2p137
 
 BUNDLED WITH
    1.16.0
