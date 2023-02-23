@@ -14,7 +14,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.6'
 gem 'bcrypt', '~> 3.1'
 gem 'bower-rails', '~> 0.11'
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.10.10'
 gem 'mimemagic', '~> 0.3.10'
 gem 'rake', '12.3.1'
 
