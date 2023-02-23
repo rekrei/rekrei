@@ -24,7 +24,7 @@ services:
     #   - '3737:80'
     #   - '3738:443'
   app:
-    image: rekrei/rekrei:master
+    image: rekrei/rekrei:latest
     build:
       context: .
       dockerfile: Dockerfile

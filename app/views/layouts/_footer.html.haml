@@ -14,10 +14,15 @@
             %a{:href => "http://dragdropsite.github.io/mPurpose/index.html"} here
         %p
           We are incredibly grateful for 1Password and their support of open source projects like ours. If you need a password manager, please consider using their product:
-          = link_to image_tag('logos/1P-wordmark-536px-tall.png', class: "img img-responsive footer-logo"), 'https://agilebits.com/onepassword?ref=1password-website'
+          = link_to image_tag('logos/1P-wordmark-536px-tall.png', class: "img img-responsive footer-logo"), 'https://1password.com'
         %p
           If you need to host any of your own projects, you can help us out by using our Digital Ocean affiliate link when you sign up:
-          = link_to image_tag('logos/do_logo_white.png', class: "img img-responsive footer-logo"), 'https://m.do.co/c/411ca1d7b00c'
+          = link_to 'https://m.do.co/c/411ca1d7b00c', 'https://m.do.co/c/411ca1d7b00c'
+          = image_tag('logos/do_logo_white.png', class: "img img-responsive footer-logo")
+        %p
+          We are grateful to Buidlkite for supporting our open source projects. If you need a CI/CD tool, please consider using their product:
+          = link_to 'https://buildkite.com', 'https://buildkite.com'
+          = image_tag('logos/buildkite-logo.png', class: "img img-responsive footer-logo")
         %p &nbsp;
         %p &nbsp;
       .col-footer.col-md-4.col-xs-6
