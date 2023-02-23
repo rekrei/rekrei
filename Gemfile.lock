@@ -329,7 +329,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.2)
       rake
-    rake (12.3.1)
+    rake (12.3.3)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
@@ -498,7 +498,7 @@ DEPENDENCIES
   puma_worker_killer
   rails (= 4.2.8)
   rails_admin
-  rake (= 12.3.1)
+  rake (= 12.3.3)
   rmagick (~> 2.15)
   rollbar (~> 2.14)
   rspec-activejob
