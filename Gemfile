@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.4.10'
 # ruby-gemset=projectmosul
 # Standard Rails gems
 gem 'rails', '4.2.8'
@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.6'
 gem 'bcrypt', '~> 3.1'
 gem 'bower-rails', '~> 0.11'
 gem 'nokogiri', '~> 1.8.1'
+gem 'mimemagic', '~> 0.3.10'
+gem 'rake', '12.3.1'
 
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
@@ -30,7 +32,7 @@ gem 'font-awesome-sass', '~> 4.7'
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3'
 gem 'rmagick', '~> 2.15'
-gem 'paperclip', '4.3.6'
+gem 'paperclip', git: 'https://github.com/rekrei/paperclip.git', branch: 'mimemagic'
 gem 'aws-sdk', '< 2.0'
 gem 'paper_trail', '~> 5.1'
 

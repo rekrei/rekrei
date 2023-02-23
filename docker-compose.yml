@@ -11,8 +11,8 @@ networks:
   frontend: {}
 
 services:
-  db:
-    image: postgres:9.5
+  #db:
+  # image: postgres:9.5
   # nginx:
     # build:
     #   context: .
@@ -25,17 +25,16 @@ services:
     #   - '3738:443'
   app:
     image: rekrei/rekrei:master
-    command: bundle exec puma -C config/puma.rb
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - .:/rekrei
-      - bundler_cache:/bundler
       - asset_cache:/rekrei/public
     ports:
       - "3037:3000"
-    depends_on:
-      - db
     env_file: .env
     environment:
-      DATABASE_URL: "postgres://postgres@db:5432/rekrei_development?pool=5"
-      RAILS_ENV: development
-      RACK_ENV: development
+      #DATABASE_URL: "postgres://postgres@db:5432/rekrei_development?pool=5"
+      RAILS_ENV: production
+      RACK_ENV: production
