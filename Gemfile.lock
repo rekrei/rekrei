@@ -250,7 +250,7 @@ GEM
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
     multi_json (1.12.1)
     multipart-post (2.0.0)
@@ -258,8 +258,8 @@ GEM
     nested_form (0.3.2)
     newrelic_rpm (4.1.0.333)
     ng-rails-csrf (0.1.0)
-    nokogiri (1.8.2)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -488,7 +488,7 @@ DEPENDENCIES
   mimemagic (~> 0.3.10)
   newrelic_rpm
   ng-rails-csrf
-  nokogiri (~> 1.8.1)
+  nokogiri (~> 1.10.10)
   pandoc-ruby
   paper_trail (~> 5.1)
   paperclip!
