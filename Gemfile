@@ -21,7 +21,7 @@ gem 'rake', '12.3.1'
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Kaminari: https://github.com/amatsuda/kaminari
-gem 'kaminari', '~> 0.16'
+gem 'kaminari', '~> 1.2'
 
 # Friendly_id: https://github.com/norman/friendly_id
 gem 'friendly_id', '~> 5.2'
