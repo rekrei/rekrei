@@ -16,7 +16,7 @@ gem 'bcrypt', '~> 3.1'
 gem 'bower-rails', '~> 0.11'
 gem 'nokogiri', '~> 1.8.1'
 gem 'mimemagic', '~> 0.3.10'
-gem 'rake', '12.3.1'
+gem 'rake', '12.3.3'
 
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
